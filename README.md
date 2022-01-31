@@ -4,12 +4,12 @@ This is my personal repository, including notes and resources related to competi
 
 ## [LeetCode](https://leetcode.com/)
 
-| No.  | Title                                             | Solution                           | Difficulty |
-| :--- | :------------------------------------------------ | :--------------------------------- | :--------- |
-| 0001 | [Two Sum](https://leetcode.com/problems/two-sum/) | [C++](./leetcode/two-sum/main.cpp) | Easy       |
+| No.  | Title                                             | Solution                                     | Difficulty |
+| :--- | :------------------------------------------------ | :------------------------------------------- | :--------- |
+| 0001 | [Two Sum](https://leetcode.com/problems/two-sum/) | [C++](./solutions/leetcode/two-sum/main.cpp) | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
-| Chapter | Title      | Solution                         |
-| :------ | :--------- | :------------------------------- |
-| 4.0     | Count Bits | [C++](./epi/count-bits/main.cpp) |
+| Chapter | Title      | Solution                                   |
+| :------ | :--------- | :----------------------------------------- |
+| 4.0     | Count Bits | [C++](./solutions/epi/count-bits/main.cpp) |
