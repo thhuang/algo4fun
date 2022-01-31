@@ -14,3 +14,4 @@ This is my personal repository, including notes and resources related to competi
 | :------ | :--------- | :----------------------------------------- |
 | 4.0     | Count Bits | [C++](./solutions/epi/count-bits/main.cpp) |
 | 4.1     | Parity     | [C++](./solutions/epi/parity/main.cpp)     |
+| 4.2     | Swap Bits  | [C++](./solutions/epi/swap-bits/main.cpp)  |
