@@ -20,3 +20,4 @@ This is my personal repository, including notes and resources related to competi
 | 4.5     | Primitive Multiply      | [C++](./solutions/epi/primitive-multiply/main.cpp)      |
 | 4.6     | Primitive Divide        | [C++](./solutions/epi/primitive-divide/main.cpp)        |
 | 4.7     | Power                   | [C++](./solutions/epi/power-x-y/main.cpp)               |
+| 4.8     | Reverse Digits          | [C++](./solutions/epi/reverse-digits/main.cpp)          |
