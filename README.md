@@ -19,3 +19,4 @@ This is my personal repository, including notes and resources related to competi
 | 4.4     | Closest Int Same Weight | [C++](./solutions/epi/closest-int-same-weight/main.cpp) |
 | 4.5     | Primitive Multiply      | [C++](./solutions/epi/primitive-multiply/main.cpp)      |
 | 4.6     | Primitive Divide        | [C++](./solutions/epi/primitive-divide/main.cpp)        |
+| 4.7     | Power                   | [C++](./solutions/epi/power-x-y/main.cpp)               |
