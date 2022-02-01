@@ -17,3 +17,4 @@ This is my personal repository, including notes and resources related to competi
 | 4.2     | Swap Bits               | [C++](./solutions/epi/swap-bits/main.cpp)               |
 | 4.3     | Reverse Bits            | [C++](./solutions/epi/reverse-bits/main.cpp)            |
 | 4.4     | Closest Int Same Weight | [C++](./solutions/epi/closest-int-same-weight/main.cpp) |
+| 4.5     | Primitive Divide        | [C++](./solutions/epi/primitive-multiply/main.cpp)      |
