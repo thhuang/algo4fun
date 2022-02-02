@@ -25,3 +25,4 @@ This is my personal repository, including notes and resources related to competi
 | 4.10    | Uniform Random Number   | [C++](./solutions/epi/uniform-random-number/main.cpp)   |
 | 4.11    | Rectangle Intersection  | [C++](./solutions/epi/rectangle-intersection/main.cpp)  |
 | 5.0     | Even Odd Array          | [C++](./solutions/epi/even-odd-array/main.cpp)          |
+| 5.1     | Dutch National Flag     | [C++](./solutions/epi/dutch-national-flag/main.cpp)     |
