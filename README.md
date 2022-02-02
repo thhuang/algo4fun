@@ -26,3 +26,4 @@ This is my personal repository, including notes and resources related to competi
 | 4.11    | Rectangle Intersection  | [C++](./solutions/epi/rectangle-intersection/main.cpp)  |
 | 5.0     | Even Odd Array          | [C++](./solutions/epi/even-odd-array/main.cpp)          |
 | 5.1     | Dutch National Flag     | [C++](./solutions/epi/dutch-national-flag/main.cpp)     |
+| 5.2     | Int as Array Increment  | [C++](./solutions/epi/int-as-array-increment/main.cpp)  |
