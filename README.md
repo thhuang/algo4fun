@@ -30,3 +30,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.3     | Int as Array Multiply          | [C++](./solutions/epi/int-as-array-multiply/main.cpp)          |
 | 5.4     | Advance by Offsets             | [C++](./solutions/epi/advance-by-offsets/main.cpp)             |
 | 5.5     | Sorted Array Remove Duplicates | [C++](./solutions/epi/sorted-array-remove-duplicates/main.cpp) |
+| 5.6     | Buy and Sell Stock             | [C++](./solutions/epi/buy-and-sell-stock/main.cpp)             |
