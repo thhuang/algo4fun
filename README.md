@@ -36,3 +36,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.9     | Prime Sieve                    | [C++](./solutions/epi/prime-sieve/main.cpp)                    |
 | 5.10    | Apply Permutation              | [C++](./solutions/epi/apply-permutation/main.cpp)              |
 | 5.11    | Next Permutation               | [C++](./solutions/epi/next-permutation/main.cpp)               |
+| 5.12    | Offline Sampling               | [C++](./solutions/epi/offline-sampling/main.cpp)               |
