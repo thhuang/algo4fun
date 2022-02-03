@@ -28,3 +28,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.1     | Dutch National Flag     | [C++](./solutions/epi/dutch-national-flag/main.cpp)     |
 | 5.2     | Int as Array Increment  | [C++](./solutions/epi/int-as-array-increment/main.cpp)  |
 | 5.3     | Int as Array Multiply   | [C++](./solutions/epi/int-as-array-multiply/main.cpp)   |
+| 5.4     | Advance by Offsets      | [C++](./solutions/epi/advance-by-offsets/main.cpp)      |
