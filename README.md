@@ -32,3 +32,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.5     | Sorted Array Remove Duplicates | [C++](./solutions/epi/sorted-array-remove-duplicates/main.cpp) |
 | 5.6     | Buy and Sell Stock             | [C++](./solutions/epi/buy-and-sell-stock/main.cpp)             |
 | 5.7     | Buy and Sell Stock Twice       | [C++](./solutions/epi/buy-and-sell-stock-twice/main.cpp)       |
+| 5.8     | Alternating Array              | [C++](./solutions/epi/alternating-array/main.cpp)              |
