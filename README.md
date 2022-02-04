@@ -42,3 +42,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.15    | Random Subset                  | [C++](./solutions/epi/random-subset/main.cpp)                  |
 | 5.16    | Nonuniform Random Number       | [C++](./solutions/epi/nonuniform-random-number/main.cpp)       |
 | 5.17    | Is Valid Sudoku                | [C++](./solutions/epi/is-valid-sudoku/main.cpp)                |
+| 5.18    | Spiral Ordering                | [C++](./solutions/epi/spiral-ordering/main.cpp)                |
