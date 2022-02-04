@@ -40,3 +40,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.13    | Online Sampling                | [C++](./solutions/epi/online-sampling/main.cpp)                |
 | 5.14    | Random Permutation             | [C++](./solutions/epi/random-permutation/main.cpp)             |
 | 5.15    | Random Subset                  | [C++](./solutions/epi/random-subset/main.cpp)                  |
+| 5.16    | Nonuniform Random Number       | [C++](./solutions/epi/nonuniform-random-number/main.cpp)       |
