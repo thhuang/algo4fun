@@ -38,3 +38,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.11    | Next Permutation               | [C++](./solutions/epi/next-permutation/main.cpp)               |
 | 5.12    | Offline Sampling               | [C++](./solutions/epi/offline-sampling/main.cpp)               |
 | 5.13    | Online Sampling                | [C++](./solutions/epi/online-sampling/main.cpp)                |
+| 5.14    | Random Permutation             | [C++](./solutions/epi/random-permutation/main.cpp)             |
