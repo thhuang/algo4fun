@@ -21,9 +21,9 @@ string IntToString(int x) {
 int StringToInt(const string& s) {
     int num = 0;
     for (int i = size(s) - 1, mul = 1; ~i; --i) {
-        if (!isdigit(s[i])) {
-            if (s[i] == '-') num *= -1;
-            continue;
+        if (s[i] == '-') {
+            num *= -1;
+            break;
         }
         num += (s[i] - '0') * mul;
         mul *= 10;
