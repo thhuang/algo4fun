@@ -45,3 +45,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.18    | Spiral Ordering                | [C++](./solutions/epi/spiral-ordering/main.cpp)                |
 | 5.19    | Matrix Rotation                | [C++](./solutions/epi/matrix-rotation/main.cpp)                |
 | 5.20    | Pascal Triangle                | [C++](./solutions/epi/pascal-triangle/main.cpp)                |
+| 6.0     | Is String Palindromic          | [C++](./solutions/epi/is-string-palindromic/main.cpp)          |
