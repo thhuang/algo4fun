@@ -47,3 +47,4 @@ This is my personal repository, including notes and resources related to competi
 | 5.20    | Pascal Triangle                | [C++](./solutions/epi/pascal-triangle/main.cpp)                |
 | 6.0     | Is String Palindromic          | [C++](./solutions/epi/is-string-palindromic/main.cpp)          |
 | 6.1     | String Integer Interconversion | [C++](./solutions/epi/string-integer-interconversion/main.cpp) |
+| 6.2     | Convert Base                   | [C++](./solutions/epi/convert-base/main.cpp)                   |
