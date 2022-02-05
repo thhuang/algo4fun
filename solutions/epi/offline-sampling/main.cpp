@@ -17,6 +17,7 @@ void RandomSampling(int k, vector<int>* vec_ptr) {
 }
 
 bool RandomSamplingRunner(TimedExecutor& executor, int k, vector<int> A) {
+    using namespace test_framework;
     vector<vector<int>> results;
 
     executor.Run([&] {
@@ -51,6 +52,6 @@ void RandomSamplingWrapper(TimedExecutor& executor, int k,
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"executor", "k", "A"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &RandomSamplingWrapper,
+    return GenericTestMain(args, "data.tsv", &RandomSamplingWrapper,
                            DefaultComparator{}, param_names);
 }

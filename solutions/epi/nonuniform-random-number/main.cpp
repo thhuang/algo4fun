@@ -67,7 +67,7 @@ void NonuniformRandomNumberGenerationWrapper(
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"executor", "values", "probabilities"};
-    return GenericTestMain(args, "main.cpp", "data.tsv",
+    return GenericTestMain(args, "data.tsv",
                            &NonuniformRandomNumberGenerationWrapper,
                            DefaultComparator{}, param_names);
 }

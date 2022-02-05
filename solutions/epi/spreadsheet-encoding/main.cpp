@@ -12,6 +12,6 @@ int SSDecodeColID(const string& col) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"col"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &SSDecodeColID,
+    return GenericTestMain(args, "data.tsv", &SSDecodeColID,
                            DefaultComparator{}, param_names);
 }

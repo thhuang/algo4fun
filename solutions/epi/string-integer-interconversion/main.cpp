@@ -25,6 +25,7 @@ int StringToInt(const string& s) {
             num *= -1;
             break;
         }
+        if (!isdigit(s[i])) break;
         num += (s[i] - '0') * mul;
         mul *= 10;
     }
@@ -44,6 +45,6 @@ void Wrapper(int x, const string& s) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"x", "s"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &Wrapper,
-                           DefaultComparator{}, param_names);
+    return GenericTestMain(args, "data.tsv", &Wrapper, DefaultComparator{},
+                           param_names);
 }

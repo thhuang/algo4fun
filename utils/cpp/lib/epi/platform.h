@@ -16,6 +16,7 @@
 #include <io.h>
 #include <sys/stat.h>
 #include <sys/types.h>  //must precede sys/stat.h
+
 #include <cstdio>
 #else  // UNIX
 #include <sys/stat.h>
@@ -24,6 +25,7 @@
 
 #include "tri_bool.h"
 
+namespace test_framework {
 namespace platform {
 
 bool ENABLE_TTY_OUTPUT = false;
@@ -31,26 +33,26 @@ bool ENABLE_COLOR_OUTPUT = false;
 
 int StdOutFd() {
 #ifdef PLATFORM_WIN
-  return _fileno(stdout);
+    return _fileno(stdout);
 #else
-  return STDOUT_FILENO;
+    return STDOUT_FILENO;
 #endif
 }
 
 int IsATty(int fd) {
 #ifdef PLATFORM_WIN
-  return _isatty(fd);
+    return _isatty(fd);
 #else
-  return isatty(fd);
+    return isatty(fd);
 #endif
 }
 
 void StdOutClearLine() { std::cout << '\r'; }
 
 void SetOutputOpts(TriBool tty_mode, TriBool color_mode) {
-  ENABLE_TTY_OUTPUT =
-      GetTriBoolOrDefault(tty_mode, static_cast<bool>(IsATty(StdOutFd())));
-  ENABLE_COLOR_OUTPUT = GetTriBoolOrDefault(color_mode, ENABLE_TTY_OUTPUT);
+    ENABLE_TTY_OUTPUT =
+        GetTriBoolOrDefault(tty_mode, static_cast<bool>(IsATty(StdOutFd())));
+    ENABLE_COLOR_OUTPUT = GetTriBoolOrDefault(color_mode, ENABLE_TTY_OUTPUT);
 }
 
 bool UseTtyOutput() { return ENABLE_TTY_OUTPUT; }
@@ -59,22 +61,23 @@ bool UseColorOutput() { return ENABLE_COLOR_OUTPUT; }
 
 bool IsDir(const char* path) {
 #ifdef PLATFORM_WIN
-  struct _stat buf {};
-  _stat(path, &buf);
-  return (buf.st_mode & S_IFDIR) == S_IFDIR;
+    struct _stat buf {};
+    _stat(path, &buf);
+    return (buf.st_mode & S_IFDIR) == S_IFDIR;
 #else
-  struct stat buf {};
-  stat(path, &buf);
-  return S_ISDIR(buf.st_mode);
+    struct stat buf {};
+    stat(path, &buf);
+    return S_ISDIR(buf.st_mode);
 #endif
 }
 
 char PathSep() {
 #ifdef PLATFORM_WIN
-  return '\\';
+    return '\\';
 #else
-  return '/';
+    return '/';
 #endif
 }
 
 }  // namespace platform
+}  // namespace test_framework

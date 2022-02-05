@@ -37,7 +37,7 @@ bool operator==(const Rect& r1, const Rect& r2) {
 }
 
 template <>
-struct SerializationTraits<Rect> : UserSerTraits<Rect, int, int, int, int> {
+struct SerializationTrait<Rect> : UserSerTrait<Rect, int, int, int, int> {
     static std::vector<std::string> GetMetricNames(
         const std::string& arg_name) {
         return {FmtStr("height({})", arg_name), FmtStr("width({})", arg_name)};
@@ -55,6 +55,6 @@ std::ostream& operator<<(std::ostream& out, const Rect& r) {
 int main(int argc, char* argv[]) {
     std::vector<std::string> args{argv + 1, argv + argc};
     std::vector<std::string> param_names{"r1", "r2"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &IntersectRectangle,
+    return GenericTestMain(args, "data.tsv", &IntersectRectangle,
                            DefaultComparator{}, param_names);
 }

@@ -19,6 +19,6 @@ double Power(double x, int y) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"x", "y"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &Power,
-                           DefaultComparator{}, param_names);
+    return GenericTestMain(args, "data.tsv", &Power, DefaultComparator{},
+                           param_names);
 }

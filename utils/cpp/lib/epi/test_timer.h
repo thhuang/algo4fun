@@ -7,77 +7,79 @@
 #include <string>
 #include <vector>
 
+namespace test_framework {
+namespace test_timer {
+std::string LeftPaddingString(const std::string& str, int format_width) {
+    return std::string(std::max(static_cast<int>(format_width - str.size()), 0),
+                       ' ')
+        .append(str);
+}
+}  // namespace test_timer
+
 class TestTimer {
- public:
-  TestTimer() = default;
+   public:
+    TestTimer() = default;
 
-  explicit TestTimer(const std::chrono::milliseconds& duration_ms) {
-    stop_ = clock_t::now();
-    start_ = stop_ - duration_ms;
-  }
-
-  void Start() { start_ = clock_t::now(); }
-
-  void Stop() {
-    if (!Stopped()) {
-      stop_ = clock_t::now();
+    explicit TestTimer(const std::chrono::seconds& duration_seconds) {
+        duration_us_ = std::chrono::duration_cast<std::chrono::microseconds>(
+            duration_seconds);
     }
-  }
 
-  bool Started() const { return start_.time_since_epoch().count(); }
+    void Start() { start_ = clock_t::now(); }
 
-  bool Stopped() const { return stop_.time_since_epoch().count(); }
+    void Stop() {
+        duration_us_ += std::chrono::duration_cast<std::chrono::microseconds>(
+            clock_t::now() - start_);
+    }
 
-  std::chrono::microseconds GetMicroseconds() const {
-    return std::chrono::duration_cast<std::chrono::microseconds>(stop_ -
-                                                                 start_);
-  }
+    std::chrono::microseconds GetMicroseconds() const { return duration_us_; }
 
-  bool HasValidResult() const { return Started() && Stopped(); }
+   private:
+    using clock_t = std::chrono::high_resolution_clock;
 
- private:
-  using clock_t = std::chrono::high_resolution_clock;
-
-  clock_t::time_point start_;
-  clock_t::time_point stop_;
+    clock_t::time_point start_;
+    std::chrono::microseconds duration_us_{0};
 };
 
-std::string LeftPaddingString(const std::string& str, int format_width) {
-  return std::string(std::max(static_cast<int>(format_width - str.size()), 0),
-                     ' ')
-      .append(str);
-}
-
 std::string DurationToString(const std::chrono::microseconds& dur) {
-  constexpr int MICRO_TO_MILLI = 1000;
-  constexpr int MICRO_TO_SECOND = MICRO_TO_MILLI * 1000;
-  constexpr int FORMAT_WIDTH = 4;
+    constexpr int MILLI_TO_MICRO = 1000;
+    constexpr int SECOND_TO_MICRO = MILLI_TO_MICRO * 1000;
+    constexpr int DURATION_FORMAT_WIDTH = 4;
 
-  if (dur == dur.zero()) {
-    return "  <1 us";
-  } else if (dur.count() < MICRO_TO_MILLI) {
-    return LeftPaddingString(std::to_string(dur.count()), FORMAT_WIDTH) +
-           " us";
-  } else if (dur.count() < MICRO_TO_SECOND) {
-    return LeftPaddingString(std::to_string(dur.count() / MICRO_TO_MILLI),
-                             FORMAT_WIDTH) +
-           " ms";
-  } else {
-    return LeftPaddingString(std::to_string(dur.count() / MICRO_TO_SECOND),
-                             FORMAT_WIDTH) +
-           "  s";
-  }
+    if (dur == dur.zero()) {
+        return "  <1 us";
+    } else if (dur.count() < MILLI_TO_MICRO) {
+        return test_timer::LeftPaddingString(std::to_string(dur.count()),
+                                             DURATION_FORMAT_WIDTH) +
+               " us";
+    } else if (dur.count() < SECOND_TO_MICRO) {
+        return test_timer::LeftPaddingString(
+                   std::to_string(
+                       std::chrono::duration_cast<std::chrono::milliseconds>(
+                           dur)
+                           .count()),
+                   DURATION_FORMAT_WIDTH) +
+               " ms";
+    } else {
+        return test_timer::LeftPaddingString(
+                   std::to_string(
+                       std::chrono::duration_cast<std::chrono::seconds>(dur)
+                           .count()),
+                   DURATION_FORMAT_WIDTH) +
+               "  s";
+    }
 }
 
 std::pair<std::chrono::microseconds, std::chrono::microseconds>
 AvgAndMedianFromDurations(std::vector<std::chrono::microseconds> durations) {
-  std::sort(std::begin(durations), std::end(durations));
-  auto avg = std::accumulate(std::begin(durations), std::end(durations),
-                             std::chrono::microseconds::zero()) /
-             durations.size();
-  auto median = durations.size() & 1 ? durations[durations.size() / 2]
-                                     : (durations[durations.size() / 2 - 1] +
-                                        durations[durations.size() / 2]) /
-                                           2;
-  return {avg, median};
+    std::sort(std::begin(durations), std::end(durations));
+    auto avg = std::accumulate(std::begin(durations), std::end(durations),
+                               std::chrono::microseconds::zero()) /
+               durations.size();
+    auto median = durations.size() & 1 ? durations[durations.size() / 2]
+                                       : (durations[durations.size() / 2 - 1] +
+                                          durations[durations.size() / 2]) /
+                                             2;
+    return {avg, median};
 }
+}  // namespace test_framework

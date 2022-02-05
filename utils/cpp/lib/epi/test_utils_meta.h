@@ -10,6 +10,8 @@
 #include <type_traits>
 #include <vector>
 
+namespace test_framework {
+
 /**
  * Some forward declarations
  */
@@ -47,6 +49,39 @@ using remove_ref_cv_t = std::remove_cv_t<std::remove_reference_t<T>>;
 template <typename T>
 using is_pure_type = std::is_same<T, remove_ref_cv_t<T>>;
 
+namespace meta {
+template <int Idx, typename T>
+struct NthTypeParameter;
+
+template <int Idx, template <class...> class T, typename... Args>
+struct NthTypeParameter<Idx, T<Args...>> {
+    using type = std::tuple_element_t<Idx, std::tuple<Args...>>;
+};
+
+template <typename T, int... Idx>
+struct TemplateTypeImpl;
+
+template <typename T>
+struct TemplateTypeImpl<T> {
+    using type = T;
+};
+
+template <typename T, int Idx, int... Tail>
+struct TemplateTypeImpl<T, Idx, Tail...> {
+    using nth_type_in_this_level = typename NthTypeParameter<Idx, T>::type;
+    using type =
+        typename TemplateTypeImpl<nth_type_in_this_level, Tail...>::type;
+};
+}  // namespace meta
+
+/**
+ * Meta function, that retrieves type parameter of a template type by its
+ * index
+ */
+template <typename T, int... Idx>
+using template_param_by_index_t =
+    typename meta::TemplateTypeImpl<T, Idx...>::type;
+
 /**
  * @see firstFalseArg(bool, Bools...)
  * Default case for recursion.
@@ -62,23 +97,55 @@ constexpr int FirstFalseArg() { return 0; }
  */
 template <typename... Bools>
 constexpr int FirstFalseArg(bool b, Bools... tail) {
-  if (!b) {
-    return 1;
-  }
-  int result = FirstFalseArg(tail...);
-  return result ? result + 1 : 0;
+    if (!b) {
+        return 1;
+    }
+    int result = FirstFalseArg(tail...);
+    return result ? result + 1 : 0;
 }
 
 struct DefaultComparator;
+struct UnorderedComparator;
 
 class OnScopeExit {
- public:
-  OnScopeExit(std::function<void()> command) : command_(std::move(command)) {}
-  ~OnScopeExit() { command_(); }
+   public:
+    OnScopeExit(std::function<void()> command) : command_(std::move(command)) {}
+    ~OnScopeExit() { command_(); }
 
- private:
-  std::function<void()> command_;
+   private:
+    std::function<void()> command_;
 };
+
+template <typename T>
+void CompleteSort(T& x);
+
+namespace meta {
+template <typename T>
+struct CompleteSortImpl {
+    static void Sort(const T& x) {}
+};
+
+template <typename T>
+struct CompleteSortImpl<std::vector<T>> {
+    static void Sort(std::vector<T>& v) {
+        for (auto& x : v) {
+            CompleteSort(x);
+        }
+        std::sort(std::begin(v), std::end(v));
+    }
+};
+}  // namespace meta
+
+/**
+ * Multi-dimensional container sort.
+ * If T is vector of vector of ... of vector,
+ * then the argument is lexicographically sorted on all levels,
+ * starting from the bottom.
+ */
+template <typename T>
+void CompleteSort(T& x) {
+    meta::CompleteSortImpl<remove_ref_cv_t<T>>::Sort(x);
+}
 
 /**
  * Simple function reflexion. It is used to deduce argument types and return
@@ -86,74 +153,79 @@ class OnScopeExit {
  * @param Function - the type of the function to be reflected.
  */
 template <typename Function>
-struct FunctionalTraits;
+struct FunctionalTrait;
 
 template <typename ReturnT, typename... ArgsT>
-struct FunctionalTraits<ReturnT (*)(ArgsT...)> {
-  using return_t = ReturnT;
-  using arg_tuple_t = std::tuple<ArgsT...>;
+struct FunctionalTrait<ReturnT (*)(ArgsT...)> {
+    using return_t = ReturnT;
+    using arg_tuple_t = std::tuple<ArgsT...>;
 
-  template <size_t I>
-  using ith_arg_t = std::tuple_element_t<I, arg_tuple_t>;
+    template <size_t I>
+    using ith_arg_t = std::tuple_element_t<I, arg_tuple_t>;
 
-  using executor_hook_tag = HasNoExecutorHookTag;
-  static constexpr bool HasExecutorHook() { return false; }
+    using executor_hook_tag = HasNoExecutorHookTag;
+    static constexpr bool HasExecutorHook() { return false; }
 };
 
 /**
  * Hook for function wrappers with custom timing.
  */
 template <typename ReturnT, typename... ArgsT>
-struct FunctionalTraits<ReturnT (*)(TimedExecutor&, ArgsT...)> {
-  using return_t = ReturnT;
-  using arg_tuple_t = std::tuple<ArgsT...>;
+struct FunctionalTrait<ReturnT (*)(TimedExecutor&, ArgsT...)> {
+    using return_t = ReturnT;
+    using arg_tuple_t = std::tuple<ArgsT...>;
 
-  template <size_t I>
-  using ith_arg_t = std::tuple_element_t<I, arg_tuple_t>;
+    template <size_t I>
+    using ith_arg_t = std::tuple_element_t<I, arg_tuple_t>;
 
-  using executor_hook_tag = HasExecutorHookTag;
-  static constexpr bool HasExecutorHook() { return true; }
+    using executor_hook_tag = HasExecutorHookTag;
+    static constexpr bool HasExecutorHook() { return true; }
 };
 
 /**
  * Hook for deprecated hook.
  */
 template <typename ReturnT, typename... ArgsT>
-struct FunctionalTraits<ReturnT (*)(TestTimer&, ArgsT...)> {
-  static_assert(sizeof...(ArgsT) < 0,
-                "This program uses deprecated TestTimer hook");
+struct FunctionalTrait<ReturnT (*)(TestTimer&, ArgsT...)> {
+    static_assert(sizeof...(ArgsT) < 0,
+                  "This program uses deprecated TestTimer hook");
 };
 
 /**
  * Simple binary predicate reflexion.
- * Has the same functionality as FunctionalTraits.
+ * Has the same functionality as FunctionalTrait.
  * Additionally has aliases for the 1st and the 2nd argument types.
  * @tparam Function - the type of the function to be reflected.
  */
 template <typename Function>
-struct BiPredicateTraits;
+struct BiPredicateTrait;
 
 template <>
-struct BiPredicateTraits<DefaultComparator> {
-  using arg1_t = void;
-  using arg2_t = void;
+struct BiPredicateTrait<DefaultComparator> {
+    using arg1_t = void;
+    using arg2_t = void;
+};
+
+template <>
+struct BiPredicateTrait<UnorderedComparator> {
+    using arg1_t = void;
+    using arg2_t = void;
 };
 
 template <typename ReturnT, typename Arg1T, typename Arg2T>
-struct BiPredicateTraits<ReturnT (*)(Arg1T, Arg2T)>
-    : FunctionalTraits<ReturnT (*)(Arg1T, Arg2T)> {
-  using arg1_t = Arg1T;
-  using arg2_t = Arg2T;
+struct BiPredicateTrait<ReturnT (*)(Arg1T, Arg2T)>
+    : FunctionalTrait<ReturnT (*)(Arg1T, Arg2T)> {
+    using arg1_t = Arg1T;
+    using arg2_t = Arg2T;
 };
 
+namespace meta {
 /**
  * @see Concatenate()
  * Default case for recursion.
  * @return empty string
  */
-std::string ConcatenateImpl(const std::string& delim, bool first) {
-  return {};
-}
+std::string ConcatenateImpl(const std::string& delim, bool first) { return {}; }
 
 /**
  * @see Concatenate()
@@ -166,12 +238,13 @@ std::string ConcatenateImpl(const std::string& delim, bool first) {
 template <typename... Strings>
 std::string ConcatenateImpl(const std::string& delim, bool first,
                             const std::string& head, const Strings&... tail) {
-  if (first) {
-    return head + ConcatenateImpl(delim, false, tail...);
-  }
+    if (first) {
+        return head + ConcatenateImpl(delim, false, tail...);
+    }
 
-  return delim + head + ConcatenateImpl(delim, false, tail...);
+    return delim + head + ConcatenateImpl(delim, false, tail...);
 }
+}  // namespace meta
 
 /**
  * This function takes a variable number of string argument and
@@ -182,7 +255,7 @@ std::string ConcatenateImpl(const std::string& delim, bool first,
  */
 template <typename... Strings>
 std::string Concatenate(const std::string& delim, const Strings&... strings) {
-  return ConcatenateImpl(delim, true, strings...);
+    return meta::ConcatenateImpl(delim, true, strings...);
 }
 
 /**
@@ -197,21 +270,21 @@ std::string Concatenate(const std::string& delim, const Strings&... strings) {
  */
 template <typename TupleT, size_t Begin, size_t End>
 class SubTuple {
-  static_assert(Begin <= End, "Index error");
-  static_assert(End <= std::tuple_size<TupleT>::value, "Index error");
+    static_assert(Begin <= End, "Index error");
+    static_assert(End <= std::tuple_size<TupleT>::value, "Index error");
 
-  template <size_t Shift, typename IntSeq>
-  struct Impl;
+    template <size_t Shift, typename IntSeq>
+    struct Impl;
 
-  template <size_t Shift, size_t... I>
-  struct Impl<Shift, std::index_sequence<I...>> {
-    using type = std::tuple<std::tuple_element_t<Shift + I, TupleT>...>;
-  };
+    template <size_t Shift, size_t... I>
+    struct Impl<Shift, std::index_sequence<I...>> {
+        using type = std::tuple<std::tuple_element_t<Shift + I, TupleT>...>;
+    };
 
- public:
-  using type =
-      typename Impl<Begin,
-                    decltype(std::make_index_sequence<End - Begin>())>::type;
+   public:
+    using type =
+        typename Impl<Begin,
+                      decltype(std::make_index_sequence<End - Begin>())>::type;
 };
 
 /**
@@ -220,51 +293,10 @@ class SubTuple {
 template <typename TupleT, size_t Begin, size_t End>
 using sub_tuple_t = typename SubTuple<TupleT, Begin, End>::type;
 
-template <typename T>
-void CompleteSort(T& x);
-
-template <typename T>
-struct CompleteSortImpl {
-  static void Sort(const T& x) {}
-};
-
-template <typename T>
-struct CompleteSortImpl<std::vector<T>> {
-  static void Sort(std::vector<T>& v) {
-    for (auto& x : v) {
-      CompleteSort(x);
-    }
-    std::sort(std::begin(v), std::end(v));
-  }
-};
-
-/**
- * Multi-dimensional container sort.
- * If T is vector of vector of ... of vector,
- * then the argument is lexicographically sorted on all levels,
- * starting from the bottom.
- */
-template <typename T>
-void CompleteSort(T& x) {
-  CompleteSortImpl<remove_ref_cv_t<T>>::Sort(x);
-}
-
-/**
- * Compares elements of 2 (multi-dimensional) vectors.
- * Both vectors are sorted (@see CompleteSort()) and
- * then compared with ==.
- */
-template <typename T>
-bool UnorderedComparator(T a, T b) {
-  CompleteSort(a);
-  CompleteSort(b);
-  return a == b;
-}
-
 struct VoidPlaceholder {
-  friend std::ostream& operator<<(std::ostream& out, VoidPlaceholder x) {
-    return out << "void";
-  }
+    friend std::ostream& operator<<(std::ostream& out, VoidPlaceholder x) {
+        return out << "void";
+    }
 };
 
 template <typename T>
@@ -276,29 +308,29 @@ using escape_void_t =
  */
 template <typename T>
 std::vector<T> FlattenVector(std::vector<std::vector<T>>&& vv) {
-  std::vector<T> result;
-  for (size_t i = 0; i < vv.size(); i++) {
-    result.reserve(result.size() + vv[i].size());
-    std::move(begin(vv[i]), end(vv[i]), back_inserter(result));
-  }
-  return result;
+    std::vector<T> result;
+    for (size_t i = 0; i < vv.size(); i++) {
+        result.reserve(result.size() + vv[i].size());
+        std::move(begin(vv[i]), end(vv[i]), back_inserter(result));
+    }
+    return result;
 }
 
-namespace detail {
+namespace meta {
 struct No {};
 /**
  * @see HasEqualOp
  */
 template <typename T, typename EqualTo>
 struct HasEqualOpImpl {
-  template <typename U, typename V>
-  static auto Test(U*) -> decltype(std::declval<U&>() == std::declval<V&>());
+    template <typename U, typename V>
+    static auto Test(U*) -> decltype(std::declval<U&>() == std::declval<V&>());
 
-  template <typename, typename>
-  static auto Test(...) -> No;
+    template <typename, typename>
+    static auto Test(...) -> No;
 
-  using type = std::integral_constant<
-      bool, !std::is_same<decltype(Test<T, EqualTo>(0)), No>::value>;
+    using type = std::integral_constant<
+        bool, !std::is_same<decltype(Test<T, EqualTo>(0)), No>::value>;
 };
 
 /**
@@ -306,14 +338,14 @@ struct HasEqualOpImpl {
  */
 template <typename S, typename T>
 struct HasLeftShiftOpImpl {
-  template <typename U, typename V>
-  static auto Test(U*) -> decltype(std::declval<U&>() << std::declval<V&>());
+    template <typename U, typename V>
+    static auto Test(U*) -> decltype(std::declval<U&>() << std::declval<V&>());
 
-  template <typename, typename>
-  static auto Test(...) -> No;
+    template <typename, typename>
+    static auto Test(...) -> No;
 
-  using type = std::integral_constant<
-      bool, !std::is_same<decltype(Test<S, T>(0)), No>::value>;
+    using type = std::integral_constant<
+        bool, !std::is_same<decltype(Test<S, T>(0)), No>::value>;
 };
 
 // Additional namespace is introduced to escape
@@ -324,21 +356,21 @@ using std::end;
 
 template <typename T>
 struct HasBeginEndImpl {
-  template <typename U>
-  static auto TestBegin(U*) -> decltype(begin(std::declval<U&>()));
+    template <typename U>
+    static auto TestBegin(U*) -> decltype(begin(std::declval<U&>()));
 
-  template <typename U>
-  static auto TestEnd(U*) -> decltype(end(std::declval<U&>()));
+    template <typename U>
+    static auto TestEnd(U*) -> decltype(end(std::declval<U&>()));
 
-  template <typename>
-  static auto TestBegin(...) -> No;
+    template <typename>
+    static auto TestBegin(...) -> No;
 
-  template <typename>
-  static auto TestEnd(...) -> No;
+    template <typename>
+    static auto TestEnd(...) -> No;
 
-  using type = std::integral_constant<
-      bool, !std::is_same<decltype(TestBegin<T>(0)), No>::value &&
-                !std::is_same<decltype(TestEnd<T>(0)), No>::value>;
+    using type = std::integral_constant<
+        bool, !std::is_same<decltype(TestBegin<T>(0)), No>::value &&
+                  !std::is_same<decltype(TestEnd<T>(0)), No>::value>;
 };
 }  // namespace std_import
 
@@ -346,15 +378,15 @@ using std_import::HasBeginEndImpl;
 
 template <typename T>
 struct IsBinaryTreeImpl {
-  using type = std::false_type;
+    using type = std::false_type;
 };
-}  // namespace detail
+}  // namespace meta
 
 /**
  * Check if operator== is defined for T and EqualTo types
  */
 template <class T, class EqualTo = T>
-using HasEqualOp = typename detail::HasEqualOpImpl<T, EqualTo>::type;
+using HasEqualOp = typename meta::HasEqualOpImpl<T, EqualTo>::type;
 template <typename T, class EqualTo = T>
 using EqualOpTag = std::conditional_t<HasEqualOp<T, EqualTo>::value,
                                       HasEqualOpTag, HasNoEqualOpTag>;
@@ -363,7 +395,7 @@ using EqualOpTag = std::conditional_t<HasEqualOp<T, EqualTo>::value,
  * Check if operator<< is defined for T and U types
  */
 template <class T, class U>
-using HasLeftShiftOp = typename detail::HasLeftShiftOpImpl<T, U>::type;
+using HasLeftShiftOp = typename meta::HasLeftShiftOpImpl<T, U>::type;
 
 /**
  * Check if operator<< is defined for std::ostream and T
@@ -371,8 +403,8 @@ using HasLeftShiftOp = typename detail::HasLeftShiftOpImpl<T, U>::type;
 template <typename T>
 using HasOStreamOp = HasLeftShiftOp<std::ostream, T>;
 template <typename T>
-using OStreamOpTag = std::conditional_t<HasOStreamOp<T>::value,
-                                        HasOStreamOpTag, HasNoOStreamOpTag>;
+using OStreamOpTag = std::conditional_t<HasOStreamOp<T>::value, HasOStreamOpTag,
+                                        HasNoOStreamOpTag>;
 
 /**
  * Check if the class has begin()/end() methods
@@ -380,17 +412,43 @@ using OStreamOpTag = std::conditional_t<HasOStreamOp<T>::value,
  * It is assumed these methods return begin/end iterators.
  */
 template <typename T>
-using HasBeginEnd = typename detail::HasBeginEndImpl<T>::type;
+using HasBeginEnd = typename meta::HasBeginEndImpl<T>::type;
 template <typename T>
-using BeginEndTag = std::conditional_t<HasBeginEnd<T>::value, HasBeginEndTag,
-                                       HasNoBeginEndTag>;
+using BeginEndTag =
+    std::conditional_t<HasBeginEnd<T>::value, HasBeginEndTag, HasNoBeginEndTag>;
 
 /**
  * Check if T is of a binary tree type
  */
 template <typename T>
-using IsBinaryTree =
-    typename detail::IsBinaryTreeImpl<remove_ref_cv_t<T>>::type;
+using IsBinaryTree = typename meta::IsBinaryTreeImpl<remove_ref_cv_t<T>>::type;
 template <typename T>
 using BinaryTreeTag = std::conditional_t<IsBinaryTree<T>::value,
                                          IsBinaryTreeTag, IsNotBinaryTreeTag>;
+
+template <typename T>
+T* GetRawPtr(T* ptr) {
+    return ptr;
+}
+
+template <typename T>
+T* GetRawPtr(std::shared_ptr<T>& ptr) {
+    return ptr.get();
+}
+
+template <typename T>
+const T* GetRawPtr(const std::shared_ptr<T>& ptr) {
+    return ptr.get();
+}
+
+template <typename T>
+T* GetRawPtr(std::unique_ptr<T>& ptr) {
+    return ptr.get();
+}
+
+template <typename T>
+const T* GetRawPtr(const std::unique_ptr<T>& ptr) {
+    return ptr.get();
+}
+
+}  // namespace test_framework

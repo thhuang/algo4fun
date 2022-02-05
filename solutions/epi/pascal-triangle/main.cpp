@@ -26,7 +26,6 @@ vector<vector<int>> GeneratePascalTriangle(int num_rows) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"num_rows"};
-    return GenericTestMain(args, "main.cpp", "data.tsv",
-                           &GeneratePascalTriangle, DefaultComparator{},
-                           param_names);
+    return GenericTestMain(args, "data.tsv", &GeneratePascalTriangle,
+                           DefaultComparator{}, param_names);
 }

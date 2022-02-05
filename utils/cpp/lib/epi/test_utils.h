@@ -15,70 +15,26 @@
 #include <utility>
 #include <vector>
 
-#include "json_parser.h"
 #include "platform.h"
+#include "serialization_traits.h"
 #include "test_failure.h"
 #include "test_utils_console.h"
 #include "test_utils_meta.h"
-#include "serialization_traits.h"
 #include "timeout_exception.h"
-
-std::vector<std::vector<std::string>> SplitTsvFile(
-    const std::string& tsv_file) {
-  const char kRowDelim = '\n';
-  const char kFieldDelim = '\t';
-
-  std::ifstream input_data(tsv_file);
-  if (!input_data.is_open()) {
-    throw std::runtime_error("Test data file not found");
-  }
-
-  std::vector<std::vector<std::string>> result;
-  for (std::string row; getline(input_data, row, kRowDelim);) {
-    std::vector<std::string> one_test_data_set;
-    std::istringstream ss(row);
-    for (std::string field; getline(ss, field, kFieldDelim);) {
-      one_test_data_set.emplace_back(field);
-    }
-    result.emplace_back(one_test_data_set);
-  }
-  return result;
-}
-
+namespace test_framework {
+namespace test_utils {
 static char pardir[]{'.', '.', platform::PathSep(), '\0'};
-
-std::string GetDefaultTestDataDirPath() {
-  static constexpr int kMaxSearchDepth = 4;
-
-  std::string path = "test_data";
-  for (int i = 0; i < kMaxSearchDepth; i++) {
-    if (platform::IsDir(path.c_str())) {
-      return path;
-    }
-    path.insert(0, pardir);
-  }
-
-  throw std::runtime_error(
-      "Can't find test data directory. Please start the program with "
-      "\"--test_data_dir <path>\" command-line option");
-}
-
-std::string GetFilePathInJudgeDir(const std::string& file_name) {
-  // return GetDefaultTestDataDirPath() + platform::PathSep() +
-  //        std::string(pardir) + file_name;
-  return file_name;
-}
 
 /**
  * Serialized type name can contain multiple comments, enclosed into brackets.
  * This function removes all such comments.
  */
 std::string FilterBracketComments(const std::string& type) {
-  static const std::regex bracket_enclosed_comment(R"((\[[^\]]*\]))");
-  std::string result = std::regex_replace(type, bracket_enclosed_comment, "");
-  result.erase(std::remove_if(std::begin(result), std::end(result), isspace),
-               std::end(result));
-  return result;
+    static const std::regex bracket_enclosed_comment(R"((\[[^\]]*\]))");
+    std::string result = std::regex_replace(type, bracket_enclosed_comment, "");
+    result.erase(std::remove_if(std::begin(result), std::end(result), isspace),
+                 std::end(result));
+    return result;
 }
 
 /**
@@ -93,17 +49,16 @@ std::string FilterBracketComments(const std::string& type) {
  * iterator.
  */
 template <typename ArgTuple, size_t... I>
-void MatchFunctionSignatureImpl(
-    std::vector<std::string>::const_iterator begin,
-    std::index_sequence<I...> /*unused*/) {
-  int mismatch_idx = FirstFalseArg(
-      FilterBracketComments(*(begin + I)) ==
-      SerializationTraits<std::tuple_element_t<I, ArgTuple>>::Name()...);
+void MatchFunctionSignatureImpl(std::vector<std::string>::const_iterator begin,
+                                std::index_sequence<I...> /*unused*/) {
+    int mismatch_idx = FirstFalseArg(
+        FilterBracketComments(*(begin + I)) ==
+        SerializationTrait<std::tuple_element_t<I, ArgTuple>>::Name()...);
 
-  if (mismatch_idx != 0) {
-    throw std::runtime_error("Argument mismatch at index " +
-                             std::to_string(mismatch_idx));
-  }
+    if (mismatch_idx != 0) {
+        throw std::runtime_error("Argument mismatch at index " +
+                                 std::to_string(mismatch_idx));
+    }
 };
 
 /**
@@ -124,19 +79,80 @@ template <typename ArgTuple, size_t... I>
 decltype(auto) ParseSerializedArgsImpl(
     std::vector<std::string>::const_iterator begin,
     std::index_sequence<I...> /*unused*/) {
-  return std::make_tuple(
-      SerializationTraits<std::tuple_element_t<I, ArgTuple>>::Parse(
-          *(begin + I))...);
+    using json = nlohmann::json;
+    return std::make_tuple(
+        SerializationTrait<std::tuple_element_t<I, ArgTuple>>::Parse(
+            json::parse(*(begin + I)))...);
+};
+}  // namespace test_utils
+
+std::string GetDefaultTestDataDirPath() {
+    return "./";
+
+    /* static constexpr int kMaxSearchDepth = 4; */
+
+    /* std::string path = "test_data"; */
+    /* for (int i = 0; i < kMaxSearchDepth; i++) { */
+    /*     if (platform::IsDir(path.c_str())) { */
+    /*         return path; */
+    /*     } */
+    /*     path.insert(0, test_utils::pardir); */
+    /* } */
+
+    /* throw std::runtime_error( */
+    /*     "Can't find test data directory. Please start the program with " */
+    /*     "\"--test_data_dir <path>\" command-line option"); */
+}
+
+std::vector<std::vector<std::string>> SplitTsvFile(
+    const std::string& tsv_file) {
+    const char kRowDelim = '\n';
+    const char kFieldDelim = '\t';
+
+    std::ifstream input_data(tsv_file);
+    if (!input_data.is_open()) {
+        throw std::runtime_error("Test data file not found");
+    }
+
+    std::vector<std::vector<std::string>> result;
+    for (std::string row; getline(input_data, row, kRowDelim);) {
+        std::vector<std::string> one_test_data_set;
+        std::istringstream ss(row);
+        for (std::string field; getline(ss, field, kFieldDelim);) {
+            one_test_data_set.emplace_back(field);
+        }
+        result.emplace_back(one_test_data_set);
+    }
+    return result;
+}
+
+std::string GetFilePathInJudgeDir(const std::string& file_name) {
+    return GetDefaultTestDataDirPath() + platform::PathSep() +
+           std::string(test_utils::pardir) + file_name;
+}
+
+/**
+ * A functor-like wrapper for SerializationTrait::Equal() function
+ */
+struct DefaultComparator {
+    template <typename T, typename U>
+    bool operator()(const T& a, const U& b) const {
+        return SerializationTrait<T>::Equal(a, b);
+    }
 };
 
 /**
- * A functor-like wrapper for SerializationTraits::Equal() function
+ * Compares elements of 2 (multi-dimensional) vectors.
+ * Both vectors are sorted (@see CompleteSort()) and
+ * then compared with ==.
  */
-struct DefaultComparator {
-  template <typename T, typename U>
-  bool operator()(const T& a, const U& b) const {
-    return SerializationTraits<T>::Equal(a, b);
-  }
+struct UnorderedComparator {
+    template <typename T>
+    bool operator()(T a, T b) const {
+        CompleteSort(a);
+        CompleteSort(b);
+        return DefaultComparator{}(a, b);
+    }
 };
 
 /**
@@ -153,20 +169,20 @@ struct DefaultComparator {
 template <typename RetType, typename ArgTuple>
 void MatchFunctionSignature(std::vector<std::string>::const_iterator begin,
                             std::vector<std::string>::const_iterator end) {
-  constexpr size_t arg_count = std::tuple_size<ArgTuple>::value;
-  if (std::distance(begin, end) != arg_count + 1) {
-    throw std::runtime_error("Argument type count mismatch: test file = " +
-                             std::to_string(std::distance(begin, end) - 1) +
-                             ", actual = " + std::to_string(arg_count));
-  }
+    constexpr size_t arg_count = std::tuple_size<ArgTuple>::value;
+    if (std::distance(begin, end) != arg_count + 1) {
+        throw std::runtime_error("Argument type count mismatch: test file = " +
+                                 std::to_string(std::distance(begin, end) - 1) +
+                                 ", actual = " + std::to_string(arg_count));
+    }
 
-  MatchFunctionSignatureImpl<ArgTuple>(begin,
-                                       std::make_index_sequence<arg_count>());
+    test_utils::MatchFunctionSignatureImpl<ArgTuple>(
+        begin, std::make_index_sequence<arg_count>());
 
-  if (FilterBracketComments(*(end - 1)) !=
-      SerializationTraits<RetType>::Name()) {
-    throw std::runtime_error("Return type mismatch");
-  }
+    if (test_utils::FilterBracketComments(*(end - 1)) !=
+        SerializationTrait<RetType>::Name()) {
+        throw std::runtime_error("Return type mismatch");
+    }
 };
 
 /**
@@ -185,13 +201,17 @@ template <typename ArgTuple>
 decltype(auto) ParseSerializedArgs(
     std::vector<std::string>::const_iterator begin,
     std::vector<std::string>::const_iterator end) {
-  constexpr size_t arg_count = std::tuple_size<ArgTuple>::value;
-  if (std::distance(begin, end) != arg_count) {
-    throw std::runtime_error("Argument count mismatch: test file = " +
-                             std::to_string(std::distance(begin, end)) +
-                             ", actual = " + std::to_string(arg_count));
-  }
+    constexpr size_t arg_count = std::tuple_size<ArgTuple>::value;
+    if (std::distance(begin, end) != arg_count) {
+        throw std::runtime_error("Argument count mismatch: test file = " +
+                                 std::to_string(std::distance(begin, end)) +
+                                 ", actual = " + std::to_string(arg_count));
+    }
 
-  return ParseSerializedArgsImpl<ArgTuple>(
-      begin, std::make_index_sequence<arg_count>());
+    return test_utils::ParseSerializedArgsImpl<ArgTuple>(
+        begin, std::make_index_sequence<arg_count>());
 }
+}  // namespace test_framework
+
+using test_framework::DefaultComparator;
+using test_framework::UnorderedComparator;

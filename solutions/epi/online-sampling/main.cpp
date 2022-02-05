@@ -26,6 +26,7 @@ vector<int> OnlineRandomSample(vector<int>::const_iterator stream_begin,
 }
 bool OnlineRandomSamplingRunner(TimedExecutor& executor, vector<int> stream,
                                 int k) {
+    using namespace test_framework;
     vector<vector<int>> results;
 
     executor.Run([&] {
@@ -60,7 +61,6 @@ void OnlineRandomSampleWrapper(TimedExecutor& executor,
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"executor", "stream", "k"};
-    return GenericTestMain(args, "main.cpp", "data.tsv",
-                           &OnlineRandomSampleWrapper, DefaultComparator{},
-                           param_names);
+    return GenericTestMain(args, "data.tsv", &OnlineRandomSampleWrapper,
+                           DefaultComparator{}, param_names);
 }

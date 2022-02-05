@@ -40,6 +40,7 @@ int PermutationIndex(vector<int> perm) {
 }
 
 bool ComputeRandomPermutationRunner(TimedExecutor& executor, int n) {
+    using namespace test_framework;
     vector<vector<int>> results;
 
     executor.Run([&] {
@@ -62,7 +63,6 @@ void ComputeRandomPermutationWrapper(TimedExecutor& executor, int n) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"executor", "n"};
-    return GenericTestMain(args, "main.cpp", "data.tsv",
-                           &ComputeRandomPermutationWrapper,
+    return GenericTestMain(args, "data.tsv", &ComputeRandomPermutationWrapper,
                            DefaultComparator{}, param_names);
 }

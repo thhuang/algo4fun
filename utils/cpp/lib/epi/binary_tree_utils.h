@@ -5,173 +5,241 @@
 #include <memory>
 #include <queue>
 #include <sstream>
+#include <stack>
 #include <stdexcept>
 #include <string>
 #include <unordered_set>
 #include <vector>
 
 #include "fmt_print_fwd.h"
+#include "test_utils_meta.h"
 
-template <typename Node, typename T>
-void TreeGenerateHelper(const Node& tree, std::vector<T>* result, int order) {
-  if (tree) {
-    if (order == -1) {
-      result->emplace_back(tree->data);
+namespace test_framework {
+template <typename NodePtr>
+decltype(auto) GeneratePreorder(const NodePtr& tree) {
+    using node_t = template_param_by_index_t<NodePtr, 0>;
+    using key_t = template_param_by_index_t<NodePtr, 0, 0>;
+    std::vector<key_t> result;
+    std::stack<const node_t*> s{{GetRawPtr(tree)}};
+
+    while (!s.empty()) {
+        auto node = s.top();
+        s.pop();
+        if (!node) {
+            continue;
+        }
+
+        result.push_back(node->data);
+        s.push(GetRawPtr(node->right));
+        s.push(GetRawPtr(node->left));
     }
-    TreeGenerateHelper(tree->left, result, order);
-    if (order == 0) {
-      result->emplace_back(tree->data);
-    }
-    TreeGenerateHelper(tree->right, result, order);
-    if (order == 1) {
-      result->emplace_back(tree->data);
-    }
-  }
+
+    return result;
 }
 
-//TODO Try type extractor pattern
-template <template <typename...> class SmartPtr,
-          template <typename...> class Node, typename T,
-          typename... MsvcWorkaround>
-std::vector<T> GeneratePreorder(const SmartPtr<Node<T>, MsvcWorkaround...>& tree) {
-  std::vector<T> result;
-  TreeGenerateHelper(tree, &result, -1);
-  return result;
-}
+template <typename NodePtr>
+decltype(auto) GenerateInorder(const NodePtr& tree) {
+    using node_t = template_param_by_index_t<NodePtr, 0>;
+    using key_t = template_param_by_index_t<NodePtr, 0, 0>;
+    std::vector<key_t> result;
+    std::stack<const node_t*> s{{GetRawPtr(tree)}};
+    bool initial = true;
 
-template <template <typename...> class SmartPtr,
-          template <typename...> class Node, typename T,
-          typename... MsvcWorkaround>
-std::vector<T> GenerateInorder(const SmartPtr<Node<T>, MsvcWorkaround...>& tree) {
-  std::vector<T> result;
-  TreeGenerateHelper(tree, &result, 0);
-  return result;
-}
-
-template <template <typename...> class SmartPtr,
-          template <typename...> class Node, typename T,
-          typename... MsvcWorkaround>
-std::vector<T> GeneratePostorder(const SmartPtr<Node<T>, MsvcWorkaround...>& tree) {
-  std::vector<T> result;
-  TreeGenerateHelper(tree, &result, 1);
-  return result;
-}
-
-template <typename Node, typename DataType>
-const Node* FindNode(const Node* tree, DataType val) {
-  if (*tree) {
-    if ((*tree)->data == val) {
-      return tree;
+    if (!tree) {
+        return result;
     }
 
-    const auto& left_result = FindNode(&(*tree)->left, val);
-    if (left_result) {
-      return left_result;
+    while (!s.empty()) {
+        auto node = s.top();
+        s.pop();
+
+        if (initial) {
+            initial = false;
+        } else {
+            result.push_back(node->data);
+            node = GetRawPtr(node->right);
+        }
+
+        while (node) {
+            s.push(node);
+            node = GetRawPtr(node->left);
+        }
     }
 
-    const auto& right_result = FindNode(&(*tree)->right, val);
-    if (right_result) {
-      return right_result;
-    }
-  }
-
-  return nullptr;
+    return result;
 }
 
-template <typename Node, typename Data>
-Node& MustFindNode(Node& tree, Data& data) {
-  auto result = FindNode(&tree, data);
-  if (!result) {
-    throw std::runtime_error(std::to_string(data) +
-                             " was not found in the tree");
-  }
-  return *result;
+template <typename NodePtr>
+decltype(auto) GeneratePostorder(const NodePtr& tree) {
+    using node_t = template_param_by_index_t<NodePtr, 0>;
+    using key_t = template_param_by_index_t<NodePtr, 0, 0>;
+    std::vector<key_t> result;
+    std::stack<const node_t*> s{{&tree}};
+
+    while (!s.empty()) {
+        auto node = s.top();
+        s.pop();
+        if (!node) {
+            continue;
+        }
+
+        result.push_back(node->data);
+        s.push(GetRawPtr(node->left));
+        s.push(GetRawPtr(node->right));
+    }
+
+    std::reverse(result.begin(), result.end());
+
+    return result;
+}
+
+template <typename NodePtr, typename Key>
+const NodePtr* FindNode(const NodePtr* tree, Key& val) {
+    std::stack<const NodePtr*> s{{tree}};
+
+    while (!s.empty()) {
+        auto node = s.top();
+        s.pop();
+
+        if (!*node) {
+            continue;
+        }
+
+        if ((*node)->data == val) {
+            return node;
+        }
+
+        s.push(&((*node)->left));
+        s.push(&((*node)->right));
+    }
+
+    return nullptr;
+}
+
+template <typename NodePtr, typename Key>
+NodePtr& MustFindNode(NodePtr& tree, Key& data) {
+    auto result = FindNode(&tree, data);
+    if (!result) {
+        throw std::runtime_error(FmtStr("{} was not found in the tree", data));
+    }
+    return *result;
 };
 
-template <typename Node1, typename Node2>
-bool EqualBinaryTrees(const Node1& node1, const Node2& node2) {
-  if (node1 && node2) {
-    return node1->data == node2->data &&
-           EqualBinaryTrees(node1->left, node2->left) &&
-           EqualBinaryTrees(node1->right, node2->right);
-  } else {
-    return !node1 && !node2;
-  }
-}
+template <typename NodePtr1, typename NodePtr2>
+bool EqualBinaryTrees(const NodePtr1& tree1, const NodePtr2& tree2) {
+    using node1_t = template_param_by_index_t<NodePtr1, 0>;
+    using node2_t = template_param_by_index_t<NodePtr2, 0>;
+    std::stack<std::pair<const node1_t*, const node2_t*>> s{
+        {{GetRawPtr(tree1), GetRawPtr(tree2)}}};
 
-template <typename Node>
-std::string BinaryTreeToString(const Node& tree) {
-  std::stringstream result;
-  std::queue<const Node*> q;
-  std::unordered_set<const Node*> visited;
-  bool first = true;
-  int null_nodes_pending = 0;
+    while (!s.empty()) {
+        auto nodes = s.top();
+        s.pop();
 
-  result << "[";
-  q.push(&tree);
+        if ((nodes.first == nullptr) != (nodes.second == nullptr)) {
+            return false;
+        }
 
-  while (!q.empty()) {
-    const Node* node = q.front();
-    q.pop();
-    if (visited.count(node)) {
-      throw std::runtime_error("Detected a cycle in the tree");
+        if (nodes.first != nullptr) {
+            if (nodes.first->data != nodes.second->data) {
+                return false;
+            }
+            s.push(
+                {GetRawPtr(nodes.first->left), GetRawPtr(nodes.second->left)});
+            s.push({GetRawPtr(nodes.first->right),
+                    GetRawPtr(nodes.second->right)});
+        }
     }
-    if (*node) {
-      if (first) {
-        first = false;
-      } else {
-        result << ", ";
-      }
 
-      while (null_nodes_pending) {
-        result << "null, ";
-        null_nodes_pending--;
-      }
+    return true;
+}
 
-      result << '"';
-      PrintTo(result, (*node)->data);
-      result << '"';
+template <typename NodePtr>
+std::string BinaryTreeToString(const NodePtr& tree) {
+    using node_t = template_param_by_index_t<NodePtr, 0>;
+    std::stringstream result;
+    std::queue<const node_t*> nodes;
+    std::unordered_set<const node_t*> visited;
+    bool first = true;
+    int null_nodes_pending = 0;
 
-      visited.emplace(node);
-      q.push(&(*node)->left);
-      q.push(&(*node)->right);
-    } else {
-      null_nodes_pending++;
+    result << "[";
+    nodes.push(GetRawPtr(tree));
+
+    while (!nodes.empty()) {
+        auto node = nodes.front();
+        nodes.pop();
+        if (visited.count(node)) {
+            throw std::runtime_error("Detected a cycle in the tree");
+        }
+        if (node) {
+            if (first) {
+                first = false;
+            } else {
+                result << ", ";
+            }
+
+            while (null_nodes_pending) {
+                result << "null, ";
+                null_nodes_pending--;
+            }
+
+            result << '"';
+            PrintTo(result, node->data);
+            result << '"';
+
+            visited.insert(node);
+            nodes.push(GetRawPtr(node->left));
+            nodes.push(GetRawPtr(node->right));
+        } else {
+            null_nodes_pending++;
+        }
     }
-  }
 
-  result << "]";
-  return result.str();
+    result << "]";
+    return result.str();
 }
 
-template <typename Node>
-int BinaryTreeHeight(const Node& tree) {
-  if (!tree) {
-    return -1;
-  }
-  return 1 + std::max(BinaryTreeHeight(tree->left),
-                      BinaryTreeHeight(tree->right));
-}
+template <typename NodePtr>
+int BinaryTreeHeight(const NodePtr& tree) {
+    using node_t = template_param_by_index_t<NodePtr, 0>;
+    std::stack<std::pair<const node_t*, int>> s{{{GetRawPtr(tree), 1}}};
+    int height = 0;
 
-template <typename Node>
-int BinaryTreeSize(const Node& tree) {
-  if (!tree) {
-    return 0;
-  }
-  return 1 + BinaryTreeSize(tree->left) + BinaryTreeSize(tree->right);
-}
+    while (!s.empty()) {
+        auto node = s.top();
+        s.pop();
+        if (!node.first) {
+            continue;
+        }
 
-// C++ framework specific functions
-
-template <typename Node>
-void DeleteBinaryTree(Node* tree) {
-  if (tree && *tree) {
-    if ((*tree)->left.get()) {
-      DeleteBinaryTree(&((*tree)->left));
+        height = std::max(height, node.second);
+        s.push({GetRawPtr(node.first->right), node.second + 1});
+        s.push({GetRawPtr(node.first->left), node.second + 1});
     }
-    if ((*tree)->right.get()) {
-      DeleteBinaryTree(&((*tree)->right));
-    }
-    tree->reset(nullptr);
-  }
+
+    return height;
 }
+
+template <typename NodePtr>
+int BinaryTreeSize(const NodePtr& tree) {
+    using node_t = template_param_by_index_t<NodePtr, 0>;
+    std::stack<const node_t*> s{{GetRawPtr(tree)}};
+    int size = 0;
+
+    while (!s.empty()) {
+        auto node = s.top();
+        s.pop();
+        if (!node) {
+            continue;
+        }
+
+        size++;
+        s.push(GetRawPtr(node->right));
+        s.push(GetRawPtr(node->left));
+    }
+    return size;
+}
+}  // namespace test_framework
+
+using test_framework::MustFindNode;

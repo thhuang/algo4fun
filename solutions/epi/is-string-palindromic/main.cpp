@@ -13,6 +13,6 @@ bool IsPalindromic(const string& s) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"s"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &IsPalindromic,
+    return GenericTestMain(args, "data.tsv", &IsPalindromic,
                            DefaultComparator{}, param_names);
 }

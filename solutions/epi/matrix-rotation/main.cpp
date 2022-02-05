@@ -33,6 +33,6 @@ vector<vector<int>> RotateMatrixWrapper(vector<vector<int>> square_matrix) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"square_matrix"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &RotateMatrixWrapper,
+    return GenericTestMain(args, "data.tsv", &RotateMatrixWrapper,
                            DefaultComparator{}, param_names);
 }

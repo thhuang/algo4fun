@@ -22,6 +22,6 @@ vector<int> GeneratePrimes(int n) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"n"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &GeneratePrimes,
+    return GenericTestMain(args, "data.tsv", &GeneratePrimes,
                            DefaultComparator{}, param_names);
 }

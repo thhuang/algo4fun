@@ -22,6 +22,6 @@ unsigned long long Multiply(unsigned long long x, unsigned long long y) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"x", "y"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &Multiply,
-                           DefaultComparator{}, param_names);
+    return GenericTestMain(args, "data.tsv", &Multiply, DefaultComparator{},
+                           param_names);
 }

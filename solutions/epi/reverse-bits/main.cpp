@@ -14,6 +14,6 @@ unsigned long long ReverseBits(unsigned long long x) {
 int main(int argc, char* argv[]) {
     vector<string> args{argv + 1, argv + argc};
     vector<string> param_names{"x"};
-    return GenericTestMain(args, "main.cpp", "data.tsv", &ReverseBits,
-                           DefaultComparator{}, param_names);
+    return GenericTestMain(args, "data.tsv", &ReverseBits, DefaultComparator{},
+                           param_names);
 }
