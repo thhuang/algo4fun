@@ -55,3 +55,4 @@ This is my personal repository, including notes and resources related to competi
 | 6.7     | Look and Say                      | [C++](./solutions/epi/look-and-say/main.cpp)                      |
 | 6.8     | Roman to Integer                  | [C++](./solutions/epi/roman-to-integer/main.cpp)                  |
 | 6.9     | Valid IP Addresses                | [C++](./solutions/epi/valid-ip-addresses/main.cpp)                |
+| 6.10    | Snake String                      | [C++](./solutions/epi/snake-string/main.cpp)                      |
