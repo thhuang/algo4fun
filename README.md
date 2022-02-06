@@ -52,3 +52,4 @@ This is my personal repository, including notes and resources related to competi
 | 6.4     | Replace and Remove                | [C++](./solutions/epi/replace-and-remove/main.cpp)                |
 | 6.5     | Is String Palindromic Punctuation | [C++](./solutions/epi/is-string-palindromic-punctuation/main.cpp) |
 | 6.6     | Reverse Words                     | [C++](./solutions/epi/reverse-words/main.cpp)                     |
+| 6.7     | Look and Say                      | [C++](./solutions/epi/look-and-say/main.cpp)                      |
