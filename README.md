@@ -57,3 +57,4 @@ This is my personal repository, including notes and resources related to competi
 | 6.9     | Valid IP Addresses                | [C++](./solutions/epi/valid-ip-addresses/main.cpp)                |
 | 6.10    | Snake String                      | [C++](./solutions/epi/snake-string/main.cpp)                      |
 | 6.11    | Run Length Compression            | [C++](./solutions/epi/run-length-compression/main.cpp)            |
+| 6.12    | Substring Match                   | [C++](./solutions/epi/substring-match/main.cpp)                   |
