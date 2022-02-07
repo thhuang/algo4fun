@@ -60,3 +60,4 @@ This is my personal repository, including notes and resources related to competi
 | 6.12    | Substring Match                   | [C++](./solutions/epi/substring-match/main.cpp)                   |
 | 7.0.0   | Search in List                    | [C++](./solutions/epi/search-in-list/main.cpp)                    |
 | 7.0.1   | Insert in List                    | [C++](./solutions/epi/insert-in-list/main.cpp)                    |
+| 7.0.2   | Delete from List                  | [C++](./solutions/epi/delete-from-list/main.cpp)                  |
