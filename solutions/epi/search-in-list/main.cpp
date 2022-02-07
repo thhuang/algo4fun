@@ -5,12 +5,8 @@
 using namespace std;
 
 shared_ptr<ListNode<int>> SearchList(shared_ptr<ListNode<int>> L, int key) {
-    auto node = L;
-    while (node) {
-        if (node->data == key) return node;
-        node = node->next;
-    }
-    return nullptr;
+    while (L && L->data != key) L = L->next;
+    return L;
 }
 int SearchListWrapper(shared_ptr<ListNode<int>> L, int key) {
     auto result = SearchList(L, key);
