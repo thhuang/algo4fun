@@ -58,3 +58,4 @@ This is my personal repository, including notes and resources related to competi
 | 6.10    | Snake String                      | [C++](./solutions/epi/snake-string/main.cpp)                      |
 | 6.11    | Run Length Compression            | [C++](./solutions/epi/run-length-compression/main.cpp)            |
 | 6.12    | Substring Match                   | [C++](./solutions/epi/substring-match/main.cpp)                   |
+| 7.0.0   | Search in List                    | [C++](./solutions/epi/search-in-list/main.cpp)                    |
