@@ -64,3 +64,4 @@ This is my personal repository, including notes and resources related to competi
 | 7.1     | Sorted Lists Merge                | [C++](./solutions/epi/sorted-list-merge/main.cpp)                 |
 | 7.2     | Reverse Sublist                   | [C++](./solutions/epi/reverse-sublist/main.cpp)                   |
 | 7.3     | Is List Cyclic                    | [C++](./solutions/epi/is-list-cyclic/main.cpp)                    |
+| 7.4     | Do Terminated Lists Overlap       | [C++](./solutions/epi/do-terminated-lists-overlap/main.cpp)       |
