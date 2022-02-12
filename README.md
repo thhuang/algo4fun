@@ -71,3 +71,4 @@ This is my personal repository, including notes and resources related to competi
 | 7.8     | Remove Duplicates from a Sorted List | [C++](./solutions/epi/remove-duplicates-from-a-sorted-list/main.cpp) |
 | 7.9     | List Cyclic Right Shift              | [C++](./solutions/epi/list-cyclic-right-shift/main.cpp)              |
 | 7.10    | Even Odd List Merge                  | [C++](./solutions/epi/even-odd-list-merge/main.cpp)                  |
+| 7.11    | Is List Palindromic                  | [C++](./solutions/epi/is-list-palindromic/main.cpp)                  |
