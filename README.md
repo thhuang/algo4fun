@@ -69,3 +69,4 @@ This is my personal repository, including notes and resources related to competi
 | 7.6     | Delete Node From List                | [C++](./solutions/epi/delete-node-from-list/main.cpp)                |
 | 7.7     | Delete kth Last from List            | [C++](./solutions/epi/delete-kth-last-from-list/main.cpp)            |
 | 7.8     | Remove Duplicates from a Sorted List | [C++](./solutions/epi/remove-duplicates-from-a-sorted-list/main.cpp) |
+| 7.9     | List Cyclic Right Shift              | [C++](./solutions/epi/list-cyclic-right-shift/main.cpp)              |
