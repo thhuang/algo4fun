@@ -73,3 +73,4 @@ This is my personal repository, including notes and resources related to competi
 | 7.10    | Even Odd List Merge                  | [C++](./solutions/epi/even-odd-list-merge/main.cpp)                  |
 | 7.11    | Is List Palindromic                  | [C++](./solutions/epi/is-list-palindromic/main.cpp)                  |
 | 7.12    | Pivot List                           | [C++](./solutions/epi/pivot-list/main.cpp)                           |
+| 7.13    | Int as List Add                      | [C++](./solutions/epi/int-as-list-add/main.cpp)                      |
