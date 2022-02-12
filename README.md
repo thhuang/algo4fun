@@ -67,3 +67,4 @@ This is my personal repository, including notes and resources related to competi
 | 7.4     | Do Terminated Lists Overlap       | [C++](./solutions/epi/do-terminated-lists-overlap/main.cpp)       |
 | 7.5     | Do Lists Overlap                  | [C++](./solutions/epi/do-lists-overlap/main.cpp)                  |
 | 7.6     | Delete Node From List             | [C++](./solutions/epi/delete-node-from-list/main.cpp)             |
+| 7.7     | Delete kth Last from List         | [C++](./solutions/epi/delete-kth-last-from-list/main.cpp)         |
