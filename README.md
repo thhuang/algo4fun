@@ -76,3 +76,4 @@ This is my personal repository, including notes and resources related to competi
 | 7.13    | Int as List Add                      | [C++](./solutions/epi/int-as-list-add/main.cpp)                      |
 | 8.1     | Stack with Max                       | [C++](./solutions/epi/stack-with-max/main.cpp)                       |
 | 8.2     | Evaluate RPN                         | [C++](./solutions/epi/evaluate-rpn/main.cpp)                         |
+| 8.3     | Is Valid Parenthesization            | [C++](./solutions/epi/is-valid-parenthesization/main.cpp)            |
