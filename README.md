@@ -81,3 +81,4 @@ This is my personal repository, including notes and resources related to competi
 | 8.5     | Sunset View                          | [C++](./solutions/epi/sunset-view/main.cpp)                          |
 | 8.6     | Tree Level Order                     | [C++](./solutions/epi/tree-level-order/main.cpp)                     |
 | 8.7     | Circular Queue                       | [C++](./solutions/epi/circular-queue/main.cpp)                       |
+| 8.8     | Queue from Stacks                    | [C++](./solutions/epi/queue-from-stacks/main.cpp)                    |
