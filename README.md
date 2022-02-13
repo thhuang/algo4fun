@@ -78,3 +78,4 @@ This is my personal repository, including notes and resources related to competi
 | 8.2     | Evaluate RPN                         | [C++](./solutions/epi/evaluate-rpn/main.cpp)                         |
 | 8.3     | Is Valid Parenthesization            | [C++](./solutions/epi/is-valid-parenthesization/main.cpp)            |
 | 8.4     | Directory Path Normalization         | [C++](./solutions/epi/directory-path-normalization/main.cpp)         |
+| 8.5     | Sunset View                          | [C++](./solutions/epi/sunset-view/main.cpp)                          |
