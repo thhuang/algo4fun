@@ -80,3 +80,4 @@ This is my personal repository, including notes and resources related to competi
 | 8.4     | Directory Path Normalization         | [C++](./solutions/epi/directory-path-normalization/main.cpp)         |
 | 8.5     | Sunset View                          | [C++](./solutions/epi/sunset-view/main.cpp)                          |
 | 8.6     | Tree Level Order                     | [C++](./solutions/epi/tree-level-order/main.cpp)                     |
+| 8.7     | Circular Queue                       | [C++](./solutions/epi/circular-queue/main.cpp)                       |
