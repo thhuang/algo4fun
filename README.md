@@ -82,3 +82,4 @@ This is my personal repository, including notes and resources related to competi
 | 8.6     | Tree Level Order                     | [C++](./solutions/epi/tree-level-order/main.cpp)                     |
 | 8.7     | Circular Queue                       | [C++](./solutions/epi/circular-queue/main.cpp)                       |
 | 8.8     | Queue from Stacks                    | [C++](./solutions/epi/queue-from-stacks/main.cpp)                    |
+| 8.9     | Queue with Max                       | [C++](./solutions/epi/queue-with-max/main.cpp)                       |
