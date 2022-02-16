@@ -85,3 +85,4 @@ This is my personal repository, including notes and resources related to competi
 | 8.9     | Queue with Max                       | [C++](./solutions/epi/queue-with-max/main.cpp)                       |
 | 9.1     | Is Tree Balanced                     | [C++](./solutions/epi/is-tree-balanced/main.cpp)                     |
 | 9.2     | Is Tree Symmetric                    | [C++](./solutions/epi/is-tree-symmetric/main.cpp)                    |
+| 9.3     | Lowest Common Ancestor               | [C++](./solutions/epi/lowest-common-ancestor/main.cpp)               |
