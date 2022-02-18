@@ -90,3 +90,4 @@ This is my personal repository, including notes and resources related to competi
 | 9.5     | Sum Root to Leaf                     | [C++](./solutions/epi/sum-root-to-leaf/main.cpp)                     |
 | 9.6     | Path Sum                             | [C++](./solutions/epi/path-sum/main.cpp)                             |
 | 9.7     | Tree Inorder                         | [C++](./solutions/epi/tree-inorder/main.cpp)                         |
+| 9.8     | kth Node in Tree                     | [C++](./solutions/epi/kth-node-in-tree/main.cpp)                     |
