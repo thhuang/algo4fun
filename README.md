@@ -87,3 +87,4 @@ This is my personal repository, including notes and resources related to competi
 | 9.2     | Is Tree Symmetric                    | [C++](./solutions/epi/is-tree-symmetric/main.cpp)                    |
 | 9.3     | Lowest Common Ancestor               | [C++](./solutions/epi/lowest-common-ancestor/main.cpp)               |
 | 9.4     | Lowest Common Ancestor with Parent   | [C++](./solutions/epi/lowest-common-ancestor/main.cpp)               |
+| 9.5     | Sum Root to Leaf                     | [C++](./solutions/epi/sum-root-to-leaf/main.cpp)                     |
