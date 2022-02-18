@@ -89,3 +89,4 @@ This is my personal repository, including notes and resources related to competi
 | 9.4     | Lowest Common Ancestor with Parent   | [C++](./solutions/epi/lowest-common-ancestor/main.cpp)               |
 | 9.5     | Sum Root to Leaf                     | [C++](./solutions/epi/sum-root-to-leaf/main.cpp)                     |
 | 9.6     | Path Sum                             | [C++](./solutions/epi/path-sum/main.cpp)                             |
+| 9.7     | Tree Inorder                         | [C++](./solutions/epi/tree-inorder/main.cpp)                         |
