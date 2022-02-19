@@ -95,3 +95,4 @@ This is my personal repository, including notes and resources related to competi
 | 9.10    | Tree with Parent Inorder             | [C++](./solutions/epi/tree-with-parent-inorder/main.cpp)             |
 | 9.11    | Tree from Preorder Inorder           | [C++](./solutions/epi/tree-from-preorder-inorder/main.cpp)           |
 | 9.12    | Tree from Preorder with Null         | [C++](./solutions/epi/tree-from-preorder-with-null/main.cpp)         |
+| 9.13    | Tree Connect Leaves                  | [C++](./solutions/epi/tree-connect-leaves/main.cpp)                  |
