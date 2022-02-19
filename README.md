@@ -93,3 +93,4 @@ This is my personal repository, including notes and resources related to competi
 | 9.8     | kth Node in Tree                     | [C++](./solutions/epi/kth-node-in-tree/main.cpp)                     |
 | 9.9     | Successor in Tree                    | [C++](./solutions/epi/successor-in-tree/main.cpp)                    |
 | 9.10    | Tree with Parent Inorder             | [C++](./solutions/epi/tree-with-parent-inorder/main.cpp)             |
+| 9.11    | Tree from Preorder Inorder           | [C++](./solutions/epi/tree-from-preorder-inorder/main.cpp)           |
