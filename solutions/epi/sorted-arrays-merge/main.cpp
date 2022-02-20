@@ -14,7 +14,7 @@ struct Payload {
         return *current > *other.current;
     }
 
-    void next() { current = ++current; }
+    void next() { ++current; }
 
     bool empty() { return current == end; }
 };
