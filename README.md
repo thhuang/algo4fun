@@ -105,3 +105,4 @@ This is my personal repository, including notes and resources related to competi
 | 10.5    | Online Median                        | [C++](./solutions/epi/online-median/main.cpp)                        |
 | 10.6    | k Largest in Heap                    | [C++](./solutions/epi/k-largest-in-heap/main.cpp)                    |
 | 11.1    | Search First Key                     | [C++](./solutions/epi/search-first-key/main.cpp)                     |
+| 11.2    | Search Entry Equal to Index          | [C++](./solutions/epi/search-entry-equal-to-index/main.cpp)          |
