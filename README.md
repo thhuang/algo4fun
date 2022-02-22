@@ -107,3 +107,4 @@ This is my personal repository, including notes and resources related to competi
 | 11.1    | Search First Key                     | [C++](./solutions/epi/search-first-key/main.cpp)                     |
 | 11.2    | Search Entry Equal to Index          | [C++](./solutions/epi/search-entry-equal-to-index/main.cpp)          |
 | 11.3    | Search Shifted Sorted Array          | [C++](./solutions/epi/search-shifted-sorted-array/main.cpp)          |
+| 11.4    | Int Square Root                      | [C++](./solutions/epi/int-square-root/main.cpp)                      |
