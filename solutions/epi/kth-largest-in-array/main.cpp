@@ -1,7 +1,7 @@
 #include <epi/generic_test.h>
 
 #include <array>
-#include <cstdlib>
+#include <random>
 #include <vector>
 using namespace std;
 
@@ -32,9 +32,12 @@ int FindKthLargest(int k, vector<int>* A_ptr) {
     --k;
     vector<int>& vec = *A_ptr;
 
+    random_device rd;
+    default_random_engine gen(rd());
+
     int l = 0, r = size(vec) - 1;
     while (true) {
-        int pivot = l + rand() % (r - l + 1);
+        int pivot = uniform_int_distribution<int>(l, r)(gen);
         auto pivot_range = Partition(vec, l, r, pivot);
 
         if (pivot_range[1] < k) {
