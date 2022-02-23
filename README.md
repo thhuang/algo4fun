@@ -110,3 +110,4 @@ This is my personal repository, including notes and resources related to competi
 | 11.4    | Int Square Root                      | [C++](./solutions/epi/int-square-root/main.cpp)                      |
 | 11.5    | Real Square Root                     | [C++](./solutions/epi/real-square-root/main.cpp)                     |
 | 11.6    | Search Row Col Sorted Matrix         | [C++](./solutions/epi/search-row-col-sorted-matrix/main.cpp)         |
+| 11.7    | Search for Min Max in Array          | [C++](./solutions/epi/search-for-min-max-in-array/main.cpp)          |
