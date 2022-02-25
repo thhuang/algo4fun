@@ -114,3 +114,4 @@ This is my personal repository, including notes and resources related to competi
 | 11.8    | kth Largest in Array                 | [C++](./solutions/epi/kth-largest-in-array/main.cpp)                 |
 | 11.9    | Absent Value Array                   | [C++](./solutions/epi/absent-value-array/main.cpp)                   |
 | 11.10   | Find Duplicate and Missing           | [C++](./solutions/epi/find-duplicate-and-missing/main.cpp)           |
+| 12.0    | Anagrams                             | [C++](./solutions/epi/anagrams/main.cpp)                             |
