@@ -120,3 +120,4 @@ This is my personal repository, including notes and resources related to competi
 | 12.3    | LRU Cache                             | [C++](./solutions/epi/lru-cache/main.cpp)                             |
 | 12.4    | Lowest Common Ancestor Close Ancestor | [C++](./solutions/epi/lowest-common-ancestor-close-ancestor/main.cpp) |
 | 12.5    | Nearest Repeated Entries              | [C++](./solutions/epi/nearest-repeated-entries/main.cpp)              |
+| 12.6    | Smallest Subarray Covering Set        | [C++](./solutions/epi/smallest-subarray-covering-set/main.cpp)        |
