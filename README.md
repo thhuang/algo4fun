@@ -118,3 +118,4 @@ This is my personal repository, including notes and resources related to competi
 | 12.1    | Is String Permutable to Palindrome   | [C++](./solutions/epi/is-string-permutable-to-palindrome/main.cpp)   |
 | 12.2    | Is Anonymous Letter Constructible    | [C++](./solutions/epi/is-anonymous-letter-constructible/main.cpp)    |
 | 12.3    | LRU Cache                            | [C++](./solutions/epi/lru-cache/main.cpp)                            |
+| 12.5    | Nearest Repeated Entries             | [C++](./solutions/epi/nearest-repeated-entries/main.cpp)             |
