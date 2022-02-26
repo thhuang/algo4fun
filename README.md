@@ -116,3 +116,4 @@ This is my personal repository, including notes and resources related to competi
 | 11.10   | Find Duplicate and Missing           | [C++](./solutions/epi/find-duplicate-and-missing/main.cpp)           |
 | 12.0    | Anagrams                             | [C++](./solutions/epi/anagrams/main.cpp)                             |
 | 12.1    | Is String Permutable to Palindrome   | [C++](./solutions/epi/is-string-permutable-to-palindrome/main.cpp)   |
+| 12.2    | Is Anonymous Letter Constructible    | [C++](./solutions/epi/is-anonymous-letter-constructible/main.cpp)    |
