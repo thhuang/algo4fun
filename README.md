@@ -125,3 +125,4 @@ This is my personal repository, including notes and resources related to competi
 | 12.8    | Longest Subarray with Distinct Values       | [C++](./solutions/epi/longest-subarray-with-distinct-values/main.cpp)       |
 | 12.9    | Longest Contained Interval                  | [C++](./solutions/epi/longest-contained-interval/main.cpp)                  |
 | 12.10   | String Decompositions Into Dictionary Words | [C++](./solutions/epi/string-decompositions-into-dictionary-words/main.cpp) |
+| 12.11   | Collatz Checker                             | [C++](./solutions/epi/collatz-checker/main.cpp)                             |
