@@ -122,3 +122,4 @@ This is my personal repository, including notes and resources related to competi
 | 12.5    | Nearest Repeated Entries              | [C++](./solutions/epi/nearest-repeated-entries/main.cpp)              |
 | 12.6    | Smallest Subarray Covering Set        | [C++](./solutions/epi/smallest-subarray-covering-set/main.cpp)        |
 | 12.7    | Smallest Subarray Covering All Values | [C++](./solutions/epi/smallest-subarray-covering-all-values/main.cpp) |
+| 12.8    | Longest Subarray with Distinct Values | [C++](./solutions/epi/longest-subarray-with-distinct-values/main.cpp) |
