@@ -131,3 +131,4 @@ This is my personal repository, including notes and resources related to competi
 | 13.3    | h-index                                     | [C++](./solutions/epi/h-index/main.cpp)                                     |
 | 13.4    | Remove Duplicates                           | [C++](./solutions/epi/remove-duplicates/main.cpp)                           |
 | 13.5    | Smallest Nonconstructible Value             | [C++](./solutions/epi/smallest-nonconstructible-value/main.cpp)             |
+| 13.6    | Calendar Redening                           | [C++](./solutions/epi/calendar-rendering/main.cpp)                          |
