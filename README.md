@@ -129,3 +129,4 @@ This is my personal repository, including notes and resources related to competi
 | 13.1    | Intersect Sorted Arrays                     | [C++](./solutions/epi/intersect-sorted-arrays/main.cpp)                     |
 | 13.2    | Two Sorted Arrays Merge                     | [C++](./solutions/epi/two-sorted-arrays-merge/main.cpp)                     |
 | 13.3    | h-index                                     | [C++](./solutions/epi/h-index/main.cpp)                                     |
+| 13.4    | Remove Duplicates                           | [C++](./solutions/epi/remove-duplicates/main.cpp)                           |
