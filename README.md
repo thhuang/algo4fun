@@ -134,3 +134,4 @@ This is my personal repository, including notes and resources related to competi
 | 13.6    | Calendar Redening                           | [C++](./solutions/epi/calendar-rendering/main.cpp)                          |
 | 13.7    | Interval Add                                | [C++](./solutions/epi/interval-add/main.cpp)                                |
 | 13.8    | Intervals Union                             | [C++](./solutions/epi/intervals-union/main.cpp)                             |
+| 13.9    | Group Equal Entries                         | [C++](./solutions/epi/group-equal-entries/main.cpp)                         |
