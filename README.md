@@ -137,3 +137,4 @@ This is my personal repository, including notes and resources related to competi
 | 13.9    | Group Equal Entries                         | [C++](./solutions/epi/group-equal-entries/main.cpp)                         |
 | 13.10   | Is Array Dominated                          | [C++](./solutions/epi/is-array-dominated/main.cpp)                          |
 | 13.11   | Sort List                                   | [C++](./solutions/epi/sort-list/main.cpp)                                   |
+| 13.12   | Find Salary Threshold                       | [C++](./solutions/epi/find-salary-threshold/main.cpp)                       |
