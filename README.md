@@ -141,3 +141,4 @@ This is my personal repository, including notes and resources related to competi
 | 14.1    | Is Tree a BST                               | [C++](./solutions/epi/is-tree-a-bst/main.cpp)                               |
 | 14.2    | Search First Greater Value in BST           | [C++](./solutions/epi/search-first-greater-value-in-bst/main.cpp)           |
 | 14.3    | k Largest Values in BST                     | [C++](./solutions/epi/k-largest-values-in-bst/main.cpp)                     |
+| 14.4    | Lowest Common Ancestor in BST               | [C++](./solutions/epi/lowest-common-ancestor-in-bst/main.cpp)               |
