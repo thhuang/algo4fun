@@ -145,3 +145,4 @@ This is my personal repository, including notes and resources related to competi
 | 14.5    | BST from Preorder                           | [C++](./solutions/epi/bst-from-preorder/main.cpp)                           |
 | 14.6    | Minimum Distance 3 Sorted Arrays            | [C++](./solutions/epi/minimum-distance-3-sorted-arrays/main.cpp)            |
 | 14.7    | a + b \* sqrt(2)                            | [C++](./solutions/epi/a-b-sqrt2/main.cpp)                                   |
+| 14.8    | BST from Sorted Array                       | [C++](./solutions/epi/bst-from-sorted-array/main.cpp)                       |
