@@ -148,3 +148,4 @@ This is my personal repository, including notes and resources related to competi
 | 14.8    | BST from Sorted Array                       | [C++](./solutions/epi/bst-from-sorted-array/main.cpp)                       |
 | 14.9    | Descendant and Ancestor in BST              | [C++](./solutions/epi/descendant-and-ancestor-in-bst/main.cpp)              |
 | 14.10   | Range Lookup in BST                         | [C++](./solutions/epi/range-lookup-in-bst/main.cpp)                         |
+| 14.11   | Adding Credits                              | [C++](./solutions/epi/adding-credits/main.cpp)                              |
