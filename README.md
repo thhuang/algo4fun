@@ -149,3 +149,4 @@ This is my personal repository, including notes and resources related to competi
 | 14.9    | Descendant and Ancestor in BST              | [C++](./solutions/epi/descendant-and-ancestor-in-bst/main.cpp)              |
 | 14.10   | Range Lookup in BST                         | [C++](./solutions/epi/range-lookup-in-bst/main.cpp)                         |
 | 14.11   | Adding Credits                              | [C++](./solutions/epi/adding-credits/main.cpp)                              |
+| 15.0    | Euclidean GCD                               | [C++](./solutions/epi/euclidean-gcd/main.cpp)                               |
