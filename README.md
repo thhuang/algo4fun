@@ -143,3 +143,4 @@ This is my personal repository, including notes and resources related to competi
 | 14.3    | k Largest Values in BST                     | [C++](./solutions/epi/k-largest-values-in-bst/main.cpp)                     |
 | 14.4    | Lowest Common Ancestor in BST               | [C++](./solutions/epi/lowest-common-ancestor-in-bst/main.cpp)               |
 | 14.5    | BST from Preorder                           | [C++](./solutions/epi/bst-from-preorder/main.cpp)                           |
+| 14.6    | Minimum Distance 3 Sorted Arrays            | [C++](./solutions/epi/minimum-distance-3-sorted-arrays/main.cpp)            |
