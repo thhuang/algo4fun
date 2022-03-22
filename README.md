@@ -153,3 +153,4 @@ This is my personal repository, including notes and resources related to competi
 | 15.1    | Hanoi                                       | [C++](./solutions/epi/hanoi/main.cpp)                                       |
 | 15.2    | Phone Number Mnemonic                       | [C++](./solutions/epi/phone-number-mnemonic/main.cpp)                       |
 | 15.3    | n Queens                                    | [C++](./solutions/epi/n-queens/main.cpp)                                    |
+| 15.4    | Permutations                                | [C++](./solutions/epi/permutations/main.cpp)                                |
