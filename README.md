@@ -151,3 +151,4 @@ This is my personal repository, including notes and resources related to competi
 | 14.11   | Adding Credits                              | [C++](./solutions/epi/adding-credits/main.cpp)                              |
 | 15.0    | Euclidean GCD                               | [C++](./solutions/epi/euclidean-gcd/main.cpp)                               |
 | 15.1    | Hanoi                                       | [C++](./solutions/epi/hanoi/main.cpp)                                       |
+| 15.2    | Phone Number Mnemonic                       | [C++](./solutions/epi/phone-number-mnemonic/main.cpp)                       |
