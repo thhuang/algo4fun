@@ -161,3 +161,4 @@ This is my personal repository, including notes and resources related to competi
 | 15.9    | Enumerate Trees                             | [C++](./solutions/epi/enumerate-trees/main.cpp)                             |
 | 15.10   | Sudoku Solve                                | [C++](./solutions/epi/sudoku-solve/main.cpp)                                |
 | 15.11   | Gray Code                                   | [C++](./solutions/epi/gray-code/main.cpp)                                   |
+| 16.0    | Fibonacci                                   | [C++](./solutions/epi/fibonacci/main.cpp)                                   |
