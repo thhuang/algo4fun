@@ -167,3 +167,4 @@ This is my personal repository, including notes and resources related to competi
 | 16.2    | Levenshtein Distance                        | [C++](./solutions/epi/levenshtein-distance/main.cpp)                        |
 | 16.3    | Number of Traversals Matrix                 | [C++](./solutions/epi/number-of-traversals-matrix/main.cpp)                 |
 | 16.4    | Binomial Coefficients                       | [C++](./solutions/epi/binomial-coefficients/main.cpp)                       |
+| 16.5    | Is String in Matrix                         | [C++](./solutions/epi/is-string-in-matrix/main.cpp)                         |
