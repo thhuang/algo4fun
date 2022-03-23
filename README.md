@@ -165,3 +165,4 @@ This is my personal repository, including notes and resources related to competi
 | 16.0.1  | Max Sum Subarray                            | [C++](./solutions/epi/max-sum-subarray/main.cpp)                            |
 | 16.1    | Number of Score Combinations                | [C++](./solutions/epi/number-of-score-combinations/main.cpp)                |
 | 16.2    | Levenshtein Distance                        | [C++](./solutions/epi/levenshtein-distance/main.cpp)                        |
+| 16.3    | Number of Traversals Matrix                 | [C++](./solutions/epi/number-of-traversals-matrix/main.cpp)                 |
