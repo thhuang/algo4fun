@@ -180,3 +180,4 @@ This is my personal repository, including notes and resources related to competi
 | 17.1    | Task Pairing                                | [C++](./solutions/epi/task-pairing/main.cpp)                                |
 | 17.2    | Minimum Waiting Time                        | [C++](./solutions/epi/minimum-waiting-time/main.cpp)                        |
 | 17.3    | Minimum Points Covering Intervals           | [C++](./solutions/epi/minimum-points-covering-intervals/main.cpp)           |
+| 17.4    | Three Sum                                   | [C++](./solutions/epi/three-sum/main.cpp)                                   |
