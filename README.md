@@ -183,3 +183,4 @@ This is my personal repository, including notes and resources related to competi
 | 17.4    | Three Sum                                   | [C++](./solutions/epi/three-sum/main.cpp)                                   |
 | 17.5    | Majority Element                            | [C++](./solutions/epi/majority-element/main.cpp)                            |
 | 17.6    | Refueling Schedule                          | [C++](./solutions/epi/refueling-schedule/main.cpp)                          |
+| 17.7    | Max Trapped Water                           | [C++](./solutions/epi/max-trapped-water/main.cpp)                           |
