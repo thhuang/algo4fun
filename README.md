@@ -184,3 +184,4 @@ This is my personal repository, including notes and resources related to competi
 | 17.5    | Majority Element                            | [C++](./solutions/epi/majority-element/main.cpp)                            |
 | 17.6    | Refueling Schedule                          | [C++](./solutions/epi/refueling-schedule/main.cpp)                          |
 | 17.7    | Max Trapped Water                           | [C++](./solutions/epi/max-trapped-water/main.cpp)                           |
+| 17.8    | Largest Rectangle Under Skyline             | [C++](./solutions/epi/largest-rectangle-under-skyline/main.cpp)             |
