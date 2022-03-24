@@ -176,3 +176,4 @@ This is my personal repository, including notes and resources related to competi
 | 16.11   | Pretty Printing                             | [C++](./solutions/epi/pretty-printing/main.cpp)                             |
 | 16.12   | Longest Nondecreasing Subsequence           | [C++](./solutions/epi/longest-nondecreasing-subsequence/main.cpp)           |
 | 17.0    | Making Change                               | [C++](./solutions/epi/making-change/main.cpp)                               |
+| 17.1    | Task Pairing                                | [C++](./solutions/epi/task-pairing/main.cpp)                                |
