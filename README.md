@@ -175,3 +175,4 @@ This is my personal repository, including notes and resources related to competi
 | 16.10   | Number of Traversals Staircase              | [C++](./solutions/epi/number-of-traversals-staircase/main.cpp)              |
 | 16.11   | Pretty Printing                             | [C++](./solutions/epi/pretty-printing/main.cpp)                             |
 | 16.12   | Longest Nondecreasing Subsequence           | [C++](./solutions/epi/longest-nondecreasing-subsequence/main.cpp)           |
+| 17.0    | Making Change                               | [C++](./solutions/epi/making-change/main.cpp)                               |
