@@ -173,3 +173,4 @@ This is my personal repository, including notes and resources related to competi
 | 16.8    | Minimum Weight Path in a Triangle           | [C++](./solutions/epi/minimum-weight-path-in-a-triangle/main.cpp)           |
 | 16.9    | Picking Up Coins                            | [C++](./solutions/epi/picking-up-coins/main.cpp)                            |
 | 16.10   | Number of Traversals Staircase              | [C++](./solutions/epi/number-of-traversals-staircase/main.cpp)              |
+| 16.11   | Pretty Printing                             | [C++](./solutions/epi/pretty-printing/main.cpp)                             |
