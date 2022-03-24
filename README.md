@@ -182,3 +182,4 @@ This is my personal repository, including notes and resources related to competi
 | 17.3    | Minimum Points Covering Intervals           | [C++](./solutions/epi/minimum-points-covering-intervals/main.cpp)           |
 | 17.4    | Three Sum                                   | [C++](./solutions/epi/three-sum/main.cpp)                                   |
 | 17.5    | Majority Element                            | [C++](./solutions/epi/majority-element/main.cpp)                            |
+| 17.6    | Refueling Schedule                          | [C++](./solutions/epi/refueling-schedule/main.cpp)                          |
