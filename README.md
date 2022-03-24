@@ -171,3 +171,4 @@ This is my personal repository, including notes and resources related to competi
 | 16.6    | Knapsack                                    | [C++](./solutions/epi/knapsack/main.cpp)                                    |
 | 16.7    | Is String Decomposable into Words           | [C++](./solutions/epi/is-string-decomposable-into-words/main.cpp)           |
 | 16.8    | Minimum Weight Path in a Triangle           | [C++](./solutions/epi/minimum-weight-path-in-a-triangle/main.cpp)           |
+| 16.9    | Picking Up Coins                            | [C++](./solutions/epi/picking-up-coins/main.cpp)                            |
