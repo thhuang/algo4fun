@@ -186,3 +186,4 @@ This is my personal repository, including notes and resources related to competi
 | 17.7    | Max Trapped Water                           | [C++](./solutions/epi/max-trapped-water/main.cpp)                           |
 | 17.8    | Largest Rectangle Under Skyline             | [C++](./solutions/epi/largest-rectangle-under-skyline/main.cpp)             |
 | 18.1    | Search Maze                                 | [C++](./solutions/epi/search-maze/main.cpp)                                 |
+| 18.2    | Matrix Connected Regions                    | [C++](./solutions/epi/matrix-connected-regions/main.cpp)                    |
