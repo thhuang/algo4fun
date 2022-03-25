@@ -190,3 +190,4 @@ This is my personal repository, including notes and resources related to competi
 | 18.3    | Matrix Enclosed Regions                     | [C++](./solutions/epi/matrix-enclosed-regions/main.cpp)                     |
 | 18.4    | Deadlock Detection                          | [C++](./solutions/epi/deadlock-detection/main.cpp)                          |
 | 18.5    | Graph Clone                                 | [C++](./solutions/epi/graph-clone/main.cpp)                                 |
+| 18.6    | Is Circuit Wirable                          | [C++](./solutions/epi/is-circuit-wirable/main.cpp)                          |
