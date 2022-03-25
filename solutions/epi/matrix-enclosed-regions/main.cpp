@@ -27,14 +27,7 @@ void FillSurroundedRegions(vector<vector<char>>* board_ptr) {
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
-            if (mat[i][j] == 'W') {
-                mat[i][j] = 'B';
-                continue;
-            }
-            if (mat[i][j] == 'S') {
-                mat[i][j] = 'W';
-                continue;
-            }
+            mat[i][j] = mat[i][j] == 'S' ? 'W' : 'B';
         }
     }
 }
