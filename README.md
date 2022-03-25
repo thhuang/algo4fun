@@ -188,3 +188,4 @@ This is my personal repository, including notes and resources related to competi
 | 18.1    | Search Maze                                 | [C++](./solutions/epi/search-maze/main.cpp)                                 |
 | 18.2    | Matrix Connected Regions                    | [C++](./solutions/epi/matrix-connected-regions/main.cpp)                    |
 | 18.3    | Matrix Enclosed Regions                     | [C++](./solutions/epi/matrix-enclosed-regions/main.cpp)                     |
+| 18.4    | Deadlock Detection                          | [C++](./solutions/epi/deadlock-detection/main.cpp)                          |
