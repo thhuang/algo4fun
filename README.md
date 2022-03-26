@@ -4,10 +4,11 @@ This is my personal repository, including notes and resources related to competi
 
 ## [LeetCode](https://leetcode.com/)
 
-| No.  | Title                                                         | Solution                                           | Difficulty |
-| :--- | :------------------------------------------------------------ | :------------------------------------------------- | :--------- |
-| 0001 | [Two Sum](https://leetcode.com/problems/two-sum/)             | [C++](./solutions/leetcode/two-sum/main.cpp)       | Easy       |
-| 0705 | [Binary Search](https://leetcode.com/problems/binary-search/) | [C++](./solutions/leetcode/binary-search/main.cpp) | Easy       |
+| No.  | Title                                                                           | Solution                                                    | Difficulty |
+| :--- | :------------------------------------------------------------------------------ | :---------------------------------------------------------- | :--------- |
+| 0001 | [Two Sum](https://leetcode.com/problems/two-sum/)                               | [C++](./solutions/leetcode/two-sum/main.cpp)                | Easy       |
+| 0278 | [First Bad Version](https://leetcode.com/problems/first-bad-version/)           | [C++](./solutions/leetcode/first-bad-version/main.cpp)      | Easy       |
+| 0705 | [Binary Search](https://leetcode.com/problems/binary-search/)                   | [C++](./solutions/leetcode/binary-search/main.cpp)          | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
