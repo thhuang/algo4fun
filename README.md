@@ -4,15 +4,16 @@ This is my personal repository, including notes and resources related to competi
 
 ## [LeetCode](https://leetcode.com/)
 
-| No.  | Title                                                                                                           | Solution                                                                    | Difficulty |
-| :--- | :-------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- | :--------- |
-| 0001 | [Two Sum](https://leetcode.com/problems/two-sum/)                                                               | [C++](./solutions/leetcode/two-sum/main.cpp)                                | Easy       |
-| 0035 | [Search Insert Position](https://leetcode.com/problems/search-insert-position/)                                 | [C++](./solutions/leetcode/search-insert-position/main.cpp)                 | Easy       |
-| 0053 | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)                                             | [C++](./solutions/leetcode/maximum-subarray/main.cpp)                       | Easy       |
-| 0217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)                                         | [C++](./solutions/leetcode/contains-duplicate/main.cpp)                     | Easy       |
-| 0278 | [First Bad Version](https://leetcode.com/problems/first-bad-version/)                                           | [C++](./solutions/leetcode/first-bad-version/main.cpp)                      | Easy       |
-| 0705 | [Binary Search](https://leetcode.com/problems/binary-search/)                                                   | [C++](./solutions/leetcode/binary-search/main.cpp)                          | Easy       |
-| 1523 | [Count Odd Numbers in an Interval Range](https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/) | [C++](./solutions/leetcode/count-odd-numbers-in-an-interval-range/main.cpp) | Easy       |
+| No.  | Title                                                                                                                                             | Solution                                                                                     | Difficulty |
+| :--- | :------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------- | :--------- |
+| 0001 | [Two Sum](https://leetcode.com/problems/two-sum/)                                                                                                 | [C++](./solutions/leetcode/two-sum/main.cpp)                                                 | Easy       |
+| 0035 | [Search Insert Position](https://leetcode.com/problems/search-insert-position/)                                                                   | [C++](./solutions/leetcode/search-insert-position/main.cpp)                                  | Easy       |
+| 0053 | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)                                                                               | [C++](./solutions/leetcode/maximum-subarray/main.cpp)                                        | Easy       |
+| 0217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)                                                                           | [C++](./solutions/leetcode/contains-duplicate/main.cpp)                                      | Easy       |
+| 0278 | [First Bad Version](https://leetcode.com/problems/first-bad-version/)                                                                             | [C++](./solutions/leetcode/first-bad-version/main.cpp)                                       | Easy       |
+| 0705 | [Binary Search](https://leetcode.com/problems/binary-search/)                                                                                     | [C++](./solutions/leetcode/binary-search/main.cpp)                                           | Easy       |
+| 1491 | [Average Salary Excluding the Minimum and Maximum Salary](https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/) | [C++](./solutions/leetcode/average-salary-excluding-the-minimum-and-maximum-salary/main.cpp) | Easy       |
+| 1523 | [Count Odd Numbers in an Interval Range](https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/)                                   | [C++](./solutions/leetcode/count-odd-numbers-in-an-interval-range/main.cpp)                  | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
