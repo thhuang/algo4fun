@@ -8,6 +8,7 @@ This is my personal repository, including notes and resources related to competi
 | :--- | :------------------------------------------------------------------------------ | :---------------------------------------------------------- | :--------- |
 | 0001 | [Two Sum](https://leetcode.com/problems/two-sum/)                               | [C++](./solutions/leetcode/two-sum/main.cpp)                | Easy       |
 | 0035 | [Search Insert Position](https://leetcode.com/problems/search-insert-position/) | [C++](./solutions/leetcode/search-insert-position/main.cpp) | Easy       |
+| 0053 | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)             | [C++](./solutions/leetcode/maximum-subarray/main.cpp)       | Easy       |
 | 0217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)         | [C++](./solutions/leetcode/contains-duplicate/main.cpp)     | Easy       |
 | 0278 | [First Bad Version](https://leetcode.com/problems/first-bad-version/)           | [C++](./solutions/leetcode/first-bad-version/main.cpp)      | Easy       |
 | 0705 | [Binary Search](https://leetcode.com/problems/binary-search/)                   | [C++](./solutions/leetcode/binary-search/main.cpp)          | Easy       |
