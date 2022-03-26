@@ -20,3 +20,21 @@ class Solution {
         return dp[n][n];
     }
 };
+
+class Solution {
+   public:
+    int twoCitySchedCost(vector<vector<int>>& costs) {
+        sort(begin(costs), end(costs),
+             [](const vector<int>& a, const vector<int>& b) {
+                 return a[0] - a[1] < b[0] - b[1];
+             });
+
+        int n = size(costs) / 2;
+        int cost = 0;
+        for (int i = 0; i < n; ++i) {
+            cost += costs[i][0] + costs[i + n][1];
+        }
+
+        return cost;
+    }
+};
