@@ -24,6 +24,9 @@ This is my personal repository, including notes and resources related to competi
 | 2210 | [Count Hills and Valleys in an Array](https://leetcode.com/problems/count-hills-and-valleys-in-an-array/)                                         | [C++](./solutions/leetcode/count-hills-and-valleys-in-an-array/main.cpp)                     | Easy       |
 | 2211 | [Count Collisions on a Road](https://leetcode.com/problems/count-collisions-on-a-road/)                                                           | [C++](./solutions/leetcode/count-collisions-on-a-road/main.cpp)                              | Medium     |
 | 2212 | [Maximum Points in an Archery Competition](https://leetcode.com/problems/maximum-points-in-an-archery-competition/)                               | [C++](./solutions/leetcode/maximum-points-in-an-archery-competition/main.cpp)                | Medium     |
+| 2215 | [Find the Difference of Two Arrays](https://leetcode.com/problems/find-the-difference-of-two-arrays/)                                             | [C++](./solutions/leetcode/find-the-difference-of-two-arrays/main.cpp)                       | Easy       |
+| 2216 | [Minimum Deletions to Make Array Beautiful](https://leetcode.com/problems/minimum-deletions-to-make-array-beautiful/)                             | [C++](./solutions/leetcode/minimum-deletions-to-make-array-beautiful/main.cpp)               | Medium     |
+| 2217 | [Find Palindrome With Fixed Length](https://leetcode.com/problems/find-palindrome-with-fixed-length/)                                             | [C++](./solutions/leetcode/find-palindrome-with-fixed-length/main.cpp)                       | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
