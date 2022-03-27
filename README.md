@@ -27,6 +27,7 @@ This is my personal repository, including notes and resources related to competi
 | 2215 | [Find the Difference of Two Arrays](https://leetcode.com/problems/find-the-difference-of-two-arrays/)                                             | [C++](./solutions/leetcode/find-the-difference-of-two-arrays/main.cpp)                       | Easy       |
 | 2216 | [Minimum Deletions to Make Array Beautiful](https://leetcode.com/problems/minimum-deletions-to-make-array-beautiful/)                             | [C++](./solutions/leetcode/minimum-deletions-to-make-array-beautiful/main.cpp)               | Medium     |
 | 2217 | [Find Palindrome With Fixed Length](https://leetcode.com/problems/find-palindrome-with-fixed-length/)                                             | [C++](./solutions/leetcode/find-palindrome-with-fixed-length/main.cpp)                       | Medium     |
+| 2218 | [Maximum Value of K Coins From Piles](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/)                                         | [C++](./solutions/leetcode/find-palindrome-with-fixed-length/main.cpp)                       | Hard       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
