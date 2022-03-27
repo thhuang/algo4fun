@@ -18,6 +18,7 @@ This is my personal repository, including notes and resources related to competi
 | 0509 | [Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)                                                                               | [C++](./solutions/leetcode/fibonacci-number/main.cpp)                                        | Easy       |
 | 0705 | [Binary Search](https://leetcode.com/problems/binary-search/)                                                                                     | [C++](./solutions/leetcode/binary-search/main.cpp)                                           | Easy       |
 | 0733 | [Flood Fill](https://leetcode.com/problems/flood-fill/)                                                                                           | [C++](./solutions/leetcode/flood-fill/main.cpp)                                              | Easy       |
+| 0746 | [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/)                                                               | [C++](./solutions/leetcode/min-cost-climbing-stairs/main.cpp)                                | Easy       |
 | 0977 | [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                             | [C++](./solutions/leetcode/squares-of-a-sorted-array/main.cpp)                               | Easy       |
 | 1029 | [Two City Scheduling](https://leetcode.com/problems/two-city-scheduling/)                                                                         | [C++](./solutions/leetcode/two-city-scheduling/main.cpp)                                     | Medium     |
 | 1173 | [N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/)                                                                   | [C++](./solutions/leetcode/n-th-tribonacci-number/main.cpp)                                  | Easy       |
@@ -30,6 +31,8 @@ This is my personal repository, including notes and resources related to competi
 | 2216 | [Minimum Deletions to Make Array Beautiful](https://leetcode.com/problems/minimum-deletions-to-make-array-beautiful/)                             | [C++](./solutions/leetcode/minimum-deletions-to-make-array-beautiful/main.cpp)               | Medium     |
 | 2217 | [Find Palindrome With Fixed Length](https://leetcode.com/problems/find-palindrome-with-fixed-length/)                                             | [C++](./solutions/leetcode/find-palindrome-with-fixed-length/main.cpp)                       | Medium     |
 | 2218 | [Maximum Value of K Coins From Piles](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/)                                         | [C++](./solutions/leetcode/find-palindrome-with-fixed-length/main.cpp)                       | Hard       |
+
+<!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
