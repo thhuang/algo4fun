@@ -29,3 +29,22 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> result;
+        int l = 0, r = size(nums) - 1;
+        while (l <= r) {
+            if (int ll = nums[l] * nums[l], rr = nums[r] * nums[r]; ll > rr) {
+                result.push_back(ll);
+                ++l;
+            } else {
+                result.push_back(rr);
+                --r;
+            }
+        }
+        reverse(begin(result), end(result));
+        return result;
+    }
+};
