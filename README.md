@@ -21,6 +21,7 @@ This is my personal repository, including notes and resources related to competi
 | 1523 | [Count Odd Numbers in an Interval Range](https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/)                                   | [C++](./solutions/leetcode/count-odd-numbers-in-an-interval-range/main.cpp)                  | Easy       |
 | 2210 | [Count Hills and Valleys in an Array](https://leetcode.com/problems/count-hills-and-valleys-in-an-array/)                                         | [C++](./solutions/leetcode/count-hills-and-valleys-in-an-array/main.cpp)                     | Easy       |
 | 2211 | [Count Collisions on a Road](https://leetcode.com/problems/count-collisions-on-a-road/)                                                           | [C++](./solutions/leetcode/count-collisions-on-a-road/main.cpp)                              | Easy       |
+| 2212 | [Maximum Points in an Archery Competition](https://leetcode.com/problems/maximum-points-in-an-archery-competition/)                               | [C++](./solutions/leetcode/maximum-points-in-an-archery-competition/main.cpp)                | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
