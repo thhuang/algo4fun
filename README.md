@@ -19,6 +19,7 @@ This is my personal repository, including notes and resources related to competi
 | 1173 | [N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/)                                                                   | [C++](./solutions/leetcode/n-th-tribonacci-number/main.cpp)                                  | Easy       |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/) | [C++](./solutions/leetcode/average-salary-excluding-the-minimum-and-maximum-salary/main.cpp) | Easy       |
 | 1523 | [Count Odd Numbers in an Interval Range](https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/)                                   | [C++](./solutions/leetcode/count-odd-numbers-in-an-interval-range/main.cpp)                  | Easy       |
+| 2210 | [Count Hills and Valleys in an Array](https://leetcode.com/problems/count-hills-and-valleys-in-an-array/)                                         | [C++](./solutions/leetcode/count-hills-and-valleys-in-an-array/main.cpp)                     | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
