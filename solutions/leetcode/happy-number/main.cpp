@@ -17,3 +17,27 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+    int nextNum(int n) {
+        int sum = 0;
+        while (n) {
+            int digit = n % 10;
+            sum += digit * digit;
+            n /= 10;
+        }
+        return sum;
+    }
+
+   public:
+    bool isHappy(int n) {
+        int slow = n, fast = n;
+        while (true) {
+            fast = nextNum(nextNum(fast));
+            slow = nextNum(slow);
+            if (fast == 1) break;
+            if (slow == fast) return false;
+        }
+        return true;
+    }
+};
