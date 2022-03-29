@@ -14,3 +14,20 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    int jump(vector<int>& nums) {
+        int max_distance = 0;
+        int current_jump_distance = 0;
+        int jumps = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (i > current_jump_distance) {
+                current_jump_distance = max_distance;
+                ++jumps;
+            }
+            max_distance = max(max_distance, i + nums[i]);
+        }
+        return jumps;
+    }
+};
