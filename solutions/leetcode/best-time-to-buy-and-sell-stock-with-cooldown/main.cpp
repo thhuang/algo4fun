@@ -20,3 +20,23 @@ class Solution {
         return dp.back().maximum();
     }
 };
+
+class Solution {
+   public:
+    int maxProfit(vector<int>& prices) {
+        if (size(prices) < 2) return 0;
+
+        struct DP {
+            int buy, sell, cooldown;
+        };
+
+        DP dp = {-prices[0], 0, 0};
+        for (int i = 1; i < size(prices); ++i) {
+            dp = {max(dp.buy + prices[i - 1], dp.cooldown) - prices[i],
+                  max(dp.sell - prices[i - 1], dp.buy) + prices[i],
+                  max(dp.cooldown, dp.sell)};
+        }
+
+        return max({dp.buy, dp.sell, dp.cooldown});
+    }
+};
