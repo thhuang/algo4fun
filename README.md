@@ -105,6 +105,7 @@ This is my personal repository, including notes and resources related to competi
 | 2217 | [Find Palindrome With Fixed Length](https://leetcode.com/problems/find-palindrome-with-fixed-length/)                                             | [C++](./solutions/leetcode/find-palindrome-with-fixed-length/main.cpp)                       | Medium     |
 | 2218 | [Maximum Value of K Coins From Piles](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/)                                         | [C++](./solutions/leetcode/find-palindrome-with-fixed-length/main.cpp)                       | Hard       |
 | 2224 | [Minimum Number of Operations to Convert Time](https://leetcode.com/problems/minimum-number-of-operations-to-convert-time/)                       | [C++](./solutions/leetcode/minimum-number-of-operations-to-convert-time/main.cpp)            | Easy       |
+| 2225 | [Find Players With Zero or One Losses](https://leetcode.com/problems/find-players-with-zero-or-one-losses/)                                       | [C++](./solutions/leetcode/find-players-with-zero-or-one-losses/main.cpp)                    | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
