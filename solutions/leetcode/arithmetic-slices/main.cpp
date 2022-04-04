@@ -1,0 +1,21 @@
+class Solution {
+   public:
+    int numberOfArithmeticSlices(vector<int>& nums) {
+        const int nil = 5000;
+        int n = size(nums);
+        vector<vector<int>> dp(n, vector<int>(n, nil));
+        for (int i = 0; i + 1 < n; ++i) dp[i][i + 1] = nums[i + 1] - nums[i];
+
+        int count = 0;
+        for (int d = 2; d < n; ++d) {
+            for (int i = 0; i + d < n; ++i) {
+                int diff = nums[i + d] - nums[i + d - 1];
+                if (diff != dp[i][i + d - 1]) continue;
+                dp[i][i + d] = diff;
+                if (d >= 2) ++count;
+            }
+        }
+
+        return count;
+    }
+};
