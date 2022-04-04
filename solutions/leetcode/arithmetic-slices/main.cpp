@@ -19,3 +19,20 @@ class Solution {
         return count;
     }
 };
+
+class Solution {
+   public:
+    int numberOfArithmeticSlices(vector<int>& nums) {
+        int n = size(nums);
+
+        int count = 0;
+        for (int l = 0; l + 2 < n; ++l) {
+            for (int r = l + 2; r < n; ++r) {
+                if (nums[r] - nums[r - 1] != nums[r - 1] - nums[r - 2]) break;
+                ++count;
+            }
+        }
+
+        return count;
+    }
+};
