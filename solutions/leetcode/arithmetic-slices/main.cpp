@@ -36,3 +36,20 @@ class Solution {
         return count;
     }
 };
+
+class Solution {
+   public:
+    int numberOfArithmeticSlices(vector<int>& nums) {
+        int ans = 0;
+        int d = 0;
+        for (int i = 2; i < size(nums); ++i) {
+            if (nums[i] - nums[i - 1] == nums[i - 1] - nums[i - 2]) {
+                ++d;
+                continue;
+            }
+            ans += d * (d + 1) / 2;
+            d = 0;
+        }
+        return ans += d * (d + 1) / 2;
+    }
+};
