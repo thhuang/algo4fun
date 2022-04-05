@@ -27,3 +27,27 @@ class Solution {
         return ans;
     }
 };
+
+class Solution {
+    const vector<int> primes = {2, 3, 5};
+
+   public:
+    int nthUglyNumber(int n) {
+        set<int> s;
+        s.insert(1);
+
+        int ans;
+        for (int i = 0; i < n; ++i) {
+            auto it = s.begin();
+            ans = *it;
+            s.erase(it);
+
+            for (int p : primes) {
+                if (ans > numeric_limits<int>::max() / p) continue;
+                s.insert(ans * p);
+            }
+        }
+
+        return ans;
+    }
+};
