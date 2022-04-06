@@ -14,7 +14,6 @@ class Solution {
 class Solution {
    public:
     int climbStairs(int n) {
-        if (n < 2) return 1;
         array<int, 2> dp = {1, 1};
         for (int i = 2; i <= n; ++i) dp = {dp[1], dp[0] + dp[1]};
         return dp.back();
