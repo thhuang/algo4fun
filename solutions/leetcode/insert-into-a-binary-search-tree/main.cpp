@@ -22,3 +22,28 @@ class Solution {
         return root;
     }
 };
+
+class Solution {
+   public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if (!root) return new TreeNode(val);
+
+        TreeNode* p = root;
+        while (true) {
+            if (val > p->val) {
+                if (!p->right) {
+                    p->right = new TreeNode(val);
+                    return root;
+                }
+                p = p->right;
+            } else {
+                if (!p->left) {
+                    p->left = new TreeNode(val);
+                    return root;
+                }
+                p = p->left;
+            }
+        }
+        return root;
+    }
+};
