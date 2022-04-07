@@ -14,3 +14,19 @@ class Solution {
         return *min_element(prev.begin(), prev.end());
     }
 };
+
+class Solution {
+   public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int n = triangle.size();
+        vector<int> curr, prev = triangle.back();
+        for (int i = n - 2; ~i; --i) {
+            curr = triangle[i];
+            for (int j = 0; j < curr.size(); ++j) {
+                curr[j] += min(prev[j], prev[j + 1]);
+            }
+            prev = move(curr);
+        }
+        return prev[0];
+    }
+};
