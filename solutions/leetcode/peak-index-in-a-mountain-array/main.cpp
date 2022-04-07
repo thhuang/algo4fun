@@ -19,3 +19,25 @@ class Solution {
         return search(0, arr.size() - 1);
     }
 };
+
+class Solution {
+   public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        function<int(int, int)> search = [&](int l, int r) -> int {
+            while (l < r) {
+                int m = l + (r - l) / 2;
+                if (arr[m] < arr[m + 1]) {
+                    return search(m + 1, r);
+                } else if (arr[m] > arr[m + 1]) {
+                    return search(l, m);
+                } else {
+                    int a = search(l, m);
+                    int b = search(m + 1, r);
+                    return arr[a] > arr[b] ? a : b;
+                }
+            }
+            return l;
+        };
+        return search(0, arr.size() - 1);
+    }
+};
