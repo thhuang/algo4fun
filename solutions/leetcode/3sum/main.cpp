@@ -41,3 +41,35 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+
+        vector<vector<int>> result;
+        for (int i = 0; i < nums.size(); ++i) {
+            int l = i + 1, r = nums.size() - 1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum < 0) {
+                    ++l;
+                    continue;
+                }
+                if (sum > 0) {
+                    --r;
+                    continue;
+                }
+
+                result.push_back({nums[i], nums[l], nums[r]});
+                ++l;
+
+                while (l < r && nums[l] == nums[l - 1]) ++l;
+            }
+
+            while (i + 1 < nums.size() && nums[i] == nums[i + 1]) ++i;
+        }
+
+        return result;
+    }
+};
