@@ -26,3 +26,22 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> num_freq;
+        for (int v : nums) ++num_freq[v];
+
+        priority_queue<array<int, 2>> q;
+        for (auto p : num_freq) q.push({p.second, p.first});
+
+        vector<int> result;
+        for (int i = 0; i < k; ++i) {
+            result.push_back(q.top()[1]);
+            q.pop();
+        }
+
+        return result;
+    }
+};
