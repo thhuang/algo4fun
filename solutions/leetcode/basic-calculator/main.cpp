@@ -6,30 +6,27 @@ class Solution {
         int local_sign = 1;
         int v = 0;
         for (char c : s) {
-            if (c == ' ') {
-                continue;
-            }
+            if (c == ' ') continue;
             if (isdigit(c)) {
                 v = v * 10 + (c - '0');
                 continue;
             }
+
             sum += v * local_sign * sign.back();
             v = 0;
 
-            if (c == '(') {
-                sign.push_back(local_sign * sign.back());
-                local_sign = 1;
-            } else if (c == ')') {
-                sign.pop_back();
-                local_sign = 1;
-            } else if (c == '+') {
+            if (c == '+') {
                 local_sign = 1;
             } else if (c == '-') {
                 local_sign = -1;
+            } else if (c == '(') {
+                sign.push_back(local_sign * sign.back());
+                local_sign = 1;
+            } else {  // c == ')'
+                sign.pop_back();
             }
         }
-        sum += v * local_sign * sign.back();
 
-        return sum;
+        return sum += v * local_sign * sign.back();
     }
 };
