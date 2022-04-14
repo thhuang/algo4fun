@@ -73,3 +73,26 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        int n = mat.size();
+        int m = mat.front().size();
+
+        vector<int> result;
+        vector<bool> vis(n, false);
+        for (int j = 0; j <= m; ++j) {
+            for (int i = 0; i < n; ++i) {
+                if (vis[i]) continue;
+                if (j == m || mat[i][j] == 0) {
+                    result.push_back(i);
+                    vis[i] = true;
+                }
+                if (result.size() == k) return result;
+            }
+        }
+
+        return result;
+    }
+};
