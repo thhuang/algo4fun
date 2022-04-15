@@ -31,3 +31,22 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> partitionLabels(string s) {
+        unordered_map<char, int> char_last;
+        for (int i = 0; i < s.size(); ++i) char_last[s[i]] = i;
+
+        vector<int> result;
+        int l = 0, r = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            r = max(r, char_last[s[i]]);
+            if (r > i) continue;
+            result.push_back(r - l + 1);
+            l = r + 1;
+        }
+
+        return result;
+    }
+};
