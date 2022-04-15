@@ -10,3 +10,16 @@ class Solution {
         return pow(2, n2) * pow(3, n3);
     }
 };
+
+class Solution {
+   public:
+    int integerBreak(int n) {
+        if (n == 2) return 1;
+        if (n == 3) return 2;
+        array<int, 3> dp = {1, 2, 3};
+        for (int i = 4; i <= n; ++i) {
+            dp = {dp[1], dp[2], max(dp[0] * 3, dp[1] * 2)};
+        }
+        return dp.back();
+    }
+};
