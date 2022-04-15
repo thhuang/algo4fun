@@ -12,3 +12,20 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    int combinationSum4(vector<int>& nums, int target) {
+        vector<int> cache(target + 1, -1);
+        cache[0] = 1;
+        function<int(int)> calculate = [&](int x) -> int {
+            if (cache[x] != -1) return cache[x];
+            cache[x] = 0;
+            for (int v : nums) {
+                if (x - v >= 0) cache[x] += calculate(x - v);
+            }
+            return cache[x];
+        };
+        return calculate(target);
+    }
+};
