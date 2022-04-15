@@ -10,6 +10,7 @@
  * right(right) {}
  * };
  */
+
 class Solution {
    public:
     bool check(TreeNode* t0, TreeNode* t1) {
@@ -20,14 +21,11 @@ class Solution {
     }
 
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        if (subRoot == nullptr) return true;
-
+        if (!subRoot) return true;
         function<bool(TreeNode*)> dfs = [&](TreeNode* node) -> bool {
-            if (node == nullptr) return false;
-            if (node->val == subRoot->val && check(node, subRoot)) return true;
-            return dfs(node->left) || dfs(node->right);
+            if (!node) return false;
+            return check(node, subRoot) || dfs(node->left) || dfs(node->right);
         };
-
         return dfs(root);
     }
 };
