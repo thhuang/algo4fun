@@ -43,3 +43,34 @@ class Solution {
         return ans;
     }
 };
+
+class Solution {
+    vector<array<int, 2>> directions = {{1, 1},  {1, 0},  {1, -1}, {0, 1},
+                                        {0, -1}, {-1, 1}, {-1, 0}, {-1, -1}};
+
+   public:
+    int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid.front().size();
+
+        int step = 1;
+        vector<array<int, 2>> q = {{0, 0}};
+        vector<vector<bool>> vis(n, vector<bool>(m, false));
+        while (!q.empty()) {
+            vector<array<int, 2>> new_q;
+            for (auto [i, j] : q) {
+                if (i < 0 || i >= n || j < 0 || j >= m) continue;
+                if (grid[i][j] == 1) continue;
+                if (i == n - 1 && j == m - 1) return step;
+                if (vis[i][j]) continue;
+                vis[i][j] = true;
+                for (auto [di, dj] : directions)
+                    new_q.push_back({i + di, j + dj});
+            }
+            q = move(new_q);
+            ++step;
+        }
+
+        return -1;
+    }
+};
