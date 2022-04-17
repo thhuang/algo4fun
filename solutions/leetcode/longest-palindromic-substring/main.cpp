@@ -18,3 +18,20 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    string longestPalindrome(string s) {
+        string result;
+        for (int i = 0; i < s.size(); ++i) {
+            int l = i, r = i;
+            while (l >= 0 && r < s.size() && s[l] == s[r]) --l, ++r;
+            if (result.size() < r - l - 1) result = s.substr(l + 1, r - l - 1);
+
+            l = i, r = i + 1;
+            while (l >= 0 && r < s.size() && s[l] == s[r]) --l, ++r;
+            if (result.size() < r - l - 1) result = s.substr(l + 1, r - l - 1);
+        }
+        return result;
+    }
+};
