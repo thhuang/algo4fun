@@ -240,6 +240,7 @@ This is my personal repository, including notes and resources related to competi
 | 2243 | [Calculate Digit Sum of a String](https://leetcode.com/problems/calculate-digit-sum-of-a-string/)                                                 | [C++](./solutions/leetcode/calculate-digit-sum-of-a-string/main.cpp)                         | Easy       |
 | 2244 | [Minimum Rounds to Complete All Tasks](https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/)                                       | [C++](./solutions/leetcode/minimum-rounds-to-complete-all-tasks/main.cpp)                    | Medium     |
 | 2245 | [Maximum Trailing Zeros in a Cornered Path](https://leetcode.com/problems/maximum-trailing-zeros-in-a-cornered-path/)                             | [C++](./solutions/leetcode/maximum-trailing-zeros-in-a-cornered-path/main.cpp)               | Medium     |
+| 2246 | [Longest Path With Different Adjacent Characters](https://leetcode.com/problems/longest-path-with-different-adjacent-characters/)                 | [C++](./solutions/leetcode/longest-path-with-different-adjacent-characters/main.cpp)         | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
