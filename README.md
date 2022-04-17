@@ -238,6 +238,7 @@ This is my personal repository, including notes and resources related to competi
 | 2226 | [Maximum Candies Allocated to K Children](https://leetcode.com/problems/maximum-candies-allocated-to-k-children/)                                 | [C++](./solutions/leetcode/maximum-candies-allocated-to-k-children/main.cpp)                 | Medium     |
 | 2227 | [Encrypt and Decrypt Strings](https://leetcode.com/problems/encrypt-and-decrypt-strings/)                                                         | [C++](./solutions/leetcode/encrypt-and-decrypt-strings/main.cpp)                             | Hard       |
 | 2243 | [Calculate Digit Sum of a String](https://leetcode.com/problems/calculate-digit-sum-of-a-string/)                                                 | [C++](./solutions/leetcode/calculate-digit-sum-of-a-string/main.cpp)                         | Easy       |
+| 2244 | [Minimum Rounds to Complete All Tasks](https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/)                                       | [C++](./solutions/leetcode/minimum-rounds-to-complete-all-tasks/main.cpp)                    | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
