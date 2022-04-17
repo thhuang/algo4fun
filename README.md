@@ -239,6 +239,7 @@ This is my personal repository, including notes and resources related to competi
 | 2227 | [Encrypt and Decrypt Strings](https://leetcode.com/problems/encrypt-and-decrypt-strings/)                                                         | [C++](./solutions/leetcode/encrypt-and-decrypt-strings/main.cpp)                             | Hard       |
 | 2243 | [Calculate Digit Sum of a String](https://leetcode.com/problems/calculate-digit-sum-of-a-string/)                                                 | [C++](./solutions/leetcode/calculate-digit-sum-of-a-string/main.cpp)                         | Easy       |
 | 2244 | [Minimum Rounds to Complete All Tasks](https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/)                                       | [C++](./solutions/leetcode/minimum-rounds-to-complete-all-tasks/main.cpp)                    | Medium     |
+| 2245 | [Maximum Trailing Zeros in a Cornered Path](https://leetcode.com/problems/maximum-trailing-zeros-in-a-cornered-path/)                             | [C++](./solutions/leetcode/maximum-trailing-zeros-in-a-cornered-path/main.cpp)               | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
