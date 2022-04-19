@@ -1,20 +1,40 @@
+
 class Solution {
    public:
     int maxProduct(vector<int>& nums) {
-        struct Curr {
-            int max, min;
+        struct State {
+            int maximum, minimum;
         };
 
-        int ans = nums[0];
-        Curr curr = {nums[0], nums[0]};
+        int result = nums[0];
+        State state = {nums[0], nums[0]};
         for (int i = 1; i < nums.size(); ++i) {
-            array<int, 3> candidates = {curr.max * nums[i], curr.min * nums[i],
-                                        nums[i]};
-            curr = {*max_element(candidates.begin(), candidates.end()),
-                    *min_element(candidates.begin(), candidates.end())};
-            ans = max(ans, curr.max);
+            array<int, 3> candidates = {nums[i] * state.maximum,
+                                        nums[i] * state.minimum, nums[i]};
+            state = {*max_element(candidates.begin(), candidates.end()),
+                     *min_element(candidates.begin(), candidates.end())};
+            result = max(result, state.maximum);
         }
 
-        return ans;
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    int maxProduct(vector<int>& nums) {
+        struct DP {
+            int pos, neg;
+        };
+
+        int result = numeric_limits<int>::min();
+        DP dp = {-1, 1};
+        for (int v : nums) {
+            if (v >= 0) dp = {max(v, dp.pos * v), dp.neg * v};
+            if (v <= 0) dp = {v * dp.neg, min(v, dp.pos * v)};
+            result = dp.pos >= 0 ? max(result, dp.pos) : max(result, dp.neg);
+        }
+
+        return result;
     }
 };
