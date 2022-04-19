@@ -40,3 +40,22 @@ class Solution {
         return max({dp.buy, dp.sell, dp.cooldown});
     }
 };
+
+class Solution {
+   public:
+    int maxProfit(vector<int>& prices) {
+        if (prices.empty()) return 0;
+
+        struct DP {
+            int hold, cash, just_sold;
+        };
+
+        DP dp = {numeric_limits<int>::min(), 0, 0};
+        for (int i = 0; i < prices.size(); ++i) {
+            dp = {max(dp.hold, dp.cash - prices[i]), max(dp.cash, dp.just_sold),
+                  dp.hold + prices[i]};
+        }
+
+        return max(dp.cash, dp.just_sold);
+    }
+};
