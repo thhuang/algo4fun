@@ -62,6 +62,25 @@ class BSTIterator {
     }
 };
 
+class BSTIterator {
+    vector<TreeNode*> left_path_;
+    void LeftMostInorder(TreeNode* node) {
+        while (node) left_path_.push_back(node), node = node->left;
+    }
+
+   public:
+    BSTIterator(TreeNode* root) { LeftMostInorder(root); }
+
+    int next() {
+        auto node = left_path_.back();
+        left_path_.pop_back();
+        LeftMostInorder(node->right);
+        return node->val;
+    }
+
+    bool hasNext() { return !left_path_.empty(); }
+};
+
 /**
  * Your BSTIterator object will be instantiated and called as such:
  * BSTIterator* obj = new BSTIterator(root);
