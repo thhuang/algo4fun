@@ -2,17 +2,18 @@ class Solution {
    public:
     int wiggleMaxLength(vector<int>& nums) {
         struct DP {
-            int neg, pos;
+            int pos, neg;
         };
+
         DP dp = {1, 1};
         for (int i = 1; i < nums.size(); ++i) {
-            int diff = nums[i] - nums[i - 1];
-            if (diff < 0) {
-                dp.neg = dp.pos + 1;
-            } else if (diff > 0) {
+            if (nums[i] > nums[i - 1]) {
                 dp.pos = dp.neg + 1;
+            } else if (nums[i] < nums[i - 1]) {
+                dp.neg = dp.pos + 1;
             }
         }
-        return max(dp.neg, dp.pos);
+
+        return max(dp.pos, dp.neg);
     }
 };
