@@ -15,6 +15,18 @@ class MyLinkedList {
    public:
     MyLinkedList() {}
 
+    ~MyLinkedList() {
+        if (first_ == nullptr) return;
+        ListNode* prev = first_;
+        ListNode* curr;
+        while (true) {
+            curr = prev->next;
+            delete prev;
+            if (curr == nullptr) break;
+            prev = curr;
+        }
+    }
+
     int get(int index) {
         if (index >= length_) return -1;
         auto p = first_;
