@@ -20,3 +20,18 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maxSumAfterOperation(vector<int>& nums) {
+        int operated = 0;
+        int unoperated = 0;
+        int result = 0;
+        for (int v : nums) {
+            operated = max({operated + v, unoperated + v * v, v * v});
+            unoperated = max(0, unoperated) + v;
+            result = max(result, operated);
+        }
+        return result;
+    }
+};
