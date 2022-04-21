@@ -17,6 +17,22 @@ class Solution {
 class Solution {
    public:
     int uniquePaths(int m, int n) {
+        if (n == 1 || m == 1) return 1;
+
+        long long result = 1;
+        int c = min(m, n) - 1;
+        for (int i = 0; i < c; ++i) {
+            result *= m + n - 2 - i;
+            result /= 1 + i;
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    int uniquePaths(int m, int n) {
         vector<int> dp(n, 0);
         dp[0] = 1;
         for (int i = 0; i < m; ++i) {
