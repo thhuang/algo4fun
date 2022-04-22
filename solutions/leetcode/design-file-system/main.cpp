@@ -33,6 +33,54 @@ class FileSystem {
     }
 };
 
+class FileSystem {
+    struct TrieNode {
+        string key;
+        int val;
+        unordered_map<string, TrieNode*> children;
+
+        TrieNode(string key, int val) : key(key), val(val), children() {}
+    };
+
+    TrieNode* root_;
+    regex path_regex_ = regex("/[a-z]+");
+
+   public:
+    FileSystem() : root_(new TrieNode("", 0)) {}
+
+    bool createPath(string path, int value) {
+        if (path.empty() || path.size() == 1 || path.front() != '/' ||
+            path.back() == '/')
+            return false;
+
+        auto p = root_;
+        auto it = sregex_iterator(path.begin(), path.end(), path_regex_);
+        auto it_end = sregex_iterator();
+        int dist = distance(it, it_end);
+        for (int i = 1; i < dist; ++i) {
+            auto got = p->children.find(it->str());
+            if (got == p->children.end()) return false;
+            p = got->second, ++it;
+        }
+
+        if (p->children.count(it->str())) return false;
+        p->children.insert({it->str(), new TrieNode(it->str(), value)});
+
+        return true;
+    }
+
+    int get(string path) {
+        auto p = root_;
+        for (auto it = sregex_iterator(path.begin(), path.end(), path_regex_);
+             it != sregex_iterator(); ++it) {
+            auto got = p->children.find(it->str());
+            if (got == p->children.end()) return -1;
+            p = got->second;
+        }
+        return p->val;
+    }
+};
+
 /**
  * Your FileSystem object will be instantiated and called as such:
  * FileSystem* obj = new FileSystem();
