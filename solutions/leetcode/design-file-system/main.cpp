@@ -81,6 +81,62 @@ class FileSystem {
     }
 };
 
+class FileSystem {
+    struct TrieNode {
+        string key;
+        int val;
+        unordered_map<string, TrieNode*> children;
+
+        TrieNode(string key, int val) : key(key), val(val), children() {}
+    };
+
+    TrieNode* root_;
+
+   public:
+    FileSystem() : root_(new TrieNode("", 0)) {}
+
+    bool createPath(string path, int value) {
+        if (path.empty() || path.size() == 1 || path.front() != '/' ||
+            path.back() == '/')
+            return false;
+
+        stringstream ss(path);
+        string s;
+
+        auto p = root_;
+        vector<string> vec;
+        getline(ss, s, '/');
+        while (getline(ss, s, '/')) vec.emplace_back(s);
+
+        for (int i = 0; i < vec.size() - 1; ++i) {
+            auto got = p->children.find(vec[i]);
+            if (got == p->children.end()) return false;
+            p = got->second;
+        }
+        if (p->children.find(vec.back()) != p->children.end()) return false;
+
+        p->children[vec.back()] = new TrieNode(vec.back(), value);
+
+        return true;
+    }
+
+    int get(string path) {
+        stringstream ss(path);
+        string s;
+
+        auto p = root_;
+        vector<string> vec;
+        getline(ss, s, '/');
+        while (getline(ss, s, '/')) {
+            auto got = p->children.find(s);
+            if (got == p->children.end()) return -1;
+            p = got->second;
+        }
+
+        return p->val;
+    }
+};
+
 /**
  * Your FileSystem object will be instantiated and called as such:
  * FileSystem* obj = new FileSystem();
