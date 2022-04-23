@@ -16,7 +16,6 @@ class Solution {
         function<TreeNode*(int, int)> construct = [&](int l,
                                                       int r) -> TreeNode* {
             if (l > r) return nullptr;
-            if (l == r) return new TreeNode(nums[l]);
             int m = l + (r - l) / 2;
             return new TreeNode(nums[m], construct(l, m - 1),
                                 construct(m + 1, r));
