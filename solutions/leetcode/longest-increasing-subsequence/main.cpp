@@ -1,15 +1,15 @@
 class Solution {
    public:
     int lengthOfLIS(vector<int>& nums) {
-        vector<int> subsequence;
+        vector<int> sub;
         for (int v : nums) {
-            auto it = lower_bound(subsequence.begin(), subsequence.end(), v);
-            if (it == subsequence.end()) {
-                subsequence.push_back(v);
+            if (auto it = lower_bound(sub.begin(), sub.end(), v);
+                it == sub.end()) {
+                sub.push_back(v);
             } else {
                 *it = v;
             }
         }
-        return subsequence.size();
+        return sub.size();
     }
 };
