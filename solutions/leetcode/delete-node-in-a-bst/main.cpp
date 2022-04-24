@@ -46,3 +46,28 @@ class Solution {
         return root;
     }
 };
+
+class Solution {
+   public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if (!root) return nullptr;
+        if (root->val != key) {
+            root->left = deleteNode(root->left, key);
+            root->right = deleteNode(root->right, key);
+            return root;
+        }
+        if (!root->left && !root->right) return nullptr;
+        if (root->left) {
+            auto p = root->left;
+            while (p->right) p = p->right;
+            swap(root->val, p->val);
+            root->left = deleteNode(root->left, key);
+        } else {  // root->right
+            auto p = root->right;
+            while (p->left) p = p->left;
+            swap(root->val, p->val);
+            root->right = deleteNode(root->right, key);
+        }
+        return root;
+    }
+};
