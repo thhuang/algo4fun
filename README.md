@@ -283,6 +283,7 @@ This is my personal repository, including notes and resources related to competi
 | 2245 | [Maximum Trailing Zeros in a Cornered Path](https://leetcode.com/problems/maximum-trailing-zeros-in-a-cornered-path/)                                 | [C++](./solutions/leetcode/maximum-trailing-zeros-in-a-cornered-path/main.cpp)                 | Medium     |
 | 2246 | [Longest Path With Different Adjacent Characters](https://leetcode.com/problems/longest-path-with-different-adjacent-characters/)                     | [C++](./solutions/leetcode/longest-path-with-different-adjacent-characters/main.cpp)           | Hard       |
 | 2248 | [Intersection of Multiple Arrays](https://leetcode.com/problems/intersection-of-multiple-arrays/)                                                     | [C++](./solutions/leetcode/intersection-of-multiple-arrays/main.cpp)                           | Easy       |
+| 2249 | [Count Lattice Points Inside a Circle](https://leetcode.com/problems/count-lattice-points-inside-a-circle/)                                           | [C++](./solutions/leetcode/count-lattice-points-inside-a-circle/main.cpp)                      | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
