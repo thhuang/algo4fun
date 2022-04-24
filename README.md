@@ -285,6 +285,7 @@ This is my personal repository, including notes and resources related to competi
 | 2248 | [Intersection of Multiple Arrays](https://leetcode.com/problems/intersection-of-multiple-arrays/)                                                     | [C++](./solutions/leetcode/intersection-of-multiple-arrays/main.cpp)                           | Easy       |
 | 2249 | [Count Lattice Points Inside a Circle](https://leetcode.com/problems/count-lattice-points-inside-a-circle/)                                           | [C++](./solutions/leetcode/count-lattice-points-inside-a-circle/main.cpp)                      | Medium     |
 | 2250 | [Count Number of Rectangles Containing Each Point](https://leetcode.com/problems/count-number-of-rectangles-containing-each-point/)                   | [C++](./solutions/leetcode/count-number-of-rectangles-containing-each-point/main.cpp)          | Medium     |
+| 2251 | [Number of Flowers in Full Bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom/)                                                     | [C++](./solutions/leetcode/number-of-flowers-in-full-bloom/main.cpp)                           | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
