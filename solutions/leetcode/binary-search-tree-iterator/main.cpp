@@ -63,22 +63,23 @@ class BSTIterator {
 };
 
 class BSTIterator {
-    vector<TreeNode*> left_path_;
-    void LeftMostInorder(TreeNode* node) {
-        while (node) left_path_.push_back(node), node = node->left;
+    vector<TreeNode*> greater_nodes_;
+
+    void toSmallestNode(TreeNode* node) {
+        while (node) greater_nodes_.push_back(node), node = node->left;
     }
 
    public:
-    BSTIterator(TreeNode* root) { LeftMostInorder(root); }
+    BSTIterator(TreeNode* root) { toSmallestNode(root); }
 
     int next() {
-        auto node = left_path_.back();
-        left_path_.pop_back();
-        LeftMostInorder(node->right);
-        return node->val;
+        auto curr = greater_nodes_.back();
+        greater_nodes_.pop_back();
+        toSmallestNode(curr->right);
+        return curr->val;
     }
 
-    bool hasNext() { return !left_path_.empty(); }
+    bool hasNext() { return !greater_nodes_.empty(); }
 };
 
 /**
