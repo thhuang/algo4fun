@@ -30,3 +30,19 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> findLeaves(TreeNode* root) {
+        vector<vector<int>> result;
+        function<int(TreeNode*)> search = [&](TreeNode* node) -> int {
+            if (!node) return 0;
+            int d = max(search(node->left), search(node->right));
+            if (d == result.size()) result.push_back({});
+            result[d].push_back(node->val);
+            return d + 1;
+        };
+        search(root);
+        return result;
+    }
+};
