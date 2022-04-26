@@ -21,3 +21,32 @@ class Solution {
         return dp.back().back();
     }
 };
+
+class Solution {
+   public:
+    int minDistance(string word1, string word2) {
+        vector<int> dp(word2.size() + 1, 0);
+
+        for (int i = 0; i <= word1.size(); ++i) {
+            vector<int> new_dp(word2.size() + 1, 0);
+
+            for (int j = 0; j <= word2.size(); ++j) {
+                if (i == 0 || j == 0) {
+                    new_dp[j] = i + j;
+                    continue;
+                }
+
+                char c1 = word1[i - 1], c2 = word2[j - 1];
+                if (c1 == c2) {
+                    new_dp[j] = dp[j - 1];
+                } else {
+                    new_dp[j] = 1 + min({dp[j - 1], new_dp[j - 1], dp[j]});
+                }
+            }
+
+            dp = move(new_dp);
+        }
+
+        return dp.back();
+    }
+};
