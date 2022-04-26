@@ -34,3 +34,39 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int minCostConnectPoints(vector<vector<int>>& points) {
+        auto distance = [&](int i, int j) -> int {
+            return abs(points[i][0] - points[j][0]) +
+                   abs(points[i][1] - points[j][1]);
+        };
+
+        int n = points.size();
+        vector<int> min_dist(n, numeric_limits<int>::max());
+
+        int u = 0;
+        for (int i = 0; i < n; ++i) min_dist[i] = distance(u, i);
+
+        int result = 0;
+        int connected = 1;
+        while (connected < n) {
+            int dist = numeric_limits<int>::max();
+            for (int i = 0; i < n; ++i) {
+                int d = min_dist[i];
+                if (d == 0) continue;
+                if (d > dist) continue;
+                u = i, dist = d;
+            }
+
+            result += dist;
+            ++connected;
+
+            for (int i = 0; i < n; ++i)
+                min_dist[i] = min(min_dist[i], distance(u, i));
+        }
+
+        return result;
+    }
+};
