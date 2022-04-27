@@ -20,3 +20,20 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+   public:
+    bool canVisitAllRooms(vector<vector<int>>& rooms) {
+        int n = rooms.size();
+        int locked = n;
+        vector<bool> vis(n, false);
+        function<void(int)> dfs = [&](int u) -> void {
+            if (vis[u]) return;
+            vis[u] = true;
+            --locked;
+            for (int v : rooms[u]) dfs(v);
+        };
+        dfs(0);
+        return locked == 0;
+    }
+};
