@@ -94,3 +94,29 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> num_freq;
+        vector<unordered_set<int>> freq_num(1);
+        for (int v : nums) {
+            auto it = num_freq.find(v);
+            if (it == num_freq.end()) {
+                num_freq[v] = 1;
+            } else {
+                freq_num[it->second++].erase(v);
+            }
+            int freq = num_freq[v];
+            if (freq == freq_num.size()) freq_num.push_back({});
+            freq_num[freq].insert(v);
+        }
+
+        vector<int> result;
+        for (int f = freq_num.size() - 1; result.size() < k; --f) {
+            for (int v : freq_num[f]) result.push_back(v);
+        }
+
+        return result;
+    }
+};
