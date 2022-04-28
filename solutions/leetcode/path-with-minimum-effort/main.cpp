@@ -8,8 +8,10 @@ class Solution {
 
         vector<vector<bool>> vis(n, vector<bool>(m, false));
 
-        priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>>
-            q;  // [effort, row, col]
+        priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>> q;  // [effort, row, col]
+
+        // auto cmp = [](const array<int, 3>& a, const array<int, 3>& b) { return a[0] > b[0]; };
+        // priority_queue<array<int, 3>, vector<array<int, 3>>, decltype(cmp)> q(cmp);
 
         q.push({0, 0, 0});
 
