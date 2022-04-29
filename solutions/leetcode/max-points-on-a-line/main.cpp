@@ -63,3 +63,30 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maxPoints(vector<vector<int>>& points) {
+        int n = points.size();
+        int result = 0;
+
+        for (int i = 0; i < n; ++i) {
+            int max_count = 0;
+            unordered_map<long long, int> slope_count;
+
+            for (int j = 0; j < n; ++j) {
+                if (i == j) continue;
+
+                int dx = points[i][0] - points[j][0];
+                int dy = points[i][1] - points[j][1];
+                long long slope = dx == 0 ? numeric_limits<int>::max()
+                                          : (double)dy / dx * 1e9;
+                max_count = max(max_count, ++slope_count[slope]);
+            }
+
+            result = max(result, max_count + 1);
+        }
+
+        return result;
+    }
+};
