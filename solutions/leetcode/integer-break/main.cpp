@@ -23,3 +23,22 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    int integerBreak(int n) {
+        if (n == 2) return 1;
+        if (n == 3) return 2;
+
+        int n6 = n / 6;
+        int remain = n % 6;
+
+        int result = 1;
+        for (int i = 0; i < n6; ++i) result *= 9;
+
+        if (remain == 0) return result;
+        if (remain == 1) return result / 9 * 12;
+        if (remain == 5) return result * 6;
+        return result * remain;
+    }
+};
