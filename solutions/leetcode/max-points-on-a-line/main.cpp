@@ -79,8 +79,7 @@ class Solution {
 
                 int dx = points[i][0] - points[j][0];
                 int dy = points[i][1] - points[j][1];
-                long long slope = dx == 0 ? numeric_limits<int>::max()
-                                          : (double)dy / dx * 1e9;
+                long long slope = dx == 0 ? 1e18 : (double)dy / dx * 1e9;
                 max_count = max(max_count, ++slope_count[slope]);
             }
 
