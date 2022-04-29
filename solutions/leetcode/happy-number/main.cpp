@@ -35,9 +35,8 @@ class Solution {
         while (true) {
             fast = nextNum(nextNum(fast));
             slow = nextNum(slow);
-            if (fast == 1) break;
-            if (slow == fast) return false;
+            if (fast == 1 || slow == fast) break;
         }
-        return true;
+        return fast == 1;
     }
 };
