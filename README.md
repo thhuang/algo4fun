@@ -315,6 +315,7 @@ This is my personal repository, including notes and resources related to competi
 | 2250 | [Count Number of Rectangles Containing Each Point](https://leetcode.com/problems/count-number-of-rectangles-containing-each-point/)                   | [C++](./solutions/leetcode/count-number-of-rectangles-containing-each-point/main.cpp)          | Medium     |
 | 2251 | [Number of Flowers in Full Bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom/)                                                     | [C++](./solutions/leetcode/number-of-flowers-in-full-bloom/main.cpp)                           | Hard       |
 | 2255 | [Count Prefixes of a Given String](https://leetcode.com/problems/count-prefixes-of-a-given-string/)                                                   | [C++](./solutions/leetcode/count-prefixes-of-a-given-string/main.cpp)                          | Easy       |
+| 2256 | [Minimum Average Difference](https://leetcode.com/problems/minimum-average-difference/)                                                               | [C++](./solutions/leetcode/minimum-average-difference/main.cpp)                                | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
