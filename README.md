@@ -319,6 +319,7 @@ This is my personal repository, including notes and resources related to competi
 | 2257 | [Count Unguarded Cells in the Grid](https://leetcode.com/problems/count-unguarded-cells-in-the-grid/)                                                 | [C++](./solutions/leetcode/count-unguarded-cells-in-the-grid/main.cpp)                         | Medium     |
 | 2258 | [Escape the Spreading Fire](https://leetcode.com/problems/escape-the-spreading-fire/)                                                                 | [C++](./solutions/leetcode/escape-the-spreading-fire/main.cpp)                                 | Hard       |
 | 2259 | [Remove Digit From Number to Maximize Result](https://leetcode.com/problems/remove-digit-from-number-to-maximize-result/)                             | [C++](./solutions/leetcode/remove-digit-from-number-to-maximize-result/main.cpp)               | Easy       |
+| 2260 | [Minimum Consecutive Cards to Pick Up](https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/)                                           | [C++](./solutions/leetcode/minimum-consecutive-cards-to-pick-up/main.cpp)                      | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
