@@ -321,6 +321,7 @@ This is my personal repository, including notes and resources related to competi
 | 2259 | [Remove Digit From Number to Maximize Result](https://leetcode.com/problems/remove-digit-from-number-to-maximize-result/)                             | [C++](./solutions/leetcode/remove-digit-from-number-to-maximize-result/main.cpp)               | Easy       |
 | 2260 | [Minimum Consecutive Cards to Pick Up](https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/)                                           | [C++](./solutions/leetcode/minimum-consecutive-cards-to-pick-up/main.cpp)                      | Medium     |
 | 2261 | [K Divisible Elements Subarrays](https://leetcode.com/problems/k-divisible-elements-subarrays/)                                                       | [C++](./solutions/leetcode/k-divisible-elements-subarrays/main.cpp)                            | Medium     |
+| 2262 | [Total Appeal of A String](https://leetcode.com/problems/total-appeal-of-a-string/)                                                                   | [C++](./solutions/leetcode/total-appeal-of-a-string/main.cpp)                                  | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
