@@ -10,10 +10,9 @@ class Solution {
             for (int j = 0; j < m; ++j) {
                 if (obstacleGrid[i][j] == 1) {
                     dp[j] = 0;
-                    continue;
+                } else if (j > 0) {
+                    dp[j] += dp[j - 1];
                 }
-                if (j == 0) continue;
-                dp[j] += dp[j - 1];
             }
         }
 
