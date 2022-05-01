@@ -14,30 +14,23 @@ struct GraphVertex {
 };
 
 int FindLargestNumberTeams(vector<GraphVertex>* graph) {
-    unordered_map<GraphVertex*, int> vis;
+    unordered_map<GraphVertex*, int> cache;
 
     function<int(GraphVertex*)> dfs = [&](GraphVertex* u) -> int {
-        if (vis[u]) return vis[u];
+        if (cache[u]) return cache[u];
 
         int distance = 1;
-        vis[u] = 1;
         for (int i = 0; i < size(u->edges); ++i) {
             auto v = u->edges[i];
-            if (vis[v]) {
-                distance = max(distance, 1 + vis[v]);
-                continue;
-            }
             distance = max(distance, 1 + dfs(v));
         }
 
-        vis[u] = distance;
-        return distance;
+        return cache[u] = distance;
     };
 
     int result = 0;
-    for (int i = 0; i < size(*graph); ++i) {
-        auto u = &graph->at(i);
-        result = max(result, dfs(u));
+    for (auto& pu : *graph) {
+        result = max(result, dfs(&pu));
     }
 
     return result;
