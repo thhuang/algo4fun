@@ -318,6 +318,7 @@ This is my personal repository, including notes and resources related to competi
 | 2256 | [Minimum Average Difference](https://leetcode.com/problems/minimum-average-difference/)                                                               | [C++](./solutions/leetcode/minimum-average-difference/main.cpp)                                | Medium     |
 | 2257 | [Count Unguarded Cells in the Grid](https://leetcode.com/problems/count-unguarded-cells-in-the-grid/)                                                 | [C++](./solutions/leetcode/count-unguarded-cells-in-the-grid/main.cpp)                         | Medium     |
 | 2258 | [Escape the Spreading Fire](https://leetcode.com/problems/escape-the-spreading-fire/)                                                                 | [C++](./solutions/leetcode/escape-the-spreading-fire/main.cpp)                                 | Hard       |
+| 2259 | [Remove Digit From Number to Maximize Result](https://leetcode.com/problems/remove-digit-from-number-to-maximize-result/)                             | [C++](./solutions/leetcode/remove-digit-from-number-to-maximize-result/main.cpp)               | Easy       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
