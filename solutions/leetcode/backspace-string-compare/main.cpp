@@ -20,3 +20,32 @@ class Solution {
         return reduce(s) == reduce(t);
     }
 };
+
+class Solution {
+   public:
+    bool backspaceCompare(string s, string t) {
+        auto next = [](const string& s, int r) -> int {
+            string result;
+            int skips = 0;
+            for (int i = r - 1; ~i; --i) {
+                if (s[i] == '#') {
+                    ++skips;
+                } else if (skips) {
+                    --skips;
+                } else {
+                    return i;
+                }
+            }
+            return -1;
+        };
+
+        int si = next(s, s.size());
+        int ti = next(t, t.size());
+        while (~si && ~ti) {
+            if (s[si] != t[ti]) return false;
+            si = next(s, si);
+            ti = next(t, ti);
+        }
+        return si == ti;
+    }
+};
