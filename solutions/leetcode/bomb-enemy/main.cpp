@@ -57,3 +57,37 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maxKilledEnemies(vector<vector<char>>& grid) {
+        int n = grid.size();
+        int m = grid.front().size();
+        int result = 0;
+
+        vector<int> col_hits(m, 0);
+        for (int i = 0, row_hits = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                if (j == 0 || grid[i][j - 1] == 'W') {
+                    row_hits = 0;
+                    for (int k = j; k < m && grid[i][k] != 'W'; ++k) {
+                        row_hits += grid[i][k] == 'E';
+                    }
+                }
+
+                if (i == 0 || grid[i - 1][j] == 'W') {
+                    col_hits[j] = 0;
+                    for (int k = i; k < n && grid[k][j] != 'W'; ++k) {
+                        col_hits[j] += grid[k][j] == 'E';
+                    }
+                }
+
+                if (grid[i][j] == '0') {
+                    result = max(result, row_hits + col_hits[j]);
+                }
+            }
+        }
+
+        return result;
+    }
+};
