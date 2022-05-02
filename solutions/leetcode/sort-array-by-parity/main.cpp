@@ -6,3 +6,12 @@ class Solution {
         return nums;
     }
 };
+
+class Solution {
+   public:
+    vector<int> sortArrayByParity(vector<int>& nums) {
+        partition(nums.begin(), nums.end(),
+                  [](int a) -> bool { return a % 2 == 0; });
+        return nums;
+    }
+};
