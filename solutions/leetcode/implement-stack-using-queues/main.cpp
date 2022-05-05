@@ -31,16 +31,23 @@ class MyStack {
    public:
     MyStack() {}
 
+    ~MyStack() {
+        while (!empty()) pop();
+    }
+
     void push(int x) {
-        auto q = new queue<void *>();
-        q->push((void *)x), q->push((void *)head_);
-        head_ = q;
+        auto p = new queue<void *>();
+        p->push((void *)x);
+        p->push((void *)head_);
+        head_ = p;
     }
 
     int pop() {
-        int v = (char *)head_->front() - (char *)0;
+        int v = top();
         head_->pop();
+        auto p = head_;
         head_ = (queue<void *> *)head_->front();
+        delete p;
         return v;
     }
 
