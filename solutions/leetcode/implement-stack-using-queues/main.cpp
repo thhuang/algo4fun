@@ -25,6 +25,30 @@ class MyStack {
     bool empty() { return q_.empty(); }
 };
 
+class MyStack {
+    queue<void *> *head_ = nullptr;
+
+   public:
+    MyStack() {}
+
+    void push(int x) {
+        auto q = new queue<void *>();
+        q->push((void *)x), q->push((void *)head_);
+        head_ = q;
+    }
+
+    int pop() {
+        int v = (char *)head_->front() - (char *)0;
+        head_->pop();
+        head_ = (queue<void *> *)head_->front();
+        return v;
+    }
+
+    int top() { return (char *)head_->front() - (char *)0; }
+
+    bool empty() { return head_ == nullptr; }
+};
+
 /**
  * Your MyStack object will be instantiated and called as such:
  * MyStack* obj = new MyStack();
