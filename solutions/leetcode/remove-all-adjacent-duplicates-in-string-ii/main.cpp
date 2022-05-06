@@ -26,3 +26,24 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    string removeDuplicates(string s, int k) {
+        vector<tuple<char, int>> dups;
+        for (char c : s) {
+            if (dups.empty() || get<char>(dups.back()) != c) {
+                dups.push_back({c, 1});
+            } else {
+                ++get<int>(dups.back());
+            }
+            if (!dups.empty() && get<int>(dups.back()) == k) dups.pop_back();
+        }
+
+        string result;
+        for (auto [c, i] : dups) {
+            while (i--) result += c;
+        }
+        return result;
+    }
+};
