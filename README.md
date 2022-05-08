@@ -340,6 +340,7 @@ This is my personal repository, including notes and resources related to competi
 | 2261 | [K Divisible Elements Subarrays](https://leetcode.com/problems/k-divisible-elements-subarrays/)                                                       | [C++](./solutions/leetcode/k-divisible-elements-subarrays/main.cpp)                            | Medium     |
 | 2262 | [Total Appeal of A String](https://leetcode.com/problems/total-appeal-of-a-string/)                                                                   | [C++](./solutions/leetcode/total-appeal-of-a-string/main.cpp)                                  | Hard       |
 | 2264 | [Largest 3-Same-Digit Number in String](https://leetcode.com/problems/largest-3-same-digit-number-in-string/)                                         | [C++](./solutions/leetcode/largest-3-same-digit-number-in-string/main.cpp)                     | Easy       |
+| 2265 | [Count Nodes Equal to Average of Subtree](https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/)                                     | [C++](./solutions/leetcode/count-nodes-equal-to-average-of-subtree/main.cpp)                   | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
