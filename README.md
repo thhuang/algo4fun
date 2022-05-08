@@ -342,6 +342,7 @@ This is my personal repository, including notes and resources related to competi
 | 2264 | [Largest 3-Same-Digit Number in String](https://leetcode.com/problems/largest-3-same-digit-number-in-string/)                                         | [C++](./solutions/leetcode/largest-3-same-digit-number-in-string/main.cpp)                     | Easy       |
 | 2265 | [Count Nodes Equal to Average of Subtree](https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/)                                     | [C++](./solutions/leetcode/count-nodes-equal-to-average-of-subtree/main.cpp)                   | Medium     |
 | 2266 | [Count Number of Texts](https://leetcode.com/problems/count-number-of-texts/)                                                                         | [C++](./solutions/leetcode/count-number-of-texts/main.cpp)                                     | Medium     |
+| 2267 | [Check if There Is a Valid Parentheses String Path](https://leetcode.com/problems/check-if-there-is-a-valid-parentheses-string-path/)                 | [C++](./solutions/leetcode/check-if-there-is-a-valid-parentheses-string-path/main.cpp)         | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
