@@ -26,3 +26,26 @@ class Solution {
         return ans;
     }
 };
+
+class Solution {
+   public:
+    int sumOddLengthSubarrays(vector<int>& arr) {
+        int n = arr.size();
+
+        vector<int> prefix_sum(n);
+        for (int i = 0, sum = 0; i < n; ++i) {
+            prefix_sum[i] = sum += arr[i];
+        }
+
+        int result = 0;
+        for (int l = 0; l < n; ++l) {
+            for (int r = l; r < n; r += 2) {
+                int s = prefix_sum[r];
+                if (l > 0) s -= prefix_sum[l - 1];
+                result += s;
+            }
+        }
+
+        return result;
+    }
+};
