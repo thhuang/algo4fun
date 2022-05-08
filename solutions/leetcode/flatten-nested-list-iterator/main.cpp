@@ -39,6 +39,60 @@ class NestedIterator {
     bool hasNext() { return i_ < data_.size(); }
 };
 
+class NestedIterator {
+    vector<tuple<vector<NestedInteger>*, int>> active_;
+    bool has_next_ = false;
+    int val_;
+
+    void getAllActive() {
+        while (true) {
+            auto [pv, i] = active_.back();
+            if (pv->at(i).isInteger()) break;
+            if (pv->at(i).getList().empty()) break;
+            active_.push_back({&pv->at(i).getList(), 0});
+        }
+    }
+
+   public:
+    NestedIterator(vector<NestedInteger>& nestedList) {
+        active_.push_back({&nestedList, 0});
+        getAllActive();
+    }
+
+    int next() {
+        hasNext();
+        has_next_ = false;
+        return val_;
+    }
+
+    bool hasNext() {
+        while (true) {
+            if (has_next_) return has_next_;
+            if (active_.empty()) return has_next_;
+
+            auto [pv, i] = active_.back();
+            active_.pop_back();
+
+            if (pv->at(i).isInteger()) {
+                val_ = pv->at(i).getInteger();
+                has_next_ = true;
+            }
+
+            while (i + 1 >= pv->size()) {
+                if (active_.empty()) return has_next_;
+
+                tie(pv, i) = active_.back();
+                active_.pop_back();
+            }
+            active_.push_back({pv, i + 1});
+
+            getAllActive();
+        }
+
+        return has_next_;
+    }
+};
+
 /**
  * Your NestedIterator object will be instantiated and called as such:
  * NestedIterator i(nestedList);
