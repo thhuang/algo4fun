@@ -339,6 +339,7 @@ This is my personal repository, including notes and resources related to competi
 | 2260 | [Minimum Consecutive Cards to Pick Up](https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/)                                           | [C++](./solutions/leetcode/minimum-consecutive-cards-to-pick-up/main.cpp)                      | Medium     |
 | 2261 | [K Divisible Elements Subarrays](https://leetcode.com/problems/k-divisible-elements-subarrays/)                                                       | [C++](./solutions/leetcode/k-divisible-elements-subarrays/main.cpp)                            | Medium     |
 | 2262 | [Total Appeal of A String](https://leetcode.com/problems/total-appeal-of-a-string/)                                                                   | [C++](./solutions/leetcode/total-appeal-of-a-string/main.cpp)                                  | Hard       |
+| 2264 | [Largest 3-Same-Digit Number in String](https://leetcode.com/problems/largest-3-same-digit-number-in-string/)                                         | [C++](./solutions/leetcode/largest-3-same-digit-number-in-string/main.cpp)                     | Easy       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
