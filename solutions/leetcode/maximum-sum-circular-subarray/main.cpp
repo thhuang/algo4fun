@@ -33,3 +33,28 @@ class Solution {
         return max({ans1, ans2, ans3});
     }
 };
+
+class Solution {
+   public:
+    int maxSubarraySumCircular(vector<int>& nums) {
+        int all_sum = 0;
+
+        int max_sum = numeric_limits<int>::min();
+        for (int i = 0, curr = numeric_limits<int>::min(); i < nums.size();
+             ++i) {
+            all_sum += nums[i];
+            curr = max(0, curr) + nums[i];
+            max_sum = max(max_sum, curr);
+        }
+
+        int min_sum = numeric_limits<int>::max();
+        for (int i = 0, curr = numeric_limits<int>::max(); i < nums.size();
+             ++i) {
+            curr = min(0, curr) + nums[i];
+            min_sum = min(min_sum, curr);
+        }
+
+        if (min_sum == all_sum) return max_sum;
+        return max(max_sum, all_sum - min_sum);
+    }
+};
