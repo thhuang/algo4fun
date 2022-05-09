@@ -1,27 +1,28 @@
 class Solution {
-    unordered_map<char, vector<char>> digit2letters = {
-        {'2', {'a', 'b', 'c'}}, {'3', {'d', 'e', 'f'}},
-        {'4', {'g', 'h', 'i'}}, {'5', {'j', 'k', 'l'}},
-        {'6', {'m', 'n', 'o'}}, {'7', {'p', 'q', 'r', 's'}},
-        {'8', {'t', 'u', 'v'}}, {'9', {'w', 'x', 'y', 'z'}}};
+    unordered_map<char, string> digit2letters = {
+        {'2', "abc"}, {'3', "def"},  {'4', "ghi"}, {'5', "jkl"},
+        {'6', "mno"}, {'7', "pqrs"}, {'8', "tuv"}, {'9', "wxyz"}};
 
    public:
     vector<string> letterCombinations(string digits) {
         if (digits.empty()) return {};
+
         vector<string> result;
-        string s;
-        function<void(int)> dfs = [&](int i) -> void {
+        string curr;
+        function<void(int)> search = [&](int i) -> void {
             if (i == digits.size()) {
-                result.push_back(s);
+                result.push_back(curr);
                 return;
             }
             for (char c : digit2letters[digits[i]]) {
-                s.push_back(c);
-                dfs(i + 1);
-                s.pop_back();
+                curr += c;
+                search(i + 1);
+                curr.pop_back();
             }
         };
-        dfs(0);
+
+        search(0);
+
         return result;
     }
 };
