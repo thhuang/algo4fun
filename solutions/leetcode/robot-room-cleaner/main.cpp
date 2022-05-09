@@ -33,18 +33,16 @@ class Solution {
 
         unordered_map<int, unordered_set<int>> vis;
         function<void(int, int, int)> dfs = [&](int i, int j, int d) -> void {
-            if (vis[i].count(j)) return;
             vis[i].insert(j);
-
             robot.clean();
 
             for (int k = 0; k < 4; ++k) {
                 robot.turnLeft();
                 d = (d + 1) % 4;
-
-                if (!robot.move()) continue;
                 int ii = i + directions[d][0];
                 int jj = j + directions[d][1];
+
+                if (vis[ii].count(jj) || !robot.move()) continue;
 
                 dfs(ii, jj, d);
 
