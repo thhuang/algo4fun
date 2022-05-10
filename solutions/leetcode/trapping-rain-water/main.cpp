@@ -46,3 +46,40 @@ class Solution {
         return sum;
     }
 };
+
+class Solution {
+   public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        int result = 0;
+
+        int l = 0, r = 0, m = 0;
+        while (true) {
+            int water = 0;
+            while (r < n && height[l] >= height[r]) {
+                water += height[l] - height[r];
+                ++r;
+            }
+            if (r == n) {
+                m = l;
+                break;
+            }
+
+            result += water;
+            l = r;
+        }
+
+        l = n - 1, r = n - 1;
+        while (r > m) {
+            int water = 0;
+            while (l >= m && height[l] <= height[r]) {
+                water += height[r] - height[l];
+                --l;
+            }
+            result += water;
+            r = l;
+        }
+
+        return result;
+    }
+};
