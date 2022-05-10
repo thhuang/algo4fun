@@ -1,19 +1,19 @@
 class Solution {
    public:
     int trap(vector<int>& height) {
-        vector<int> water(size(height), 0);
+        int n = height.size();
 
-        int h = 0;
-        for (int i = 0; i < size(height); ++i) {
+        vector<int> water_height(n);
+        for (int i = 0, h = 0; i < n; ++i) {
             h = max(h, height[i]);
-            water[i] = h;
+            water_height[i] = h;
         }
 
         int sum = 0;
-        h = 0;
-        for (int i = size(height) - 1; ~i; --i) {
+        for (int i = n - 1, h = 0; ~i; --i) {
             h = max(h, height[i]);
-            sum += min(h, water[i]) - height[i];
+            water_height[i] = min(water_height[i], h);
+            sum += water_height[i] - height[i];
         }
 
         return sum;
