@@ -23,33 +23,6 @@ class Solution {
 class Solution {
    public:
     int trap(vector<int>& height) {
-        int sum = 0;
-
-        int m = 0;
-        for (int l = 0, r = 0; r < size(height); ++r) {
-            int hl = height[l];
-            while (l < r && height[l] <= height[r]) {
-                sum += hl - height[l];
-                ++l;
-            }
-            m = l;
-        }
-
-        for (int l = size(height) - 1, r = size(height) - 1; m <= l; --l) {
-            int hr = height[r];
-            while (l < r && height[l] >= height[r]) {
-                sum += hr - height[r];
-                --r;
-            }
-        }
-
-        return sum;
-    }
-};
-
-class Solution {
-   public:
-    int trap(vector<int>& height) {
         int n = height.size();
         int result = 0;
 
@@ -78,6 +51,32 @@ class Solution {
             }
             result += water;
             r = l;
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        int result = 0;
+
+        int m = 0;
+        for (int l = 0, r = 0; r < n; ++r) {
+            int h = height[l];
+            while (l < r && height[r] >= height[l]) {
+                result += h - height[l++];
+            }
+            m = l;
+        }
+
+        for (int l = n - 1, r = n - 1; l >= m; --l) {
+            int h = height[r];
+            while (l < r && height[l] >= height[r]) {
+                result += h - height[r--];
+            }
         }
 
         return result;
