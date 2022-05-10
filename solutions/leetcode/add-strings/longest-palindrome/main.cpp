@@ -10,3 +10,20 @@ class Solution {
         return length;
     }
 };
+
+class Solution {
+   public:
+    int longestPalindrome(string s) {
+        int result = 0;
+        unordered_set<int> chars;
+        for (char c : s) {
+            if (chars.count(c)) {
+                result += 2;
+                chars.erase(c);
+            } else {
+                chars.insert(c);
+            }
+        }
+        return result + (chars.size() ? 1 : 0);
+    }
+};
