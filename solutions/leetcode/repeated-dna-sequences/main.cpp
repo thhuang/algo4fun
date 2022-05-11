@@ -22,28 +22,29 @@ class Solution {
 };
 
 class Solution {
-    unordered_map<char, int> score = {{'A', 0}, {'C', 1}, {'G', 2}, {'T', 3}};
-    int base = 4;
+    unordered_map<char, int> char2score = {
+        {'A', 0}, {'C', 1}, {'G', 2}, {'T', 3}};
+    int base = char2score.size();
 
    public:
     vector<string> findRepeatedDnaSequences(string s) {
-        if (s.size() < 10) return {};
+        if (s.size() < 11) return {};
 
-        int curr = 0;
+        unordered_map<int, int> score_count;
+
+        int score = 0;
         int base9 = 1;
-        for (int i = 0; i < 10; ++i) {
-            if (i > 0) base9 *= base;
-            curr = curr * base + score[s[i]];
+        for (int i = 0; i < 9; ++i) {
+            score = score * base + char2score[s[i]];
+            base9 *= base;
         }
 
-        unordered_map<int, int> count;
-        ++count[curr];
-
         vector<string> result;
-        for (int i = 10; i < s.size(); ++i) {
-            curr -= score[s[i - 10]] * base9;
-            curr = curr * base + score[s[i]];
-            if (++count[curr] == 2) result.push_back(s.substr(i - 9, 10));
+        for (int i = 9; i < s.size(); ++i) {
+            score = score * base + char2score[s[i]];
+            if (++score_count[score] == 2)
+                result.push_back(s.substr(i - 9, 10));
+            score -= base9 * char2score[s[i - 9]];
         }
 
         return result;
