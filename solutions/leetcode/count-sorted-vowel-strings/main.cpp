@@ -33,6 +33,7 @@ class Solution {
     }
 };
 
+// https://en.wikipedia.org/wiki/Combination#Number_of_combinations_with_repetition
 class Solution {
    public:
     int countVowelStrings(int n) {
