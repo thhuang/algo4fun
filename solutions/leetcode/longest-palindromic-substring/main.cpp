@@ -54,3 +54,23 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    string longestPalindrome(string s) {
+        int start = 0;
+        int length = 0;
+
+        auto search = [&](int l, int r) {
+            while (0 <= l && r < s.size() && s[l] == s[r]) --l, ++r;
+            if (r - l - 1 > length) start = l + 1, length = r - l - 1;
+        };
+
+        for (int i = 0; i < s.size(); ++i) {
+            search(i, i);
+            search(i, i + 1);
+        }
+
+        return s.substr(start, length);
+    }
+};
