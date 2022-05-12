@@ -19,3 +19,38 @@ class Solution {
         return "";
     }
 };
+
+class Solution {
+   public:
+    string shortestPalindrome(string s) {
+        int n = s.size();
+        string r(s.rbegin(), s.rend());
+        for (int i = 0; i < n; ++i) {
+            if (s.compare(0, n - i, r, i, n) == 0) {
+                return r.substr(0, i) + s;
+            }
+        }
+
+        return "";
+    }
+};
+
+class Solution {
+   public:
+    string shortestPalindrome(string s) {
+        string r(s.rbegin(), s.rend());
+
+        string sr = s + ":" + r;
+        int n = sr.size();
+        vector<int> prefix(n, 0);
+
+        for (int i = 1; i < n; ++i) {
+            int d = prefix[i - 1];
+            while (d > 0 && sr[i] != sr[d]) d = prefix[d - 1];
+            if (sr[i] == sr[d]) ++d;
+            prefix[i] = d;
+        }
+
+        return r.substr(0, r.size() - prefix.back()) + s;
+    }
+};
