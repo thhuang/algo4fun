@@ -34,24 +34,6 @@ class Solution {
     }
 };
 
-/*
-// Definition for a Node.
-class Node {
-public:
-    int val;
-    Node* left;
-    Node* right;
-    Node* next;
-
-    Node() : val(0), left(NULL), right(NULL), next(NULL) {}
-
-    Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
-
-    Node(int _val, Node* _left, Node* _right, Node* _next)
-        : val(_val), left(_left), right(_right), next(_next) {}
-};
-*/
-
 class Solution {
    public:
     array<Node*, 2> process_child(Node* prev_child, Node* curr_child,
@@ -82,6 +64,42 @@ class Solution {
                 p = p->next;
             }
         }
+
+        return root;
+    }
+};
+
+class Solution {
+   public:
+    Node* connect(Node* root) {
+        if (root == nullptr) return nullptr;
+
+        Node* left_most_node = nullptr;
+        Node* p = root;
+        Node* prev = nullptr;
+        Node* curr = nullptr;
+
+        auto link = [&](Node* node) -> void {
+            if (node == nullptr) return;
+
+            prev = curr;
+            curr = node;
+
+            if (prev == nullptr) {
+                left_most_node = node;
+                return;
+            }
+
+            prev->next = curr;
+        };
+
+        while (p) {
+            link(p->left);
+            link(p->right);
+            p = p->next;
+        }
+
+        connect(left_most_node);
 
         return root;
     }
