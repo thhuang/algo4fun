@@ -104,3 +104,40 @@ class Solution {
         return root;
     }
 };
+
+class Solution {
+   public:
+    Node* connect(Node* root) {
+        if (root == nullptr) return nullptr;
+
+        Node* left_most_node = root;
+        Node* prev;
+        Node* curr;
+
+        auto link = [&prev, &curr, &left_most_node](Node* node) -> void {
+            if (node == nullptr) return;
+
+            prev = curr;
+            curr = node;
+
+            if (prev == nullptr) {
+                left_most_node = node;
+                return;
+            }
+
+            prev->next = curr;
+        };
+
+        while (left_most_node) {
+            Node* p = left_most_node;
+            prev = curr = left_most_node = nullptr;
+            while (p) {
+                link(p->left);
+                link(p->right);
+                p = p->next;
+            }
+        }
+
+        return root;
+    }
+};
