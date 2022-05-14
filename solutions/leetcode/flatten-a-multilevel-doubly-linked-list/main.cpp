@@ -44,3 +44,33 @@ class Solution {
         return head;
     }
 };
+
+class Solution {
+   public:
+    Node* flatten(Node* head) {
+        if (!head) return nullptr;
+
+        function<Node*(Node*)> dfs = [&](Node* u) -> Node* {
+            auto l = u->child;
+            auto r = u->next;
+            u->child = nullptr;
+
+            if (l) {
+                u->next = l;
+                l->prev = u;
+                u = dfs(l);
+            }
+            if (r) {
+                u->next = r;
+                r->prev = u;
+                u = dfs(r);
+            }
+
+            return u;
+        };
+
+        dfs(head);
+
+        return head;
+    }
+};
