@@ -373,6 +373,7 @@ This is my personal repository, including notes and resources related to competi
 | 2267 | [Check if There Is a Valid Parentheses String Path](https://leetcode.com/problems/check-if-there-is-a-valid-parentheses-string-path/)                 | [C++](./solutions/leetcode/check-if-there-is-a-valid-parentheses-string-path/main.cpp)         | Hard       |
 | 2273 | [Find Resultant Array After Removing Anagrams](https://leetcode.com/problems/find-resultant-array-after-removing-anagrams/)                           | [C++](./solutions/leetcode/find-resultant-array-after-removing-anagrams/main.cpp)              | Easy       |
 | 2274 | [Maximum Consecutive Floors Without Special Floors](https://leetcode.com/problems/maximum-consecutive-floors-without-special-floors/)                 | [C++](./solutions/leetcode/maximum-consecutive-floors-without-special-floors/main.cpp)         | Medium     |
+| 2275 | [Largest Combination With Bitwise AND Greater Than Zero](https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/)       | [C++](./solutions/leetcode/largest-combination-with-bitwise-and-greater-than-zero/main.cpp)    | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
