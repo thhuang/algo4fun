@@ -371,6 +371,7 @@ This is my personal repository, including notes and resources related to competi
 | 2265 | [Count Nodes Equal to Average of Subtree](https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/)                                     | [C++](./solutions/leetcode/count-nodes-equal-to-average-of-subtree/main.cpp)                   | Medium     |
 | 2266 | [Count Number of Texts](https://leetcode.com/problems/count-number-of-texts/)                                                                         | [C++](./solutions/leetcode/count-number-of-texts/main.cpp)                                     | Medium     |
 | 2267 | [Check if There Is a Valid Parentheses String Path](https://leetcode.com/problems/check-if-there-is-a-valid-parentheses-string-path/)                 | [C++](./solutions/leetcode/check-if-there-is-a-valid-parentheses-string-path/main.cpp)         | Hard       |
+| 2273 | [Find Resultant Array After Removing Anagrams](https://leetcode.com/problems/find-resultant-array-after-removing-anagrams/)                           | [C++](./solutions/leetcode/find-resultant-array-after-removing-anagrams/main.cpp)              | Easy       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
