@@ -374,6 +374,7 @@ This is my personal repository, including notes and resources related to competi
 | 2273 | [Find Resultant Array After Removing Anagrams](https://leetcode.com/problems/find-resultant-array-after-removing-anagrams/)                           | [C++](./solutions/leetcode/find-resultant-array-after-removing-anagrams/main.cpp)              | Easy       |
 | 2274 | [Maximum Consecutive Floors Without Special Floors](https://leetcode.com/problems/maximum-consecutive-floors-without-special-floors/)                 | [C++](./solutions/leetcode/maximum-consecutive-floors-without-special-floors/main.cpp)         | Medium     |
 | 2275 | [Largest Combination With Bitwise AND Greater Than Zero](https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/)       | [C++](./solutions/leetcode/largest-combination-with-bitwise-and-greater-than-zero/main.cpp)    | Medium     |
+| 2276 | [Count Integers in Intervals](https://leetcode.com/problems/count-integers-in-intervals/)                                                             | [C++](./solutions/leetcode/count-integers-in-intervals/main.cpp)                               | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
