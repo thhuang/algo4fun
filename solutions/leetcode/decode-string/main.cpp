@@ -64,3 +64,33 @@ class Solution {
         return decode();
     }
 };
+
+class Solution {
+   public:
+    string decodeString(string s) {
+        int i = 0;
+
+        function<string()> decode = [&]() -> string {
+            string result;
+
+            while (i < s.size() && s[i] != ']') {
+                if (!isdigit(s[i])) {
+                    result += s[i++];
+                    continue;
+                }
+
+                int v = 0;
+                while (isdigit(s[i])) v = v * 10 + s[i++] - '0';
+
+                ++i;
+                string res = decode();
+                while (v--) result += res;
+                ++i;
+            }
+
+            return result;
+        };
+
+        return decode();
+    }
+};
