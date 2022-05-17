@@ -21,3 +21,24 @@ class Solution {
         return remains.empty() ? "0" : string(remains.begin(), remains.end());
     }
 };
+
+class Solution {
+   public:
+    string removeKdigits(string num, int k) {
+        string result;
+        for (char c : num) {
+            while (k > 0 && !result.empty() && result.back() > c) {
+                result.pop_back();
+                --k;
+            }
+            result.push_back(c);
+        }
+
+        while (k--) result.pop_back();
+
+        auto it = find_if(result.begin(), result.end(),
+                          [](char c) -> bool { return c != '0'; });
+
+        return it == result.end() ? "0" : string(it, result.end());
+    }
+};
