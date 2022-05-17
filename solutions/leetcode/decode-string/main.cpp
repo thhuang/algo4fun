@@ -34,3 +34,33 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    string decodeString(string s) {
+        int i = 0;
+
+        function<string()> decode = [&]() -> string {
+            string result;
+            int v = 0;
+
+            while (i < s.size() && s[i] != ']') {
+                if (isdigit(s[i])) {
+                    v = v * 10 + s[i] - '0';
+                } else if (s[i] == '[') {
+                    ++i;
+                    string res = decode();
+                    while (v--) result += res;
+                    v = 0;
+                } else {
+                    result += s[i];
+                }
+                ++i;
+            }
+
+            return result;
+        };
+
+        return decode();
+    }
+};
