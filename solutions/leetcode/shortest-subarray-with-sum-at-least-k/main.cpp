@@ -28,3 +28,28 @@ class Solution {
         return result > n ? -1 : result;
     }
 };
+
+class Solution {
+   public:
+    int shortestSubarray(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<long> prefix_sum = {0};
+        for (int v : nums) prefix_sum.push_back(prefix_sum.back() + v);
+
+        deque<int> incr = {0};
+        int result = numeric_limits<int>::max();
+
+        for (int i = 1; i <= n; ++i) {
+            while (!incr.empty() && prefix_sum[incr.back()] >= prefix_sum[i])
+                incr.pop_back();
+            while (!incr.empty() &&
+                   prefix_sum[i] - prefix_sum[incr.front()] >= k) {
+                result = min(result, i - incr.front());
+                incr.pop_front();
+            }
+            incr.push_back(i);
+        }
+
+        return result > n ? -1 : result;
+    }
+};
