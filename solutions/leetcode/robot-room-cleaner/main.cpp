@@ -53,3 +53,40 @@ class Solution {
         dfs(0, 0, 0);
     }
 };
+
+class Solution {
+    vector<array<int, 2>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+   public:
+    void cleanRoom(Robot& robot) {
+        auto go_back = [&]() -> void {
+            robot.turnRight();
+            robot.turnRight();
+            robot.move();
+            robot.turnRight();
+            robot.turnRight();
+        };
+
+        int d = 0;
+        unordered_map<int, unordered_set<int>> vis;
+        function<void(int, int)> dfs = [&](int i, int j) -> void {
+            vis[i].insert(j);
+            robot.clean();
+
+            for (int k = 0; k < 4; ++k) {
+                d = (d + 1) % 4;
+                robot.turnRight();
+
+                auto [di, dj] = directions[d];
+                int ii = i + di, jj = j + dj;
+
+                if (vis[ii].count(jj) || !robot.move()) continue;
+                dfs(ii, jj);
+            }
+
+            go_back();
+        };
+
+        dfs(0, 0);
+    }
+};
