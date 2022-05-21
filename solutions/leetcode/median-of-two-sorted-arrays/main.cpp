@@ -37,3 +37,38 @@ class Solution {
         return 0;
     }
 };
+
+class Solution {
+   public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        if (nums1.size() > nums2.size()) swap(nums1, nums2);
+
+        int m = nums1.size();
+        int n = nums2.size();
+        bool is_odd = (m + n) % 2 == 1;
+
+        int l = -1, r = m;
+        while (l <= r) {
+            int t1 = l + (r - l) / 2;
+            int t2 = (n + m) / 2 - 2 - t1;
+
+            int v10 = t1 >= 0 ? nums1[t1] : numeric_limits<int>::min();
+            int v11 = t1 + 1 < m ? nums1[t1 + 1] : numeric_limits<int>::max();
+
+            int v20 = t2 >= 0 ? nums2[t2] : numeric_limits<int>::min();
+            int v21 = t2 + 1 < n ? nums2[t2 + 1] : numeric_limits<int>::max();
+
+            if (v10 <= v21 && v20 <= v11) {
+                return is_odd ? min(v11, v21)
+                              : 0.5 * (max(v10, v20) + min(v11, v21));
+            }
+
+            if (v10 > v21) {
+                r = t1 - 1;
+            } else {  // v20 > v11
+                l = t1 + 1;
+            }
+        }
+        return 0;
+    }
+};
