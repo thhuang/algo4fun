@@ -1,12 +1,12 @@
 class Solution {
    public:
     int maxSubArray(vector<int>& nums) {
-        int ans = numeric_limits<int>::min();
-        int local_max = numeric_limits<int>::min();
+        int result = numeric_limits<int>::min();
+        int curr = 0;
         for (int v : nums) {
-            local_max = max(local_max, 0) + v;
-            ans = max(ans, local_max);
+            curr = max(curr, 0) + v;
+            result = max(result, curr);
         }
-        return ans;
+        return result;
     }
 };
