@@ -48,14 +48,16 @@ class Solution {
         sort(nums.begin(), nums.end());
 
         vector<vector<int>> result;
-        for (int i = 0; i + 2 < nums.size(); ++i) {
+
+        for (int i = 0; i < nums.size(); ++i) {
             int l = i + 1, r = nums.size() - 1;
             while (l < r) {
-                int sum = nums[i] + nums[l] + nums[r];
-                if (sum < 0) {
+                int s = nums[i] + nums[l] + nums[r];
+                if (s < 0) {
                     ++l;
                     continue;
-                } else if (sum > 0) {
+                }
+                if (s > 0) {
                     --r;
                     continue;
                 }
@@ -65,7 +67,7 @@ class Solution {
                 ++l;
             }
 
-            while (i + 2 < nums.size() && nums[i] == nums[i + 1]) ++i;
+            while (i + 1 < nums.size() && nums[i] == nums[i + 1]) ++i;
         }
 
         return result;
