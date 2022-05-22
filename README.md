@@ -402,6 +402,7 @@ This is my personal repository, including notes and resources related to competi
 | 2276 | [Count Integers in Intervals](https://leetcode.com/problems/count-integers-in-intervals/)                                                                               | [C++](./solutions/leetcode/count-integers-in-intervals/main.cpp)                                        | Hard       |
 | 2278 | [Percentage of Letter in String](https://leetcode.com/problems/percentage-of-letter-in-string/)                                                                         | [C++](./solutions/leetcode/percentage-of-letter-in-string/main.cpp)                                     | Easy       |
 | 2279 | [Maximum Bags With Full Capacity of Rocks](https://leetcode.com/problems/maximum-bags-with-full-capacity-of-rocks/)                                                     | [C++](./solutions/leetcode/maximum-bags-with-full-capacity-of-rocks/main.cpp)                           | Medium     |
+| 2280 | [Minimum Lines to Represent a Line Chart](https://leetcode.com/problems/minimum-lines-to-represent-a-line-chart/)                                                       | [C++](./solutions/leetcode/minimum-lines-to-represent-a-line-chart/main.cpp)                            | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
