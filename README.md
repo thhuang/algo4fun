@@ -401,6 +401,7 @@ This is my personal repository, including notes and resources related to competi
 | 2275 | [Largest Combination With Bitwise AND Greater Than Zero](https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/)                         | [C++](./solutions/leetcode/largest-combination-with-bitwise-and-greater-than-zero/main.cpp)             | Medium     |
 | 2276 | [Count Integers in Intervals](https://leetcode.com/problems/count-integers-in-intervals/)                                                                               | [C++](./solutions/leetcode/count-integers-in-intervals/main.cpp)                                        | Hard       |
 | 2278 | [Percentage of Letter in String](https://leetcode.com/problems/percentage-of-letter-in-string/)                                                                         | [C++](./solutions/leetcode/percentage-of-letter-in-string/main.cpp)                                     | Easy       |
+| 2279 | [Maximum Bags With Full Capacity of Rocks](https://leetcode.com/problems/maximum-bags-with-full-capacity-of-rocks/)                                                     | [C++](./solutions/leetcode/maximum-bags-with-full-capacity-of-rocks/main.cpp)                           | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
