@@ -31,3 +31,31 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int largestRectangleArea(vector<int>& heights) {
+        int n = heights.size();
+        vector<int> rect_index;
+
+        auto new_height_or_reached_end = [&](int i) -> bool {
+            return i == n || heights[rect_index.back()] >= heights[i];
+        };
+
+        int result = 0;
+        for (int i = 0; i <= n; ++i) {
+            while (!rect_index.empty() && new_height_or_reached_end(i)) {
+                int h = heights[rect_index.back()];
+                rect_index.pop_back();
+
+                int w = i;
+                if (!rect_index.empty()) w -= rect_index.back() + 1;
+
+                result = max(result, h * w);
+            }
+            rect_index.push_back(i);
+        }
+
+        return result;
+    }
+};
