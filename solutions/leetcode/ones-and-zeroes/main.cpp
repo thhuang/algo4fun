@@ -89,3 +89,23 @@ class Solution {
         return dp.back().back();
     }
 };
+
+class Solution {
+   public:
+    int findMaxForm(vector<string>& strs, int m, int n) {
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+
+        for (string s : strs) {
+            size_t one = count(s.begin(), s.end(), '1');
+            size_t zero = s.size() - one;
+
+            for (int z = m; ~z && z >= zero; --z) {
+                for (int o = n; ~o && o >= one; --o) {
+                    dp[z][o] = max(dp[z][o], 1 + dp[z - zero][o - one]);
+                }
+            }
+        }
+
+        return dp.back().back();
+    }
+};
