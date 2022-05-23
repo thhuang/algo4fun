@@ -1,23 +1,25 @@
 class Solution {
    public:
     bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
-        vector<vector<int>> graph(n + 1);
-        for (auto e : dislikes) {
-            graph[e[0]].push_back(e[1]), graph[e[1]].push_back(e[0]);
+        vector<vector<int>> adj(n);
+        for (const auto& d : dislikes) {
+            adj[d[0] - 1].push_back(d[1] - 1);
+            adj[d[1] - 1].push_back(d[0] - 1);
         }
 
-        vector<int> group(n + 1, -1);
-        function<bool(int, int)> dfs = [&](int u, int g) -> bool {
-            if (group[u] != -1) return group[u] == g;
-            group[u] = g;
-            for (int v : graph[u]) {
-                if (!dfs(v, g ^ 1)) return false;
+        vector<int> vis(n, -1);
+
+        function<bool(int, int)> dfs = [&](int u, int group) -> bool {
+            if (vis[u] != -1) return vis[u] == group;
+            vis[u] = group;
+            for (int v : adj[u]) {
+                if (!dfs(v, !group)) return false;
             }
             return true;
         };
 
         for (int i = 0; i < n; ++i) {
-            if (group[i] != -1) continue;
+            if (vis[i] != -1) continue;
             if (!dfs(i, 0)) return false;
         }
 
