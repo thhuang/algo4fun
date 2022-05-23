@@ -45,3 +45,27 @@ class Solution {
         return dp.back().back();
     }
 };
+
+class Solution {
+   public:
+    int findMaxForm(vector<string>& strs, int m, int n) {
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+        for (int i = 0; i < strs.size(); ++i) {
+            int one = 0;
+            for (char c : strs[i]) one += c == '1';
+            int zero = int(strs[i].size()) - one;
+
+            auto new_dp = dp;
+            for (int z = 0; z <= m; ++z) {
+                if (z - zero < 0) continue;
+                for (int o = 0; o <= n; ++o) {
+                    if (o - one < 0) continue;
+                    new_dp[z][o] = max(new_dp[z][o], 1 + dp[z - zero][o - one]);
+                }
+            }
+            dp = move(new_dp);
+        }
+
+        return dp.back().back();
+    }
+};
