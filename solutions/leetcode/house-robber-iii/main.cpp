@@ -40,3 +40,18 @@ class Solution {
         return dfs(root)[0];
     }
 };
+
+class Solution {
+   public:
+    int rob(TreeNode* root) {
+        function<array<int, 2>(TreeNode*)> dfs =
+            [&](TreeNode* u) -> array<int, 2> {
+            if (!u) return {0, 0};
+            auto l = dfs(u->left);
+            auto r = dfs(u->right);
+            return {u->val + l[1] + r[1], max(l[0], l[1]) + max(r[0], r[1])};
+        };
+        auto result = dfs(root);
+        return max(result[0], result[1]);
+    }
+};
