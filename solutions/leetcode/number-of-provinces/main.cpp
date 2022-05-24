@@ -29,11 +29,9 @@ class Solution {
         vector<int> group(n);
         iota(group.begin(), group.end(), 0);
 
-        function<int(int)> find = [&group](int u) -> int {
-            while (group[u] != u) {
-                u = group[u] = group[group[u]];
-            }
-            return u;
+        function<int(int)> find = [&group, &find](int u) -> int {
+            if (u == group[u]) return u;
+            return group[u] = find(group[u]);
         };
 
         function<void(int, int)> unite = [&group, &find](int a, int b) -> void {
