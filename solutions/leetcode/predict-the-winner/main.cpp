@@ -65,8 +65,7 @@ class Solution {
    public:
     bool PredictTheWinner(vector<int>& nums) {
         int n = nums.size();
-        vector<int> dp(n);
-        for (int i = 0; i < n; ++i) dp[i] = nums[i];
+        vector<int> dp = nums;
 
         for (int k = 1; k < n; ++k) {
             for (int i = 0; i + k < n; ++i) {
