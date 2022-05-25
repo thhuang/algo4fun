@@ -9,7 +9,7 @@ class Solution {
                 return {it->second, it->second != ""};
             }
 
-            for (int j = 0; j < d; ++j) {
+            for (int j = 0; j < d / 2; ++j) {
                 if (s[i + j] != s[i + d - 1 - j]) {
                     return {cache[i][d] = "", false};
                 }
