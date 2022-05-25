@@ -60,3 +60,20 @@ class Solution {
         return dp[0] >= 0;
     }
 };
+
+class Solution {
+   public:
+    bool PredictTheWinner(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> dp(n);
+        for (int i = 0; i < n; ++i) dp[i] = nums[i];
+
+        for (int k = 1; k < n; ++k) {
+            for (int i = 0; i + k < n; ++i) {
+                dp[i] = max(nums[i] - dp[i + 1], nums[i + k] - dp[i]);
+            }
+        }
+
+        return dp[0] >= 0;
+    }
+};
