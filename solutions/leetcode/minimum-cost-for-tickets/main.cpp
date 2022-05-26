@@ -1,7 +1,8 @@
 class Solution {
+    array<int, 3> tickets = {1, 7, 30};
+
    public:
     int mincostTickets(vector<int>& days, vector<int>& costs) {
-        array<int, 3> tickets = {1, 7, 30};
         vector<array<int, 3>> dp(366, {0, 0, 0});
 
         int d = 0;
@@ -12,10 +13,10 @@ class Solution {
             }
             ++d;
 
-            for (int t = 0; t < tickets.size(); ++t) {
-                int j = i - tickets[t];
+            for (int k = 0; k < tickets.size(); ++k) {
+                int j = i - tickets[k];
                 int v = j <= 0 ? 0 : *min_element(dp[j].begin(), dp[j].end());
-                dp[i][t] = v + costs[t];
+                dp[i][k] = v + costs[k];
             }
         }
 
