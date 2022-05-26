@@ -22,3 +22,32 @@ class Solution {
         return *min_element(dp.back().begin(), dp.back().end());
     }
 };
+
+class Solution {
+    array<int, 3> tickets = {1, 7, 30};
+
+   public:
+    int mincostTickets(vector<int>& days, vector<int>& costs) {
+        int n = days.size();
+
+        unordered_map<int, int> cache;
+        function<int(int)> calculate = [&](int i) -> int {
+            if (i < 0) return 0;
+            if (cache.count(i)) return cache[i];
+
+            int result = numeric_limits<int>::max();
+            for (int k = 0; k < tickets.size(); ++k) {
+                int t = tickets[k];
+                int c = costs[k];
+
+                int j = i - 1;
+                while (j >= 0 && days[i] - t < days[j]) --j;
+                result = min(result, calculate(j) + c);
+            }
+
+            return cache[i] = result;
+        };
+
+        return calculate(n - 1);
+    }
+};
