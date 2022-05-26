@@ -15,35 +15,34 @@ class Solution {
         };
 
         function<void(int, int)> unite = [&](int u, int v) -> void {
-            int pu = find(u);
-            int pv = find(v);
-            group[pu] = pv;
+            group[find(u)] = find(v);
         };
 
-        vector<int> result;
+        vector<int> result(positions.size());
         int count = 0;
-        for (const auto p : positions) {
-            if (mat[p[0]][p[1]]) {
-                result.push_back(count);
+        for (int k = 0; k < positions.size(); ++k) {
+            int i = positions[k][0];
+            int j = positions[k][1];
+
+            if (mat[i][j]) {
+                result[k] = count;
                 continue;
             }
+            mat[i][j] = true;
 
             unordered_set<int> g;
             for (auto [di, dj] : directions) {
-                int i = p[0] + di;
-                int j = p[1] + dj;
-                if (i < 0 || i >= m || j < 0 || j >= n) continue;
-                if (!mat[i][j]) continue;
-                g.insert(find(rc2idx(i, j)));
+                int ii = i + di, jj = j + dj;
+                if (ii < 0 || ii >= m || jj < 0 || jj >= n) continue;
+                if (!mat[ii][jj]) continue;
+                g.insert(find(rc2idx(ii, jj)));
             }
 
-            int u = rc2idx(p[0], p[1]);
+            int u = rc2idx(i, j);
             for (int v : g) unite(u, v);
 
-            mat[p[0]][p[1]] = true;
-
             count += 1 - g.size();
-            result.push_back(count);
+            result[k] = count;
         }
 
         return result;
