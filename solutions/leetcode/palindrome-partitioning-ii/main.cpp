@@ -25,3 +25,27 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    int minCut(string s) {
+        int n = s.size();
+
+        vector<int> dp(n, numeric_limits<int>::max());
+        function<void(int, int)> search = [&](int l, int r) -> void {
+            while (0 <= l && r < n && s[l] == s[r]) {
+                int cuts = 0;
+                if (l > 0) cuts = dp[l - 1] + 1;
+                dp[r] = min(dp[r], cuts);
+                --l, ++r;
+            }
+        };
+
+        for (int i = 0; i < n; ++i) {
+            search(i, i);
+            if (i > 0) search(i - 1, i);
+        }
+
+        return dp.back();
+    }
+};
