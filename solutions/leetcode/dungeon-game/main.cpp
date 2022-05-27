@@ -20,3 +20,23 @@ class Solution {
         return max(0, dp.front().front()) + 1;
     }
 };
+
+class Solution {
+   public:
+    int calculateMinimumHP(vector<vector<int>>& dungeon) {
+        int m = dungeon.size();
+        int n = dungeon.front().size();
+
+        vector<int> dp(n, numeric_limits<int>::max());
+        dp.back() = max(0, -dungeon.back().back());
+        for (int i = m - 1; ~i; --i) {
+            for (int j = n - 1; ~j; --j) {
+                if (i + 1 < m) dp[j] = max(0, dp[j] - dungeon[i][j]);
+                if (j + 1 < n)
+                    dp[j] = min(dp[j], max(0, dp[j + 1] - dungeon[i][j]));
+            }
+        }
+
+        return max(0, dp.front()) + 1;
+    }
+};
