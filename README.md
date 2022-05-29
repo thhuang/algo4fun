@@ -438,6 +438,7 @@ This is my personal repository, including notes and resources related to competi
 | 2280 | [Minimum Lines to Represent a Line Chart](https://leetcode.com/problems/minimum-lines-to-represent-a-line-chart/)                                                       | [C++](./solutions/leetcode/minimum-lines-to-represent-a-line-chart/main.cpp)                            | Medium     |
 | 2281 | [Sum of Total Strength of Wizards](https://leetcode.com/problems/sum-of-total-strength-of-wizards/)                                                                     | [C++](./solutions/leetcode/sum-of-total-strength-of-wizards/main.cpp)                                   | Hard       |
 | 2283 | [Check if Number Has Equal Digit Count and Digit Value](https://leetcode.com/problems/check-if-number-has-equal-digit-count-and-digit-value/)                           | [C++](./solutions/leetcode/check-if-number-has-equal-digit-count-and-digit-value/main.cpp)              | Easy       |
+| 2284 | [Sender With Largest Word Count](https://leetcode.com/problems/sender-with-largest-word-count/)                                                                         | [C++](./solutions/leetcode/sender-with-largest-word-count/main.cpp)                                     | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
