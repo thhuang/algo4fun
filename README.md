@@ -442,6 +442,7 @@ This is my personal repository, including notes and resources related to competi
 | 2285 | [Maximum Total Importance of Roads](https://leetcode.com/problems/maximum-total-importance-of-roads/)                                                                   | [C++](./solutions/leetcode/maximum-total-importance-of-roads/main.cpp)                                  | Medium     |
 | 2287 | [Rearrange Characters to Make Target String](https://leetcode.com/problems/rearrange-characters-to-make-target-string/)                                                 | [C++](./solutions/leetcode/rearrange-characters-to-make-target-string/main.cpp)                         | Easy       |
 | 2288 | [Apply Discount to Prices](https://leetcode.com/problems/apply-discount-to-prices/)                                                                                     | [C++](./solutions/leetcode/apply-discount-to-prices/main.cpp)                                           | Medium     |
+| 2290 | [Minimum Obstacle Removal to Reach Corner](https://leetcode.com/problems/minimum-obstacle-removal-to-reach-corner/)                                                     | [C++](./solutions/leetcode/minimum-obstacle-removal-to-reach-corner/main.cpp)                           | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
