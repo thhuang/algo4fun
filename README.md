@@ -440,6 +440,7 @@ This is my personal repository, including notes and resources related to competi
 | 2283 | [Check if Number Has Equal Digit Count and Digit Value](https://leetcode.com/problems/check-if-number-has-equal-digit-count-and-digit-value/)                           | [C++](./solutions/leetcode/check-if-number-has-equal-digit-count-and-digit-value/main.cpp)              | Easy       |
 | 2284 | [Sender With Largest Word Count](https://leetcode.com/problems/sender-with-largest-word-count/)                                                                         | [C++](./solutions/leetcode/sender-with-largest-word-count/main.cpp)                                     | Medium     |
 | 2285 | [Maximum Total Importance of Roads](https://leetcode.com/problems/maximum-total-importance-of-roads/)                                                                   | [C++](./solutions/leetcode/maximum-total-importance-of-roads/main.cpp)                                  | Medium     |
+| 2287 | [Rearrange Characters to Make Target String](https://leetcode.com/problems/rearrange-characters-to-make-target-string/)                                                 | [C++](./solutions/leetcode/rearrange-characters-to-make-target-string/main.cpp)                         | Easy       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
