@@ -43,3 +43,53 @@ class Solution {
         return {path[i]};
     }
 };
+
+class Solution {
+   public:
+    vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+        vector<vector<int>> adj(n);
+        for (const auto& e : edges) {
+            adj[e[0]].push_back(e[1]);
+            adj[e[1]].push_back(e[0]);
+        }
+
+        deque<array<int, 2>> q = {{0, -1}};
+        int a;
+        while (!q.empty()) {
+            auto [u, p] = q.front();
+            q.pop_front();
+
+            a = u;
+            for (int v : adj[u]) {
+                if (v == p) continue;
+                q.push_back({v, u});
+            }
+        }
+
+        q.push_back({a, -1});
+        vector<int> parent(n, -1);
+        int b;
+        while (!q.empty()) {
+            auto [u, p] = q.front();
+            q.pop_front();
+
+            parent[u] = p;
+            b = u;
+            for (int v : adj[u]) {
+                if (v == p) continue;
+                q.push_back({v, u});
+            }
+        }
+
+        vector<int> path;
+        while (a ^ b) {
+            path.push_back(b);
+            b = parent[b];
+        }
+        path.push_back(b);
+
+        int l2 = path.size() / 2;
+        if (path.size() & 1) return {path[l2]};
+        return {path[l2 - 1], path[l2]};
+    }
+};
