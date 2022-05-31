@@ -45,3 +45,29 @@ class Solution {
         return count;
     }
 };
+
+class Solution {
+   public:
+    int minKBitFlips(vector<int>& nums, int k) {
+        int n = nums.size();
+        int count = 0;
+        bool flipped = false;
+        for (int i = 0; i < n; ++i) {
+            if (i >= k) flipped ^= nums[i - k] > 1;
+
+            if (flipped != nums[i]) continue;
+            if (i + k > n) {
+                count = -1;
+                break;
+            }
+
+            nums[i] += 2;
+            flipped = !flipped;
+            ++count;
+        }
+
+        for (int& v : nums) v %= 2;
+
+        return count;
+    }
+};
