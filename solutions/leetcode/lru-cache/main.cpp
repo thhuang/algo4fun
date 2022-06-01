@@ -1,35 +1,35 @@
 class LRUCache {
-    list<array<int, 2>> kv;
-    unordered_map<int, list<array<int, 2>>::iterator> kp;
     int n;
+    list<pair<int, int>> order;                             // {key, value}
+    unordered_map<int, list<pair<int, int>>::iterator> mp;  // {key, iter}
 
    public:
     LRUCache(int capacity) : n(capacity) {}
 
     int get(int key) {
-        auto it = kp.find(key);
-        if (it == kp.end()) return -1;
+        auto it = mp.find(key);
+        if (it == mp.end()) return -1;
 
-        int value = it->second->at(1);
-        kv.erase(it->second);
+        int value = it->second->second;
+        order.erase(it->second);
 
-        kv.push_front({key, value});
-        kp[key] = kv.begin();
+        order.push_front({key, value});
+        mp[key] = order.begin();
 
         return value;
     }
 
     void put(int key, int value) {
-        auto it = kp.find(key);
-        if (it != kp.end()) kv.erase(it->second);
+        auto it = mp.find(key);
+        if (it != mp.end()) order.erase(it->second);
 
-        kv.push_front({key, value});
-        kp[key] = kv.begin();
+        order.push_front({key, value});
+        mp[key] = order.begin();
 
-        if (kv.size() > n) {
-            kp.erase(kv.back()[0]);
-            kv.pop_back();
-        }
+        if (order.size() <= n) return;
+
+        mp.erase(order.back().first);
+        order.pop_back();
     }
 };
 
