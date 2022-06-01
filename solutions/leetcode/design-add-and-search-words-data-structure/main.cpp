@@ -43,6 +43,51 @@ class WordDictionary {
     }
 };
 
+class WordDictionary {
+    struct Node {
+        Node() : is_end(false), children(array<Node*, 26>()) {}
+
+        bool is_end;
+        array<Node*, 26> children;
+    };
+
+    int idx(char c) { return c - 'a'; }
+
+    bool check(string& word, int i, Node* p) {
+        for (; i < word.size(); ++i) {
+            if (word[i] == '.') {
+                for (auto n : p->children) {
+                    if (!n) continue;
+                    if (check(word, i + 1, n)) return true;
+                }
+                return false;
+            }
+
+            int k = idx(word[i]);
+            if (!p->children[k]) return false;
+            p = p->children[k];
+        }
+        return p->is_end;
+    };
+
+    Node* root;
+
+   public:
+    WordDictionary() : root(new Node()) {}
+
+    void addWord(string word) {
+        auto p = root;
+        for (char c : word) {
+            int k = idx(c);
+            if (!p->children[k]) p->children[k] = new Node();
+            p = p->children[k];
+        }
+        p->is_end = true;
+    }
+
+    bool search(string word) { return check(word, 0, root); }
+};
+
 /**
  * Your WordDictionary object will be instantiated and called as such:
  * WordDictionary* obj = new WordDictionary();
