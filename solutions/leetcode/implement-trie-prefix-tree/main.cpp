@@ -1,7 +1,6 @@
 class Trie {
     struct Node {
-        char c;
-        bool is_end;
+        bool is_end = false;
         unordered_map<char, Node*> children;
     };
 
@@ -13,10 +12,9 @@ class Trie {
     void insert(string word) {
         auto p = root;
         for (char c : word) {
-            if (p->children.count(c) == 0) {
-                p->children[c] = new Node{c, false, {}};
-            }
-            p = p->children[c];
+            auto q = p->children[c];
+            if (!q) q = p->children[c] = new Node;
+            p = q;
         }
         p->is_end = true;
     }
@@ -40,6 +38,47 @@ class Trie {
         }
         return true;
     }
+};
+
+class Trie {
+    struct Node {
+        Node() : is_end(false), children(array<Node*, 26>()) {}
+
+        bool is_end;
+        array<Node*, 26> children;
+    };
+
+    Node* root;
+
+    Node* searchWord(const string& word) {
+        auto u = root;
+        for (char c : word) {
+            auto v = u->children[c - 'a'];
+            if (!v) return nullptr;
+            u = v;
+        }
+        return u;
+    }
+
+   public:
+    Trie() : root(new Node()) {}
+
+    void insert(string word) {
+        auto u = root;
+        for (char c : word) {
+            int k = c - 'a';
+            if (!u->children[k]) u->children[k] = new Node();
+            u = u->children[k];
+        }
+        u->is_end = true;
+    }
+
+    bool search(string word) {
+        auto u = searchWord(word);
+        return u && u->is_end;
+    }
+
+    bool startsWith(string prefix) { return searchWord(prefix); }
 };
 
 /**
