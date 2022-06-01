@@ -1,7 +1,6 @@
 class WordDictionary {
     struct Node {
-        char c;
-        bool is_end;
+        bool is_end = false;
         unordered_map<char, Node*> children;
     };
 
@@ -14,7 +13,7 @@ class WordDictionary {
         auto p = root;
         for (char c : word) {
             if (p->children.count(c) == 0) {
-                p->children[c] = new Node{c, false, {}};
+                p->children[c] = new Node;
             }
             p = p->children[c];
         }
