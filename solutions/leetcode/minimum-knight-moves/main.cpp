@@ -32,3 +32,22 @@ class Solution {
         return -1;
     }
 };
+
+class Solution {
+   public:
+    int minKnightMoves(int x, int y) {
+        unordered_map<int, unordered_map<int, int>> cache;
+
+        function<int(int, int)> dfs = [&cache, &dfs](int x, int y) -> int {
+            if (cache[x].count(y)) return cache[x][y];
+
+            if (x + y == 0) return cache[x][y] = 0;
+            if (x + y == 2) return cache[x][y] = 2;
+
+            return cache[x][y] = 1 + min(dfs(abs(x - 2), abs(y - 1)),
+                                         dfs(abs(x - 1), abs(y - 2)));
+        };
+
+        return dfs(abs(x), abs(y));
+    }
+};
