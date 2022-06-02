@@ -1,7 +1,7 @@
 class Solution {
    public:
     int findTheWinner(int n, int k) {
-        deque<int> friends(n);
+        vector<int> friends(n);
         iota(friends.begin(), friends.end(), 1);
 
         auto next = [&](int i) -> int {
