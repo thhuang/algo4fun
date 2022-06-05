@@ -477,6 +477,7 @@ This is my personal repository, including notes and resources related to competi
 | 2288 | [Apply Discount to Prices](https://leetcode.com/problems/apply-discount-to-prices/)                                                                                     | [C++](./solutions/leetcode/apply-discount-to-prices/main.cpp)                                           | Medium     |
 | 2289 | [Steps to Make Array Non-decreasing](https://leetcode.com/problems/steps-to-make-array-non-decreasing/)                                                                 | [C++](./solutions/leetcode/steps-to-make-array-non-decreasing/main.cpp)                                 | Medium     |
 | 2290 | [Minimum Obstacle Removal to Reach Corner](https://leetcode.com/problems/minimum-obstacle-removal-to-reach-corner/)                                                     | [C++](./solutions/leetcode/minimum-obstacle-removal-to-reach-corner/main.cpp)                           | Hard       |
+| 2293 | [Min Max Game](https://leetcode.com/problems/min-max-game/)                                                                                                             | [C++](./solutions/leetcode/min-max-game/main.cpp)                                                       | Easy       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
