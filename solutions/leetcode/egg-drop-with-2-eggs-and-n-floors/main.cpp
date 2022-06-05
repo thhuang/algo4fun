@@ -31,3 +31,16 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    int twoEggDrop(int n) {
+        int checks = 0;
+        int count = 0;
+        while (checks < n) {
+            ++count;
+            checks = checks + count;
+        }
+        return count;
+    }
+};
