@@ -480,6 +480,7 @@ This is my personal repository, including notes and resources related to competi
 | 2293 | [Min Max Game](https://leetcode.com/problems/min-max-game/)                                                                                                             | [C++](./solutions/leetcode/min-max-game/main.cpp)                                                       | Easy       |
 | 2294 | [Partition Array Such That Maximum Difference Is K](https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/)                                   | [C++](./solutions/leetcode/partition-array-such-that-maximum-difference-is-k/main.cpp)                  | Medium     |
 | 2295 | [Replace Elements in an Array](https://leetcode.com/problems/replace-elements-in-an-array/)                                                                             | [C++](./solutions/leetcode/replace-elements-in-an-array/main.cpp)                                       | Hard       |
+| 2296 | [Design a Text Editor](https://leetcode.com/problems/design-a-text-editor/)                                                                                             | [C++](./solutions/leetcode/design-a-text-editor/main.cpp)                                               | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
