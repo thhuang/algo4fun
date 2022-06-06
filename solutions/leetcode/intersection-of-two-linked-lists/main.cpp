@@ -7,40 +7,36 @@
  * };
  */
 class Solution {
-   public:
-    int getNumNodes(ListNode* head) {
-        ListNode dummy;
-        auto p = &dummy;
-        p->next = head;
-
+    int length(ListNode *p) {
+        if (!p) return 0;
         int count = 0;
-        while (p->next) p = p->next, ++count;
+        while (p) p = p->next, ++count;
         return count;
     }
 
-    ListNode* getNthNode(ListNode* head, int n) {
-        auto p = head;
-        while (n--) p = p->next;
+    ListNode *moveForward(ListNode *p, int steps) {
+        for (int i = 0; i < steps; ++i) p = p->next;
         return p;
     }
 
-    ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
-        int n0 = getNumNodes(headA);
-        int n1 = getNumNodes(headB);
+    ListNode *findIntersection(ListNode *pa, ListNode *pb) {
+        while (pa && pb && pa != pb) pa = pa->next, pb = pb->next;
+        return pa;
+    }
 
-        auto p0 = headA;
-        auto p1 = headB;
-        if (n0 > n1) {
-            p0 = getNthNode(headA, n0 - n1);
-        } else {  // n0 <= n1
-            p1 = getNthNode(headB, n1 - n0);
+   public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        int la = length(headA), lb = length(headB);
+
+        if (la == -1 || lb == -1) return nullptr;
+
+        ListNode *pa = headA, *pb = headB;
+        if (la > lb) {
+            pa = moveForward(pa, la - lb);
+        } else {  // la <= lb
+            pb = moveForward(pb, lb - la);
         }
 
-        while (p0 && p1) {
-            if (p0 == p1) return p0;
-            p0 = p0->next;
-            p1 = p1->next;
-        }
-        return nullptr;
+        return findIntersection(pa, pb);
     }
 };
