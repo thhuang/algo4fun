@@ -28,8 +28,6 @@ class Solution {
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         int la = length(headA), lb = length(headB);
 
-        if (la == -1 || lb == -1) return nullptr;
-
         ListNode *pa = headA, *pb = headB;
         if (la > lb) {
             pa = moveForward(pa, la - lb);
