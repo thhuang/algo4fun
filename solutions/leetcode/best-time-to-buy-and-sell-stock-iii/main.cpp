@@ -5,7 +5,7 @@ class Solution {
             int bought1, sold1, bought2, sold2;
         };
 
-        DP dp = {numeric_limits<int>::min(), 0, numeric_limits<int>::min(), 0};
+        DP dp{numeric_limits<int>::min(), 0, numeric_limits<int>::min(), 0};
 
         for (int v : prices) {
             dp = {max(dp.bought1, -v), max(dp.sold1, dp.bought1 + v),
