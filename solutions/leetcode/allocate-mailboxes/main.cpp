@@ -32,3 +32,34 @@ class Solution {
         return dfs(0, k);
     }
 };
+
+class Solution {
+   public:
+    int minDistance(vector<int>& houses, int k) {
+        sort(houses.begin(), houses.end());
+
+        int n = houses.size();
+
+        vector<vector<int>> dist(n, vector<int>(n));
+        for (int l = 0; l < n; ++l) {
+            for (int r = l; r < n; ++r) {
+                int t = houses[l + (r - l) / 2];
+                int v = 0;
+                for (int i = l, j = r; i < j; ++i, --j)
+                    v += houses[j] - houses[i];
+                dist[l][r] = v;
+            }
+        }
+
+        vector<int> dp = dist[0];
+        for (int ki = 2; ki <= k; ++ki) {
+            for (int hi = n - 1; ~hi; --hi) {
+                for (int i = 0; i < hi; ++i) {
+                    dp[hi] = min(dp[hi], dp[i] + dist[i + 1][hi]);
+                }
+            }
+        }
+
+        return dp.back();
+    }
+};
