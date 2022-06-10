@@ -19,3 +19,21 @@ class Solution {
         return count;
     }
 };
+
+class Solution {
+   public:
+    int findMinArrowShots(vector<vector<int>>& points) {
+        sort(points.begin(), points.end());
+        int count = 1;
+        int last_arrow = points[0][1];
+        for (const auto& p : points) {
+            if (last_arrow < p[0]) {
+                ++count;
+                last_arrow = p[1];
+            } else {
+                last_arrow = min(last_arrow, p[1]);
+            }
+        }
+        return count;
+    }
+};
