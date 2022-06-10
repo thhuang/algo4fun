@@ -13,3 +13,18 @@ class Solution {
         return ans;
     }
 };
+
+class Solution {
+   public:
+    int lengthOfLongestSubstring(string s) {
+        int result = 0;
+        unordered_map<char, int> last_pos;  // 1-indexed
+        for (int l = 0, r = 0; r < s.size(); ++r) {
+            char c = s[r];
+            l = max(l, last_pos[c]);
+            result = max(result, r - l + 1);
+            last_pos[c] = r + 1;
+        }
+        return result;
+    }
+};
