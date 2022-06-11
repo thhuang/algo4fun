@@ -497,6 +497,7 @@ This is my personal repository, including notes and resources related to competi
 | 2299 | [Strong Password Checker II](https://leetcode.com/problems/strong-password-checker-ii/)                                                                                 | [C++](./solutions/leetcode/strong-password-checker-ii/main.cpp)                                         | Easy       |
 | 2300 | [Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/)                                                         | [C++](./solutions/leetcode/successful-pairs-of-spells-and-potions/main.cpp)                             | Medium     |
 | 2301 | [Match Substring After Replacement](https://leetcode.com/problems/match-substring-after-replacement/)                                                                   | [C++](./solutions/leetcode/match-substring-after-replacement/main.cpp)                                  | Hard       |
+| 2302 | [Count Subarrays With Score Less Than K](https://leetcode.com/problems/count-subarrays-with-score-less-than-k/)                                                         | [C++](./solutions/leetcode/count-subarrays-with-score-less-than-k/main.cpp)                             | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
