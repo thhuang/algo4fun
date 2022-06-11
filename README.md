@@ -495,6 +495,7 @@ This is my personal repository, including notes and resources related to competi
 | 2295 | [Replace Elements in an Array](https://leetcode.com/problems/replace-elements-in-an-array/)                                                                             | [C++](./solutions/leetcode/replace-elements-in-an-array/main.cpp)                                       | Hard       |
 | 2296 | [Design a Text Editor](https://leetcode.com/problems/design-a-text-editor/)                                                                                             | [C++](./solutions/leetcode/design-a-text-editor/main.cpp)                                               | Hard       |
 | 2299 | [Strong Password Checker II](https://leetcode.com/problems/strong-password-checker-ii/)                                                                                 | [C++](./solutions/leetcode/strong-password-checker-ii/main.cpp)                                         | Easy       |
+| 2300 | [Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/)                                                         | [C++](./solutions/leetcode/successful-pairs-of-spells-and-potions/main.cpp)                             | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
