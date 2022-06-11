@@ -25,3 +25,23 @@ class Solution {
         return result > n ? -1 : result;
     }
 };
+
+class Solution {
+   public:
+    int minOperations(vector<int>& nums, int x) {
+        int n = nums.size();
+
+        int sum = 0;
+        for (int v : nums) sum += v;
+
+        int target = sum - x;
+        int result = numeric_limits<int>::max();
+        for (int l = 0, r = 0, s = 0; r < n; ++r) {
+            s += nums[r];
+            while (l <= r && s > target) s -= nums[l++];
+            if (s == target) result = min(result, n - (r - l + 1));
+        }
+
+        return result > n ? -1 : result;
+    }
+};
