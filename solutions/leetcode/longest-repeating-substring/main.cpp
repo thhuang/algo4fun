@@ -43,20 +43,16 @@ class Solution {
             long h = 0;
             long b = 1;
             for (int i = 0; i < length - 1; ++i) {
-                long v = s[i] - 'a';
-
                 h = h * base % mod;
-                h = (h + v) % mod;
+                h = (h + s[i] - 'a') % mod;
 
                 b = b * base % mod;
             }
 
             unordered_set<int> seen;
             for (int i = length - 1; i < s.size(); ++i) {
-                long v = s[i] - 'a';
-
                 h = h * base % mod;
-                h = (h + v) % mod;
+                h = (h + s[i] - 'a') % mod;
 
                 if (seen.count(h)) return true;
                 seen.insert(h);
