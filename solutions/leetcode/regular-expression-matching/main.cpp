@@ -46,3 +46,36 @@ class Solution {
    public:
     bool isMatch(string s, string p) { return isRegexMatch(s, p); }
 };
+
+class Solution {
+   public:
+    bool isMatch(string s, string p) {
+        while (s.size() && p.size()) {
+            if (s.back() == p.back() || p.back() == '.') {
+                s.pop_back();
+                p.pop_back();
+                continue;
+            }
+
+            if (p.back() != '*') return false;
+            p.pop_back();
+
+            char t = p.back();
+            p.pop_back();
+
+            while (true) {
+                if (isMatch(s, p)) return true;
+                if (s.empty() || (s.back() != t && t != '.')) break;
+                s.pop_back();
+            }
+            break;
+        }
+
+        if (s.size()) return false;
+        while (p.size() && p.back() == '*') {
+            p.pop_back();
+            p.pop_back();
+        }
+        return p.empty();
+    }
+};
