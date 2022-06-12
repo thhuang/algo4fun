@@ -501,6 +501,7 @@ This is my personal repository, including notes and resources related to competi
 | 2303 | [Calculate Amount Paid in Taxes](https://leetcode.com/problems/calculate-amount-paid-in-taxes/)                                                                         | [C++](./solutions/leetcode/calculate-amount-paid-in-taxes/main.cpp)                                     | Easy       |
 | 2304 | [Minimum Path Cost in a Grid](https://leetcode.com/problems/minimum-path-cost-in-a-grid/)                                                                               | [C++](./solutions/leetcode/minimum-path-cost-in-a-grid/main.cpp)                                        | Medium     |
 | 2305 | [Fair Distribution of Cookies](https://leetcode.com/problems/fair-distribution-of-cookies/)                                                                             | [C++](./solutions/leetcode/fair-distribution-of-cookies/main.cpp)                                       | Medium     |
+| 2306 | [Naming a Company](https://leetcode.com/problems/naming-a-company/)                                                                                                     | [C++](./solutions/leetcode/naming-a-company/main.cpp)                                                   | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
