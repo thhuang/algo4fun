@@ -53,10 +53,8 @@ class Solution {
             for (int j = 0; j < n2; ++j) {
                 if (str1[i] == str2[j]) {
                     dp[i + 1][j + 1] = dp[i][j] + 1;
-                } else if (dp[i][j + 1] > dp[i + 1][j]) {
-                    dp[i + 1][j + 1] = dp[i][j + 1];
                 } else {
-                    dp[i + 1][j + 1] = dp[i + 1][j];
+                    dp[i + 1][j + 1] = max(dp[i + 1][j], dp[i][j + 1]);
                 }
             }
         }
