@@ -50,14 +50,17 @@ class Solution {
             dp = move(new_dp);
         }
 
-        string result;
+        int start = 0;
+        int length = 0;
         for (int r = 0; r < n1; ++r) {
             int l = dp[r + 1];
             if (l == -1) continue;
-            if (result.empty() || r - l + 1 < result.size())
-                result = s1.substr(l, r - l + 1);
+            if (length == 0 || r - l + 1 < length) {
+                start = l;
+                length = r - l + 1;
+            }
         }
 
-        return result;
+        return s1.substr(start, length);
     }
 };
