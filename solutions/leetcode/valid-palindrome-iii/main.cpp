@@ -37,3 +37,22 @@ class Solution {
         return dp.back() + k >= n;
     }
 };
+
+class Solution {
+   public:
+    bool isValidPalindrome(string s, int k) {
+        int n = s.size();
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+        for (int d = 2; d <= n; ++d) {
+            for (int l = 0; l + d - 1 < n; ++l) {
+                int r = l + d - 1;
+                if (s[l] == s[r]) {
+                    dp[l][r] = dp[l + 1][r - 1];
+                } else {
+                    dp[l][r] = 1 + min(dp[l][r - 1], dp[l + 1][r]);
+                }
+            }
+        }
+        return dp[0][n - 1] <= k;
+    }
+};
