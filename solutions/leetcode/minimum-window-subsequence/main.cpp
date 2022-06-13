@@ -64,3 +64,41 @@ class Solution {
         return s1.substr(start, length);
     }
 };
+
+class Solution {
+   public:
+    string minWindow(string s1, string s2) {
+        int n1 = s1.size();
+        int n2 = s2.size();
+
+        vector<int> dp(n1 + 1, -1);
+        for (int i = 0; i < n1; ++i) {
+            dp[i + 1] = s1[i] == s2[0] ? i : dp[i];
+        }
+
+        for (int j = 1; j < n2; ++j) {
+            vector<int> new_dp(n1 + 1, -1);
+            for (int i = 0; i < n1; ++i) {
+                if (s1[i] == s2[j]) {
+                    new_dp[i + 1] = dp[i];
+                } else {
+                    new_dp[i + 1] = new_dp[i];
+                }
+            }
+            dp = move(new_dp);
+        }
+
+        int start = 0;
+        int length = 0;
+        for (int r = 0; r < n1; ++r) {
+            int l = dp[r + 1];
+            if (l == -1) continue;
+            if (length == 0 || r - l + 1 < length) {
+                start = l;
+                length = r - l + 1;
+            }
+        }
+
+        return s1.substr(start, length);
+    }
+};
