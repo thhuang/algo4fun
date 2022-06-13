@@ -41,3 +41,46 @@ class Solution {
         return {++result.rbegin(), result.rend()};
     }
 };
+
+class Solution {
+   public:
+    string shortestCommonSupersequence(string str1, string str2) {
+        int n1 = str1.size();
+        int n2 = str2.size();
+
+        vector<vector<int>> dp(n1 + 1, vector<int>(n2 + 1, 0));
+        for (int i = 0; i < n1; ++i) {
+            for (int j = 0; j < n2; ++j) {
+                if (str1[i] == str2[j]) {
+                    dp[i + 1][j + 1] = dp[i][j] + 1;
+                } else if (dp[i][j + 1] > dp[i + 1][j]) {
+                    dp[i + 1][j + 1] = dp[i][j + 1];
+                } else {
+                    dp[i + 1][j + 1] = dp[i + 1][j];
+                }
+            }
+        }
+
+        string result;
+        for (int i = n1, j = n2; i > 0 || j > 0;) {
+            if (i == 0) {
+                result += str2[j - 1];
+                --j;
+            } else if (j == 0) {
+                result += str1[i - 1];
+                --i;
+            } else if (str1[i - 1] == str2[j - 1]) {
+                result += str1[i - 1];
+                --i, --j;
+            } else if (dp[i][j] == dp[i - 1][j]) {
+                result += str1[i - 1];
+                --i;
+            } else {  // dp[i][j] == dp[i][j - 1]
+                result += str2[j - 1];
+                --j;
+            }
+        }
+
+        return {result.rbegin(), result.rend()};
+    }
+};
