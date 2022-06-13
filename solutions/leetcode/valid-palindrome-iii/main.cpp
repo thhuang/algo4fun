@@ -56,3 +56,25 @@ class Solution {
         return dp[0][n - 1] <= k;
     }
 };
+
+class Solution {
+   public:
+    bool isValidPalindrome(string s, int k) {
+        int n = s.size();
+        vector<int> dp1(n, 0), dp2(n, 0);
+        for (int d = 2; d <= n; ++d) {
+            vector<int> dp0(n, 0);
+            for (int l = 0; l + d - 1 < n; ++l) {
+                int r = l + d - 1;
+                if (s[l] == s[r]) {
+                    dp0[l] = dp2[l + 1];
+                } else {
+                    dp0[l] = 1 + min(dp1[l], dp1[l + 1]);
+                }
+            }
+            dp2 = move(dp1);
+            dp1 = move(dp0);
+        }
+        return dp1.front() <= k;
+    }
+};
