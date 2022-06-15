@@ -41,10 +41,9 @@ class Solution {
         string r(s.rbegin(), s.rend());
 
         string sr = s + ":" + r;
-        int n = sr.size();
-        vector<int> prefix(n, 0);
+        vector<int> prefix(sr.size(), 0);
 
-        for (int i = 1; i < n; ++i) {
+        for (int i = 1; i < sr.size(); ++i) {
             int d = prefix[i - 1];
             while (d > 0 && sr[i] != sr[d]) d = prefix[d - 1];
             if (sr[i] == sr[d]) ++d;
