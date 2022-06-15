@@ -36,3 +36,33 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int longestStrChain(vector<string>& words) {
+        unordered_set<string> valid(words.begin(), words.end());
+
+        unordered_map<string, int> vis;
+        function<int(string)> dfs = [&](string s) -> int {
+            if (auto it = vis.find(s); it != vis.end()) return it->second;
+            if (valid.count(s) == 0) return -1;
+
+            int chain = 0;
+            for (int i = 0; i < s.size(); ++i) {
+                chain = max(chain, dfs(s.substr(0, i) + s.substr(i + 1)));
+            }
+
+            ++chain;
+            vis[s] = chain;
+            return chain;
+        };
+
+        int result = 0;
+        for (const string& s : words) {
+            if (vis.count(s)) continue;
+            result = max(result, dfs(s));
+        }
+
+        return result;
+    }
+};
