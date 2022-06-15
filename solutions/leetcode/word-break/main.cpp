@@ -33,8 +33,7 @@ class Solution {
         dp[0] = true;
         for (int r = 1; r <= s.size(); ++r) {
             for (int l = 0; l < r; ++l) {
-                if (!dp[l]) continue;
-                if (valid.count(s.substr(l, r - l))) {
+                if (dp[l] && valid.count(s.substr(l, r - l))) {
                     dp[r] = true;
                     break;
                 }
