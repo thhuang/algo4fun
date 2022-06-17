@@ -11,28 +11,29 @@
  * };
  */
 class Solution {
-    enum State { require, covered, camera };
+    enum Status { NotCovered, Covered, WithCamera };
 
    public:
     int minCameraCover(TreeNode* root) {
-        int result = 0;
+        int count = 0;
 
-        function<State(TreeNode*)> dfs = [&](TreeNode* u) -> State {
-            if (!u) return covered;
-            auto l = dfs(u->left);
-            auto r = dfs(u->right);
+        function<Status(TreeNode*)> traverse = [&](TreeNode* u) -> Status {
+            if (u == nullptr) return Covered;
 
-            if (l == require || r == require) {
-                ++result;
-                return camera;
+            auto l = traverse(u->left);
+            auto r = traverse(u->right);
+
+            if (l == NotCovered || r == NotCovered) {
+                ++count;
+                return WithCamera;
             }
-
-            if (l == camera || r == camera) return covered;
-            return require;
+            if (l == WithCamera || r == WithCamera) {
+                return Covered;
+            }
+            return NotCovered;
         };
 
-        if (dfs(root) == require) ++result;
-
-        return result;
+        if (traverse(root) == NotCovered) ++count;
+        return count;
     }
 };
