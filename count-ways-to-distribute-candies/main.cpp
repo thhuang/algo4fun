@@ -16,3 +16,22 @@ class Solution {
         return dp[n][k];
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+    
+   public:
+    int waysToDistribute(int n, int k) {
+        vector<int> dp(k + 1, 0);
+        for (int i = 1; i <= n; ++i) {
+             for (int j = min(i, k); j > 0; --j) {
+                 if (i == j) {
+                     dp[j] = 1;
+                 } else {
+                     dp[j] = ((long long)j * dp[j] % mod + dp[j - 1]) % mod;
+                 }
+             }
+        }
+        return dp[k];
+    }
+};
