@@ -33,3 +33,28 @@ class Solution {
         return count;
     }
 };
+
+class Solution {
+   public:
+    int wordsTyping(vector<string>& sentence, int rows, int cols) {
+        int n = sentence.size();
+        vector<int> cache(n, -1);
+        int count = 0;
+        for (int i = 0; i < rows; ++i) {
+            int start = count % n;
+            if (cache[start] != -1) {
+                count += cache[start];
+                continue;
+            }
+
+            int k = cols;
+            int v = 0;
+            for (int j = start; k >= (int)sentence[j].size(); j = (j + 1) % n) {
+                k -= sentence[j].size() + 1;
+                ++v;
+            }
+            count += cache[start] = v;
+        }
+        return count / n;
+    }
+};
