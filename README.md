@@ -522,6 +522,7 @@ This is my personal repository, including notes and resources related to competi
 | 2309 | [Greatest English Letter in Upper and Lower Case](https://leetcode.com/problems/greatest-english-letter-in-upper-and-lower-case/)                                       | [C++](./solutions/leetcode/greatest-english-letter-in-upper-and-lower-case/main.cpp)                    | Easy       |
 | 2310 | [Sum of Numbers With Units Digit K](https://leetcode.com/problems/sum-of-numbers-with-units-digit-k/)                                                                   | [C++](./solutions/leetcode/sum-of-numbers-with-units-digit-k/main.cpp)                                  | Medium     |
 | 2311 | [Longest Binary Subsequence Less Than or Equal to K](https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k/)                                 | [C++](./solutions/leetcode/longest-binary-subsequence-less-than-or-equal-to-k/main.cpp)                 | Medium     |
+| 2312 | [Selling Pieces of Wood](https://leetcode.com/problems/selling-pieces-of-wood/)                                                                                         | [C++](./solutions/leetcode/selling-pieces-of-wood/main.cpp)                                             | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
