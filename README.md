@@ -519,6 +519,7 @@ This is my personal repository, including notes and resources related to competi
 | 2304 | [Minimum Path Cost in a Grid](https://leetcode.com/problems/minimum-path-cost-in-a-grid/)                                                                               | [C++](./solutions/leetcode/minimum-path-cost-in-a-grid/main.cpp)                                        | Medium     |
 | 2305 | [Fair Distribution of Cookies](https://leetcode.com/problems/fair-distribution-of-cookies/)                                                                             | [C++](./solutions/leetcode/fair-distribution-of-cookies/main.cpp)                                       | Medium     |
 | 2306 | [Naming a Company](https://leetcode.com/problems/naming-a-company/)                                                                                                     | [C++](./solutions/leetcode/naming-a-company/main.cpp)                                                   | Hard       |
+| 2309 | [Greatest English Letter in Upper and Lower Case](https://leetcode.com/problems/greatest-english-letter-in-upper-and-lower-case/)                                       | [C++](./solutions/leetcode/greatest-english-letter-in-upper-and-lower-case/main.cpp)                    | Easy       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
