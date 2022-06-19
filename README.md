@@ -521,6 +521,7 @@ This is my personal repository, including notes and resources related to competi
 | 2306 | [Naming a Company](https://leetcode.com/problems/naming-a-company/)                                                                                                     | [C++](./solutions/leetcode/naming-a-company/main.cpp)                                                   | Hard       |
 | 2309 | [Greatest English Letter in Upper and Lower Case](https://leetcode.com/problems/greatest-english-letter-in-upper-and-lower-case/)                                       | [C++](./solutions/leetcode/greatest-english-letter-in-upper-and-lower-case/main.cpp)                    | Easy       |
 | 2310 | [Sum of Numbers With Units Digit K](https://leetcode.com/problems/sum-of-numbers-with-units-digit-k/)                                                                   | [C++](./solutions/leetcode/sum-of-numbers-with-units-digit-k/main.cpp)                                  | Medium     |
+| 2311 | [Longest Binary Subsequence Less Than or Equal to K](https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k/)                                 | [C++](./solutions/leetcode/longest-binary-subsequence-less-than-or-equal-to-k/main.cpp)                 | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
