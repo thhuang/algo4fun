@@ -37,3 +37,42 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+
+        int n = candidates.size();
+
+        vector<vector<int>> result;
+        vector<int> curr;
+        int sum = 0;
+        function<void(int)> dfs = [&](int i) -> void {
+            if (sum > target) return;
+            if (i == candidates.size()) {
+                if (sum == target) result.push_back(curr);
+                return;
+            }
+
+            int v = candidates[i];
+            int d = 1;
+            while (i + d < n && candidates[i + d] == v) ++d;
+
+            dfs(i + d);
+            for (int j = 0; j < d; ++j) {
+                curr.push_back(v);
+                sum += v;
+                dfs(i + d);
+            }
+            for (int j = 0; j < d; ++j) {
+                sum -= v;
+                curr.pop_back();
+            }
+        };
+
+        dfs(0);
+
+        return result;
+    }
+};
