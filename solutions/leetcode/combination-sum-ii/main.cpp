@@ -47,11 +47,10 @@ class Solution {
 
         vector<vector<int>> result;
         vector<int> curr;
-        int sum = 0;
         function<void(int)> dfs = [&](int i) -> void {
-            if (sum > target) return;
+            if (target < 0) return;
             if (i == candidates.size()) {
-                if (sum == target) result.push_back(curr);
+                if (target == 0) result.push_back(curr);
                 return;
             }
 
@@ -62,11 +61,11 @@ class Solution {
             dfs(i + d);
             for (int j = 0; j < d; ++j) {
                 curr.push_back(v);
-                sum += v;
+                target -= v;
                 dfs(i + d);
             }
             for (int j = 0; j < d; ++j) {
-                sum -= v;
+                target += v;
                 curr.pop_back();
             }
         };
