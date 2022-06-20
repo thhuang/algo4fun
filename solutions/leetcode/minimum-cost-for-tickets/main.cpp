@@ -52,3 +52,25 @@ class Solution {
         return calculate(n - 1);
     }
 };
+
+class Solution {
+    const vector<int> durations = {1, 7, 30};
+
+   public:
+    int mincostTickets(vector<int>& days, vector<int>& costs) {
+        int n = days.size();
+
+        vector<int> dp(n + 1, numeric_limits<int>::max());
+        dp.back() = 0;
+        for (int i = n - 1; ~i; --i) {
+            for (int j = 0; j < costs.size(); ++j) {
+                int c = dp[i + 1] + costs[j];
+                for (int k = i; ~k && days[i] - days[k] < durations[j]; --k) {
+                    dp[k] = min(dp[k], c);
+                }
+            }
+        }
+
+        return dp.front();
+    }
+};
