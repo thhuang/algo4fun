@@ -76,3 +76,19 @@ class Solution {
         return dp[0] >= 0;
     }
 };
+
+class Solution {
+   public:
+    bool PredictTheWinner(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> dp = nums;
+
+        for (int d = 2; d <= n; ++d) {
+            for (int r = n - 1, l = r - d + 1; l >= 0; --r, --l) {
+                dp[r] = max(nums[l] - dp[r], nums[r] - dp[r - 1]);
+            }
+        }
+
+        return dp.back() >= 0;
+    }
+};
