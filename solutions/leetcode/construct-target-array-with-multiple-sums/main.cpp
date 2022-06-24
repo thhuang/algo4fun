@@ -30,3 +30,33 @@ class Solution {
         return sum == target.size();
     }
 };
+
+class Solution {
+   public:
+    bool isPossible(vector<int>& target) {
+        if (target.size() == 1) return target[0] == 1;
+
+        priority_queue<int> pq;
+        long long sum = 0;
+        for (int v : target) {
+            sum += v;
+            pq.push(v);
+        }
+
+        while (sum > target.size()) {
+            int v = pq.top();
+            pq.pop();
+
+            long long rest = sum - v;
+            if (rest <= 0 || v <= rest) return false;
+
+            v %= rest;
+            if (v == 0) return rest == 1;
+
+            pq.push(v);
+            sum = v + rest;
+        }
+
+        return true;
+    }
+};
