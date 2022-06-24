@@ -34,3 +34,37 @@ class Solution {
         return search(0, 0, 0);
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+
+   public:
+    int numberWays(vector<vector<int>>& hats) {
+        int m = 40;
+        int n = hats.size();
+
+        vector<vector<int>> preference(m + 1);
+        for (int i = 0; i < n; ++i) {
+            for (int h : hats[i]) {
+                preference[h].push_back(i);
+            }
+        }
+
+        vector<vector<int>> dp(m + 1, vector<int>(1 << n, 0));
+        dp[0][0] = 1;
+
+        for (int i = 1; i <= m; ++i) {
+            dp[i] = dp[i - 1];
+            for (int j = 0; j < (1 << n); ++j) {
+                for (int k : preference[i]) {
+                    int mask = 1 << k;
+                    if ((j & mask) == 0) continue;
+                    dp[i][j] =
+                        ((long long)dp[i][j] + dp[i - 1][j ^ mask]) % mod;
+                }
+            }
+        }
+
+        return dp.back().back();
+    }
+};
