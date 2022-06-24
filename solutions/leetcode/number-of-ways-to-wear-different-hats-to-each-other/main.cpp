@@ -68,3 +68,37 @@ class Solution {
         return dp.back().back();
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+
+   public:
+    int numberWays(vector<vector<int>>& hats) {
+        int m = 40;
+        int n = hats.size();
+
+        vector<vector<int>> preference(m + 1);
+        for (int i = 0; i < n; ++i) {
+            for (int h : hats[i]) {
+                preference[h].push_back(i);
+            }
+        }
+
+        vector<int> dp(1 << n, 0);
+        dp[0] = 1;
+
+        for (int i = 1; i <= m; ++i) {
+            vector<int> new_dp = dp;
+            for (int j = 0; j < (1 << n); ++j) {
+                for (int k : preference[i]) {
+                    int mask = 1 << k;
+                    if ((j & mask) == 0) continue;
+                    new_dp[j] = ((long long)new_dp[j] + dp[j ^ mask]) % mod;
+                }
+            }
+            dp = move(new_dp);
+        }
+
+        return dp.back();
+    }
+};
