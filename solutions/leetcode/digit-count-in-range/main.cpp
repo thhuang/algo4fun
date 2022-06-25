@@ -7,12 +7,12 @@ class Solution {
             // e.g. 876
             int result = 0;
 
-            // 000 ~ 869
-            result += x / 10;
-            if (d == 0) --result;
-
             // 870 ~ 876
             if (x % 10 >= d) ++result;
+
+            // 001 ~ 869
+            result += x / 10;
+            if (d == 0) --result;
 
             // 00X ~ 87X
             result += process(x / 10) * 10;
