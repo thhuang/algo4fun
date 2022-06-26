@@ -547,6 +547,7 @@ This is my personal repository, including notes and resources related to competi
 | 2311 | [Longest Binary Subsequence Less Than or Equal to K](https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k/)                                 | [C++](./solutions/leetcode/longest-binary-subsequence-less-than-or-equal-to-k/main.cpp)                 | Medium     |
 | 2312 | [Selling Pieces of Wood](https://leetcode.com/problems/selling-pieces-of-wood/)                                                                                         | [C++](./solutions/leetcode/selling-pieces-of-wood/main.cpp)                                             | Hard       |
 | 2315 | [Count Asterisks](https://leetcode.com/problems/count-asterisks/)                                                                                                       | [C++](./solutions/leetcode/count-asterisks/main.cpp)                                                    | Easy       |
+| 2316 | [Count Unreachable Pairs of Nodes in an Undirected Graph](https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph/)                       | [C++](./solutions/leetcode/count-unreachable-pairs-of-nodes-in-an-undirected-graph/main.cpp)            | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
