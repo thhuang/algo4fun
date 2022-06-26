@@ -22,9 +22,11 @@ class Solution {
         function<Res(TreeNode*)> dfs = [&](TreeNode* u) -> Res {
             if (u == nullptr) return Res();
 
+            auto l = dfs(u->left);
+            auto r = dfs(u->right);
+
             Res res = {u->val, u->val, 1};
             if (u->left) {
-                auto l = dfs(u->left);
                 if (l.sz && l.mx < u->val) {
                     res.mn = l.mn;
                     res.sz += l.sz;
@@ -32,9 +34,8 @@ class Solution {
                     res.sz = 0;
                 }
             }
-            if (u->right) {
-                auto r = dfs(u->right);
-                if (res.sz && r.sz && u->val < r.mn) {
+            if (res.sz && u->right) {
+                if (r.sz && u->val < r.mn) {
                     res.mx = r.mx;
                     res.sz += r.sz;
                 } else {
