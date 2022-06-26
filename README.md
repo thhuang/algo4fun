@@ -548,6 +548,7 @@ This is my personal repository, including notes and resources related to competi
 | 2312 | [Selling Pieces of Wood](https://leetcode.com/problems/selling-pieces-of-wood/)                                                                                         | [C++](./solutions/leetcode/selling-pieces-of-wood/main.cpp)                                             | Hard       |
 | 2315 | [Count Asterisks](https://leetcode.com/problems/count-asterisks/)                                                                                                       | [C++](./solutions/leetcode/count-asterisks/main.cpp)                                                    | Easy       |
 | 2316 | [Count Unreachable Pairs of Nodes in an Undirected Graph](https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph/)                       | [C++](./solutions/leetcode/count-unreachable-pairs-of-nodes-in-an-undirected-graph/main.cpp)            | Medium     |
+| 2317 | [Maximum XOR After Operations](https://leetcode.com/problems/maximum-xor-after-operations/)                                                                             | [C++](./solutions/leetcode/maximum-xor-after-operations/main.cpp)                                       | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
