@@ -82,3 +82,21 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int trap(vector<int>& height) {
+        int result = 0;
+        for (auto l = height.begin(), r = height.begin(); r < height.end(); ++r) {
+            if (*l >= *r) continue;
+            int h = *l;
+            while (l < r) result += h - *l++;
+        }
+        for (auto l = height.rbegin(), r = height.rbegin(); r < height.rend(); ++r) {
+            if (*l > *r) continue;
+            int h = *l;
+            while (l < r) result += h - *l++;
+        }
+        return result;
+    }
+};
