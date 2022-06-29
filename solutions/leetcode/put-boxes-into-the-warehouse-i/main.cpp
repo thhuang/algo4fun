@@ -7,13 +7,12 @@ class Solution {
 
         sort(boxes.begin(), boxes.end());
 
-        int count = 0;
-        for (int i = 0, j = warehouse.size() - 1; i < boxes.size(); ++i, --j) {
-            while (j >= 0 && boxes[i] > warehouse[j]) --j;
-            if (j < 0) break;
-            ++count;
+        int cnt = 0;
+        for (int i = warehouse.size() - 1; i >= 0; --i) {
+            if (boxes[cnt] <= warehouse[i]) ++cnt;
+            if (cnt == boxes.size()) break;
         }
 
-        return count;
+        return cnt;
     }
 };
