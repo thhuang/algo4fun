@@ -23,3 +23,18 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> groups;
+        for (const string& s : strs) {
+            string k = s;
+            sort(k.begin(), k.end());
+            groups[k].push_back(s);
+        }
+        vector<vector<string>> result;
+        for (const auto& [_, vec] : groups) result.push_back(vec);
+        return result;
+    }
+};
