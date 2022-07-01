@@ -14,22 +14,24 @@ class Solution {
    public:
     void recoverTree(TreeNode* root) {
         vector<TreeNode*> order;
-        function<void(TreeNode*)> inorder = [&](TreeNode* u) -> void {
+        function<void(TreeNode*)> traverse = [&](TreeNode* u) -> void {
             if (u == nullptr) return;
-            inorder(u->left);
-            order.emplace_back(u);
-            inorder(u->right);
+            traverse(u->left);
+            order.push_back(u);
+            traverse(u->right);
         };
+        traverse(root);
 
-        inorder(root);
-
-        TreeNode* a = order.front();
         int i = 0;
-        while (order[i]->val >= a->val) a = order[i++];
-
-        TreeNode* b = a;
-        while (i < order.size() && order[i]->val <= a->val) b = order[i++];
-
-        swap(a->val, b->val);
+        while (true) {
+            if (order[i]->val > order[i + 1]->val) break;
+            ++i;
+        }
+        int j = order.size() - 1;
+        while (true) {
+            if (order[j - 1]->val > order[j]->val) break;
+            --j;
+        }
+        swap(order[i]->val, order[j]->val);
     }
 };
