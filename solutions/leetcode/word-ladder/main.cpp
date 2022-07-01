@@ -34,3 +34,37 @@ class Solution {
         return 0;
     }
 };
+
+class Solution {
+   public:
+    int ladderLength(string beginWord, string endWord,
+                     vector<string>& wordList) {
+        unordered_set<string> valid;
+        for (const string& s : wordList) valid.insert(s);
+
+        if (valid.count(endWord) == 0) return 0;
+
+        queue<pair<string, int>> q;
+        q.push({beginWord, 1});
+        while (!q.empty()) {
+            auto [s, d] = q.front();
+            q.pop();
+
+            if (s == endWord) return d;
+
+            for (int i = 0; i < s.size(); ++i) {
+                char u = s[i];
+                for (char v = 'a'; v <= 'z'; ++v) {
+                    if (v == u) continue;
+                    s[i] = v;
+                    if (valid.count(s) == 0) continue;
+                    q.push({s, d + 1});
+                    valid.erase(s);
+                }
+                s[i] = u;
+            }
+        }
+
+        return 0;
+    }
+};
