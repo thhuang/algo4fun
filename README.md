@@ -569,6 +569,7 @@ This is my personal repository, including notes and resources related to competi
 | 2325 | [Decode the Message](https://leetcode.com/problems/decode-the-message/)                                                                                                 | [C++](./solutions/leetcode/decode-the-message/main.cpp)                                                 | Easy       |
 | 2326 | [Spiral Matrix IV](https://leetcode.com/problems/spiral-matrix-iv/)                                                                                                     | [C++](./solutions/leetcode/spiral-matrix-iv/main.cpp)                                                   | Medium     |
 | 2327 | [Number of People Aware of a Secret](https://leetcode.com/problems/number-of-people-aware-of-a-secret/)                                                                 | [C++](./solutions/leetcode/number-of-people-aware-of-a-secret/main.cpp)                                 | Medium     |
+| 2328 | [Number of Increasing Paths in a Grid](https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/)                                                             | [C++](./solutions/leetcode/number-of-increasing-paths-in-a-grid/main.cpp)                               | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
