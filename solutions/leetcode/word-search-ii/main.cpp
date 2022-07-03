@@ -35,7 +35,7 @@ class Solution {
             if (vis[i][j]) return;
             vis[i][j] = true;
 
-            if (p->s) {
+            if (p->s != nullptr) {
                 result.push_back(*p->s);
                 p->s = nullptr;
                 --count;
