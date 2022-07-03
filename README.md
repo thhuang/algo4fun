@@ -566,6 +566,7 @@ This is my personal repository, including notes and resources related to competi
 | 2316 | [Count Unreachable Pairs of Nodes in an Undirected Graph](https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph/)                       | [C++](./solutions/leetcode/count-unreachable-pairs-of-nodes-in-an-undirected-graph/main.cpp)            | Medium     |
 | 2317 | [Maximum XOR After Operations](https://leetcode.com/problems/maximum-xor-after-operations/)                                                                             | [C++](./solutions/leetcode/maximum-xor-after-operations/main.cpp)                                       | Medium     |
 | 2318 | [Number of Distinct Roll Sequences](https://leetcode.com/problems/number-of-distinct-roll-sequences/)                                                                   | [C++](./solutions/leetcode/number-of-distinct-roll-sequences/main.cpp)                                  | Hard       |
+| 2325 | [Decode the Message](https://leetcode.com/problems/decode-the-message/)                                                                                                 | [C++](./solutions/leetcode/decode-the-message/main.cpp)                                                 | Easy       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
