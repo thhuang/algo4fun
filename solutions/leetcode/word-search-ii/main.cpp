@@ -1,64 +1,58 @@
 class Solution {
-    struct Node {
-        Node() : children(array<Node*, 26>()) {}
+    const vector<array<int, 2>> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-        bool is_end = false;
-        array<Node*, 26> children;
+    struct Node {
+        array<Node*, 26> children = array<Node*, 26>();
+        const string* s = nullptr;
     };
+
+    Node* root = new Node;
 
     void insert(const string& s) {
         auto p = root;
         for (char c : s) {
             int i = c - 'a';
-            if (!p->children[i]) p->children[i] = new Node;
+            if (p->children[i] == nullptr) p->children[i] = new Node;
             p = p->children[i];
         }
-        p->is_end = true;
+        p->s = &s;
     }
-
-    const vector<array<int, 2>> directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-    Node* root = new Node;
 
    public:
     vector<string> findWords(vector<vector<char>>& board,
                              vector<string>& words) {
-        for (const auto& s : words) insert(s);
+        for (const string& s : words) insert(s);
 
         int m = board.size();
         int n = board.front().size();
-
         int count = words.size();
-        vector<vector<bool>> vis(m, vector<bool>(n, false));
+
         vector<string> result;
-        string s;
-        function<void(int, int, Node* p)> dfs = [&](int i, int j,
-                                                    Node* p) -> void {
+        vector<vector<bool>> vis(m, vector<bool>(n, false));
+        function<void(int, int, Node*)> dfs = [&](int i, int j,
+                                                  Node* p) -> void {
             if (p == nullptr) return;
             if (vis[i][j]) return;
             vis[i][j] = true;
-            s.push_back(board[i][j]);
 
-            if (p->is_end) {
-                result.push_back(s);
-                p->is_end = false;
+            if (p->s) {
+                result.push_back(*p->s);
+                p->s = nullptr;
                 --count;
             }
 
-            for (auto [di, dj] : directions) {
+            for (const auto [di, dj] : directions) {
                 int ii = i + di, jj = j + dj;
                 if (ii < 0 || ii >= m || jj < 0 || jj >= n) continue;
-                int k = board[ii][jj] - 'a';
-                dfs(ii, jj, p->children[k]);
+                dfs(ii, jj, p->children[board[ii][jj] - 'a']);
             }
 
-            s.pop_back();
             vis[i][j] = false;
         };
 
         for (int i = 0; i < m && count; ++i) {
             for (int j = 0; j < n && count; ++j) {
-                int k = board[i][j] - 'a';
-                dfs(i, j, root->children[k]);
+                dfs(i, j, root->children[board[i][j] - 'a']);
             }
         }
 
