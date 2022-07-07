@@ -10,13 +10,34 @@ class Solution {
         dp[0][0] = true;
         for (int i = 0; i <= m; ++i) {
             for (int j = 0; j <= n; ++j) {
-                if (i > 0 && dp[i - 1][j] && s1[i - 1] == s3[i + j - 1])
-                    dp[i][j] = true;
-                if (j > 0 && dp[i][j - 1] && s2[j - 1] == s3[i + j - 1])
-                    dp[i][j] = true;
+                int b1 = i > 0 && dp[i - 1][j] && s1[i - 1] == s3[i + j - 1];
+                int b2 = j > 0 && dp[i][j - 1] && s2[j - 1] == s3[i + j - 1];
+                if (b1 || b2) dp[i][j] = true;
             }
         }
 
         return dp.back().back();
+    }
+};
+
+class Solution {
+   public:
+    bool isInterleave(string s1, string s2, string s3) {
+        if (s1.size() + s2.size() != s3.size()) return false;
+
+        int m = s1.size(), n = s2.size();
+        vector<bool> dp(n + 1, false);
+
+        for (int i = 0; i <= m; ++i) {
+            vector<bool> new_dp(n + 1, false);
+            for (int j = 0; j <= n; ++j) {
+                int b1 = i > 0 && dp[j] && s1[i - 1] == s3[i + j - 1];
+                int b2 = j > 0 && new_dp[j - 1] && s2[j - 1] == s3[i + j - 1];
+                if ((i + j == 0) || b1 || b2) new_dp[j] = true;
+            }
+            dp = move(new_dp);
+        }
+
+        return dp.back();
     }
 };
