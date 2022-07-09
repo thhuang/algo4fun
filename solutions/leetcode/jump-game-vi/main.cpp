@@ -3,19 +3,19 @@ class Solution {
     int maxResult(vector<int>& nums, int k) {
         int n = nums.size();
 
-        vector<int> score(n, -1e9);
+        vector<int> scores(n, -1e9);
         multiset<int> window;
 
-        score.front() = nums.front();
-        window.emplace(score.front());
+        scores.front() = nums.front();
+        window.emplace(scores.front());
 
         for (int i = 1; i < n; ++i) {
-            score[i] = *window.rbegin() + nums[i];
-            window.emplace(score[i]);
-            if (window.size() > k) window.erase(window.find(score[i - k]));
+            scores[i] = *window.rbegin() + nums[i];
+            window.emplace(scores[i]);
+            if (window.size() > k) window.erase(window.find(scores[i - k]));
         }
 
-        return score.back();
+        return scores.back();
     }
 };
 
