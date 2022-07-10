@@ -579,6 +579,7 @@ This is my personal repository, including notes and resources related to competi
 | 2327 | [Number of People Aware of a Secret](https://leetcode.com/problems/number-of-people-aware-of-a-secret/)                                                                 | [C++](./solutions/leetcode/number-of-people-aware-of-a-secret/main.cpp)                                 | Medium     |
 | 2328 | [Number of Increasing Paths in a Grid](https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/)                                                             | [C++](./solutions/leetcode/number-of-increasing-paths-in-a-grid/main.cpp)                               | Hard       |
 | 2335 | [Minimum Amount of Time to Fill Cups](https://leetcode.com/problems/minimum-amount-of-time-to-fill-cups/)                                                               | [C++](./solutions/leetcode/minimum-amount-of-time-to-fill-cups/main.cpp)                                | Easy       |
+| 2336 | [Smallest Number in Infinite Set](https://leetcode.com/problems/smallest-number-in-infinite-set/)                                                                       | [C++](./solutions/leetcode/smallest-number-in-infinite-set/main.cpp)                                    | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
