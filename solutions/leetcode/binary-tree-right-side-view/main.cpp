@@ -36,12 +36,11 @@ class Solution {
    public:
     vector<int> rightSideView(TreeNode* root) {
         vector<int> result;
-        function<void(TreeNode*, int)> dfs = [&](TreeNode* u,
-                                                 int level) -> void {
+        function<void(TreeNode*, int)> dfs = [&](TreeNode* u, int d) -> void {
             if (!u) return;
-            if (level == result.size()) result.push_back(u->val);
-            dfs(u->right, level + 1);
-            dfs(u->left, level + 1);
+            if (d == result.size()) result.push_back(u->val);
+            dfs(u->right, d + 1);
+            dfs(u->left, d + 1);
         };
         dfs(root, 0);
         return result;
