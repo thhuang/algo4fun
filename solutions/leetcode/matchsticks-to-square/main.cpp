@@ -2,17 +2,17 @@ class Solution {
    public:
     bool makesquare(vector<int>& matchsticks) {
         int n = matchsticks.size();
+        if (n < 4) return false;
+
         int sum = 0;
         for (int v : matchsticks) sum += v;
         if (sum % 4 != 0) return false;
-        if (sum == 0) return true;
 
         int target = sum / 4;
         vector<bool> used(n, false);
         function<bool(int, int, int)> dfs = [&](int i, int t, int k) -> bool {
             if (t == 0) {
-                if (k == 3) return true;
-                ++k;
+                if (++k == 4) return true;
                 t = target;
                 i = 0;
             }
