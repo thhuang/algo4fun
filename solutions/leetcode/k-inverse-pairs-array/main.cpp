@@ -33,3 +33,26 @@ class Solution {
         return dp.back().back();
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+
+   public:
+    int kInversePairs(int n, int k) {
+        vector<int> dp(k + 1, 0);
+        dp[0] = 1;
+
+        for (int i = 1; i <= n; ++i) {
+            vector<int> new_dp(k + 1, 0);
+            new_dp[0] = 1;
+            for (int j = 1; j <= k; ++j) {
+                new_dp[j] = ((long long)new_dp[j - 1] + dp[j]) % mod;
+                if (i - 1 < j)
+                    new_dp[j] = ((long long)new_dp[j] + mod - dp[j - i]) % mod;
+            }
+            dp = move(new_dp);
+        }
+
+        return dp.back();
+    }
+};
