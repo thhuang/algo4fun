@@ -14,7 +14,8 @@ class Solution {
                 for (int r = l; r < n; ++r) {
                     s += matrix[i][r];
                     sum[l][r] += s;
-                    count += prefix[l][r][sum[l][r] - target];
+                    if (auto it = prefix[l][r].find(sum[l][r] - target); it != prefix[l][r].end())
+                        count += it->second;
                     ++prefix[l][r][sum[l][r]];
                 }
             }
@@ -44,7 +45,8 @@ class Solution {
                 unordered_map<int, int> mp = {{0, 1}};
                 for (int i = 0; i < m; ++i) {
                     int s = prefix[i + 1][r + 1] - prefix[i + 1][l];
-                    count += mp[s - target];
+                    if (auto it = mp.find(s - target); it != mp.end())
+                        count += it->second;
                     ++mp[s];
                 }
             }
