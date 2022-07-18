@@ -23,3 +23,33 @@ class Solution {
         return count;
     }
 };
+
+class Solution {
+   public:
+    int numSubmatrixSumTarget(vector<vector<int>>& matrix, int target) {
+        int m = matrix.size();
+        int n = matrix.front().size();
+
+        vector<vector<int>> prefix(m + 1, vector<int>(n + 1, 0));
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0, s = 0; j < n; ++j) {
+                s += matrix[i][j];
+                prefix[i + 1][j + 1] = prefix[i][j + 1] + s;
+            }
+        }
+
+        int count = 0;
+        for (int l = 0; l < n; ++l) {
+            for (int r = l; r < n; ++r) {
+                unordered_map<int, int> mp = {{0, 1}};
+                for (int i = 0; i < m; ++i) {
+                    int s = prefix[i + 1][r + 1] - prefix[i + 1][l];
+                    count += mp[s - target];
+                    ++mp[s];
+                }
+            }
+        }
+
+        return count;
+    }
+};
