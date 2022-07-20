@@ -50,3 +50,49 @@ class Solution {
         return process();
     }
 };
+
+class Solution {
+   public:
+    int calculate(string s) {
+        int i = 0;
+        int n = s.size();
+
+        function<int()> process = [&]() -> int {
+            vector<int> vals = {0};
+
+            char op = '+';
+            int v = 0;
+
+            auto operate = [&]() -> void {
+                if (op == '+')
+                    vals.push_back(v);
+                else if (op == '-')
+                    vals.push_back(-v);
+                else if (op == '*')
+                    vals.back() *= v;
+                else  // op == '/'
+                    vals.back() /= v;
+            };
+
+            while (i < n) {
+                char c = s[i++];
+                if (isdigit(c)) {
+                    v = v * 10 + (c - '0');
+                } else if (c == '(') {
+                    v = process();
+                } else if (c == ')') {
+                    break;
+                } else {
+                    operate();
+                    op = c;
+                    v = 0;
+                }
+            }
+            operate();
+
+            return accumulate(vals.begin(), vals.end(), 0);
+        };
+
+        return process();
+    }
+};
