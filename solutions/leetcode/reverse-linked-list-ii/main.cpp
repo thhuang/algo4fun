@@ -16,10 +16,10 @@ class Solution {
         auto p0 = &dummy;
         for (int i = 1; i < left; ++i) p0 = p0->next;
 
+        auto p1 = p0->next;
         auto l = p0;
-        auto r = p0->next;
+        auto r = p1;
 
-        auto p1 = r;
         for (int i = 0; i < right - left + 1; ++i) {
             auto p2 = p1->next;
             p1->next = p0;
