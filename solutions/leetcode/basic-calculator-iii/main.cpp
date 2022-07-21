@@ -96,3 +96,37 @@ class Solution {
         return process();
     }
 };
+
+class Solution {
+   public:
+    int calculate(string s) {
+        int i = 0;
+        return process(s, i);
+    }
+
+    int process(string& s, int& i) {
+        vector<int> vals;
+        char op = '+';
+        for (; i < s.size() && op != ')'; ++i) {
+            int v = s[i] == '(' ? process(s, ++i) : parseNum(s, i);
+            if (op == '+')
+                vals.push_back(v);
+            else if (op == '-')
+                vals.push_back(-v);
+            else if (op == '*')
+                vals.back() *= v;
+            else  // op == '/'
+                vals.back() /= v;
+            op = s[i];
+        }
+        return accumulate(vals.begin(), vals.end(), 0);
+    }
+
+    int parseNum(string& s, int& i) {
+        int v = 0;
+        for (; i < s.size() && isdigit(s[i]); ++i) {
+            v = v * 10 + (s[i] - '0');
+        }
+        return v;
+    }
+};
