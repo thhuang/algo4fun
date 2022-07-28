@@ -1,16 +1,13 @@
 class Solution {
    public:
     bool isAnagram(string s, string t) {
-        if (size(s) != size(t)) return false;
-
-        array<int, 26> chars;
-        fill(begin(chars), end(chars), 0);
-
-        for (char c : s) ++chars[c - 'a'];
+        if (s.size() != t.size()) return false;
+        array<int, 26> cnt;
+        fill(cnt.begin(), cnt.end(), 0);
+        for (char c : s) ++cnt[c - 'a'];
         for (char c : t) {
-            if (--chars[c - 'a'] < 0) return false;
+            if (--cnt[c - 'a'] < 0) return false;
         }
-
         return true;
     }
 };
