@@ -28,24 +28,27 @@ class Solution {
         int l = matrix.front().front();
         int r = matrix.back().back();
 
+        int m;
         while (l <= r) {
-            int m = l + (r - l) / 2;
+            m = l + (r - l) / 2;
 
-            int count = 0;
-            for (const auto& vec : matrix) {
-                count += upper_bound(vec.begin(), vec.end(), m) - vec.begin();
+            int lteq = 0;
+            for (const vector<int>& vec : matrix) {
+                int v = upper_bound(vec.begin(), vec.end(), m) - vec.begin();
+                if (v == 0) break;
+                lteq += v;
             }
 
-            if (count <= k - 1) {
+            if (lteq < k) {
                 l = m + 1;
-            } else if (count > k - 1) {
+            } else {  // lteq >= k
                 r = m - 1;
             }
         }
 
         int result = matrix.back().back();
-        for (const auto& vec : matrix) {
-            const auto it = upper_bound(vec.begin(), vec.end(), r);
+        for (const vector<int>& vec : matrix) {
+            auto it = upper_bound(vec.begin(), vec.end(), r);
             if (it != vec.end()) result = min(result, *it);
         }
 
