@@ -13,47 +13,41 @@ class Solution {
 class Solution {
    public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
-        if (k == points.size()) return points;
+        int n = points.size();
+        int l = 0, r = n - 1;
 
-        auto result = points;
-        auto partition = [&result](int l, int r, int pivot_index) -> int {
-            auto pivot_point = result[pivot_index];
-            int pivot_value = pivot_point[0] * pivot_point[0] +
-                              pivot_point[1] * pivot_point[1];
-
-            swap(result[pivot_index], result[r]);
+        auto partition = [&](int m) {
+            int t = dist(points[m][0], points[m][1]);
+            swap(points[m], points[r]);
 
             int p = l, pl = l, pr = r - 1;
-            while (pl <= pr) {
-                int dist =
-                    result[p][0] * result[p][0] + result[p][1] * result[p][1];
-                if (dist < pivot_value) {
-                    swap(result[p++], result[pl++]);
-                } else {  // dist >= pivot_value
-                    swap(result[p], result[pr--]);
+            while (p <= pr) {
+                if (dist(points[p][0], points[p][1]) <= t) {
+                    swap(points[pl++], points[p++]);
+                } else {
+                    swap(points[pr--], points[p]);
                 }
             }
 
-            swap(result[pl], result[r]);
+            swap(points[pl], points[r]);
 
             return pl;
         };
 
-        random_device rd;
-        default_random_engine gen(rd());
-        int l = 0, r = points.size() - 1;
-        while (l < r) {
-            int pivot_index = uniform_int_distribution<int>(l, r)(gen);
-            pivot_index = partition(l, r, pivot_index);
+        while (l <= r) {
+            int m = l + rand() % (r - l + 1);
 
-            if (pivot_index == k) break;
-            if (pivot_index < k) {
-                l = pivot_index + 1;
-            } else {  // pivot_index > k
-                r = pivot_index - 1;
+            m = partition(m);
+
+            if (m < k) {
+                l = m + 1;
+            } else {  // m >= k
+                r = m - 1;
             }
         }
 
-        return {result.begin(), result.begin() + k};
+        return {points.begin(), points.begin() + k};
     }
+
+    int dist(int x, int y) { return x * x + y * y; }
 };
