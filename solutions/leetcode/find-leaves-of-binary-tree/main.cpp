@@ -46,3 +46,19 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> findLeaves(TreeNode* root) {
+        vector<vector<int>> result;
+        function<int(TreeNode*)> dfs = [&](TreeNode* u) -> int {
+            if (!u) return 0;
+            int v = max(dfs(u->left), dfs(u->right));
+            if (result.size() == v) result.push_back({});
+            result[v].push_back(u->val);
+            return v + 1;
+        };
+        dfs(root);
+        return result;
+    }
+};
