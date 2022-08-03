@@ -73,8 +73,8 @@ class Solution {
             unordered_map<ll, vector<int>> seen;
 
             ll v = 0;
-            for (int i = n - 2, j = 1; i >= 0; --i, ++j) {
-                v = (v + (s[i] - 'a') * powers[j] % mod) % mod;
+            for (int i = 0; i < n - 1; ++i) {
+                v = (v + (s[i] - 'a') * powers[n - 1 - i] % mod) % mod;
             }
 
             for (int i = n - 1; i < s.size(); ++i) {
