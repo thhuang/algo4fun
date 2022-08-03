@@ -1,12 +1,12 @@
 class MyCalendar {
-    map<int, int> intervals;
+    map<int, int> events;
 
    public:
     bool book(int start, int end) {
-        auto it = intervals.lower_bound(start);
-        if (it != intervals.begin() && start < prev(it)->second) return false;
-        if (it != intervals.end() && it->first < end) return false;
-        intervals[start] = end;
+        auto it = events.upper_bound(start);
+        if (it != events.begin() && prev(it)->second > start) return false;
+        if (it != events.end() && it->first < end) return false;
+        events[start] = end;
         return true;
     }
 };
