@@ -72,3 +72,45 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<string> mostVisitedPattern(vector<string>& username,
+                                      vector<int>& timestamp,
+                                      vector<string>& website) {
+        unordered_map<string, vector<pair<int, string>>> user_visits;
+        for (int i = 0; i < username.size(); ++i) {
+            user_visits[username[i]].push_back({timestamp[i], website[i]});
+        }
+
+        unordered_map<string, int> patterns;
+        for (auto& [user, visits] : user_visits) {
+            if (visits.size() < 3) continue;
+            sort(visits.begin(), visits.end());
+
+            unordered_set<string> seen;
+            for (int i = 0; i < visits.size(); ++i) {
+                for (int j = i + 1; j < visits.size(); ++j) {
+                    for (int k = j + 1; k < visits.size(); ++k) {
+                        string p = visits[i].second + ":" + visits[j].second +
+                                   ":" + visits[k].second;
+                        if (seen.count(p)) continue;
+                        seen.insert(p);
+                        ++patterns[p];
+                    }
+                }
+            }
+        }
+
+        string mvp;
+        int v = 0;
+        for (const auto& [p, c] : patterns) {
+            if ((c == v && p < mvp) || c > v) v = c, mvp = p;
+        }
+
+        auto i = find(mvp.begin(), mvp.end(), ':') - mvp.begin();
+        auto j = find(mvp.begin() + i + 1, mvp.end(), ':') - mvp.begin();
+        return {mvp.substr(0, i), mvp.substr(i + 1, j - i - 1),
+                mvp.substr(j + 1)};
+    }
+};
