@@ -88,7 +88,7 @@ class Solution {
                         return true;
                     }
                 }
-                seen[v].push_back(i - n + 1);
+                seen[v].push_back(l);
 
                 v = (v - (s[l] - 'a') * powers[n - 1] % mod + mod) % mod;
                 v = v * base % mod;
