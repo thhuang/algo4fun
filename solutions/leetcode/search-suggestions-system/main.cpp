@@ -55,3 +55,46 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    struct Node {
+        array<Node*, 26> children = array<Node*, 26>();
+        vector<const string*> words;
+    };
+
+    void insert(const string& s) {
+        Node* p = root;
+        for (const char& c : s) {
+            int i = c - 'a';
+            if (p->children[i] == nullptr) p->children[i] = new Node;
+            p = p->children[i];
+            p->words.push_back(&s);
+        }
+    }
+
+    Node* root = new Node;
+
+   public:
+    vector<vector<string>> suggestedProducts(vector<string>& products,
+                                             string searchWord) {
+        for (const string& s : products) insert(s);
+
+        vector<vector<string>> result(searchWord.size());
+        Node* p = root;
+        for (int i = 0; i < searchWord.size(); ++i) {
+            Node* q = p->children[searchWord[i] - 'a'];
+            if (q == nullptr) break;
+            p = q;
+
+            sort(p->words.begin(), p->words.end(),
+                 [](const string* a, const string* b) -> bool {
+                     return *a < *b;
+                 });
+            for (int j = 0; j < 3 && j < p->words.size(); ++j) {
+                result[i].push_back(*p->words[j]);
+            }
+        }
+
+        return result;
+    }
+};
