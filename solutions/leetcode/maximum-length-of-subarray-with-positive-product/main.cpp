@@ -1,11 +1,11 @@
 class Solution {
+    struct DP {
+        int pos, neg;
+    };
+
    public:
     int getMaxLen(vector<int>& nums) {
-        struct DP {
-            int pos, neg;
-        };
-
-        int max_pos = 0;
+        int result = 0;
         DP dp = {0, 0};
         for (int v : nums) {
             if (v > 0) {
@@ -15,9 +15,9 @@ class Solution {
             } else {
                 dp = {0, 0};
             }
-            max_pos = max(max_pos, dp.pos);
+            result = max(result, dp.pos);
         }
-        return max_pos;
+        return result;
     }
 };
 
