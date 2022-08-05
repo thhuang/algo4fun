@@ -20,54 +20,38 @@ class Solution {
    public:
     long long subArrayRanges(vector<int>& nums) {
         int n = nums.size();
-        vector<int> inc, dec;
-        vector<array<int, 2>> right(n), left(n);
 
-        for (int i = 0; i < n; ++i) {
-            int v = nums[i];
-
-            while (!inc.empty() && nums[inc.back()] > v) {
-                right[inc.back()][0] = i;
-                inc.pop_back();
+        auto subArraySum = [&](function<bool(int, int)> cmp) -> long long {
+            vector<int> s;
+            vector<int> right(n);
+            for (int i = 0; i < n; ++i) {
+                while (!s.empty() && cmp(nums[s.back()], nums[i])) {
+                    right[s.back()] = i;
+                    s.pop_back();
+                }
+                s.push_back(i);
             }
-            inc.push_back(i);
+            for (int i : s) right[i] = n;
 
-            while (!dec.empty() && nums[dec.back()] < v) {
-                right[dec.back()][1] = i;
-                dec.pop_back();
+            s.clear();
+            vector<int> left(n);
+            for (int i = n - 1; i >= 0; --i) {
+                while (!s.empty() && (cmp(nums[s.back()], nums[i]) ||
+                                      nums[s.back()] == nums[i])) {
+                    left[s.back()] = i;
+                    s.pop_back();
+                }
+                s.push_back(i);
             }
-            dec.push_back(i);
-        }
-        for (int i : inc) right[i][0] = n;
-        for (int i : dec) right[i][1] = n;
+            for (int i : s) left[i] = -1;
 
-        inc.clear();
-        dec.clear();
+            long long result = 0;
+            for (int i = 0; i < n; ++i)
+                result += 1LL * nums[i] * (i - left[i]) * (right[i] - i);
 
-        for (int i = n - 1; i >= 0; --i) {
-            int v = nums[i];
+            return result;
+        };
 
-            while (!inc.empty() && nums[inc.back()] >= v) {
-                left[inc.back()][0] = i;
-                inc.pop_back();
-            }
-            inc.push_back(i);
-
-            while (!dec.empty() && nums[dec.back()] <= v) {
-                left[dec.back()][1] = i;
-                dec.pop_back();
-            }
-            dec.push_back(i);
-        }
-        for (int i : inc) left[i][0] = -1;
-        for (int i : dec) left[i][1] = -1;
-
-        long long result = 0;
-        for (int i = 0; i < n; ++i) {
-            result += 1LL * nums[i] * (i - left[i][1]) * (right[i][1] - i);
-            result -= 1LL * nums[i] * (i - left[i][0]) * (right[i][0] - i);
-        }
-
-        return result;
+        return subArraySum(less<int>()) - subArraySum(greater<int>());
     }
 };
