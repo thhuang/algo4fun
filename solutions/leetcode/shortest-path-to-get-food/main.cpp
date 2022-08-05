@@ -20,8 +20,7 @@ class Solution {
             auto [i, j, d] = q.front();
             q.pop();
 
-            if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] == 'X')
-                continue;
+            if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] == 'X') continue;
             if (grid[i][j] == '#') return d;
             grid[i][j] = 'X';
 
