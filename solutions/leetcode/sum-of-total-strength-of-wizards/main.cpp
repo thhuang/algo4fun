@@ -48,3 +48,52 @@ class Solution {
         return (result + mod) % mod;
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+
+   public:
+    int totalStrength(vector<int>& strength) {
+        int n = strength.size();
+
+        vector<int> inc;
+        vector<int> right(n, n - 1);
+        for (int i = 0; i < n; ++i) {
+            while (!inc.empty() && strength[inc.back()] > strength[i]) {
+                right[inc.back()] = i - 1;
+                inc.pop_back();
+            }
+            inc.push_back(i);
+        }
+
+        inc.clear();
+        vector<int> left(n, 0);
+        for (int i = n - 1; i >= 0; --i) {
+            while (!inc.empty() && strength[inc.back()] >= strength[i]) {
+                left[inc.back()] = i + 1;
+                inc.pop_back();
+            }
+            inc.push_back(i);
+        }
+
+        vector<int> prefix(n + 1, 0);
+        for (int i = 0; i < n; ++i)
+            prefix[i + 1] = (prefix[i] + strength[i]) % mod;
+        for (int i = 0; i < n; ++i)
+            prefix[i + 1] = (prefix[i] + prefix[i + 1]) % mod;
+
+        long long result = 0;
+        for (int i = 0; i < n; ++i) {
+            int l = left[i];
+            int r = right[i];
+            int rv = (long long)(i - l + 1) * (prefix[r + 1] - prefix[i]) % mod;
+            int lv = (long long)(r - i + 1) *
+                     (prefix[i] - prefix[max(0, l - 1)]) % mod;
+
+            long long sum = (rv - lv) % mod;
+            result = (result + sum * strength[i] % mod) % mod;
+        }
+
+        return (result + mod) % mod;
+    }
+};
