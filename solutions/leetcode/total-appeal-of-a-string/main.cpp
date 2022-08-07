@@ -45,3 +45,20 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    long long appealSum(string s) {
+        int n = s.size();
+        vector<int> char_indices(26, -1);
+
+        long long result = 0;
+        for (int i = 0; i < n; ++i) {
+            int c = s[i] - 'a';
+            result += (i - char_indices[c]) * (n - i);
+            char_indices[c] = i;
+        }
+
+        return result;
+    }
+};
