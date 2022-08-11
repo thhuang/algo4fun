@@ -27,3 +27,20 @@ class Solution {
                      numeric_limits<int>::max(), true, true);
     }
 };
+
+class Solution {
+   public:
+    bool isValidBST(TreeNode* root) {
+        return isValid(root, numeric_limits<int>::min(),
+                       numeric_limits<int>::max());
+    }
+
+    bool isValid(TreeNode* u, long l, long r) {
+        if (u == nullptr) return true;
+        long v = u->val;
+        if (v < l || r < v) return false;
+        if (!isValid(u->left, l, v - 1)) return false;
+        if (!isValid(u->right, v + 1, r)) return false;
+        return true;
+    }
+};
