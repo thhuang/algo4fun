@@ -624,6 +624,7 @@ This is my personal repository, including notes and resources related to competi
 | 2338 | [Count the Number of Ideal Arrays](https://leetcode.com/problems/count-the-number-of-ideal-arrays/)                                                                                     | [C++](./solutions/leetcode/count-the-number-of-ideal-arrays/main.cpp)                                           | Hard       |
 | 2373 | [Largest Local Values in a Matrix](https://leetcode.com/problems/largest-local-values-in-a-matrix/)                                                                                     | [C++](./solutions/leetcode/largest-local-values-in-a-matrix/main.cpp)                                           | Easy       |
 | 2374 | [Node With Highest Edge Score](https://leetcode.com/problems/node-with-highest-edge-score/)                                                                                             | [C++](./solutions/leetcode/node-with-highest-edge-score/main.cpp)                                               | Medium     |
+| 2375 | [Construct Smallest Number From DI String](https://leetcode.com/problems/construct-smallest-number-from-di-string/)                                                                     | [C++](./solutions/leetcode/construct-smallest-number-from-di-string/main.cpp)                                   | Medium     |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
