@@ -625,6 +625,7 @@ This is my personal repository, including notes and resources related to competi
 | 2373 | [Largest Local Values in a Matrix](https://leetcode.com/problems/largest-local-values-in-a-matrix/)                                                                                     | [C++](./solutions/leetcode/largest-local-values-in-a-matrix/main.cpp)                                           | Easy       |
 | 2374 | [Node With Highest Edge Score](https://leetcode.com/problems/node-with-highest-edge-score/)                                                                                             | [C++](./solutions/leetcode/node-with-highest-edge-score/main.cpp)                                               | Medium     |
 | 2375 | [Construct Smallest Number From DI String](https://leetcode.com/problems/construct-smallest-number-from-di-string/)                                                                     | [C++](./solutions/leetcode/construct-smallest-number-from-di-string/main.cpp)                                   | Medium     |
+| 2376 | [Count Special Integers](https://leetcode.com/problems/count-special-integers/)                                                                                                         | [C++](./solutions/leetcode/count-special-integers/main.cpp)                                                     | Hard       |
 
 <!-- | | [](https://leetcode.com/problems//) | [C++](./solutions/leetcode//main.cpp) | | -->
 
