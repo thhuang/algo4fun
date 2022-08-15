@@ -57,3 +57,37 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime,
+                      vector<int>& profit) {
+        int n = profit.size();
+        vector<array<int, 3>> jobs(n);
+        for (int i = 0; i < n; ++i)
+            jobs[i] = {startTime[i], endTime[i], profit[i]};
+        sort(jobs.begin(), jobs.end(),
+             [](const array<int, 3>& a, const array<int, 3>& b) -> bool {
+                 return a[1] < b[1];
+             });
+
+        vector<array<int, 2>> dp(n, {numeric_limits<int>::max(), 0});
+        dp[0] = {jobs[0][1], jobs[0][2]};
+        for (int i = 1; i < n; ++i) {
+            const auto [l, r, v] = jobs[i];
+            auto it =
+                upper_bound(dp.begin(), dp.begin() + i, l,
+                            [](int v, const array<int, 2>& entry) -> bool {
+                                return v < entry[0];
+                            });
+            if (it == dp.begin()) {
+                dp[i] = {r, v};
+            } else {
+                dp[i] = {r, prev(it)->at(1) + v};
+            }
+            dp[i][1] = max(dp[i][1], dp[i - 1][1]);
+        }
+
+        return dp.back()[1];
+    }
+};
