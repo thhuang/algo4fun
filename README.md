@@ -647,6 +647,7 @@ This is my personal repository, including notes and resources related to competi
 | 2376 | [Count Special Integers](https://leetcode.com/problems/count-special-integers/)                                                                                                         | [C++](./solutions/leetcode/count-special-integers/main.cpp)                                                     | Hard       |
 | 2379 | [Minimum Recolors to Get K Consecutive Black Blocks](https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/)                                                 | [C++](./solutions/leetcode/minimum-recolors-to-get-k-consecutive-black-blocks/main.cpp)                         | Easy       |
 | 2380 | [Time Needed to Rearrange a Binary String](https://leetcode.com/problems/time-needed-to-rearrange-a-binary-string/)                                                                     | [C++](./solutions/leetcode/time-needed-to-rearrange-a-binary-string/main.cpp)                                   | Medium     |
+| 2381 | [Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/)                                                                                                               | [C++](./solutions/leetcode/shifting-letters-ii/main.cpp)                                                        | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
