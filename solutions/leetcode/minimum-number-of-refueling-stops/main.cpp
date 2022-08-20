@@ -64,3 +64,32 @@ class Solution {
         return -1;
     }
 };
+
+class Solution {
+   public:
+    int minRefuelStops(int target, int startFuel,
+                       vector<vector<int>>& stations) {
+        int curr = startFuel;
+        if (curr >= target) return 0;
+
+        while (!stations.empty() && stations.back()[0] > target) stations.pop_back();
+        stations.push_back({target, 0});
+
+        priority_queue<int> pq;
+        int count = 0;
+        for (const vector<int>& pos_fuel : stations) {
+            while (pos_fuel[0] > curr) {
+                if (pq.empty()) return -1;
+
+                curr += pq.top();
+                pq.pop();
+
+                ++count;
+            }
+
+            pq.push(pos_fuel[1]);
+        }
+
+        return count;
+    }
+};
