@@ -59,3 +59,49 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<long long> maximumSegmentSum(vector<int>& nums,
+                                        vector<int>& removeQueries) {
+        int n = nums.size();
+
+        vector<int> rank(n, 1);
+        vector<int> group(n);
+        iota(group.begin(), group.end(), 0);
+        vector<long long> sum(nums.begin(), nums.end());
+
+        function<int(int)> find = [&](int i) -> int {
+            if (i == group[i]) return i;
+            return group[i] = find(group[i]);
+        };
+
+        auto unite = [&](int a, int b) -> void {
+            a = find(a);
+            b = find(b);
+            if (a == b) return;
+
+            if (rank[a] > rank[b]) {
+                group[b] = a;
+                rank[a] += rank[b];
+                sum[a] += sum[b];
+            } else {
+                group[a] = b;
+                rank[b] += rank[a];
+                sum[b] += sum[a];
+            }
+        };
+
+        vector<bool> exists(n, false);
+        vector<long long> rresult = {0};
+        for (int i = removeQueries.size() - 1; i > 0; --i) {
+            int k = removeQueries[i];
+            exists[k] = true;
+            if (k - 1 >= 0 && exists[k - 1]) unite(k, k - 1);
+            if (k + 1 < n && exists[k + 1]) unite(k, k + 1);
+            rresult.push_back(max(rresult.back(), sum[find(k)]));
+        }
+
+        return {rresult.rbegin(), rresult.rend()};
+    }
+};
