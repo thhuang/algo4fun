@@ -69,13 +69,11 @@ class Solution {
    public:
     int minRefuelStops(int target, int startFuel,
                        vector<vector<int>>& stations) {
-        int curr = startFuel;
-        if (curr >= target) return 0;
-
         while (!stations.empty() && stations.back()[0] > target) stations.pop_back();
         stations.push_back({target, 0});
 
         priority_queue<int> pq;
+        int curr = startFuel;
         int count = 0;
         for (const vector<int>& pos_fuel : stations) {
             while (pos_fuel[0] > curr) {
