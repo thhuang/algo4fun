@@ -648,6 +648,7 @@ This is my personal repository, including notes and resources related to competi
 | 2379 | [Minimum Recolors to Get K Consecutive Black Blocks](https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/)                                                 | [C++](./solutions/leetcode/minimum-recolors-to-get-k-consecutive-black-blocks/main.cpp)                         | Easy       |
 | 2380 | [Time Needed to Rearrange a Binary String](https://leetcode.com/problems/time-needed-to-rearrange-a-binary-string/)                                                                     | [C++](./solutions/leetcode/time-needed-to-rearrange-a-binary-string/main.cpp)                                   | Medium     |
 | 2381 | [Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/)                                                                                                               | [C++](./solutions/leetcode/shifting-letters-ii/main.cpp)                                                        | Medium     |
+| 2382 | [Maximum Segment Sum After Removals](https://leetcode.com/problems/maximum-segment-sum-after-removals/)                                                                                 | [C++](./solutions/leetcode/maximum-segment-sum-after-removals/main.cpp)                                         | Hard       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
