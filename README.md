@@ -652,6 +652,7 @@ This is my personal repository, including notes and resources related to competi
 | 2382 | [Maximum Segment Sum After Removals](https://leetcode.com/problems/maximum-segment-sum-after-removals/)                                                                                 | [C++](./solutions/leetcode/maximum-segment-sum-after-removals/main.cpp)                                         | Hard       |
 | 2383 | [Minimum Hours of Training to Win a Competition](https://leetcode.com/problems/minimum-hours-of-training-to-win-a-competition/)                                                         | [C++](./solutions/leetcode/minimum-hours-of-training-to-win-a-competition/main.cpp)                             | Easy       |
 | 2384 | [Largest Palindromic Number](https://leetcode.com/problems/largest-palindromic-number/)                                                                                                 | [C++](./solutions/leetcode/largest-palindromic-number/main.cpp)                                                 | Medium     |
+| 2385 | [Amount of Time for Binary Tree to Be Infected](https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/)                                                           | [C++](./solutions/leetcode/amount-of-time-for-binary-tree-to-be-infected/main.cpp)                              | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
