@@ -88,3 +88,45 @@ class Solution {
         return accumulate(vals.begin(), vals.end(), 0);
     }
 };
+
+class Solution {
+    int getNum(const string& s, int& i) {
+        int v = 0;
+        for (; isdigit(s[i]); ++i) {
+            v = v * 10 + (s[i] - '0');
+        }
+        --i;
+        return v;
+    }
+
+   public:
+    int calculate(string s) {
+        int op = 1;
+        vector<int> vals;
+
+        for (int i = 0; i < s.size(); ++i) {
+            if (isdigit(s[i])) {
+                vals.push_back(op * getNum(s, i));
+                continue;
+            }
+
+            if (s[i] == '+') {
+                op = 1;
+            } else if (s[i] == '-') {
+                op = -1;
+            } else if (s[i] == '*') {
+                while (!isdigit(s[i])) ++i;
+                int v = getNum(s, i);
+                vals.back() *= v;
+            } else if (s[i] == '/') {
+                while (!isdigit(s[i])) ++i;
+                int v = getNum(s, i);
+                vals.back() /= v;
+            }
+
+            if (vals.size() == 3) vals = {vals[0] + vals[1], vals[2]};
+        }
+
+        return accumulate(vals.begin(), vals.end(), 0);
+    }
+};
