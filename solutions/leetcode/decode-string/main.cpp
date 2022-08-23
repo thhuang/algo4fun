@@ -94,3 +94,28 @@ class Solution {
         return decode();
     }
 };
+
+class Solution {
+   public:
+    string decodeString(string s) {
+        function<string(int&)> decode = [&](int& i) -> string {
+            string result;
+
+            for (; i < s.size() && s[i] != ']'; ++i) {
+                if (isalpha(s[i])) {
+                    result += s[i];
+                } else {  // isdigit(s[i])
+                    int n = 0;
+                    for (; s[i] != '['; ++i) n = n * 10 + (s[i] - '0');
+                    string sub = decode(++i);
+                    for (int j = 0; j < n; ++j) result += sub;
+                }
+            }
+
+            return result;
+        };
+
+        int i = 0;
+        return decode(i);
+    }
+};
