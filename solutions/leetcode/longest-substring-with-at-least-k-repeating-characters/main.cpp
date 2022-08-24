@@ -26,3 +26,37 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    bool valid(array<int, 26>& count, int k) {
+        int ltk = false;
+        for (int v : count) {
+            if (0 < v && v < k) {
+                ltk = true;
+                break;
+            }
+        }
+        return !ltk;
+    }
+
+   public:
+    int longestSubstring(string s, int k) {
+        int result = 0;
+
+        for (int i = 1; i <= 26; ++i) {
+            int unique = 0;
+            array<int, 26> count;
+            count.fill(0);
+
+            for (int l = 0, r = 0; r < s.size(); ++r) {
+                if (++count[s[r] - 'a'] == 1) ++unique;
+                while (unique > i) {
+                    if (--count[s[l++] - 'a'] == 0) --unique;
+                }
+                if (valid(count, k)) result = max(result, r - l + 1);
+            }
+        }
+
+        return result;
+    }
+};
