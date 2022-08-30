@@ -27,3 +27,32 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+
+        vector<vector<int>> result;
+        vector<int> curr;
+
+        function<void(int)> search = [&](int i) -> void {
+            if (i == nums.size()) {
+                result.push_back(curr);
+                return;
+            }
+
+            curr.push_back(nums[i]);
+            search(i + 1);
+            curr.pop_back();
+
+            int j = i + 1;
+            while (j < nums.size() && nums[i] == nums[j]) ++j;
+            search(j);
+        };
+
+        search(0);
+
+        return result;
+    }
+};
