@@ -9,14 +9,17 @@ class Solution {
             prefix[i] = d;
         }
 
-        int i = 0, j = 0;
-        while (i < haystack.size()) {
+        for (int i = 0, j = 0; i < haystack.size();) {
             if (haystack[i] == needle[j]) {
                 ++i, ++j;
                 if (j == needle.size()) return i - needle.size();
-                continue;
+            } else {
+                if (j == 0) {
+                    ++i;
+                } else {
+                    j = prefix[j - 1];
+                }
             }
-            j == 0 ? ++i : j = prefix[j - 1];
         }
 
         return -1;
