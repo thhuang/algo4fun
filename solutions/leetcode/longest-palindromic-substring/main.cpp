@@ -74,3 +74,24 @@ class Solution {
         return s.substr(start, length);
     }
 };
+
+class Solution {
+   public:
+    string longestPalindrome(string s) {
+        auto search = [&](int l, int r) -> pair<int, int> {
+            while (0 <= l && r < s.size() && s[l] == s[r]) --l, ++r;
+            return {l + 1, r - 1};
+        };
+
+        int l = 0, r = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            if (auto [ll, rr] = search(i, i); rr - ll > r - l) l = ll, r = rr;
+        }
+        for (int i = 1; i < s.size(); ++i) {
+            if (auto [ll, rr] = search(i - 1, i); rr - ll > r - l)
+                l = ll, r = rr;
+        }
+
+        return s.substr(l, r - l + 1);
+    }
+};
