@@ -1,24 +1,20 @@
 class Solution {
    public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string, vector<string>> groups;
+        unordered_map<string, vector<string>> mp;
 
         for (const string& s : strs) {
-            unordered_map<char, int> count;
-            for (char c : s) ++count[c];
+            array<int, 26> cnt;
+            cnt.fill(0);
+            for (char c : s) ++cnt[c - 'a'];
 
-            stringstream ss;
-            for (int i = 0; i < 26; ++i) {
-                char c = 'a' + i;
-                ss << c << count[c];
-            }
-
-            groups[ss.str()].push_back(s);
+            string k;
+            for (int v : cnt) k += to_string(v) + ':';
+            mp[k].push_back(s);
         }
 
         vector<vector<string>> result;
-        for (auto it = groups.begin(); it != groups.end(); ++it)
-            result.emplace_back(move(it->second));
+        for (auto [k, v] : mp) result.push_back(v);
 
         return result;
     }
@@ -27,14 +23,17 @@ class Solution {
 class Solution {
    public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string, vector<string>> groups;
+        unordered_map<string, vector<string>> mp;
+
         for (const string& s : strs) {
             string k = s;
             sort(k.begin(), k.end());
-            groups[k].push_back(s);
+            mp[k].push_back(s);
         }
+
         vector<vector<string>> result;
-        for (const auto& [_, vec] : groups) result.push_back(vec);
+        for (auto [_, v] : mp) result.push_back(v);
+
         return result;
     }
 };
