@@ -13,16 +13,21 @@
 class Solution {
    public:
     vector<double> averageOfLevels(TreeNode* root) {
-        vector<double> avgs;
-        vector<int> counts;
+        vector<double> avg;
+        vector<int> cnt;
         function<void(TreeNode*, int)> dfs = [&](TreeNode* u, int lv) -> void {
-            if (lv == avgs.size()) avgs.push_back({}), counts.push_back({});
-            avgs[lv] += u->val, ++counts[lv];
-            if (u->left) dfs(u->left, lv + 1);
-            if (u->right) dfs(u->right, lv + 1);
+            if (!u) return;
+            if (avg.size() == lv) {
+                avg.push_back({});
+                cnt.push_back({});
+            }
+            avg[lv] += u->val;
+            ++cnt[lv];
+            dfs(u->left, lv + 1);
+            dfs(u->right, lv + 1);
         };
         dfs(root, 0);
-        for (int i = 0; i < avgs.size(); ++i) avgs[i] /= counts[i];
-        return avgs;
+        for (int i = 0; i < avg.size(); ++i) avg[i] /= cnt[i];
+        return avg;
     }
 };
