@@ -70,3 +70,55 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int minCostConnectPoints(vector<vector<int>>& points) {
+        int n = points.size();
+
+        vector<int> sz(n, 0);
+        vector<int> groups(n);
+        iota(groups.begin(), groups.end(), 0);
+
+        function<int(int)> find = [&](int u) -> int {
+            if (u == groups[u]) return u;
+            return groups[u] = find(groups[u]);
+        };
+
+        function<void(int, int)> unite = [&](int u, int v) -> void {
+            u = find(u);
+            v = find(v);
+            if (u == v) return;
+            if (sz[u] > sz[v]) {
+                sz[u] += sz[v];
+                groups[v] = u;
+            } else {
+                sz[v] += sz[u];
+                groups[u] = v;
+            }
+        };
+
+        priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>> pq;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                int d = abs(points[i][0] - points[j][0]) +
+                        abs(points[i][1] - points[j][1]);
+                pq.push({d, i, j});
+            }
+        }
+
+        int result = 0;
+        int edges = 0;
+        while (edges < n - 1) {
+            auto [d, u, v] = pq.top();
+            pq.pop();
+
+            if (find(u) == find(v)) continue;
+            unite(u, v);
+            result += d;
+            ++edges;
+        }
+
+        return result;
+    }
+};
