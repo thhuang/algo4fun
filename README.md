@@ -719,6 +719,7 @@ This is my personal repository, including notes and resources related to competi
 | 2384 | [Largest Palindromic Number](https://leetcode.com/problems/largest-palindromic-number/)                                                                                                 | [C++](./solutions/leetcode/largest-palindromic-number/main.cpp)                                                 | Medium     |
 | 2385 | [Amount of Time for Binary Tree to Be Infected](https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/)                                                           | [C++](./solutions/leetcode/amount-of-time-for-binary-tree-to-be-infected/main.cpp)                              | Medium     |
 | 2386 | [Find the K-Sum of an Array](https://leetcode.com/problems/find-the-k-sum-of-an-array/)                                                                                                 | [C++](./solutions/leetcode/find-the-k-sum-of-an-array/main.cpp)                                                 | Hard       |
+| 2395 | [Find Subarrays With Equal Sum](https://leetcode.com/problems/find-subarrays-with-equal-sum/)                                                                                           | [C++](./solutions/leetcode/find-subarrays-with-equal-sum/main.cpp)                                              | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
