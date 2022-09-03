@@ -721,6 +721,7 @@ This is my personal repository, including notes and resources related to competi
 | 2386 | [Find the K-Sum of an Array](https://leetcode.com/problems/find-the-k-sum-of-an-array/)                                                                                                 | [C++](./solutions/leetcode/find-the-k-sum-of-an-array/main.cpp)                                                 | Hard       |
 | 2395 | [Find Subarrays With Equal Sum](https://leetcode.com/problems/find-subarrays-with-equal-sum/)                                                                                           | [C++](./solutions/leetcode/find-subarrays-with-equal-sum/main.cpp)                                              | Easy       |
 | 2396 | [Strictly Palindromic Number](https://leetcode.com/problems/strictly-palindromic-number/)                                                                                               | [C++](./solutions/leetcode/strictly-palindromic-number/main.cpp)                                                | Medium     |
+| 2397 | [Maximum Rows Covered by Columns](https://leetcode.com/problems/maximum-rows-covered-by-columns/)                                                                                       | [C++](./solutions/leetcode/maximum-rows-covered-by-columns/main.cpp)                                            | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
