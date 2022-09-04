@@ -37,3 +37,30 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    typedef long long ll;
+
+   public:
+    int pathSum(TreeNode* root, int targetSum) {
+        unordered_map<ll, int> prefix;
+        prefix.insert({0, 1});
+        int result = 0;
+
+        function<void(TreeNode*, ll)> dfs = [&](TreeNode* u, ll s) -> void {
+            if (!u) return;
+
+            ll v = s + u->val;
+            result += prefix[v - targetSum];
+
+            ++prefix[v];
+            dfs(u->left, v);
+            dfs(u->right, v);
+            --prefix[v];
+        };
+
+        dfs(root, 0);
+
+        return result;
+    }
+};
