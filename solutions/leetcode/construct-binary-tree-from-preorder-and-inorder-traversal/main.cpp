@@ -29,3 +29,27 @@ class Solution {
         return construct(0, n - 1);
     }
 };
+
+class Solution {
+   public:
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        unordered_map<int, int> inorder_index;
+        for (int i = 0; i < inorder.size(); ++i)
+            inorder_index.insert({inorder[i], i});
+
+        function<TreeNode*(int&, int, int)> construct =
+            [&](int& i, int l, int r) -> TreeNode* {
+            if (i == preorder.size()) return nullptr;
+
+            int v = preorder[i];
+            int j = inorder_index[v];
+            if (j < l || r < j) return nullptr;
+
+            ++i;
+            return new TreeNode(v, construct(i, l, j - 1), construct(i, j + 1, r));
+        };
+
+        int i = 0;
+        return construct(i, 0, inorder.size() - 1);
+    }
+};
