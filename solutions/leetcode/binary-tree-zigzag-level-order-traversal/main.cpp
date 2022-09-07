@@ -38,3 +38,32 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        if (!root) return {};
+
+        vector<vector<int>> result;
+        vector<TreeNode*> q = {root};
+        bool forward = true;
+
+        while (!q.empty()) {
+            result.push_back({});
+            vector<TreeNode*> new_q;
+
+            for (auto u : q) {
+                result.back().push_back(u->val);
+                if (u->left) new_q.push_back(u->left);
+                if (u->right) new_q.push_back(u->right);
+            }
+
+            if (!forward) reverse(result.back().begin(), result.back().end());
+
+            q = move(new_q);
+            forward = !forward;
+        }
+
+        return result;
+    }
+};
