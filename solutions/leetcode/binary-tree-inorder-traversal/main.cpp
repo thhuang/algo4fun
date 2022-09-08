@@ -24,3 +24,27 @@ class Solution {
         return ans;
     }
 };
+
+class Solution {
+   public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> result;
+        vector<pair<TreeNode*, bool>> st = {{root, false}};  // {node, seen}
+
+        while (!st.empty()) {
+            auto [u, seen] = st.back();
+            st.pop_back();
+
+            if (!u) continue;
+            if (!seen) {
+                st.push_back({u, true});
+                st.push_back({u->left, false});
+            } else {
+                result.push_back(u->val);
+                st.push_back({u->right, false});
+            }
+        }
+
+        return result;
+    }
+};
