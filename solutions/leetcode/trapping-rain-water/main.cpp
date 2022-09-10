@@ -100,3 +100,32 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int trap(vector<int>& height) {
+        int result = 0;
+
+        for (auto l = height.begin(); l != height.end();) {
+            auto r = next(l);
+            while (r != height.end() && *l > *r) ++r;
+
+            if (r == height.end()) break;
+
+            int h = *l;
+            while (l != r) result += h - *l++;
+        }
+
+        for (auto l = height.rbegin(); l != height.rend();) {
+            auto r = next(l);
+            while (r != height.rend() && *l >= *r) ++r;
+
+            if (r == height.rend()) break;
+
+            int h = *l;
+            while (l != r) result += h - *l++;
+        }
+
+        return result;
+    }
+};
