@@ -4,14 +4,9 @@ class Solution {
         int result = 0;
         int l = 0, r = height.size() - 1;
         while (l < r) {
-            int w = r - l;
-            int h = min(height[l], height[r]);
-            result = max(result, w * h);
-            if (height[l] < height[r]) {
-                ++l;
-            } else {
-                --r;
-            }
+            int lh = height[l], rh = height[r];
+            result = max(result, min(lh, rh) * (r - l));
+            lh < rh ? ++l : --r;
         }
         return result;
     }
