@@ -23,20 +23,17 @@ class Solution {
     vector<int> dailyTemperatures(vector<int>& temperatures) {
         int n = temperatures.size();
         vector<int> result(n, 0);
-        int max_t = 0;
-        for (int i = n - 1; ~i; --i) {
-            int t = temperatures[i];
-            if (t >= max_t) {
-                max_t = t;
+
+        for (int i = n - 1, mx = temperatures.back(); i >= 0; --i) {
+            if (temperatures[i] >= mx) {
+                mx = temperatures[i];
                 continue;
             }
-
             int d = 1;
-            while (temperatures[i] >= temperatures[i + d]) {
-                d += result[i + d];
-            }
+            while (temperatures[i] >= temperatures[i + d]) d += result[i + d];
             result[i] = d;
         }
+
         return result;
     }
 };
