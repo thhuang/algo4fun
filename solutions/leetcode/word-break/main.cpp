@@ -43,3 +43,25 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string_view> valid(wordDict.begin(), wordDict.end());
+
+        vector<bool> dp(s.size() + 1, false);
+        dp[0] = true;
+
+        for (int i = 1; i <= s.size(); ++i) {
+            string t = s.substr(0, i);
+            for (string_view sv(t); sv.size(); sv.remove_prefix(1)) {
+                if (!dp[t.size() - sv.size()]) continue;
+                if (valid.count(sv) == 0) continue;
+                dp[i] = true;
+                break;
+            }
+        }
+
+        return dp.back();
+    }
+};
