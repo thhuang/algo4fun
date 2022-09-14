@@ -59,3 +59,26 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int largestRectangleArea(vector<int>& heights) {
+        heights.push_back(0);
+
+        int n = heights.size();
+        vector<pair<int, int>> asc;  // {index, height}
+
+        int result = 0;
+        for (int i = 0; i < n; ++i) {
+            int j = i;
+            while (!asc.empty() && asc.back().second > heights[i]) {
+                j = asc.back().first;
+                result = max(result, (i - j) * asc.back().second);
+                asc.pop_back();
+            }
+            asc.push_back({j, heights[i]});
+        }
+
+        return result;
+    }
+};
