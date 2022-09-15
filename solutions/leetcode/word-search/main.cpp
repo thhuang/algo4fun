@@ -31,3 +31,46 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+    const vector<pair<int, int>> directions = {
+        {1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+   public:
+    bool exist(vector<vector<char>>& board, string word) {
+        int m = board.size();
+        int n = board.front().size();
+
+        string curr;
+        function<bool(int, int)> dfs = [&](int i, int j) -> bool {
+            if (int k = curr.size() - 1; k >= 0 && curr[k] != word[k]) return false;
+            if (curr.size() == word.size()) return true;
+            if (i < 0 || i >= m || j < 0 || j >= n) return false;
+            if (board[i][j] == '-') return false;
+
+            curr.push_back(board[i][j]);
+            board[i][j] = '-';
+
+            int found = false;
+            for (auto [di, dj] : directions) {
+                if (dfs(i + di, j + dj)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            board[i][j] = curr.back();
+            curr.pop_back();
+
+            return found;
+        };
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (dfs(i, j)) return true;
+            }
+        }
+
+        return false;
+    }
+};
