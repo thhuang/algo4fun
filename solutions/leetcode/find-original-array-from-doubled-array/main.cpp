@@ -20,3 +20,30 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> findOriginalArray(vector<int>& changed) {
+        if (changed.size() % 2 == 1) return {};
+
+        int mx = *max_element(changed.begin(), changed.end());
+        vector<int> buckets(mx + 1, 0);
+
+        for (int v : changed) ++buckets[v];
+
+        vector<int> result;
+        for (int i = mx; i >= 0; --i) {
+            if (buckets[i] == 0) continue;
+            if (i % 2 == 1) return {};
+            --buckets[i];
+
+            if (buckets[i / 2] == 0) return {};
+            --buckets[i / 2];
+            result.push_back(i / 2);
+
+            ++i;
+        }
+
+        return result;
+    }
+};
