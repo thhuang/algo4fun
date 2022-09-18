@@ -740,6 +740,7 @@ This is my personal repository, including notes and resources related to competi
 | 2413 | [Smallest Even Multiple](https://leetcode.com/problems/smallest-even-multiple/)                                                                                                         | [C++](./solutions/leetcode/smallest-even-multiple/main.cpp)                                                     | Easy       |
 | 2414 | [Length of the Longest Alphabetical Continuous Substring](https://leetcode.com/problems/length-of-the-longest-alphabetical-continuous-substring/)                                       | [C++](./solutions/leetcode/length-of-the-longest-alphabetical-continuous-substring/main.cpp)                    | Medium     |
 | 2415 | [Reverse Odd Levels of Binary Tree](https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/)                                                                                   | [C++](./solutions/leetcode/reverse-odd-levels-of-binary-tree/main.cpp)                                          | Medium     |
+| 2416 | [Sum of Prefix Scores of Strings](https://leetcode.com/problems/sum-of-prefix-scores-of-strings/)                                                                                       | [C++](./solutions/leetcode/sum-of-prefix-scores-of-strings/main.cpp)                                            | Hard       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
