@@ -737,6 +737,7 @@ This is my personal repository, including notes and resources related to competi
 | 2396 | [Strictly Palindromic Number](https://leetcode.com/problems/strictly-palindromic-number/)                                                                                               | [C++](./solutions/leetcode/strictly-palindromic-number/main.cpp)                                                | Medium     |
 | 2397 | [Maximum Rows Covered by Columns](https://leetcode.com/problems/maximum-rows-covered-by-columns/)                                                                                       | [C++](./solutions/leetcode/maximum-rows-covered-by-columns/main.cpp)                                            | Medium     |
 | 2398 | [Maximum Number of Robots Within Budget](https://leetcode.com/problems/maximum-number-of-robots-within-budget/)                                                                         | [C++](./solutions/leetcode/maximum-number-of-robots-within-budget/main.cpp)                                     | Hard       |
+| 2413 | [Smallest Even Multiple](https://leetcode.com/problems/smallest-even-multiple/)                                                                                                         | [C++](./solutions/leetcode/smallest-even-multiple/main.cpp)                                                     | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
