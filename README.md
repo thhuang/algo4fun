@@ -739,6 +739,7 @@ This is my personal repository, including notes and resources related to competi
 | 2398 | [Maximum Number of Robots Within Budget](https://leetcode.com/problems/maximum-number-of-robots-within-budget/)                                                                         | [C++](./solutions/leetcode/maximum-number-of-robots-within-budget/main.cpp)                                     | Hard       |
 | 2413 | [Smallest Even Multiple](https://leetcode.com/problems/smallest-even-multiple/)                                                                                                         | [C++](./solutions/leetcode/smallest-even-multiple/main.cpp)                                                     | Easy       |
 | 2414 | [Length of the Longest Alphabetical Continuous Substring](https://leetcode.com/problems/length-of-the-longest-alphabetical-continuous-substring/)                                       | [C++](./solutions/leetcode/length-of-the-longest-alphabetical-continuous-substring/main.cpp)                    | Medium     |
+| 2415 | [Reverse Odd Levels of Binary Tree](https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/)                                                                                   | [C++](./solutions/leetcode/reverse-odd-levels-of-binary-tree/main.cpp)                                          | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
