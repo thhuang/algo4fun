@@ -64,8 +64,8 @@ class Solution {
         vector<bool> sz;
 
         for (int i = 0; i < words.size(); ++i) {
-            string s(words[i].rbegin(), words[i].rend());
-            mp.insert({s, i});
+            const string& s = words[i];
+            mp.insert({{s.rbegin(), s.rend()}, i});
             while (s.size() >= sz.size()) sz.push_back(false);
             sz[s.size()] = true;
         }
