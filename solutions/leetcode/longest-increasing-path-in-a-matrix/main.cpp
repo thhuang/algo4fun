@@ -68,3 +68,37 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    const vector<pair<int, int>> directions = {
+        {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+
+   public:
+    int longestIncreasingPath(vector<vector<int>>& matrix) {
+        int m = matrix.size();
+        int n = matrix.front().size();
+
+        vector<vector<int>> dp(m, vector<int>(n, -1));
+        function<int(int, int, int)> dfs = [&](int i, int j, int p) -> int {
+            if (i < 0 || i >= m || j < 0 || j >= n) return 0;
+            if (matrix[i][j] <= p) return 0;
+            if (dp[i][j] != -1) return dp[i][j];
+
+            int result = 0;
+            for (auto [di, dj] : directions) {
+                result = max(result, dfs(i + di, j + dj, matrix[i][j]));
+            }
+
+            return dp[i][j] = result + 1;
+        };
+
+        int result = 0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                result = max(result, dfs(i, j, numeric_limits<int>::min()));
+            }
+        }
+
+        return result;
+    }
+};
