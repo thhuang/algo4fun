@@ -14,3 +14,15 @@ class Solution {
         return s;
     }
 };
+
+class Solution {
+   public:
+    string reverseWords(string s) {
+        for (int l = 0; l < s.size(); ++l) {
+            int r = find(s.begin() + l, s.end(), ' ') - s.begin();
+            reverse(s.begin() + l, s.begin() + r);
+            l = r;
+        }
+        return s;
+    }
+};
