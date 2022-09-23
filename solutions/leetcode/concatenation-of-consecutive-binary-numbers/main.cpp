@@ -5,8 +5,7 @@ class Solution {
     int concatenatedBinary(int n) {
         long long result = 0;
         for (int i = 1, shift = 1, cnt = 1, j = 0; i <= n; ++i) {
-            result = (result << shift) % mod;
-            result = (result + i) % mod;
+            result = ((result << shift) | i) % mod;
 
             if (++j == cnt) {
                 j = 0;
