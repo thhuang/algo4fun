@@ -16,3 +16,17 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+
+   public:
+    int concatenatedBinary(int n) {
+        long long result = 0;
+        for (int i = 1, shift = 1; i <= n; ++i) {
+            result = ((result << shift) | i) % mod;
+            if (((i + 1) & i) == 0) ++shift;
+        }
+        return result;
+    }
+};
