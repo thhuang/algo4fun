@@ -18,3 +18,22 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> killProcess(vector<int>& pid, vector<int>& ppid, int kill) {
+        int n = pid.size();
+        unordered_map<int, vector<int>> adj;
+        for (int i = 0; i < n; ++i) adj[ppid[i]].push_back(pid[i]);
+
+        vector<int> result;
+        function<void(int)> dfs = [&](int u) -> void {
+            result.push_back(u);
+            for (int v : adj[u]) dfs(v);
+        };
+
+        dfs(kill);
+
+        return result;
+    }
+};
