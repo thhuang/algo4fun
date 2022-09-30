@@ -44,3 +44,43 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    struct Edge {
+        bool isLeft;
+        int x, h;
+    };
+
+   public:
+    vector<vector<int>> getSkyline(vector<vector<int>>& buildings) {
+        vector<Edge> edges;
+        for (const vector<int>& building : buildings) {
+            edges.push_back({true, building[0], building[2]});
+            edges.push_back({false, building[1], building[2]});
+        }
+
+        sort(edges.begin(), edges.end(),
+             [](const Edge& a, const Edge& b) -> bool { return a.x < b.x; });
+
+        vector<vector<int>> result;
+        multiset<int> heights;
+        heights.insert(0);
+        for (int i = 0; i < edges.size(); ++i) {
+            while (true) {
+                if (edges[i].isLeft) {
+                    heights.insert(edges[i].h);
+                } else {
+                    heights.erase(heights.find(edges[i].h));
+                }
+                if (i == edges.size() - 1 || edges[i].x != edges[i + 1].x) break;
+                ++i;
+            }
+
+            int h = *heights.rbegin();
+            if (!result.empty() && result.back()[1] == h) continue;
+            result.push_back({edges[i].x, h});
+        }
+
+        return result;
+    }
+};
