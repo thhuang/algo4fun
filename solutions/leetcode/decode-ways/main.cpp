@@ -26,11 +26,10 @@ class Solution {
         int n = s.size();
         array<int, 2> dp = {1, 1};
         for (int i = 2; i <= n; ++i) {
-            int v1 = 0, v2 = 0;
-            if (s[i - 1] - '0' > 0) v1 = dp[1];
-            if (s[i - 2] == '1' || (s[i - 2] == '2' && s[i - 1] - '0' <= 6))
-                v2 = dp[0];
-            dp = {dp[1], v1 + v2};
+            int v = 0;
+            if (s[i - 1] - '0' > 0) v += dp[1];
+            if (s[i - 2] == '1' || (s[i - 2] == '2' && s[i - 1] - '0' <= 6)) v += dp[0];
+            dp = {dp[1], v};
         }
 
         return dp.back();
