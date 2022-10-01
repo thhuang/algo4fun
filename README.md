@@ -756,6 +756,7 @@ This is my personal repository, including notes and resources related to competi
 | 2415 | [Reverse Odd Levels of Binary Tree](https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/)                                                                                   | [C++](./solutions/leetcode/reverse-odd-levels-of-binary-tree/main.cpp)                                          | Medium     |
 | 2416 | [Sum of Prefix Scores of Strings](https://leetcode.com/problems/sum-of-prefix-scores-of-strings/)                                                                                       | [C++](./solutions/leetcode/sum-of-prefix-scores-of-strings/main.cpp)                                            | Hard       |
 | 2423 | [Remove Letter To Equalize Frequency](https://leetcode.com/problems/remove-letter-to-equalize-frequency/)                                                                               | [C++](./solutions/leetcode/remove-letter-to-equalize-frequency/main.cpp)                                        | Easy       |
+| 2424 | [Longest Uploaded Prefix](https://leetcode.com/problems/longest-uploaded-prefix/)                                                                                                       | [C++](./solutions/leetcode/longest-uploaded-prefix/main.cpp)                                                    | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
