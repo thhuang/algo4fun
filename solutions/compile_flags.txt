@@ -1,4 +1,4 @@
 -std=c++17
 -I
-/Users/thhuang/Development/projects/algo4fun/utils/cpp/lib
+../utils/cpp/lib
 
