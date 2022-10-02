@@ -759,6 +759,7 @@ This is my personal repository, including notes and resources related to competi
 | 2424 | [Longest Uploaded Prefix](https://leetcode.com/problems/longest-uploaded-prefix/)                                                                                                       | [C++](./solutions/leetcode/longest-uploaded-prefix/main.cpp)                                                    | Medium     |
 | 2425 | [Bitwise XOR of All Pairings](https://leetcode.com/problems/bitwise-xor-of-all-pairings/)                                                                                               | [C++](./solutions/leetcode/bitwise-xor-of-all-pairings/main.cpp)                                                | Medium     |
 | 2426 | [Number of Pairs Satisfying Inequality](https://leetcode.com/problems/number-of-pairs-satisfying-inequality/)                                                                           | [C++](./solutions/leetcode/number-of-pairs-satisfying-inequality/main.cpp)                                      | Hard       |
+| 2427 | [Number of Common Factors](https://leetcode.com/problems/number-of-common-factors/)                                                                                                     | [C++](./solutions/leetcode/number-of-common-factors/main.cpp)                                                   | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
