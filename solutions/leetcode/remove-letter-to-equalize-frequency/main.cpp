@@ -1,20 +1,18 @@
 class Solution {
    public:
     bool equalFrequency(string word) {
-        unordered_map<char, int> cnt;
-        for (char c : word) ++cnt[c];
-        if (cnt.size() == 1) return true;
+        unordered_map<char, int> char2count;
+        for (char c : word) ++char2count[c];
 
-        map<int, int> vals;
-        for (auto [_, v] : cnt) ++vals[v];
+        if (char2count.size() == 1) return true;
 
-        if (vals.size() == 1 && vals.begin()->first == 1) return true;
-        if (vals.size() != 2) return false;
+        map<int, int> mp;
+        for (auto [_, v] : char2count) ++mp[v];
 
-        if (abs(vals.begin()->first - vals.rbegin()->first) == 1 &&
-            (vals.begin()->second == 1 || vals.rbegin()->second == 1))
-            return true;
-
+        if (mp.size() == 1 && mp.begin()->first == 1) return true;
+        if (mp.size() != 2) return false;
+        if (auto [cnt, char_cnt] = *mp.begin(); char_cnt == 1 && cnt == 1) return true;
+        if (auto [cnt, char_cnt] = *mp.rbegin(); char_cnt == 1 && cnt == mp.begin()->first + 1) return true;
         return false;
     }
 };
