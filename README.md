@@ -769,6 +769,7 @@ This is my personal repository, including notes and resources related to competi
 | 2428 | [Maximum Sum of an Hourglass](https://leetcode.com/problems/maximum-sum-of-an-hourglass/)                                                                                               | [C++](./solutions/leetcode/maximum-sum-of-an-hourglass/main.cpp)                                                | Medium     |
 | 2429 | [Minimize XOR](https://leetcode.com/problems/minimize-xor/)                                                                                                                             | [C++](./solutions/leetcode/minimize-xor/main.cpp)                                                               | Medium     |
 | 2430 | [Maximum Deletions on a String](https://leetcode.com/problems/maximum-deletions-on-a-string/)                                                                                           | [C++](./solutions/leetcode/maximum-deletions-on-a-string/main.cpp)                                              | Hard       |
+| 2432 | [The Employee That Worked on the Longest Task](https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task/)                                                             | [C++](./solutions/leetcode/the-employee-that-worked-on-the-longest-task/main.cpp)                               | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
