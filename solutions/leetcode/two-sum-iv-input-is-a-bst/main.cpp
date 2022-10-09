@@ -48,3 +48,77 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+    struct Forward {
+        TreeNode* curr;
+        vector<TreeNode*> path;
+
+        Forward(TreeNode* root) {
+            curr = root;
+            while (curr->left) {
+                path.push_back(curr);
+                curr = curr->left;
+            }
+        }
+
+        bool next() {
+            if (!curr->right) {
+                if (path.empty()) return false;
+                curr = path.back();
+                path.pop_back();
+                return true;
+            }
+            curr = curr->right;
+            while (curr->left) {
+                path.push_back(curr);
+                curr = curr->left;
+            }
+            return true;
+        }
+    };
+
+    struct Backward {
+        TreeNode* curr;
+        vector<TreeNode*> path;
+
+        Backward(TreeNode* root) {
+            curr = root;
+            while (curr->right) {
+                path.push_back(curr);
+                curr = curr->right;
+            }
+        }
+
+        bool next() {
+            if (!curr->left) {
+                if (path.empty()) return false;
+                curr = path.back();
+                path.pop_back();
+                return true;
+            }
+            curr = curr->left;
+            while (curr->right) {
+                path.push_back(curr);
+                curr = curr->right;
+            }
+            return true;
+        }
+    };
+
+   public:
+    bool findTarget(TreeNode* root, int k) {
+        Forward forward(root);
+        Backward backward(root);
+        while (forward.curr != backward.curr) {
+            int v = forward.curr->val + backward.curr->val;
+            if (v == k) return true;
+            if (v < k) {
+                forward.next();
+            } else {  // v > k
+                backward.next();
+            }
+        }
+        return false;
+    }
+};
