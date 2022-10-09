@@ -771,6 +771,7 @@ This is my personal repository, including notes and resources related to competi
 | 2430 | [Maximum Deletions on a String](https://leetcode.com/problems/maximum-deletions-on-a-string/)                                                                                           | [C++](./solutions/leetcode/maximum-deletions-on-a-string/main.cpp)                                              | Hard       |
 | 2432 | [The Employee That Worked on the Longest Task](https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task/)                                                             | [C++](./solutions/leetcode/the-employee-that-worked-on-the-longest-task/main.cpp)                               | Easy       |
 | 2433 | [Find The Original Array of Prefix Xor](https://leetcode.com/problems/find-the-original-array-of-prefix-xor/)                                                                           | [C++](./solutions/leetcode/find-the-original-array-of-prefix-xor/main.cpp)                                      | Medium     |
+| 2434 | [Using a Robot to Print the Lexicographically Smallest String](https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string/)                             | [C++](./solutions/leetcode/using-a-robot-to-print-the-lexicographically-smallest-string/main.cpp)               | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
