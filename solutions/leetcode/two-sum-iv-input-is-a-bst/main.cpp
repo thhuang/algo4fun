@@ -23,3 +23,28 @@ class Solution {
         return search(root);
     }
 };
+
+class Solution {
+   public:
+    bool findTarget(TreeNode* root, int k) {
+        vector<int> nums;
+        function<void(TreeNode*)> inorder = [&](TreeNode* u) -> void {
+            if (!u) return;
+            inorder(u->left);
+            nums.push_back(u->val);
+            inorder(u->right);
+        };
+        inorder(root);
+        int l = 0, r = nums.size() - 1;
+        while (l < r) {
+            int v = nums[l] + nums[r];
+            if (v == k) return true;
+            if (v < k) {
+                ++l;
+            } else {  // v > k
+                --r;
+            }
+        }
+        return false;
+    }
+};
