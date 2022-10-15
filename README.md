@@ -776,6 +776,7 @@ This is my personal repository, including notes and resources related to competi
 | 2433 | [Find The Original Array of Prefix Xor](https://leetcode.com/problems/find-the-original-array-of-prefix-xor/)                                                                           | [C++](./solutions/leetcode/find-the-original-array-of-prefix-xor/main.cpp)                                      | Medium     |
 | 2434 | [Using a Robot to Print the Lexicographically Smallest String](https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string/)                             | [C++](./solutions/leetcode/using-a-robot-to-print-the-lexicographically-smallest-string/main.cpp)               | Medium     |
 | 2435 | [Paths in Matrix Whose Sum Is Divisible by K](https://leetcode.com/problems/paths-in-matrix-whose-sum-is-divisible-by-k/)                                                               | [C++](./solutions/leetcode/paths-in-matrix-whose-sum-is-divisible-by-k/main.cpp)                                | Hard       |
+| 2437 | [Number of Valid Clock Times](https://leetcode.com/problems/number-of-valid-clock-times/)                                                                                               | [C++](./solutions/leetcode/number-of-valid-clock-times/main.cpp)                                                | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
