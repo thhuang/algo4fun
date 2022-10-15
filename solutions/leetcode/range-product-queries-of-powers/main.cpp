@@ -33,3 +33,23 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+
+   public:
+    vector<int> productQueries(int n, vector<vector<int>>& queries) {
+        vector<int> power;
+        for (int x = n; x; x &= x - 1) power.push_back(x & ~(x - 1));
+
+        vector<int> result;
+        for (auto q : queries) {
+            int l = q[0], r = q[1];
+            long v = 1;
+            for (int i = l; i <= r; ++i) v = v * power[i] % mod;
+            result.push_back(v);
+        }
+
+        return result;
+    }
+};
