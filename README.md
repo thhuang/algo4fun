@@ -778,6 +778,7 @@ This is my personal repository, including notes and resources related to competi
 | 2435 | [Paths in Matrix Whose Sum Is Divisible by K](https://leetcode.com/problems/paths-in-matrix-whose-sum-is-divisible-by-k/)                                                               | [C++](./solutions/leetcode/paths-in-matrix-whose-sum-is-divisible-by-k/main.cpp)                                | Hard       |
 | 2437 | [Number of Valid Clock Times](https://leetcode.com/problems/number-of-valid-clock-times/)                                                                                               | [C++](./solutions/leetcode/number-of-valid-clock-times/main.cpp)                                                | Easy       |
 | 2438 | [Range Product Queries of Powers](https://leetcode.com/problems/range-product-queries-of-powers/)                                                                                       | [C++](./solutions/leetcode/range-product-queries-of-powers/main.cpp)                                            | Medium     |
+| 2439 | [Minimize Maximum of Array](https://leetcode.com/problems/minimize-maximum-of-array/)                                                                                                   | [C++](./solutions/leetcode/minimize-maximum-of-array/main.cpp)                                                  | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
