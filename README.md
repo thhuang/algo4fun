@@ -791,6 +791,7 @@ This is my personal repository, including notes and resources related to competi
 | 2446 | [Determine if Two Events Have Conflict](https://leetcode.com/problems/determine-if-two-events-have-conflict/)                                                                           | [C++](./solutions/leetcode/determine-if-two-events-have-conflict/main.cpp)                                      | Easy       |
 | 2447 | [Number of Subarrays With GCD Equal to K](https://leetcode.com/problems/number-of-subarrays-with-gcd-equal-to-k/)                                                                       | [C++](./solutions/leetcode/number-of-subarrays-with-gcd-equal-to-k/main.cpp)                                    | Medium     |
 | 2448 | [Minimum Cost to Make Array Equal](https://leetcode.com/problems/minimum-cost-to-make-array-equal/)                                                                                     | [C++](./solutions/leetcode/minimum-cost-to-make-array-equal/main.cpp)                                           | Hard       |
+| 2449 | [Minimum Number of Operations to Make Arrays Similar](https://leetcode.com/problems/minimum-number-of-operations-to-make-arrays-similar/)                                               | [C++](./solutions/leetcode/minimum-number-of-operations-to-make-arrays-similar/main.cpp)                        | Hard       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
