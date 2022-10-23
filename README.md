@@ -789,6 +789,7 @@ This is my personal repository, including notes and resources related to competi
 | 2439 | [Minimize Maximum of Array](https://leetcode.com/problems/minimize-maximum-of-array/)                                                                                                   | [C++](./solutions/leetcode/minimize-maximum-of-array/main.cpp)                                                  | Medium     |
 | 2440 | [Create Components With Same Value](https://leetcode.com/problems/create-components-with-same-value/)                                                                                   | [C++](./solutions/leetcode/create-components-with-same-value/main.cpp)                                          | Hard       |
 | 2446 | [Determine if Two Events Have Conflict](https://leetcode.com/problems/determine-if-two-events-have-conflict/)                                                                           | [C++](./solutions/leetcode/determine-if-two-events-have-conflict/main.cpp)                                      | Easy       |
+| 2447 | [Number of Subarrays With GCD Equal to K](https://leetcode.com/problems/number-of-subarrays-with-gcd-equal-to-k/)                                                                       | [C++](./solutions/leetcode/number-of-subarrays-with-gcd-equal-to-k/main.cpp)                                    | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
