@@ -788,6 +788,7 @@ This is my personal repository, including notes and resources related to competi
 | 2438 | [Range Product Queries of Powers](https://leetcode.com/problems/range-product-queries-of-powers/)                                                                                       | [C++](./solutions/leetcode/range-product-queries-of-powers/main.cpp)                                            | Medium     |
 | 2439 | [Minimize Maximum of Array](https://leetcode.com/problems/minimize-maximum-of-array/)                                                                                                   | [C++](./solutions/leetcode/minimize-maximum-of-array/main.cpp)                                                  | Medium     |
 | 2440 | [Create Components With Same Value](https://leetcode.com/problems/create-components-with-same-value/)                                                                                   | [C++](./solutions/leetcode/create-components-with-same-value/main.cpp)                                          | Hard       |
+| 2446 | [Determine if Two Events Have Conflict](https://leetcode.com/problems/determine-if-two-events-have-conflict/)                                                                           | [C++](./solutions/leetcode/determine-if-two-events-have-conflict/main.cpp)                                      | Easy       |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
