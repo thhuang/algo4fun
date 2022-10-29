@@ -4,13 +4,15 @@ class Solution {
         int n = plantTime.size();
         vector<int> flowers(n);
         iota(flowers.begin(), flowers.end(), 0);
-        sort(flowers.begin(), flowers.end(),
-             [&](int i, int j) -> bool { return growTime[i] > growTime[j]; });
 
-        int curr = 0, result = 0;
+        sort(flowers.begin(), flowers.end(),
+             [&](int a, int b) -> bool { return growTime[a] > growTime[b]; });
+
+        int result = 0;
+        int t = 0;
         for (int i : flowers) {
-            curr += plantTime[i];
-            result = max(result, curr + growTime[i]);
+            t += plantTime[i];
+            result = max(result, t + growTime[i]);
         }
 
         return result;
