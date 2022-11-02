@@ -25,3 +25,30 @@ class Solution {
         return -1;
     }
 };
+
+class Solution {
+   public:
+    int smallestCommonElement(vector<vector<int>>& mat) {
+        int n = mat.size();
+        int m = mat.front().size();
+
+        vector<int> pos(n, 0);
+        int mx = 0;
+        int cnt = 0;
+        while (cnt < n) {
+            for (int i = 0; i < n; ++i) {
+                while (mat[i][pos[i]] < mx) {
+                    if (++pos[i] == m) return -1;
+                }
+                if (mat[i][pos[i]] == mx) {
+                    ++cnt;
+                } else {
+                    mx = mat[i][pos[i]];
+                    cnt = 1;
+                }
+            }
+        }
+
+        return mx;
+    }
+};
