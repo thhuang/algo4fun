@@ -43,10 +43,11 @@ class Solution {
 
         string curr;
         function<bool(int, int)> dfs = [&](int i, int j) -> bool {
-            if (int k = curr.size() - 1; k >= 0 && curr[k] != word[k]) return false;
             if (curr.size() == word.size()) return true;
             if (i < 0 || i >= m || j < 0 || j >= n) return false;
             if (board[i][j] == '-') return false;
+
+            if (int k = curr.size(); board[i][j] != word[k]) return false;
 
             curr.push_back(board[i][j]);
             board[i][j] = '-';
