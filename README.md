@@ -1010,3 +1010,11 @@ This is my personal repository, including notes and resources related to competi
 | 18.6    | Is Circuit Wirable                          | [C++](./solutions/epi/is-circuit-wirable/main.cpp)                          |
 | 18.7    | String Transformability                     | [C++](./solutions/epi/string-transformability/main.cpp)                     |
 | 18.8    | Max Teams in Photograph                     | [C++](./solutions/epi/max-teams-in-photograph/main.cpp)                     |
+
+## [CSES](https://cses.fi/problemset/list/)
+
+<!-- | | [](https://cses.fi/problemset/task/) | [C++](./solutions/cses//main.cpp) | -->
+
+| No.  | Title                                                   | Solution                              |
+| :--- | :------------------------------------------------------ | :------------------------------------ |
+| 1068 | [Weird Algorithm](https://cses.fi/problemset/task/1068) | [C++](./solutions/cses/1068/main.cpp) |
