@@ -1017,10 +1017,11 @@ This is my personal repository, including notes and resources related to competi
 
 ## [CSES](https://cses.fi/problemset/list/)
 
-<!-- | | [](https://cses.fi/problemset/task/) | [C++](./solutions/cses//main.cpp) | -->
+<!-- | | [](https://cses.fi/problemset/task//) | [C++](./solutions/cses//main.cpp) | -->
 
-| No.  | Title                                                   | Solution                              |
-| :--- | :------------------------------------------------------ | :------------------------------------ |
-| 1068 | [Weird Algorithm](https://cses.fi/problemset/task/1068) | [C++](./solutions/cses/1068/main.cpp) |
-| 1069 | [Repetitions](https://cses.fi/problemset/task/1069)     | [C++](./solutions/cses/1069/main.cpp) |
-| 1083 | [Missing Number](https://cses.fi/problemset/task/1083)  | [C++](./solutions/cses/1083/main.cpp) |
+| No.  | Title                                                     | Solution                              |
+| :--- | :-------------------------------------------------------- | :------------------------------------ |
+| 1068 | [Weird Algorithm](https://cses.fi/problemset/task/1068/)  | [C++](./solutions/cses/1068/main.cpp) |
+| 1069 | [Repetitions](https://cses.fi/problemset/task/1069/)      | [C++](./solutions/cses/1069/main.cpp) |
+| 1083 | [Missing Number](https://cses.fi/problemset/task/1083/)   | [C++](./solutions/cses/1083/main.cpp) |
+| 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/) | [C++](./solutions/cses/1094/main.cpp) |
