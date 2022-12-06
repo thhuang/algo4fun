@@ -1026,5 +1026,6 @@ This is my personal repository, including notes and resources related to competi
 | 1069 | [Repetitions](https://cses.fi/problemset/task/1069/)      | [C++](./solutions/cses/1069/main.cpp) |
 | 1070 | [Permutations](https://cses.fi/problemset/task/1070/)     | [C++](./solutions/cses/1070/main.cpp) |
 | 1071 | [Number Spiral](https://cses.fi/problemset/task/1071/)    | [C++](./solutions/cses/1071/main.cpp) |
+| 1072 | [Two Knights](https://cses.fi/problemset/task/1072/)      | [C++](./solutions/cses/1072/main.cpp) |
 | 1083 | [Missing Number](https://cses.fi/problemset/task/1083/)   | [C++](./solutions/cses/1083/main.cpp) |
 | 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/) | [C++](./solutions/cses/1094/main.cpp) |
