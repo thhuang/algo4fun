@@ -1033,3 +1033,4 @@ This is my personal repository, including notes and resources related to competi
 | 1083 | [Missing Number](https://cses.fi/problemset/task/1083/)   | [C++](./solutions/cses/1083/main.cpp) |
 | 1092 | [Two Sets](https://cses.fi/problemset/task/1092/)         | [C++](./solutions/cses/1092/main.cpp) |
 | 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/) | [C++](./solutions/cses/1094/main.cpp) |
+| 1617 | [Bit Strings](https://cses.fi/problemset/task/1617/)      | [C++](./solutions/cses/1617/main.cpp) |
