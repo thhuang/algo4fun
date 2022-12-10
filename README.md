@@ -1036,3 +1036,4 @@ This is my personal repository, including notes and resources related to competi
 | 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/) | [C++](./solutions/cses/1094/main.cpp) |
 | 1617 | [Bit Strings](https://cses.fi/problemset/task/1617/)      | [C++](./solutions/cses/1617/main.cpp) |
 | 1618 | [Trailing Zeros](https://cses.fi/problemset/task/1618/)   | [C++](./solutions/cses/1618/main.cpp) |
+| 1754 | [Coin Piles](https://cses.fi/problemset/task/1754/)       | [C++](./solutions/cses/1754/main.cpp) |
