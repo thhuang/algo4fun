@@ -1038,4 +1038,5 @@ This is my personal repository, including notes and resources related to competi
 | 1618 | [Trailing Zeros](https://cses.fi/problemset/task/1618/)     | [C++](./solutions/cses/1618/main.cpp) |
 | 1754 | [Coin Piles](https://cses.fi/problemset/task/1754/)         | [C++](./solutions/cses/1754/main.cpp) |
 | 1755 | [Palindrome Reorder](https://cses.fi/problemset/task/1755/) | [C++](./solutions/cses/1755/main.cpp) |
+| 2165 | [Tower of Hanoi](https://cses.fi/problemset/task/2165/)     | [C++](./solutions/cses/2165/main.cpp) |
 | 2205 | [Gray Code](https://cses.fi/problemset/task/2205/)          | [C++](./solutions/cses/2205/main.cpp) |
