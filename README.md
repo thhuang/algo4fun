@@ -1024,21 +1024,22 @@ This is my personal repository, including notes and resources related to competi
 
 <!-- | | [](https://cses.fi/problemset/task//) | [C++](./solutions/cses//main.cpp) | -->
 
-| No.  | Title                                                       | Solution                              |
-| :--- | :---------------------------------------------------------- | :------------------------------------ |
-| 1068 | [Weird Algorithm](https://cses.fi/problemset/task/1068/)    | [C++](./solutions/cses/1068/main.cpp) |
-| 1069 | [Repetitions](https://cses.fi/problemset/task/1069/)        | [C++](./solutions/cses/1069/main.cpp) |
-| 1070 | [Permutations](https://cses.fi/problemset/task/1070/)       | [C++](./solutions/cses/1070/main.cpp) |
-| 1071 | [Number Spiral](https://cses.fi/problemset/task/1071/)      | [C++](./solutions/cses/1071/main.cpp) |
-| 1072 | [Two Knights](https://cses.fi/problemset/task/1072/)        | [C++](./solutions/cses/1072/main.cpp) |
-| 1083 | [Missing Number](https://cses.fi/problemset/task/1083/)     | [C++](./solutions/cses/1083/main.cpp) |
-| 1092 | [Two Sets](https://cses.fi/problemset/task/1092/)           | [C++](./solutions/cses/1092/main.cpp) |
-| 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/)   | [C++](./solutions/cses/1094/main.cpp) |
-| 1617 | [Bit Strings](https://cses.fi/problemset/task/1617/)        | [C++](./solutions/cses/1617/main.cpp) |
-| 1618 | [Trailing Zeros](https://cses.fi/problemset/task/1618/)     | [C++](./solutions/cses/1618/main.cpp) |
-| 1622 | [Creating Strings](https://cses.fi/problemset/task/1622/)   | [C++](./solutions/cses/1622/main.cpp) |
-| 1623 | [Apple Division](https://cses.fi/problemset/task/1623/)     | [C++](./solutions/cses/1623/main.cpp) |
-| 1754 | [Coin Piles](https://cses.fi/problemset/task/1754/)         | [C++](./solutions/cses/1754/main.cpp) |
-| 1755 | [Palindrome Reorder](https://cses.fi/problemset/task/1755/) | [C++](./solutions/cses/1755/main.cpp) |
-| 2165 | [Tower of Hanoi](https://cses.fi/problemset/task/2165/)     | [C++](./solutions/cses/2165/main.cpp) |
-| 2205 | [Gray Code](https://cses.fi/problemset/task/2205/)          | [C++](./solutions/cses/2205/main.cpp) |
+| No.  | Title                                                          | Solution                              |
+| :--- | :------------------------------------------------------------- | :------------------------------------ |
+| 1068 | [Weird Algorithm](https://cses.fi/problemset/task/1068/)       | [C++](./solutions/cses/1068/main.cpp) |
+| 1069 | [Repetitions](https://cses.fi/problemset/task/1069/)           | [C++](./solutions/cses/1069/main.cpp) |
+| 1070 | [Permutations](https://cses.fi/problemset/task/1070/)          | [C++](./solutions/cses/1070/main.cpp) |
+| 1071 | [Number Spiral](https://cses.fi/problemset/task/1071/)         | [C++](./solutions/cses/1071/main.cpp) |
+| 1072 | [Two Knights](https://cses.fi/problemset/task/1072/)           | [C++](./solutions/cses/1072/main.cpp) |
+| 1083 | [Missing Number](https://cses.fi/problemset/task/1083/)        | [C++](./solutions/cses/1083/main.cpp) |
+| 1092 | [Two Sets](https://cses.fi/problemset/task/1092/)              | [C++](./solutions/cses/1092/main.cpp) |
+| 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/)      | [C++](./solutions/cses/1094/main.cpp) |
+| 1617 | [Bit Strings](https://cses.fi/problemset/task/1617/)           | [C++](./solutions/cses/1617/main.cpp) |
+| 1618 | [Trailing Zeros](https://cses.fi/problemset/task/1618/)        | [C++](./solutions/cses/1618/main.cpp) |
+| 1622 | [Creating Strings](https://cses.fi/problemset/task/1622/)      | [C++](./solutions/cses/1622/main.cpp) |
+| 1623 | [Apple Division](https://cses.fi/problemset/task/1623/)        | [C++](./solutions/cses/1623/main.cpp) |
+| 1624 | [Chessboard and Queens](https://cses.fi/problemset/task/1624/) | [C++](./solutions/cses/1624/main.cpp) |
+| 1754 | [Coin Piles](https://cses.fi/problemset/task/1754/)            | [C++](./solutions/cses/1754/main.cpp) |
+| 1755 | [Palindrome Reorder](https://cses.fi/problemset/task/1755/)    | [C++](./solutions/cses/1755/main.cpp) |
+| 2165 | [Tower of Hanoi](https://cses.fi/problemset/task/2165/)        | [C++](./solutions/cses/2165/main.cpp) |
+| 2205 | [Gray Code](https://cses.fi/problemset/task/2205/)             | [C++](./solutions/cses/2205/main.cpp) |
