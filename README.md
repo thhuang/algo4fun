@@ -1036,6 +1036,7 @@ This is my personal repository, including notes and resources related to competi
 | 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/)      | [C++](./solutions/cses/1094/main.cpp) |
 | 1617 | [Bit Strings](https://cses.fi/problemset/task/1617/)           | [C++](./solutions/cses/1617/main.cpp) |
 | 1618 | [Trailing Zeros](https://cses.fi/problemset/task/1618/)        | [C++](./solutions/cses/1618/main.cpp) |
+| 1621 | [Distinct Numbers](https://cses.fi/problemset/task/1621/)      | [C++](./solutions/cses/1621/main.cpp) |
 | 1622 | [Creating Strings](https://cses.fi/problemset/task/1622/)      | [C++](./solutions/cses/1622/main.cpp) |
 | 1623 | [Apple Division](https://cses.fi/problemset/task/1623/)        | [C++](./solutions/cses/1623/main.cpp) |
 | 1624 | [Chessboard and Queens](https://cses.fi/problemset/task/1624/) | [C++](./solutions/cses/1624/main.cpp) |
