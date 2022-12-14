@@ -1039,6 +1039,7 @@ This is my personal repository, including notes and resources related to competi
 | 1622 | [Creating Strings](https://cses.fi/problemset/task/1622/)      | [C++](./solutions/cses/1622/main.cpp) |
 | 1623 | [Apple Division](https://cses.fi/problemset/task/1623/)        | [C++](./solutions/cses/1623/main.cpp) |
 | 1624 | [Chessboard and Queens](https://cses.fi/problemset/task/1624/) | [C++](./solutions/cses/1624/main.cpp) |
+| 1625 | [Grid Paths](https://cses.fi/problemset/task/1625/)            | [C++](./solutions/cses/1625/main.cpp) |
 | 1754 | [Coin Piles](https://cses.fi/problemset/task/1754/)            | [C++](./solutions/cses/1754/main.cpp) |
 | 1755 | [Palindrome Reorder](https://cses.fi/problemset/task/1755/)    | [C++](./solutions/cses/1755/main.cpp) |
 | 2165 | [Tower of Hanoi](https://cses.fi/problemset/task/2165/)        | [C++](./solutions/cses/2165/main.cpp) |
