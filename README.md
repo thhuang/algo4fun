@@ -1032,6 +1032,7 @@ This is my personal repository, including notes and resources related to competi
 | 1071 | [Number Spiral](https://cses.fi/problemset/task/1071/)         | [C++](./solutions/cses/1071/main.cpp) |
 | 1072 | [Two Knights](https://cses.fi/problemset/task/1072/)           | [C++](./solutions/cses/1072/main.cpp) |
 | 1083 | [Missing Number](https://cses.fi/problemset/task/1083/)        | [C++](./solutions/cses/1083/main.cpp) |
+| 1084 | [Apartments](https://cses.fi/problemset/task/1084/)            | [C++](./solutions/cses/1084/main.cpp) |
 | 1092 | [Two Sets](https://cses.fi/problemset/task/1092/)              | [C++](./solutions/cses/1092/main.cpp) |
 | 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/)      | [C++](./solutions/cses/1094/main.cpp) |
 | 1617 | [Bit Strings](https://cses.fi/problemset/task/1617/)           | [C++](./solutions/cses/1617/main.cpp) |
