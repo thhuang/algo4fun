@@ -1031,6 +1031,7 @@ This is my personal repository, including notes and resources related to competi
 | 1070 | [Permutations](https://cses.fi/problemset/task/1070/)          | [C++](./solutions/cses/1070/main.cpp) |
 | 1071 | [Number Spiral](https://cses.fi/problemset/task/1071/)         | [C++](./solutions/cses/1071/main.cpp) |
 | 1072 | [Two Knights](https://cses.fi/problemset/task/1072/)           | [C++](./solutions/cses/1072/main.cpp) |
+| 1074 | [Stick Lengths](https://cses.fi/problemset/task/1074/)         | [C++](./solutions/cses/1074/main.cpp) |
 | 1083 | [Missing Number](https://cses.fi/problemset/task/1083/)        | [C++](./solutions/cses/1083/main.cpp) |
 | 1084 | [Apartments](https://cses.fi/problemset/task/1084/)            | [C++](./solutions/cses/1084/main.cpp) |
 | 1090 | [Ferris Wheel](https://cses.fi/problemset/task/1090/)          | [C++](./solutions/cses/1090/main.cpp) |
