@@ -1046,6 +1046,7 @@ This is my personal repository, including notes and resources related to competi
 | 1624 | [Chessboard and Queens](https://cses.fi/problemset/task/1624/) | [C++](./solutions/cses/1624/main.cpp) |
 | 1625 | [Grid Paths](https://cses.fi/problemset/task/1625/)            | [C++](./solutions/cses/1625/main.cpp) |
 | 1629 | [Movie Festival](https://cses.fi/problemset/task/1629/)        | [C++](./solutions/cses/1629/main.cpp) |
+| 1640 | [Sum of Two Values](https://cses.fi/problemset/task/1640/)     | [C++](./solutions/cses/1640/main.cpp) |
 | 1754 | [Coin Piles](https://cses.fi/problemset/task/1754/)            | [C++](./solutions/cses/1754/main.cpp) |
 | 1755 | [Palindrome Reorder](https://cses.fi/problemset/task/1755/)    | [C++](./solutions/cses/1755/main.cpp) |
 | 2165 | [Tower of Hanoi](https://cses.fi/problemset/task/2165/)        | [C++](./solutions/cses/2165/main.cpp) |
