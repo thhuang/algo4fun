@@ -1052,5 +1052,6 @@ This is my personal repository, including notes and resources related to competi
 | 1754 | [Coin Piles](https://cses.fi/problemset/task/1754/)            | [C++](./solutions/cses/1754/main.cpp) |
 | 1755 | [Palindrome Reorder](https://cses.fi/problemset/task/1755/)    | [C++](./solutions/cses/1755/main.cpp) |
 | 2165 | [Tower of Hanoi](https://cses.fi/problemset/task/2165/)        | [C++](./solutions/cses/2165/main.cpp) |
+| 2183 | [Missing Coin Sum](https://cses.fi/problemset/task/2183/)      | [C++](./solutions/cses/2183/main.cpp) |
 | 2205 | [Gray Code](https://cses.fi/problemset/task/2205/)             | [C++](./solutions/cses/2205/main.cpp) |
 | 2431 | [Digit Queries](https://cses.fi/problemset/task/2431/)         | [C++](./solutions/cses/2431/main.cpp) |
