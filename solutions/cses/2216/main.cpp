@@ -17,6 +17,26 @@ inline void solve() {
     cout << rounds.size();
 }
 
+inline void solve1() {
+    int n;
+    cin >> n;
+
+    vector<int> nums(n + 1);
+    vector<int> indices(n + 1, n + 1);
+    for (int i = 1; i <= n; ++i) {
+        cin >> nums[i];
+        indices[nums[i]] = i;
+    }
+
+    int cnt = 0;
+    for (int i = 1; i <= n; ++i) {
+        int v = nums[i];
+        if (indices[v - 1] > indices[v]) ++cnt;
+    }
+
+    cout << cnt;
+}
+
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
