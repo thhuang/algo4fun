@@ -1039,6 +1039,7 @@ This is my personal repository, including notes and resources related to competi
 | 1091 | [Concert Tickets](https://cses.fi/problemset/task/1091/)       | [C++](./solutions/cses/1091/main.cpp) |
 | 1092 | [Two Sets](https://cses.fi/problemset/task/1092/)              | [C++](./solutions/cses/1092/main.cpp) |
 | 1094 | [Increasing Array](https://cses.fi/problemset/task/1094/)      | [C++](./solutions/cses/1094/main.cpp) |
+| 1141 | [Playlist](https://cses.fi/problemset/task/1141/)              | [C++](./solutions/cses/1141/main.cpp) |
 | 1617 | [Bit Strings](https://cses.fi/problemset/task/1617/)           | [C++](./solutions/cses/1617/main.cpp) |
 | 1618 | [Trailing Zeros](https://cses.fi/problemset/task/1618/)        | [C++](./solutions/cses/1618/main.cpp) |
 | 1619 | [Restaurant Customers](https://cses.fi/problemset/task/1619/)  | [C++](./solutions/cses/1619/main.cpp) |
