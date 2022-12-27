@@ -28,11 +28,44 @@ inline void solve() {
     }
 }
 
+inline void solve1() {
+    int x, n;
+    cin >> x >> n;
+
+    vector<int> lights = {0, x};
+    set<int> passage = {0, x};
+    for (int i = 0; i < n; ++i) {
+        int v;
+        cin >> v;
+        lights.push_back(v);
+        passage.insert(v);
+    }
+
+    reverse(lights.begin(), lights.end());
+
+    int mx = 0;
+    for (auto it = passage.begin(); it != prev(passage.end()); ++it) {
+        mx = max(mx, *next(it) - *it);
+    }
+
+    vector<int> result(n);
+    for (int i = 0; i < n; ++i) {
+        result[i] = mx;
+        auto it = passage.find(lights[i]);
+        mx = max(mx, *next(it) - *prev(it));
+        passage.erase(it);
+    }
+
+    for (auto it = result.rbegin(); it != result.rend(); ++it) {
+        cout << *it << ' ';
+    }
+}
+
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    solve();
+    solve1();
 
     return 0;
 }
