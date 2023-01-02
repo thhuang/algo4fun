@@ -1067,6 +1067,7 @@ This is my personal repository, including notes and resources related to competi
 | 1754 | [Coin Piles](https://cses.fi/problemset/task/1754/)            | [C++](./solutions/cses/1754/main.cpp) |
 | 1755 | [Palindrome Reorder](https://cses.fi/problemset/task/1755/)    | [C++](./solutions/cses/1755/main.cpp) |
 | 2162 | [Josephus Problem I](https://cses.fi/problemset/task/2162/)    | [C++](./solutions/cses/2162/main.cpp) |
+| 2163 | [Josephus Problem II](https://cses.fi/problemset/task/2163/)   | [C++](./solutions/cses/2163/main.cpp) |
 | 2165 | [Tower of Hanoi](https://cses.fi/problemset/task/2165/)        | [C++](./solutions/cses/2165/main.cpp) |
 | 2183 | [Missing Coin Sum](https://cses.fi/problemset/task/2183/)      | [C++](./solutions/cses/2183/main.cpp) |
 | 2205 | [Gray Code](https://cses.fi/problemset/task/2205/)             | [C++](./solutions/cses/2205/main.cpp) |
