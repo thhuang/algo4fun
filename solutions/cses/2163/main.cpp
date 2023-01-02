@@ -3,6 +3,9 @@
 using namespace __gnu_pbds;
 using namespace std;
 
+// https://gcc.gnu.org/onlinedocs/libstdc++/ext/pb_ds/
+// https://codeforces.com/blog/entry/11080
+// https://www.geeksforgeeks.org/ordered-set-gnu-c-pbds/
 template <typename T>
 using ordered_set =
     tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
