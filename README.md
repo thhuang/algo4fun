@@ -1071,6 +1071,7 @@ This is my personal repository, including notes and resources related to competi
 | 2163 | [Josephus Problem II](https://cses.fi/problemset/task/2163/)   | [C++](./solutions/cses/2163/main.cpp) |
 | 2165 | [Tower of Hanoi](https://cses.fi/problemset/task/2165/)        | [C++](./solutions/cses/2165/main.cpp) |
 | 2168 | [Nested Ranges Check](https://cses.fi/problemset/task/2168/)   | [C++](./solutions/cses/2168/main.cpp) |
+| 2169 | [Nested Ranges Count](https://cses.fi/problemset/task/2169/)   | [C++](./solutions/cses/2169/main.cpp) |
 | 2183 | [Missing Coin Sum](https://cses.fi/problemset/task/2183/)      | [C++](./solutions/cses/2183/main.cpp) |
 | 2205 | [Gray Code](https://cses.fi/problemset/task/2205/)             | [C++](./solutions/cses/2205/main.cpp) |
 | 2216 | [Collecting Numbers](https://cses.fi/problemset/task/2216/)    | [C++](./solutions/cses/2216/main.cpp) |
