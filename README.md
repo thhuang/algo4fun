@@ -1059,6 +1059,7 @@ This is my personal repository, including notes and resources related to competi
 | 1617 | [Bit Strings](https://cses.fi/problemset/task/1617/)           | [C++](./solutions/cses/1617/main.cpp) |
 | 1618 | [Trailing Zeros](https://cses.fi/problemset/task/1618/)        | [C++](./solutions/cses/1618/main.cpp) |
 | 1619 | [Restaurant Customers](https://cses.fi/problemset/task/1619/)  | [C++](./solutions/cses/1619/main.cpp) |
+| 1620 | [Factory Machines](https://cses.fi/problemset/task/1620/)      | [C++](./solutions/cses/1620/main.cpp) |
 | 1621 | [Distinct Numbers](https://cses.fi/problemset/task/1621/)      | [C++](./solutions/cses/1621/main.cpp) |
 | 1622 | [Creating Strings](https://cses.fi/problemset/task/1622/)      | [C++](./solutions/cses/1622/main.cpp) |
 | 1623 | [Apple Division](https://cses.fi/problemset/task/1623/)        | [C++](./solutions/cses/1623/main.cpp) |
