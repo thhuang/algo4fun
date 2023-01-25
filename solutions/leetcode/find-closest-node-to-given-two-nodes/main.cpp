@@ -1,34 +1,26 @@
 class Solution {
    public:
     int closestMeetingNode(vector<int>& edges, int node1, int node2) {
+        auto process = [&edges](vector<int>& vis, int start) -> void {
+            queue<pair<int, int>> q;
+            q.push({start, 0});
+            while (!q.empty()) {
+                auto [u, d] = q.front();
+                q.pop();
+
+                if (vis[u] != -1) continue;
+                vis[u] = d;
+
+                if (edges[u] == -1) continue;
+                q.push({edges[u], d + 1});
+            }
+        };
+
         int n = edges.size();
-        queue<pair<int, int>> q;
-
         vector<int> vis1(n, -1);
-        q.push({node1, 0});
-        while (!q.empty()) {
-            auto [u, d] = q.front();
-            q.pop();
-
-            if (vis1[u] != -1) continue;
-            vis1[u] = d;
-
-            if (edges[u] == -1) continue;
-            q.push({edges[u], d + 1});
-        }
-
+        process(vis1, node1);
         vector<int> vis2(n, -1);
-        q.push({node2, 0});
-        while (!q.empty()) {
-            auto [u, d] = q.front();
-            q.pop();
-
-            if (vis2[u] != -1) continue;
-            vis2[u] = d;
-
-            if (edges[u] == -1) continue;
-            q.push({edges[u], d + 1});
-        }
+        process(vis2, node2);
 
         int result = -1;
         int mx = numeric_limits<int>::max();
