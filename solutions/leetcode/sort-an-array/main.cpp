@@ -30,3 +30,25 @@ class Solution {
         return nums;
     }
 };
+
+class Solution {
+   public:
+    vector<int> sortArray(vector<int>& nums) {
+        int l = *min_element(nums.begin(), nums.end());
+        int r = *max_element(nums.begin(), nums.end());
+        int n = r - l + 1;
+
+        vector<int> buckets(n, 0);
+        for (int v : nums) ++buckets[v - l];
+
+        vector<int> result;
+        for (int i = 0; i < n; ++i) {
+            int v = l + i;
+            for (int j = 0; j < buckets[i]; ++j) {
+                result.push_back(v);
+            }
+        }
+
+        return result;
+    }
+};
