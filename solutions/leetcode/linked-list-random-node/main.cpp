@@ -20,7 +20,7 @@ class Solution {
 
     int getRandom() {
         int r = rand();
-        while (r <= INT_MAX % n) r = rand();
+        while (r <= numeric_limits<int>::max() % n) r = rand();
 
         auto p = head;
         int step = r % n;
