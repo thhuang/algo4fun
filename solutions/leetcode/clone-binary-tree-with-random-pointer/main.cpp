@@ -39,3 +39,23 @@ class Solution {
         return mp[root];
     }
 };
+
+class Solution {
+   public:
+    NodeCopy *copyRandomBinaryTree(Node *root) {
+        unordered_map<Node *, NodeCopy *> mp;
+
+        function<NodeCopy *(Node *)> dfs = [&dfs, &mp](Node *u) -> NodeCopy * {
+            if (u == nullptr) return nullptr;
+            if (mp.count(u) > 0) return mp[u];
+            NodeCopy *v = mp[u] = new NodeCopy(u->val);
+            v->left = dfs(u->left);
+            v->right = dfs(u->right);
+            v->random = dfs(u->random);
+            return v;
+        };
+        dfs(root);
+
+        return mp[root];
+    }
+};
