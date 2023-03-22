@@ -887,6 +887,7 @@ This is my personal repository, including notes and resources related to competi
 | 2448 | [Minimum Cost to Make Array Equal](https://leetcode.com/problems/minimum-cost-to-make-array-equal/)                                                                                     | [C++](./solutions/leetcode/minimum-cost-to-make-array-equal/main.cpp)                                           | Hard       |
 | 2449 | [Minimum Number of Operations to Make Arrays Similar](https://leetcode.com/problems/minimum-number-of-operations-to-make-arrays-similar/)                                               | [C++](./solutions/leetcode/minimum-number-of-operations-to-make-arrays-similar/main.cpp)                        | Hard       |
 | 2477 | [Minimum Fuel Cost to Report to the Capital](https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/)                                                                 | [C++](./solutions/leetcode/minimum-fuel-cost-to-report-to-the-capital/main.cpp)                                 | Medium     |
+| 2492 | [Minimum Score of a Path Between Two Cities](https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/)                                                                 | [C++](./solutions/leetcode/minimum-score-of-a-path-between-two-cities/main.cpp)                                 | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
