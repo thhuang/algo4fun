@@ -922,6 +922,7 @@ This is my personal repository, including notes and resources related to competi
 | 2466 | [Count Ways To Build Good Strings](https://leetcode.com/problems/count-ways-to-build-good-strings/)                                                                                     | [C++](./solutions/leetcode/count-ways-to-build-good-strings/main.cpp)                                           | Medium     |
 | 2477 | [Minimum Fuel Cost to Report to the Capital](https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/)                                                                 | [C++](./solutions/leetcode/minimum-fuel-cost-to-report-to-the-capital/main.cpp)                                 | Medium     |
 | 2492 | [Minimum Score of a Path Between Two Cities](https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/)                                                                 | [C++](./solutions/leetcode/minimum-score-of-a-path-between-two-cities/main.cpp)                                 | Medium     |
+| 2542 | [Maximum Subsequence Score](https://leetcode.com/problems/maximum-subsequence-score/)                                                                                                   | [C++](./solutions/leetcode/maximum-subsequence-score/main.cpp)                                                  | Medium     |
 
 ## [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)
 
