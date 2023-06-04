@@ -25,3 +25,27 @@ class Solution {
         return t;
     }
 };
+
+class Solution {
+   public:
+    string reverseWords(string s) {
+        int n = s.size();
+
+        string result;
+
+        reverse(s.begin(), s.end());
+        for (int l = 0; l < s.size(); ++l) {
+            if (s[l] == ' ') continue;
+            int r = l + 1;
+            while (r < s.size() && s[r] != ' ') ++r;
+            string w = s.substr(l, r - l);
+            reverse(w.begin(), w.end());
+            result += w + " ";
+            l = r;
+        }
+
+        result.pop_back();
+
+        return result;
+    }
+};
