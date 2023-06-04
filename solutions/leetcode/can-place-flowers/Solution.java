@@ -24,7 +24,33 @@ class Solution {
 
         return false;
     }
-
 }
 
-    
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        if (n == 0) {
+            return true;
+        }
+
+        int m = flowerbed.length;
+        for (int i = 0; i < m; ++i) {
+            if (i - 1 >= 0 && flowerbed[i - 1] == 1) {
+                continue;
+            }
+            if (flowerbed[i] == 1) {
+                continue;
+            }
+            if (i + 1 < m && flowerbed[i + 1] == 1) {
+                continue;
+            }
+
+            flowerbed[i] = 1;
+            --n;
+            if (n == 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
