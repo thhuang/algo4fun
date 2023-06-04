@@ -36,10 +36,11 @@ class Solution {
             return group[k] = find(group[k]);
         };
 
-        function<void(int, int)> unite = [&](int a, int b) -> void {
+        function<bool(int, int)> unite = [&](int a, int b) -> bool {
             int ga = find(a);
             int gb = find(b);
-            if (ga == gb) return;
+            if (ga == gb) return false;
+
             if (rank[ga] > rank[gb]) {
                 group[gb] = ga;
             } else if (rank[gb] > rank[ga]) {
@@ -48,18 +49,19 @@ class Solution {
                 ++rank[ga];
                 group[gb] = ga;
             }
+            return true;
         };
 
+        int result = n;
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
                 if (isConnected[i][j] == 0) continue;
-                unite(i, j);
+                if (unite(i, j)) {
+                    --result;
+                }
             }
         }
 
-        unordered_set<int> provinces;
-        for (int i = 0; i < n; ++i) provinces.insert(find(i));
-
-        return provinces.size();
+        return result;
     }
 };
