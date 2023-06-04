@@ -26,29 +26,40 @@ class Solution {
    public:
     int findCircleNum(vector<vector<int>>& isConnected) {
         int n = isConnected.size();
+
+        vector<int> rank(n, 0);
         vector<int> group(n);
         iota(group.begin(), group.end(), 0);
 
-        function<int(int)> find = [&group, &find](int u) -> int {
-            if (u == group[u]) return u;
-            return group[u] = find(group[u]);
+        function<int(int)> find = [&](int k) -> int {
+            if (group[k] == k) return k;
+            return group[k] = find(group[k]);
         };
 
-        function<void(int, int)> unite = [&group, &find](int a, int b) -> void {
-            int pa = find(a);
-            int pb = find(b);
-            group[pa] = pb;
+        function<void(int, int)> unite = [&](int a, int b) -> void {
+            int ga = find(a);
+            int gb = find(b);
+            if (ga == gb) return;
+            if (rank[ga] > rank[gb]) {
+                group[gb] = ga;
+            } else if (rank[gb] > rank[ga]) {
+                group[ga] = gb;
+            } else {
+                ++rank[ga];
+                group[gb] = ga;
+            }
         };
 
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
-                if (isConnected[i][j]) unite(i, j);
+                if (isConnected[i][j] == 0) continue;
+                unite(i, j);
             }
         }
 
-        unordered_set<int> result;
-        for (int i = 0; i < n; ++i) result.insert(find(i));
+        unordered_set<int> provinces;
+        for (int i = 0; i < n; ++i) provinces.insert(find(i));
 
-        return result.size();
+        return provinces.size();
     }
 };
