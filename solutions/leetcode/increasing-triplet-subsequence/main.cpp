@@ -14,3 +14,21 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+   public:
+    bool increasingTriplet(vector<int>& nums) {
+        int a = numeric_limits<int>::max();
+        int b = numeric_limits<int>::max();
+        for (int v : nums) {
+            if (v <= a) {
+                a = v;
+            } else if (v <= b) {
+                b = v;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+};
