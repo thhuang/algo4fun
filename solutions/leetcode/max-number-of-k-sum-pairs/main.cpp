@@ -1,17 +1,16 @@
 class Solution {
    public:
     int maxOperations(vector<int>& nums, int k) {
-        int count = 0;
-        unordered_map<int, int> target_count;
+        int result = 0;
+        unordered_map<int, int> cnt;
         for (int v : nums) {
-            if (v >= k) continue;
-            if (target_count[v]) {
-                --target_count[v];
-                ++count;
+            if (cnt[v] == 0) {
+                ++cnt[k - v];
             } else {
-                ++target_count[k - v];
+                --cnt[v];
+                ++result;
             }
         }
-        return count;
+        return result;
     }
 };
