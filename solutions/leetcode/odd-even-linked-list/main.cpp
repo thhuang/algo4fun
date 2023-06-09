@@ -30,3 +30,19 @@ class Solution {
         return odd.next;
     }
 };
+
+class Solution {
+   public:
+    ListNode* oddEvenList(ListNode* head) {
+        ListNode odd, even;
+        ListNode *o = &odd, *e = &even;
+        ListNode* p = o;
+        for (int i = 1; head != nullptr; ++i, head = head->next) {
+            p->next = head;
+            i & 1 ? (o = o->next, p = e) : (e = e->next, p = o);
+        }
+        p->next = nullptr;
+        o->next = even.next;
+        return odd.next;
+    }
+};
