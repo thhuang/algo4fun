@@ -119,3 +119,36 @@ class Solution {
         return decode(i);
     }
 };
+
+class Solution {
+   public:
+    string decodeString(string s) {
+        int p = 0;
+
+        function<string()> parse = [&]() -> string {
+            string result;
+            int v = 0;
+            while (p < s.size()) {
+                char c = s[p];
+                if (isdigit(c)) {
+                    v = v * 10 + (c - '0');
+                    ++p;
+                } else if (c == '[') {
+                    ++p;
+                    string sub = parse();
+                    for (int i = 0; i < v; ++i) result += sub;
+                    v = 0;
+                } else if (c == ']') {
+                    ++p;
+                    break;
+                } else {
+                    result += c;
+                    ++p;
+                }
+            }
+            return result;
+        };
+
+        return parse();
+    }
+};
