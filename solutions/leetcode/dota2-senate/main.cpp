@@ -40,3 +40,40 @@ class Solution {
         return rCount > 0 ? "Radiant" : "Dire";
     }
 };
+
+class Solution {
+   public:
+    string predictPartyVictory(string senate) {
+        int rCount = 0, dCount = 0;
+        int rBan = 0, dBan = 0;
+
+        queue<char> q;
+        for (char c : senate) {
+            c == 'R' ? ++rCount : ++dCount;
+            q.push(c);
+        }
+
+        while (rCount > 0 && dCount > 0) {
+            char c = q.front();
+            q.pop();
+
+            if (c == 'R') {
+                if (dBan > 0) {
+                    --dBan, --rCount;
+                    continue;
+                }
+                ++rBan;
+            } else {  // c == 'D'
+                if (rBan > 0) {
+                    --rBan, --dCount;
+                    continue;
+                }
+                ++dBan;
+            }
+
+            q.push(c);
+        }
+
+        return rCount > 0 ? "Radiant" : "Dire";
+    }
+};
