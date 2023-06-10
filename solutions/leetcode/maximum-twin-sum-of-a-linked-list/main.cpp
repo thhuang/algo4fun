@@ -32,3 +32,40 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    ListNode* reverse(ListNode* head) {
+        ListNode* a = nullptr;
+        ListNode* b = head;
+        while (b) {
+            ListNode* c = b->next;
+            b->next = a;
+            a = b;
+            b = c;
+        }
+        return a;
+    }
+
+    int pairSum(ListNode* head) {
+        ListNode dummy(0, head);
+        ListNode* slow = &dummy;
+        ListNode* fast = &dummy;
+        while (fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        ListNode* r = slow->next;
+        slow->next = nullptr;
+        ListNode* l = reverse(head);
+        int result = 0;
+        while (r) {
+            result = max(result, l->val + r->val);
+            l = l->next;
+            r = r->next;
+        }
+
+        return result;
+    }
+};
