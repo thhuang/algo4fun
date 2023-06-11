@@ -3,7 +3,7 @@ class SnapshotArray {
     int id = 0;
 
    public:
-    SnapshotArray(int length) { updates.resize(length, {{-1, 0}}); }
+    SnapshotArray(int length) { updates.resize(length, {{0, 0}}); }
 
     void set(int index, int val) {
         if (updates[index].back().first == id) {
