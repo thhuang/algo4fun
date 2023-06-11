@@ -25,3 +25,18 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int goodNodes(TreeNode* root) {
+        function<int(TreeNode*, int)> dfs = [&](TreeNode* u, int mx) -> int {
+            if (u == nullptr) return 0;
+            int result = 0;
+            if (u->val >= mx) ++result;
+            mx = max(mx, u->val);
+            result += dfs(u->left, mx) + dfs(u->right, mx);
+            return result;
+        };
+        return dfs(root, numeric_limits<int>::min());
+    }
+};
