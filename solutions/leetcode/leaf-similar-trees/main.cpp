@@ -11,21 +11,22 @@
  * };
  */
 class Solution {
-    void collectLeaves(TreeNode* u, vector<int>& leaves) {
-        if (u == nullptr) return;
-        if (u->left == nullptr && u->right == nullptr) {
-            leaves.push_back(u->val);
-            return;
-        }
-        collectLeaves(u->left, leaves);
-        collectLeaves(u->right, leaves);
-    }
-
    public:
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        function<void(TreeNode*, vector<int>&)> dfs =
+            [&](TreeNode* u, vector<int>& leaves) -> void {
+            if (u->left == nullptr && u->right == nullptr) {
+                leaves.push_back(u->val);
+                return;
+            }
+            if (u->left != nullptr) dfs(u->left, leaves);
+            if (u->right != nullptr) dfs(u->right, leaves);
+        };
+
         vector<int> leaves1, leaves2;
-        collectLeaves(root1, leaves1);
-        collectLeaves(root2, leaves2);
+        dfs(root1, leaves1);
+        dfs(root2, leaves2);
+
         return leaves1 == leaves2;
     }
 };
