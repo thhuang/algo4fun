@@ -71,3 +71,33 @@ class Solution {
         return root;
     }
 };
+
+class Solution {
+   public:
+    TreeNode* largestNode(TreeNode* root) {
+        if (root->right == nullptr) return root;
+        return largestNode(root->right);
+    }
+
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if (root == nullptr) return nullptr;
+
+        if (root->val != key) {
+            if (key < root->val) {
+                root->left = deleteNode(root->left, key);
+            } else {
+                root->right = deleteNode(root->right, key);
+            }
+            return root;
+        }
+
+        if (root->left == nullptr) return root->right;
+        if (root->right == nullptr) return root->left;
+
+        auto largest = largestNode(root->left);
+        root->val = largest->val;
+        root->left = deleteNode(root->left, largest->val);
+
+        return root;
+    }
+};
