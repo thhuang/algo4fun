@@ -3,27 +3,22 @@ class Solution {
     int equalPairs(vector<vector<int>>& grid) {
         int n = grid.size();
 
-        unordered_map<string, int> row;
+        unordered_map<string, int> mp;
         for (int i = 0; i < n; ++i) {
             stringstream ss;
             for (int j = 0; j < n; ++j) {
                 ss << grid[i][j] << ' ';
             }
-            ++row[ss.str()];
+            ++mp[ss.str()];
         }
 
-        unordered_map<string, int> col;
+        int result = 0;
         for (int j = 0; j < n; ++j) {
             stringstream ss;
             for (int i = 0; i < n; ++i) {
                 ss << grid[i][j] << ' ';
             }
-            ++col[ss.str()];
-        }
-
-        int result = 0;
-        for (auto [s, v] : row) {
-            result += col[s] * v;
+            result += mp[ss.str()];
         }
 
         return result;
