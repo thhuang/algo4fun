@@ -37,3 +37,21 @@ class Solution {
         return locked == 0;
     }
 };
+
+class Solution {
+   public:
+    bool canVisitAllRooms(vector<vector<int>>& rooms) {
+        int n = rooms.size();
+        int cnt = rooms.size();
+        vector<bool> vis(n, false);
+        function<void(int)> dfs = [&](int u) -> void {
+            if (vis[u]) return;
+            vis[u] = true;
+            for (int v : rooms[u]) dfs(v);
+        };
+        dfs(0);
+
+        return reduce(vis.begin(), vis.end(), true,
+                      [](bool b, bool r) -> bool { return b && r; });
+    }
+};
