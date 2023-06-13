@@ -23,3 +23,26 @@ class Solution {
         return ans;
     }
 };
+
+class Solution {
+   public:
+    int minReorder(int n, vector<vector<int>>& connections) {
+        vector<vector<array<int, 2>>> adj(n);
+        for (vector<int>& c : connections) {
+            adj[c[0]].push_back({c[1], 1});
+            adj[c[1]].push_back({c[0], 0});
+        }
+
+        int result = 0;
+        function<void(int, int)> dfs = [&](int u, int p) -> void {
+            for (auto [v, c] : adj[u]) {
+                if (v == p) continue;
+                result += c;
+                dfs(v, u);
+            }
+        };
+        dfs(0, 0);
+
+        return result;
+    }
+};
