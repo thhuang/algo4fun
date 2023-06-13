@@ -29,3 +29,22 @@ class Solution {
         return result - 1;
     }
 };
+
+class Solution {
+    enum class Direction { Left, Right };
+
+   public:
+    int longestZigZag(TreeNode* root) {
+        int result = 0;
+        function<int(TreeNode*, Direction)> dfs = [&](TreeNode* u,
+                                                      Direction d) -> int {
+            if (u == nullptr) return 0;
+            int l = dfs(u->left, Direction::Left);
+            int r = dfs(u->right, Direction::Right);
+            result = max(result, max(l, r));
+            return d == Direction::Left ? r + 1 : l + 1;
+        };
+        dfs(root, Direction::Left);
+        return result;
+    }
+};
