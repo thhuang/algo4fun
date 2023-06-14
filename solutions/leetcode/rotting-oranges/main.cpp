@@ -81,3 +81,41 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    const vector<array<int, 2>> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+   public:
+    int orangesRotting(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid.front().size();
+
+        int cnt = 0;
+        queue<array<int, 3>> q;
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 0) continue;
+                ++cnt;
+
+                if (grid[i][j] == 2) q.push({i, j, 0});
+                grid[i][j] = 1;
+            }
+
+        int result = 0;
+        while (!q.empty()) {
+            auto [i, j, min] = q.front();
+            q.pop();
+
+            if (i < 0 || m <= i || j < 0 || n <= j) continue;
+            if (grid[i][j] != 1) continue;
+            grid[i][j] = 2;
+
+            --cnt;
+            result = max(result, min);
+
+            for (auto [di, dj] : directions) q.push({i + di, j + dj, min + 1});
+        }
+
+        return cnt == 0 ? result : -1;
+    }
+};
