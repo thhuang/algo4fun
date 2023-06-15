@@ -67,3 +67,32 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    long long maxScore(vector<int>& nums1, vector<int>& nums2, int k) {
+        int n = nums1.size();
+
+        vector<array<int, 2>> numPairs;
+        for (int i = 0; i < n; ++i) numPairs.push_back({nums2[i], nums1[i]});
+        sort(numPairs.begin(), numPairs.end(), greater<>());
+
+        long long result = 0;
+        long long sum = 0;
+        priority_queue<int, vector<int>, greater<>> pq;
+        for (int i = 0; i < k - 1; ++i) {
+            sum += numPairs[i][1];
+            pq.push(numPairs[i][1]);
+        }
+        for (int i = k - 1; i < n; ++i) {
+            sum += numPairs[i][1];
+            pq.push(numPairs[i][1]);
+
+            result = max(result, sum * numPairs[i][0]);
+            sum -= pq.top();
+            pq.pop();
+        }
+
+        return result;
+    }
+};
