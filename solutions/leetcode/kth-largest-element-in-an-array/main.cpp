@@ -35,18 +35,9 @@ class Solution {
    public:
     int findKthLargest(vector<int>& nums, int k) {
         function<int(int, int)> partition = [&](int l, int r) -> int {
-            int t = nums[r];
-            int i = l;
-            while (i < r) {
-                if (nums[i] < t) {
-                    swap(nums[i++], nums[l++]);
-                } else {
-                    ++i;
-                }
-            }
-
+            for (int i = l; i < r; ++i)
+                if (nums[i] < nums[r]) swap(nums[i], nums[l++]);
             swap(nums[l], nums[r]);
-
             return l;
         };
 
