@@ -1,23 +1,17 @@
 class SmallestInfiniteSet {
-    priority_queue<int, vector<int>, greater<>> pq;
-    vector<bool> exists;
+    set<int> mp;
+    int mn = 1;
 
    public:
-    SmallestInfiniteSet() : exists(10001, true) {
-        for (int i = 1; i <= 1000; ++i) pq.push(i);
-    }
-
     int popSmallest() {
-        int v = pq.top();
-        pq.pop();
-        exists[v] = false;
+        if (mp.empty()) return mn++;
+        int v = *mp.begin();
+        mp.erase(mp.begin());
         return v;
     }
 
     void addBack(int num) {
-        if (exists[num]) return;
-        exists[num] = true;
-        pq.push(num);
+        if (num < mn) mp.insert(num);
     }
 };
 
