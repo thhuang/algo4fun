@@ -30,3 +30,38 @@ class Solution {
         return nums[r];
     }
 };
+
+class Solution {
+   public:
+    int findKthLargest(vector<int>& nums, int k) {
+        function<int(int, int)> partition = [&](int l, int r) -> int {
+            int t = nums[r];
+            int i = l;
+            while (i < r) {
+                if (nums[i] < t) {
+                    swap(nums[i++], nums[l++]);
+                } else {
+                    ++i;
+                }
+            }
+
+            swap(nums[l], nums[r]);
+
+            return l;
+        };
+
+        int n = nums.size();
+        int t = n - k;
+        int l = 0, r = n - 1;
+        while (l <= r) {
+            int p = partition(l, r);
+            if (p < t) {
+                l = p + 1;
+            } else {
+                r = p - 1;
+            }
+        }
+
+        return nums[l];
+    }
+};
