@@ -1,16 +1,14 @@
 class Solution {
+    struct DP {
+        int hold, sold;
+    };
+
    public:
     int maxProfit(vector<int>& prices, int fee) {
-        struct DP {
-            int bought, sold;
-        };
-
-        DP dp = {-prices.front(), 0};
+        DP dp{-prices[0], 0};
         for (int v : prices) {
-            dp = {max(dp.bought, dp.sold - v),
-                  max(dp.sold, dp.bought + v - fee)};
+            dp = {max(dp.hold, dp.sold - v), max(dp.sold, dp.hold + v - fee)};
         }
-
         return dp.sold;
     }
 };
