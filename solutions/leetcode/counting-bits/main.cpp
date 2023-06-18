@@ -1,26 +1,27 @@
 class Solution {
    public:
     vector<int> countBits(int n) {
-        vector<int> counts = {0};
-        vector<int> new_counts = counts;
-        for (int i = 1, j = 0; i <= n; ++i) {
-            new_counts.push_back(counts[j++] + 1);
-            if (j == counts.size()) {
-                j = 0;
-                counts = new_counts;
-            }
+        vector<int> result(n + 1, 0);
+        for (int i = 1; i <= n; ++i) {
+            result[i] = result[i & (i - 1)] + 1;
         }
-        return new_counts;
+        return result;
     }
 };
 
 class Solution {
    public:
     vector<int> countBits(int n) {
-        vector<int> result(n + 1, 0);
-        for (int i = 1; i <= n; ++i) {
-            result[i] = result[i & (i - 1)] + 1;
+        if (n == 0) return {0};
+
+        vector<int> result = {0};
+        while (result.size() <= n) {
+            int m = result.size();
+            for (int i = 0; i < m && result.size() <= n; ++i) {
+                result.push_back(result[i] + 1);
+            }
         }
+
         return result;
     }
 };
