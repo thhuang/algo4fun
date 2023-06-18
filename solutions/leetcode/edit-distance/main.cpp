@@ -10,7 +10,8 @@ class Solution {
                 if (word1[i - 1] == word2[j - 1]) {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {  // word1[i - 1] != word2[j - 1]
-                    dp[i][j] = 1 + min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});
+                    dp[i][j] =
+                        1 + min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});
                 }
             }
         }
@@ -34,7 +35,8 @@ class Solution {
                 if (word1[i - 1] == word2[j - 1]) {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {  // word1[i - 1] != word2[j - 1]
-                    dp[i][j] = 1 + min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});
+                    dp[i][j] =
+                        1 + min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});
                 }
             }
         }
@@ -46,22 +48,22 @@ class Solution {
 class Solution {
    public:
     int minDistance(string word1, string word2) {
-        vector<int> dp(word2.size() + 1);
+        int m = word1.size();
+        int n = word2.size();
 
-        for (int i = 0; i <= word1.size(); ++i) {
-            vector<int> new_dp(word2.size() + 1);
-            for (int j = 0; j <= word2.size(); ++j) {
-                if (i == 0 || j == 0) {
-                    new_dp[j] = i + j;
-                    continue;
-                }
+        vector<int> dp(n + 1);
+        iota(dp.begin(), dp.end(), 0);
+        for (int i = 1; i <= m; ++i) {
+            vector<int> dpNew(n + 1);
+            dpNew[0] = i;
+            for (int j = 1; j <= n; ++j) {
                 if (word1[i - 1] == word2[j - 1]) {
-                    new_dp[j] = dp[j - 1];
-                } else {  // word1[i - 1] != word2[j - 1]
-                    new_dp[j] = 1 + min({dp[j], new_dp[j - 1], dp[j - 1]});
+                    dpNew[j] = dp[j - 1];
+                } else {
+                    dpNew[j] = min({dp[j - 1], dp[j], dpNew[j - 1]}) + 1;
                 }
             }
-            dp = move(new_dp);
+            dp = move(dpNew);
         }
 
         return dp.back();
