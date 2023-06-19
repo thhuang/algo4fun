@@ -42,43 +42,41 @@ class Trie {
 
 class Trie {
     struct Node {
-        Node() : is_end(false), children(array<Node*, 26>()) {}
-
-        bool is_end;
         array<Node*, 26> children;
+        bool isEnd = false;
     };
 
     Node* root;
 
-    Node* searchWord(const string& word) {
-        auto u = root;
+    Node* findNode(string word) {
+        auto p = root;
         for (char c : word) {
-            auto v = u->children[c - 'a'];
-            if (!v) return nullptr;
-            u = v;
+            int i = c - 'a';
+            if (p->children[i] == nullptr) return nullptr;
+            p = p->children[i];
         }
-        return u;
+        return p;
     }
 
    public:
-    Trie() : root(new Node()) {}
+    Trie() : root{new Node()} {}
 
     void insert(string word) {
-        auto u = root;
+        auto p = root;
         for (char c : word) {
-            int k = c - 'a';
-            if (!u->children[k]) u->children[k] = new Node();
-            u = u->children[k];
+            int i = c - 'a';
+            if (p->children[i] == nullptr) p->children[i] = new Node();
+            p = p->children[i];
         }
-        u->is_end = true;
+        p->isEnd = true;
     }
 
     bool search(string word) {
-        auto u = searchWord(word);
-        return u && u->is_end;
+        auto node = findNode(word);
+        return node != nullptr && node->isEnd;
     }
 
-    bool startsWith(string prefix) { return searchWord(prefix); }
+    bool startsWith(string prefix) { return findNode(prefix) != nullptr; }
 };
 
 /**
