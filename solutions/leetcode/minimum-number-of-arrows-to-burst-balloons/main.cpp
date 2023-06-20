@@ -23,6 +23,37 @@ class Solution {
 class Solution {
    public:
     int findMinArrowShots(vector<vector<int>>& points) {
+        priority_queue<int, vector<int>, greater<>> pq;
+        vector<int> shots;
+        for (auto& p : points) shots.push_back(p[1]);
+        sort(shots.begin(), shots.end());
+        sort(points.begin(), points.end());
+
+        int result = 0;
+        for (int l = 0, i = 0; l < points.size(); ++i) {
+            if (!pq.empty() && pq.top() == shots[i]) {
+                pq.pop();
+                continue;
+            }
+
+            int r = l;
+            while (r < points.size() && points[r][0] <= shots[i]) {
+                pq.push(points[r][1]);
+                ++r;
+            }
+            pq.pop();
+
+            if (l < r) ++result;
+            l = r;
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    int findMinArrowShots(vector<vector<int>>& points) {
         sort(points.begin(), points.end());
         int count = 1;
         int last_arrow = points[0][1];
