@@ -1,17 +1,19 @@
 class StockSpanner {
-    vector<pair<int, int>> stocks;
+    struct priceSpan {
+        int price, span;
+    };
+
+    vector<priceSpan> priceSpans;
 
    public:
-    StockSpanner() {}
-
     int next(int price) {
-        int result = 1;
-        while (!stocks.empty() && stocks.back().first <= price) {
-            result += stocks.back().second;
-            stocks.pop_back();
+        int span = 1;
+        while (!priceSpans.empty() && priceSpans.back().price <= price) {
+            span += priceSpans.back().span;
+            priceSpans.pop_back();
         }
-        stocks.push_back({price, result});
-        return result;
+        priceSpans.push_back({price, span});
+        return span;
     }
 };
 
