@@ -9,3 +9,12 @@ class Solution {
         return p;
     }
 };
+
+class Solution {
+   public:
+    int removeElement(vector<int>& nums, int val) {
+        return remove_if(nums.begin(), nums.end(),
+                         [&val](int v) -> bool { return v == val; }) -
+               nums.begin();
+    }
+};
