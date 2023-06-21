@@ -1,19 +1,6 @@
 class Solution {
    public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        int p = m + n - 1;
-        int p1 = m - 1;
-        int p2 = n - 1;
-        while (~p1 && ~p2) {
-            nums1[p--] = nums1[p1] > nums2[p2] ? nums1[p1--] : nums2[p2--];
-        }
-        while (~p2) nums1[p--] = nums2[p2--];
-    }
-};
-
-class Solution {
-   public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         reverse(nums1.begin(), nums1.begin() + m);
         reverse(nums1.begin(), nums1.end());
 
@@ -49,5 +36,17 @@ class Solution {
             else
                 nums1[p--] = nums1[i--];
         }
+    }
+};
+
+class Solution {
+   public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int p = m + n - 1;
+        while (~i && ~j)
+            nums1[p--] = nums1[i] < nums2[j] ? nums2[j--] : nums1[i--];
+        while (~j) nums1[p--] = nums2[j--];
     }
 };
