@@ -18,3 +18,21 @@ class Solution {
         return p;
     }
 };
+
+class Solution {
+   public:
+    int removeDuplicates(vector<int>& nums) {
+        int cnt = 0;
+        int p = 1;
+        for (int i = 1; i < nums.size(); ++i) {
+            if (nums[i] == nums[i - 1]) {
+                if (++cnt >= 2) continue;
+                nums[p++] = nums[i];
+            } else {
+                cnt = 0;
+                nums[p++] = nums[i];
+            }
+        }
+        return p;
+    }
+};
