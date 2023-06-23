@@ -1,12 +1,12 @@
 class Solution {
-public:
+   public:
     int maxProfit(vector<int>& prices) {
-        int max_profit = 0;
-        int min_price = numeric_limits<int>::max();
+        int result = 0;
+        int mn = prices[0];
         for (int v : prices) {
-            min_price = min(min_price, v);
-            max_profit = max(max_profit, v - min_price);
+            result = max(result, v - mn);
+            mn = min(mn, v);
         }
-        return max_profit;
+        return result;
     }
 };
