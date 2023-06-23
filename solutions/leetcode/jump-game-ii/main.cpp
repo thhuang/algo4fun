@@ -54,3 +54,18 @@ class Solution {
         return -1;
     }
 };
+
+class Solution {
+   public:
+    int jump(vector<int>& nums) {
+        int result = 0;
+        for (int l = 0, r = 0; r < nums.size() - 1;) {
+            ++result;
+            int rNew = r;
+            for (int i = l; i <= r; ++i) rNew = max(rNew, i + nums[i]);
+            l = r + 1;
+            r = rNew;
+        }
+        return result;
+    }
+};
