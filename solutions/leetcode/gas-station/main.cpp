@@ -27,3 +27,19 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int n = gas.size();
+        int result = 0, g = 0;
+        for (int i = 0, mn = 0; i < n; ++i) {
+            g += gas[i] - cost[i];
+            if (g < mn) {
+                mn = g;
+                result = (i + 1) % n;
+            }
+        }
+        return (g < 0) ? -1 : result;
+    }
+};
