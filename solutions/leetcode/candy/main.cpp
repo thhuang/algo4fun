@@ -2,27 +2,6 @@ class Solution {
    public:
     int candy(vector<int>& ratings) {
         int n = ratings.size();
-        vector<int> nums(n, 1);
-        for (int i = 1; i < n; ++i) {
-            if (ratings[i - 1] < ratings[i]) {
-                nums[i] = nums[i - 1] + 1;
-            }
-        }
-        for (int i = n - 2; i >= 0; --i) {
-            if (ratings[i] > ratings[i + 1] && nums[i] <= nums[i + 1]) {
-                nums[i] = nums[i + 1] + 1;
-            }
-        }
-        int result = 0;
-        for (int v : nums) result += v;
-        return result;
-    }
-};
-
-class Solution {
-   public:
-    int candy(vector<int>& ratings) {
-        int n = ratings.size();
 
         vector<int> ones;
         for (int i = 0; i < n; ++i) {
@@ -43,6 +22,25 @@ class Solution {
             }
         }
 
+        return accumulate(candies.begin(), candies.end(), 0);
+    }
+};
+
+class Solution {
+   public:
+    int candy(vector<int>& ratings) {
+        int n = ratings.size();
+        vector<int> candies(n, 1);
+        for (int i = 1; i < n; ++i) {
+            if (ratings[i] > ratings[i - 1]) {
+                candies[i] = candies[i - 1] + 1;
+            }
+        }
+        for (int i = n - 2; i >= 0; --i) {
+            if (ratings[i] > ratings[i + 1]) {
+                candies[i] = max(candies[i], candies[i + 1] + 1);
+            }
+        }
         return accumulate(candies.begin(), candies.end(), 0);
     }
 };
