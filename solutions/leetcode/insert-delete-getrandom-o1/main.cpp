@@ -1,10 +1,10 @@
 class RandomizedSet {
-    unordered_map<int, int> mp;
     vector<int> vals;
+    unordered_map<int, int> mp;
 
    public:
     bool insert(int val) {
-        if (mp.count(val) == 1) return false;
+        if (mp.count(val) > 0) return false;
         mp[val] = vals.size();
         vals.push_back(val);
         return true;
@@ -12,10 +12,14 @@ class RandomizedSet {
 
     bool remove(int val) {
         if (mp.count(val) == 0) return false;
-        mp[vals.back()] = mp[val];
-        swap(vals.back(), vals[mp[val]]);
+        int v = vals.back();
+
+        swap(mp[val], mp[v]);
+        swap(vals[mp[val]], vals[mp[v]]);
+
         mp.erase(val);
         vals.pop_back();
+
         return true;
     }
 
