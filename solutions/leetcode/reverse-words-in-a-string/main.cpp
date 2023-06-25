@@ -49,3 +49,21 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    string reverseWords(string s) {
+        int p = 0;
+        reverse(s.begin(), s.end());
+        for (int l = 0; l < s.size(); ++l) {
+            if (s[l] == ' ') continue;
+            int r = l + 1;
+            while (r < s.size() && s[r] != ' ') ++r;
+            reverse(s.begin() + l, s.begin() + r);
+            for (int i = l; i < r; ++i) s[p++] = s[i];
+            s[p++] = ' ';
+            l = r - 1;
+        }
+        return s.substr(0, p - 1);
+    }
+};
