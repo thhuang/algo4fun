@@ -28,3 +28,17 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int lengthOfLongestSubstring(string s) {
+        int result = 0;
+        unordered_map<char, bool> seen;
+        for (int l = 0, r = 0; r < s.size(); ++r) {
+            while (seen[s[r]]) seen[s[l++]] = false;
+            seen[s[r]] = true;
+            result = max(result, r - l + 1);
+        }
+        return result;
+    }
+};
