@@ -34,3 +34,31 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maximumRequests(int n, vector<vector<int>>& requests) {
+        int m = requests.size();
+
+        vector<int> diff(n, 0);
+        int curr = 0;
+
+        function<int(int)> dfs = [&](int i) -> int {
+            if (i == m) {
+                for (int v : diff) {
+                    if (v != 0) return 0;
+                }
+                return curr;
+            }
+
+            int result = dfs(i + 1);
+            --diff[requests[i][0]], ++diff[requests[i][1]], ++curr;
+            result = max(result, dfs(i + 1));
+            ++diff[requests[i][0]], --diff[requests[i][1]], --curr;
+
+            return result;
+        };
+
+        return dfs(0);
+    }
+};
