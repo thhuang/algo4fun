@@ -18,12 +18,11 @@ class Solution {
    public:
     int lengthOfLongestSubstring(string s) {
         int result = 0;
-        unordered_map<char, int> last_pos;  // 1-indexed
+        unordered_map<char, bool> seen;
         for (int l = 0, r = 0; r < s.size(); ++r) {
-            char c = s[r];
-            l = max(l, last_pos[c]);
+            while (seen[s[r]]) seen[s[l++]] = false;
+            seen[s[r]] = true;
             result = max(result, r - l + 1);
-            last_pos[c] = r + 1;
         }
         return result;
     }
@@ -33,11 +32,11 @@ class Solution {
    public:
     int lengthOfLongestSubstring(string s) {
         int result = 0;
-        unordered_map<char, bool> seen;
+        unordered_map<char, int> lastPosPlusOne;
         for (int l = 0, r = 0; r < s.size(); ++r) {
-            while (seen[s[r]]) seen[s[l++]] = false;
-            seen[s[r]] = true;
+            l = max(l, lastPosPlusOne[s[r]]);
             result = max(result, r - l + 1);
+            lastPosPlusOne[s[r]] = r + 1;
         }
         return result;
     }
