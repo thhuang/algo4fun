@@ -51,3 +51,25 @@ class Solution {
         return s.substr(result.first, result.second);
     }
 };
+
+class Solution {
+   public:
+    string minWindow(string s, string t) {
+        int n = t.size();
+
+        unordered_map<char, int> want;
+        for (char c : t) ++want[c];
+
+        array<int, 2> result = {-1, (int)s.size()};
+        for (int l = 0, r = 0; r < s.size(); ++r) {
+            if (--want[s[r]] >= 0) --n;
+            while (n <= 0) {
+                if (r - l < result[1] - result[0]) result = {l, r};
+                if (++want[s[l++]] > 0) ++n;
+            }
+        }
+
+        int sz = result[1] - result[0] + 1;
+        return sz > s.size() ? "" : s.substr(result[0], sz);
+    }
+};
