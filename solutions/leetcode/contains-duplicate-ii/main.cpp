@@ -1,14 +1,11 @@
 class Solution {
-public:
-  bool containsNearbyDuplicate(vector<int> &nums, int k) {
-    unordered_set<int> window;
-    for (int r = 0; r < nums.size(); ++r) {
-      if (window.count(nums[r]))
-        return true;
-      window.insert(nums[r]);
-      if (r - k >= 0)
-        window.erase(nums[r - k]);
+   public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        unordered_map<int, int> seen;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (++seen[nums[i]] > 1) return true;
+            if (i >= k) --seen[nums[i - k]];
+        }
+        return false;
     }
-    return false;
-  }
 };
