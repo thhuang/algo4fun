@@ -18,3 +18,27 @@ class Solution {
         return empty(vec);
     }
 };
+
+class Solution {
+    bool check(char open, char close) {
+        return open == '(' && close == ')' || open == '[' && close == ']' ||
+               open == '{' && close == '}';
+    }
+
+    bool isOpen(char c) { return c == '(' || c == '[' || c == '{'; }
+
+   public:
+    bool isValid(string s) {
+        vector<int> op;
+        for (char c : s) {
+            if (isOpen(c)) {
+                op.push_back(c);
+            } else {  // is close
+                if (op.empty()) return false;
+                if (!check(op.back(), c)) return false;
+                op.pop_back();
+            }
+        }
+        return op.empty();
+    }
+};
