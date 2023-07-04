@@ -21,6 +21,26 @@ class MinStack {
     int getMin() { return data_.back().min_val; }
 };
 
+class MinStack {
+    vector<int> mins;
+    vector<int> vals;
+
+   public:
+    void push(int val) {
+        vals.push_back(val);
+        mins.push_back(mins.empty() ? val : min(mins.back(), val));
+    }
+
+    void pop() {
+        mins.pop_back();
+        vals.pop_back();
+    }
+
+    int top() { return vals.back(); }
+
+    int getMin() { return mins.back(); }
+};
+
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack* obj = new MinStack();
