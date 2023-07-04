@@ -1,12 +1,11 @@
 class Solution {
    public:
     bool canConstruct(string ransomNote, string magazine) {
-        array<int, 26> chars;
-        chars.fill(0);
-        for (char c : magazine) ++chars[c - 'a'];
-        for (char c : ransomNote) {
-            if (--chars[c - 'a'] < 0) return false;
-        }
+        array<int, 26> cnt;
+        cnt.fill(0);
+        for (int c : magazine) ++cnt[c - 'a'];
+        for (int c : ransomNote)
+            if (--cnt[c - 'a'] < 0) return false;
         return true;
     }
 };
