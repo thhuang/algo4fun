@@ -41,3 +41,17 @@ class Solution {
         return dummy.next;
     }
 };
+
+class Solution {
+    unordered_map<Node*, Node*> mp;
+
+   public:
+    Node* copyRandomList(Node* head) {
+        if (!head) return nullptr;
+        if (mp.count(head)) return mp[head];
+        auto cp = mp[head] = new Node(head->val);
+        cp->next = copyRandomList(head->next);
+        cp->random = copyRandomList(head->random);
+        return cp;
+    }
+};
