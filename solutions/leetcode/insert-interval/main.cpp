@@ -20,3 +20,79 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals,
+                               vector<int>& newInterval) {
+        if (intervals.empty() || newInterval[1] < intervals.front()[0]) {
+            vector<vector<int>> result = {newInterval};
+            copy(intervals.begin(), intervals.end(), back_inserter(result));
+            return result;
+        }
+
+        if (intervals.back()[1] < newInterval[0]) {
+            vector<vector<int>> result = intervals;
+            result.push_back(newInterval);
+            return result;
+        }
+
+        vector<vector<int>> result;
+
+        bool inserted = false;
+        for (vector<int>& interval : intervals) {
+            if (interval[1] < newInterval[0]) {
+                result.push_back(interval);
+                continue;
+            }
+
+            if (!inserted) {
+                inserted = true;
+                result.push_back(newInterval);
+            }
+
+            if (newInterval[1] < interval[0]) {
+                result.push_back(interval);
+                continue;
+            }
+
+            result.back()[0] = min(result.back()[0], interval[0]);
+            result.back()[1] = max(result.back()[1], interval[1]);
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals,
+                               vector<int>& newInterval) {
+        vector<vector<int>> result;
+
+        bool inserted = false;
+        for (vector<int>& interval : intervals) {
+            if (interval[1] < newInterval[0]) {
+                result.push_back(interval);
+                continue;
+            }
+
+            if (!inserted) {
+                inserted = true;
+                result.push_back(newInterval);
+            }
+
+            if (newInterval[1] < interval[0]) {
+                result.push_back(interval);
+                continue;
+            }
+
+            result.back()[0] = min(result.back()[0], interval[0]);
+            result.back()[1] = max(result.back()[1], interval[1]);
+        }
+
+        if (!inserted) result.push_back(newInterval);
+
+        return result;
+    }
+};
