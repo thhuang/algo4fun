@@ -25,3 +25,29 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    string simplifyPath(string path) {
+        vector<string> pathVec;
+
+        stringstream ss(path);
+        string p;
+        while (getline(ss, p, '/')) {
+            if (p == "" || p == "." || (pathVec.empty() && p == "..")) continue;
+            if (p == "..") {
+                pathVec.pop_back();
+            } else {
+                pathVec.push_back(p);
+            }
+        }
+
+        string result;
+        for (string& p : pathVec) {
+            result += "/";
+            result += p;
+        }
+
+        return result.empty() ? "/" : result;
+    }
+};
