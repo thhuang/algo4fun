@@ -70,3 +70,21 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int findMinArrowShots(vector<vector<int>>& points) {
+        sort(points.begin(), points.end(),
+             [](auto& a, auto& b) -> bool { return a[1] < b[1]; });
+
+        int result = 1;
+        int curr = points[0][1];
+        for (auto& p : points) {
+            if (p[0] <= curr) continue;
+            ++result;
+            curr = p[1];
+        }
+
+        return result;
+    }
+};
