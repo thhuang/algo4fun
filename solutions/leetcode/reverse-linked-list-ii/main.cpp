@@ -33,3 +33,25 @@ class Solution {
         return dummy.next;
     }
 };
+
+class Solution {
+   public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        ListNode dummy(0, head);
+
+        ListNode* a = &dummy;
+        for (int i = 1; i < left; ++i) a = a->next;
+
+        ListNode* b = a->next;
+        ListNode* c = b->next;
+        for (int i = left; i < right; ++i) {
+            ListNode* d = c->next;
+            c->next = a->next;
+            a->next = c;
+            c = d;
+        }
+        b->next = c;
+
+        return dummy.next;
+    }
+};
