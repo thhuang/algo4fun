@@ -50,3 +50,29 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+   public:
+    bool wordPattern(string pattern, string s) {
+        int i = 0;
+        stringstream ss(s);
+        string w;
+
+        unordered_map<string, bool> mapped;
+        unordered_map<char, string> mp;
+        while (ss >> w) {
+            if (i == pattern.size()) return false;
+            char c = pattern[i++];
+
+            if (mp.count(c) == 0) {
+                if (mapped[w]) return false;
+                mapped[w] = true;
+                mp[c] = w;
+            }
+
+            if (mp[c] != w) return false;
+        }
+
+        return i == pattern.size();
+    }
+};
