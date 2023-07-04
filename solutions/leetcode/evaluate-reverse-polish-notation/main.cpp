@@ -31,3 +31,23 @@ class Solution {
         return st.back();
     }
 };
+
+class Solution {
+   public:
+    int evalRPN(vector<string>& tokens) {
+        string t = tokens.back();
+        tokens.pop_back();
+
+        if (isdigit(t.back())) return stoi(t);
+
+        int b = evalRPN(tokens);
+        int a = evalRPN(tokens);
+
+        if (t == "+") return a + b;
+        if (t == "-") return a - b;
+        if (t == "*") return a * b;
+        if (t == "/") return a / b;
+
+        return 0;
+    }
+};
