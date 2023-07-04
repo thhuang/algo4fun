@@ -1,24 +1,6 @@
 class Solution {
    public:
     int longestConsecutive(vector<int>& nums) {
-        unordered_set<int> num_set;
-        for (int v : nums) num_set.insert(v);
-
-        int result = 0;
-        for (int v : nums) {
-            if (num_set.count(v - 1)) continue;
-            int length = 1;
-            while (num_set.count(++v)) ++length;
-            result = max(result, length);
-        }
-
-        return result;
-    }
-};
-
-class Solution {
-   public:
-    int longestConsecutive(vector<int>& nums) {
         unordered_map<int, int> lr;
         unordered_map<int, int> rl;
 
@@ -39,6 +21,24 @@ class Solution {
 
         int result = 0;
         for (const auto [l, r] : lr) result = max(result, r - l + 1);
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int> numSet;
+        for (int v : nums) numSet.insert(v);
+
+        int result = 0;
+        for (int l : nums) {
+            if (numSet.count(l - 1) != 0) continue;
+            int r = l;
+            while (numSet.count(r) != 0) ++r;
+            result = max(result, r - l);
+        }
 
         return result;
     }
