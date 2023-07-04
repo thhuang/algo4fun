@@ -1,41 +1,39 @@
 class Solution {
    public:
     bool isHappy(int n) {
-        unordered_set<int> vis;
+        unordered_map<int, bool> seen;
         while (n != 1) {
-            if (vis.count(n)) return false;
-            vis.insert(n);
-
-            int m = 0;
+            int sum = 0;
             while (n) {
-                int digit = n % 10;
-                m += digit * digit;
+                int v = n % 10;
+                sum += v * v;
                 n /= 10;
             }
-            n = m;
+            n = sum;
+            if (seen[n]) return false;
+            seen[n] = true;
         }
         return true;
     }
 };
 
 class Solution {
-    int nextNum(int n) {
-        int sum = 0;
-        while (n) {
-            int digit = n % 10;
-            sum += digit * digit;
-            n /= 10;
+    int next(int v) {
+        int result = 0;
+        while (v) {
+            int d = v % 10;
+            v /= 10;
+            result += d * d;
         }
-        return sum;
+        return result;
     }
 
    public:
     bool isHappy(int n) {
-        int slow = n, fast = n;
-        while (true) {
-            fast = nextNum(nextNum(fast));
-            slow = nextNum(slow);
-            if (fast == 1 || slow == fast) break;
+        int slow = n, fast = next(n);
+        while (fast != 1 && slow != fast) {
+            slow = next(slow);
+            fast = next(next(fast));
         }
         return fast == 1;
     }
