@@ -75,3 +75,40 @@ class Solution {
         return dummy.next;
     }
 };
+
+class Solution {
+    void reverse(ListNode* head, int k) {
+        ListNode* a = nullptr;
+        ListNode* b = head;
+        for (int i = 0; i < k; ++i) {
+            ListNode* c = b->next;
+            b->next = a;
+            a = b;
+            b = c;
+        }
+    }
+
+   public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode dummy(0, head);
+
+        ListNode* a = &dummy;
+        while (true) {
+            ListNode* b = a;
+            for (int i = 0; i < k && b != nullptr; ++i) b = b->next;
+            if (b == nullptr) break;
+
+            ListNode* c = a->next;
+            ListNode* d = b->next;
+
+            reverse(c, k);
+
+            a->next = b;
+            c->next = d;
+
+            a = c;
+        }
+
+        return dummy.next;
+    }
+};
