@@ -55,3 +55,42 @@ class Solution {
         return dummy.next;
     }
 };
+
+class Solution {
+    ListNode* reverse(ListNode* head, int k) {
+        ListNode* a = nullptr;
+        ListNode* b = head;
+        for (int i = 0; i < k; ++i) {
+            ListNode* c = b->next;
+            b->next = a;
+            a = b;
+            b = c;
+        }
+        return a;
+    }
+
+   public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if (head == nullptr || k == 0) return head;
+
+        ListNode* p = head;
+        int n = 0;
+        while (p) p = p->next, ++n;
+
+        k %= n;
+        if (k == 0) return head;
+
+        ListNode dummy(0, head);
+        ListNode* a = &dummy;
+        a->next = reverse(a->next, n);
+
+        ListNode* b = a->next;
+        for (int i = 0; i < k; ++i) b = b->next;
+
+        ListNode* c = a->next;
+        a->next = reverse(a->next, k);
+        c->next = reverse(b, n - k);
+
+        return a->next;
+    }
+};
