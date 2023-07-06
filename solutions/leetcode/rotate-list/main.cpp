@@ -78,7 +78,6 @@ class Solution {
         while (p) p = p->next, ++n;
 
         k %= n;
-        if (k == 0) return head;
 
         ListNode dummy(0, head);
         ListNode* a = &dummy;
@@ -87,10 +86,12 @@ class Solution {
         ListNode* b = a->next;
         for (int i = 0; i < k; ++i) b = b->next;
 
-        ListNode* c = a->next;
+        b = reverse(b, n - k);
         a->next = reverse(a->next, k);
-        c->next = reverse(b, n - k);
 
-        return a->next;
+        for (int i = 0; i < k; ++i) a = a->next;
+        a->next = b;
+
+        return dummy.next;
     }
 };
