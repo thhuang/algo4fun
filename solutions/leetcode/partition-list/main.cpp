@@ -12,21 +12,18 @@ class Solution {
    public:
     ListNode* partition(ListNode* head, int x) {
         ListNode l, r;
-        auto pl = &l;
-        auto pr = &r;
-        auto p = head;
-        while (p) {
-            if (p->val < x) {
-                pl->next = p;
-                pl = pl->next;
-            } else {  // p->val >= x
-                pr->next = p;
-                pr = pr->next;
+        ListNode* a = &l;
+        ListNode* b = &r;
+        while (head) {
+            if (head->val < x) {
+                a = a->next = head;
+            } else {
+                b = b->next = head;
             }
-            p = p->next;
+            head = head->next;
         }
-        pl->next = r.next;
-        pr->next = nullptr;
+        a->next = r.next;
+        b->next = nullptr;
         return l.next;
     }
 };
