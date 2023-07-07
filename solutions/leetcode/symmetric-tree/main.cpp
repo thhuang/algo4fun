@@ -30,3 +30,16 @@ class Solution {
         return empty(q0) == empty(q1);
     }
 };
+
+class Solution {
+   public:
+    bool isSymmetric(TreeNode* root) {
+        function<bool(TreeNode*, TreeNode*)> check = [&](TreeNode* a,
+                                                         TreeNode* b) -> bool {
+            if (!a && !b) return true;
+            if (!a || !b || a->val != b->val) return false;
+            return check(a->left, b->right) && check(a->right, b->left);
+        };
+        return check(root->left, root->right);
+    }
+};
