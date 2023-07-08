@@ -30,3 +30,22 @@ class Solution {
         preorder(root);
     }
 };
+
+class Solution {
+   public:
+    void flatten(TreeNode* root) {
+        TreeNode* p = root;
+
+        while (p) {
+            if (p->left) {
+                TreeNode* r = p->left;
+                while (r->right) r = r->right;
+                r->right = p->right;
+                p->right = p->left;
+                p->left = nullptr;
+            }
+
+            p = p->right;
+        }
+    }
+};
