@@ -78,3 +78,33 @@ class Solution {
         }
     }
 };
+
+class Solution {
+    const vector<array<int, 2>> directions = {
+        {1, 1}, {1, 0}, {1, -1}, {0, 1}, {0, -1}, {-1, 1}, {-1, 0}, {-1, -1}};
+    const int live = 1 << 1;
+
+   public:
+    void gameOfLife(vector<vector<int>>& board) {
+        int m = board.size();
+        int n = board.front().size();
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                int cnt = 0;
+                for (auto [di, dj] : directions) {
+                    if (i + di < 0 || m <= i + di || j + dj < 0 || n <= j + dj)
+                        continue;
+                    cnt += board[i + di][j + dj] & 1;
+                }
+
+                int& v = board[i][j];
+                if (cnt == 3 || (v & 1 && cnt == 2)) v |= live;
+            }
+        }
+
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                board[i][j] = (board[i][j] & live) ? 1 : 0;
+    }
+};
