@@ -36,6 +36,30 @@ class Solution {
 
 class Solution {
    public:
+    Node* connect(Node* root) {
+        vector<Node*> left;
+
+        function<void(Node*, int)> dfs = [&](Node* u, int d) -> void {
+            if (u == nullptr) return;
+
+            if (left.size() == d) {
+                left.push_back(u);
+            } else {
+                left[d] = left[d]->next = u;
+            }
+
+            dfs(u->left, d + 1);
+            dfs(u->right, d + 1);
+        };
+
+        dfs(root, 0);
+
+        return root;
+    }
+};
+
+class Solution {
+   public:
     array<Node*, 2> process_child(Node* prev_child, Node* curr_child,
                                   Node* left_most_node) {
         if (!curr_child) return {prev_child, left_most_node};
