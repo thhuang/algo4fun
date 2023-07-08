@@ -28,3 +28,23 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int sumNumbers(TreeNode* root) {
+        int result = 0;
+        int sum = 0;
+        function<void(TreeNode*)> dfs = [&](TreeNode* u) -> void {
+            sum = sum * 10 + u->val;
+            if (!u->left && !u->right) {
+                result += sum;
+            } else {
+                if (u->left) dfs(u->left);
+                if (u->right) dfs(u->right);
+            }
+            sum /= 10;
+        };
+        dfs(root);
+        return result;
+    }
+};
