@@ -60,101 +60,24 @@ class Solution {
 
 class Solution {
    public:
-    array<Node*, 2> process_child(Node* prev_child, Node* curr_child,
-                                  Node* left_most_node) {
-        if (!curr_child) return {prev_child, left_most_node};
-        if (prev_child) {
-            prev_child->next = curr_child;
-        } else {
-            left_most_node = curr_child;
-        }
-        return {curr_child, left_most_node};
-    }
-
     Node* connect(Node* root) {
-        auto left_most_node = root;
+        Node* leftMostNode = root;
+        Node *prev, *curr;
 
-        while (left_most_node) {
-            Node* p = left_most_node;
-            Node* prev_child = nullptr;
-            left_most_node = nullptr;
+        function<void(Node*)> link = [&](Node* u) -> void {
+            if (!u) return;
 
-            while (p) {
-                array<Node*, 2> res;
-                res = process_child(prev_child, p->left, left_most_node);
-                prev_child = res[0], left_most_node = res[1];
-                res = process_child(prev_child, p->right, left_most_node);
-                prev_child = res[0], left_most_node = res[1];
-                p = p->next;
+            prev = curr, curr = u;
+            if (prev) {
+                prev->next = curr;
+            } else {
+                leftMostNode = curr;
             }
-        }
-
-        return root;
-    }
-};
-
-class Solution {
-   public:
-    Node* connect(Node* root) {
-        if (root == nullptr) return nullptr;
-
-        Node* left_most_node = nullptr;
-        Node* p = root;
-        Node* prev = nullptr;
-        Node* curr = nullptr;
-
-        auto link = [&](Node* node) -> void {
-            if (node == nullptr) return;
-
-            prev = curr;
-            curr = node;
-
-            if (prev == nullptr) {
-                left_most_node = node;
-                return;
-            }
-
-            prev->next = curr;
         };
 
-        while (p) {
-            link(p->left);
-            link(p->right);
-            p = p->next;
-        }
-
-        connect(left_most_node);
-
-        return root;
-    }
-};
-
-class Solution {
-   public:
-    Node* connect(Node* root) {
-        if (root == nullptr) return nullptr;
-
-        Node* left_most_node = root;
-        Node* prev;
-        Node* curr;
-
-        auto link = [&prev, &curr, &left_most_node](Node* node) -> void {
-            if (node == nullptr) return;
-
-            prev = curr;
-            curr = node;
-
-            if (prev == nullptr) {
-                left_most_node = node;
-                return;
-            }
-
-            prev->next = curr;
-        };
-
-        while (left_most_node) {
-            Node* p = left_most_node;
-            prev = curr = left_most_node = nullptr;
+        while (leftMostNode) {
+            auto p = leftMostNode;
+            prev = curr = leftMostNode = nullptr;
             while (p) {
                 link(p->left);
                 link(p->right);
