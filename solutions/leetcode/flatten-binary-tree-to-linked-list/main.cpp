@@ -49,3 +49,18 @@ class Solution {
         }
     }
 };
+
+class Solution {
+   public:
+    void flatten(TreeNode* root) {
+        for (auto p = root; p; p = p->right) {
+            if (!p->left) continue;
+
+            TreeNode* r = p->left;
+            while (r->right) r = r->right;
+            r->right = p->right;
+            p->right = p->left;
+            p->left = nullptr;
+        }
+    }
+};
