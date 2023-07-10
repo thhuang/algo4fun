@@ -14,6 +14,17 @@ class Solution {
    public:
     int minDepth(TreeNode* root) {
         if (!root) return 0;
+        if (!root->left && !root->right) return 1;
+        int l = root->left ? minDepth(root->left) : numeric_limits<int>::max();
+        int r = root->right ? minDepth(root->right) : numeric_limits<int>::max();
+        return 1 + min(l, r);
+    }
+};
+
+class Solution {
+   public:
+    int minDepth(TreeNode* root) {
+        if (!root) return 0;
 
         queue<pair<TreeNode*, int>> q;
         q.push({root, 1});
