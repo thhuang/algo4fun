@@ -88,23 +88,23 @@ class BSTIterator {
 };
 
 class BSTIterator {
-    vector<TreeNode*> greater_nodes_;
+    vector<TreeNode*> path;
 
-    void toSmallestNode(TreeNode* node) {
-        while (node) greater_nodes_.push_back(node), node = node->left;
+    void toSmallest(TreeNode* u) {
+        while (u) path.push_back(u), u = u->left;
     }
 
    public:
-    BSTIterator(TreeNode* root) { toSmallestNode(root); }
+    BSTIterator(TreeNode* root) { toSmallest(root); }
 
     int next() {
-        auto curr = greater_nodes_.back();
-        greater_nodes_.pop_back();
-        toSmallestNode(curr->right);
-        return curr->val;
+        TreeNode* u = path.back();
+        path.pop_back();
+        toSmallest(u->right);
+        return u->val;
     }
 
-    bool hasNext() { return !greater_nodes_.empty(); }
+    bool hasNext() { return !path.empty(); }
 };
 
 /**
