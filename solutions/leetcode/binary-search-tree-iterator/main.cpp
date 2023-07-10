@@ -63,6 +63,31 @@ class BSTIterator {
 };
 
 class BSTIterator {
+    vector<TreeNode*> path;
+
+   public:
+    BSTIterator(TreeNode* root) {
+        path.push_back(root);
+        while (path.back()->left) {
+            path.push_back(path.back()->left);
+        }
+    }
+
+    int next() {
+        int result = path.back()->val;
+        TreeNode* u = path.back()->right;
+        path.pop_back();
+        while (u) {
+            path.push_back(u);
+            u = u->left;
+        }
+        return result;
+    }
+
+    bool hasNext() { return !path.empty(); }
+};
+
+class BSTIterator {
     vector<TreeNode*> greater_nodes_;
 
     void toSmallestNode(TreeNode* node) {
