@@ -23,12 +23,12 @@ class Solution {
 class Solution {
    public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (root == nullptr) return nullptr;
+        if (!root) return nullptr;
         if (root == p || root == q) return root;
         auto l = lowestCommonAncestor(root->left, p, q);
         auto r = lowestCommonAncestor(root->right, p, q);
-        if (l == nullptr) return r;
-        if (r == nullptr) return l;
+        if (!l) return r;
+        if (!r) return l;
         return root;
     }
 };
