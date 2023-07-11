@@ -67,3 +67,29 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        vector<vector<int>> result;
+
+        function<void(TreeNode*, int)> dfs = [&](TreeNode* u, int lv) -> void {
+            if (!u) return;
+
+            if (result.size() == lv) result.push_back({});
+
+            result[lv].push_back(u->val);
+
+            dfs(u->left, lv + 1);
+            dfs(u->right, lv + 1);
+        };
+
+        dfs(root, 0);
+
+        for (int i = 1; i < result.size(); i += 2) {
+            reverse(result[i].begin(), result[i].end());
+        }
+
+        return result;
+    }
+};
