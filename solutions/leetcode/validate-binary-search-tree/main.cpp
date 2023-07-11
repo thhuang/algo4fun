@@ -44,3 +44,22 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+   public:
+    bool isValidBST(TreeNode* root) {
+        vector<tuple<TreeNode*, long long, long long>> workList = {
+            {root, numeric_limits<int>::min(), numeric_limits<int>::max()}};
+        while (!workList.empty()) {
+            auto [u, l, r] = workList.back();
+            workList.pop_back();
+
+            long long v = u->val;
+            if (v < l || r < v) return false;
+
+            if (u->left) workList.push_back({u->left, l, v - 1});
+            if (u->right) workList.push_back({u->right, v + 1, r});
+        }
+        return true;
+    }
+};
