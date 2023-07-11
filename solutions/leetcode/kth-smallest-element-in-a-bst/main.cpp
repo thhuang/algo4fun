@@ -30,6 +30,22 @@ class Solution {
 class Solution {
    public:
     int kthSmallest(TreeNode* root, int k) {
+        int result = -1;
+        function<int(TreeNode*, int)> dfs = [&](TreeNode* u, int i) -> int {
+            if (!u) return i;
+            i = dfs(u->left, i);
+            if (++i == k) result = u->val;
+            i = dfs(u->right, i);
+            return i;
+        };
+        dfs(root, 0);
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    int kthSmallest(TreeNode* root, int k) {
         TreeNode* p = root;
         vector<TreeNode*> left_path = {};
         while (p->left) left_path.push_back(p), p = p->left;
