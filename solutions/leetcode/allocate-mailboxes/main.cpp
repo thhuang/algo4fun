@@ -52,10 +52,10 @@ class Solution {
         }
 
         vector<int> dp = dist[0];
-        for (int ki = 2; ki <= k; ++ki) {
-            for (int hi = n - 1; ~hi; --hi) {
-                for (int i = 0; i < hi; ++i) {
-                    dp[hi] = min(dp[hi], dp[i] + dist[i + 1][hi]);
+        for (int i = 2; i <= k; ++i) {
+            for (int r = n - 1; ~r; --r) {
+                for (int l = 0; l < r; ++l) {
+                    dp[r] = min(dp[r], dp[l] + dist[l + 1][r]);
                 }
             }
         }
