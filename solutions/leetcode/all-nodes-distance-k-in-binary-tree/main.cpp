@@ -14,7 +14,7 @@ class Solution {
 
         function<void(TreeNode*, int)> collect = [&](TreeNode* u,
                                                      int d) -> void {
-            if (u == nullptr) return;
+            if (!u) return;
             if (d == 0) {
                 result.push_back(u->val);
                 return;
@@ -29,13 +29,13 @@ class Solution {
                 collect(u, k);
                 return k - 1;
             }
-            if (int d = search(u->left); d != -1) {
-                d == 0 ? collect(u, 0) : collect(u->right, d - 1);
-                return d - 1;
+            if (int l = search(u->left); l != -1) {
+                l == 0 ? collect(u, 0) : collect(u->right, l - 1);
+                return l - 1;
             }
-            if (int d = search(u->right); d != -1) {
-                d == 0 ? collect(u, 0) : collect(u->left, d - 1);
-                return d - 1;
+            if (int r = search(u->right); r != -1) {
+                r == 0 ? collect(u, 0) : collect(u->left, r - 1);
+                return r - 1;
             }
             return -1;
         };
