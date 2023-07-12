@@ -20,7 +20,6 @@ class Solution {
         };
 
         for (int i = 0; i < numCourses; ++i) {
-            if (states[i] != State::Unprocessed) continue;
             if (!dfs(i)) return false;
         }
 
