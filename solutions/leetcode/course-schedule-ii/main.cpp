@@ -1,30 +1,31 @@
 class Solution {
+    enum class State { Unprocessed, Processing, Processed };
+
    public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
         vector<vector<int>> adj(numCourses);
-        for (const auto& p : prerequisites) adj[p[1]].push_back(p[0]);
+        for (const auto& p : prerequisites) adj[p[0]].push_back(p[1]);
 
-        vector<int> rdag;
-        vector<int> vis(numCourses, 0);
+        vector<int> result;
+        vector<State> states(numCourses, State::Unprocessed);
         function<bool(int)> dfs = [&](int u) -> bool {
-            vis[u] = 1;
+            if (states[u] == State::Processing) return false;
+            if (states[u] == State::Processed) return true;
+            states[u] = State::Processing;
 
             for (int v : adj[u]) {
-                if (vis[v] == 2) continue;
-                if (vis[v] == 1 || !dfs(v)) return false;
+                if (!dfs(v)) return false;
             }
 
-            vis[u] = 2;
-            rdag.push_back(u);
-
+            states[u] = State::Processed;
+            result.push_back(u);
             return true;
         };
 
         for (int i = 0; i < numCourses; ++i) {
-            if (vis[i]) continue;
             if (!dfs(i)) return {};
         }
 
-        return {rdag.rbegin(), rdag.rend()};
+        return result;
     }
 };
