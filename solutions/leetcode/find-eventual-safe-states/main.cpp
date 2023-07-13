@@ -35,3 +35,33 @@ class Solution {
         return ans;
     }
 };
+
+class Solution {
+    enum class State { Unknown, Unsafe, Safe };
+
+   public:
+    vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
+        int n = graph.size();
+
+        vector<int> result;
+
+        vector<State> states(n, State::Unknown);
+        function<bool(int)> dfs = [&](int u) -> bool {
+            if (states[u] == State::Unsafe) return false;
+            if (states[u] == State::Safe) return true;
+            states[u] = State::Unsafe;
+
+            bool isSafe = true;
+            for (int v : graph[u]) isSafe = dfs(v) && isSafe;
+
+            if (!isSafe) return false;
+            states[u] = State::Safe;
+            return true;
+        };
+
+        for (int i = 0; i < n; ++i)
+            if (dfs(i)) result.push_back(i);
+
+        return result;
+    }
+};
