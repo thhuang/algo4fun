@@ -43,3 +43,47 @@ class Solution {
         return steps.back();
     }
 };
+
+class Solution {
+   public:
+    int snakesAndLadders(vector<vector<int>>& board) {
+        int m = board.size();
+        int n = board.front().size();
+        int t = m * n;
+
+        vector<array<int, 2>> indexToPosition(t + 1);
+        for (int i = 0, k = 1; i < m; ++i) {
+            if (i % 2 == 0) {
+                for (int j = 0; j < n; ++j)
+                    indexToPosition[k++] = {m - 1 - i, j};
+            } else {
+                for (int j = n - 1; j >= 0; --j)
+                    indexToPosition[k++] = {m - 1 - i, j};
+            }
+        }
+
+        queue<pair<int, int>> q;
+        q.push({1, 0});
+
+        vector<bool> vis(t + 1, false);
+        while (!q.empty()) {
+            auto [i, mv] = q.front();
+            q.pop();
+
+            if (i == t) return mv;
+            if (vis[i]) continue;
+            vis[i] = true;
+
+            for (int j = i + 1; j <= i + 6 && j <= t; ++j) {
+                auto [x, y] = indexToPosition[j];
+                if (int k = board[x][y]; k != -1) {
+                    q.push({k, mv + 1});
+                } else {
+                    q.push({j, mv + 1});
+                }
+            }
+        }
+
+        return -1;
+    }
+};
