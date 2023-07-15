@@ -18,3 +18,24 @@ class Solution {
         return dfs(0, k);
     }
 };
+
+class Solution {
+   public:
+    int maxValue(vector<vector<int>>& events, int k) {
+        int n = events.size();
+
+        sort(events.begin(), events.end());
+        vector<vector<int>> dp(n + 1, vector<int>(k + 1, 0));
+        for (int i = n - 1; i >= 0; --i) {
+            int j = upper_bound(events.begin(), events.end(), events[i][1],
+                [](int t, vector<int>& e) -> bool {
+                    return t < e[0];
+                }) - events.begin();
+            for (int kk = 1; kk <= k; ++kk) {
+                dp[i][kk] = max(dp[i + 1][kk], dp[j][kk - 1] + events[i][2]);
+            }
+        }
+
+        return dp[0][k];
+    }
+};
