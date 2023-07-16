@@ -55,3 +55,32 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        int n = candidates.size();
+
+        vector<vector<int>> result;
+
+        vector<int> curr;
+        function<void(int, int)> dfs = [&](int i, int sum) -> void {
+            if (sum == target) {
+                result.push_back(curr);
+                return;
+            }
+            if (i == n) return;
+
+            int v = candidates[i];
+
+            for (int k = 0; sum <= target; ++k, sum += v, curr.push_back(v))
+                dfs(i + 1, sum);
+
+            while (!curr.empty() && curr.back() == v) curr.pop_back();
+        };
+
+        dfs(0, 0);
+
+        return result;
+    }
+};
