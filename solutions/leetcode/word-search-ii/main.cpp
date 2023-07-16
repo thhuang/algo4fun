@@ -59,3 +59,78 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    const vector<array<int, 2>> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    struct Node {
+        array<Node*, 26> children;
+        bool isEnd = false;
+
+        Node() { children.fill(nullptr); }
+
+        ~Node() {
+            for (int i = 0; i < 26; ++i) {
+                if (children[i]) delete children[i];
+            }
+        }
+    };
+
+   public:
+    vector<string> findWords(vector<vector<char>>& board,
+                             vector<string>& words) {
+        auto root = new Node;
+
+        for (string& w : words) {
+            auto curr = root;
+            for (char c : w) {
+                int i = c - 'a';
+                if (curr->children[i] == nullptr)
+                    curr->children[i] = new Node();
+                curr = curr->children[i];
+            }
+            curr->isEnd = true;
+        }
+
+        int m = board.size();
+        int n = board.front().size();
+
+        vector<string> result;
+
+        vector<vector<bool>> vis(m, vector<bool>(n, false));
+        function<void(int, int, Node*, string&)> dfs =
+            [&](int i, int j, Node* p, string& s) -> void {
+            if (i < 0 || m <= i || j < 0 || n <= j || vis[i][j]) return;
+
+            char c = board[i][j];
+            int k = c - 'a';
+
+            if (p->children[k] == nullptr) return;
+            p = p->children[k];
+
+            s.push_back(c);
+            vis[i][j] = true;
+
+            if (p->isEnd) {
+                p->isEnd = false;
+                result.push_back(s);
+            }
+
+            for (auto [di, dj] : directions) dfs(i + di, j + dj, p, s);
+
+            vis[i][j] = false;
+            s.pop_back();
+        };
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                string s;
+                dfs(i, j, root, s);
+            }
+        }
+
+        delete root;
+
+        return result;
+    }
+};
