@@ -33,3 +33,53 @@ class Solution {
         return 0;
     }
 };
+
+class Solution {
+    bool isConnected(string& s, string& t) {
+        int cnt = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] != t[i]) ++cnt;
+            if (cnt > 1) return false;
+        }
+        return cnt == 1;
+    }
+
+   public:
+    int ladderLength(string beginWord, string endWord,
+                     vector<string>& wordList) {
+        int n = wordList.size();
+
+        int endIndex = -1;
+        vector<vector<int>> adj(n + 1);
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = i; j < n; ++j) {
+                if (isConnected(wordList[i], wordList[j])) {
+                    adj[i].push_back(j);
+                    adj[j].push_back(i);
+                }
+            }
+            if (endIndex == -1 && endWord == wordList[i]) endIndex = i;
+            if (isConnected(beginWord, wordList[i])) adj[n].push_back(i);
+        }
+
+        if (endIndex == -1) return 0;
+
+        queue<pair<int, int>> q;
+        q.push({n, 1});
+
+        vector<bool> vis(n + 1, false);
+        while (!q.empty()) {
+            auto [u, d] = q.front();
+            q.pop();
+
+            if (u == endIndex) return d;
+            if (vis[u]) continue;
+            vis[u] = true;
+
+            for (int v : adj[u]) q.push({v, d + 1});
+        }
+
+        return 0;
+    }
+};
