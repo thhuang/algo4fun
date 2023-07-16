@@ -44,6 +44,59 @@ class WordDictionary {
 
 class WordDictionary {
     struct Node {
+        array<Node*, 26> children;
+        bool isEnd = false;
+
+        Node() { children.fill(nullptr); }
+
+        ~Node() {
+            for (int i = 0; i < 26; ++i) {
+                if (children[i] != nullptr) delete children[i];
+            }
+        }
+    };
+
+    Node* root;
+
+   public:
+    WordDictionary() { root = new Node(); }
+
+    ~WordDictionary() { delete root; }
+
+    void addWord(string word) {
+        auto curr = root;
+        for (char c : word) {
+            int i = c - 'a';
+            if (curr->children[i] == nullptr) curr->children[i] = new Node();
+            curr = curr->children[i];
+        }
+        curr->isEnd = true;
+    }
+
+    bool search(string word) {
+        auto curr = root;
+        for (int k = 0; k < word.size(); ++k) {
+            char c = word[k];
+
+            if (c == '.') {
+                string newWord = word;
+                for (char cc = 'a'; cc <= 'z'; ++cc) {
+                    newWord[k] = cc;
+                    if (search(newWord)) return true;
+                }
+                return false;
+            }
+
+            int i = c - 'a';
+            if (curr->children[i] == nullptr) return false;
+            curr = curr->children[i];
+        }
+        return curr->isEnd;
+    }
+};
+
+class WordDictionary {
+    struct Node {
         Node() : is_end(false), children(array<Node*, 26>()) {}
 
         bool is_end;
