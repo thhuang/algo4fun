@@ -44,39 +44,49 @@ class Trie {
     struct Node {
         array<Node*, 26> children;
         bool isEnd = false;
+
+        Node() { children.fill(nullptr); }
+
+        ~Node() {
+            for (int i = 0; i < 26; ++i) {
+                if (children[i]) delete children[i];
+            }
+        }
     };
 
     Node* root;
 
-    Node* findNode(string word) {
-        auto p = root;
-        for (char c : word) {
+    Node* find(const string& s) {
+        auto curr = root;
+        for (char c : s) {
             int i = c - 'a';
-            if (p->children[i] == nullptr) return nullptr;
-            p = p->children[i];
+            if (curr->children[i] == nullptr) return nullptr;
+            curr = curr->children[i];
         }
-        return p;
+        return curr;
     }
 
    public:
-    Trie() : root{new Node()} {}
+    Trie() { root = new Node(); }
+
+    ~Trie() { delete root; }
 
     void insert(string word) {
-        auto p = root;
+        auto curr = root;
         for (char c : word) {
             int i = c - 'a';
-            if (p->children[i] == nullptr) p->children[i] = new Node();
-            p = p->children[i];
+            if (curr->children[i] == nullptr) curr->children[i] = new Node();
+            curr = curr->children[i];
         }
-        p->isEnd = true;
+        curr->isEnd = true;
     }
 
     bool search(string word) {
-        auto node = findNode(word);
-        return node != nullptr && node->isEnd;
+        auto result = find(word);
+        return result != nullptr && result->isEnd;
     }
 
-    bool startsWith(string prefix) { return findNode(prefix) != nullptr; }
+    bool startsWith(string prefix) { return find(prefix) != nullptr; }
 };
 
 /**
