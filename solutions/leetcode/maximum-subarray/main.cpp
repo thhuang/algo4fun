@@ -3,15 +3,10 @@ class Solution {
     int maxSubArray(vector<int>& nums) {
         int result = *max_element(nums.begin(), nums.end());
 
-        for (int l = 0, r = 0, v = 0; r < nums.size(); ++r) {
-            v += nums[r];
-
-            if (v < 0) {
-                l = r + 1;
-                v = 0;
-            } else {
-                result = max(result, v);
-            }
+        int sum = 0;
+        for (int v : nums) {
+            sum += v;
+            sum < 0 ? sum = 0 : result = max(result, sum);
         }
 
         return result;
