@@ -37,24 +37,21 @@ class Solution {
 class Solution {
    public:
     int maxSubarraySumCircular(vector<int>& nums) {
-        int all_sum = 0;
+        int total = accumulate(nums.begin(), nums.end(), 0);
 
-        int max_sum = numeric_limits<int>::min();
-        for (int i = 0, curr = numeric_limits<int>::min(); i < nums.size();
-             ++i) {
-            all_sum += nums[i];
-            curr = max(0, curr) + nums[i];
-            max_sum = max(max_sum, curr);
+        int maxSum = numeric_limits<int>::min();
+        for (int i = 0, v = 0; i < nums.size(); ++i) {
+            v = max(v, 0) + nums[i];
+            maxSum = max(maxSum, v);
         }
 
-        int min_sum = numeric_limits<int>::max();
-        for (int i = 0, curr = numeric_limits<int>::max(); i < nums.size();
-             ++i) {
-            curr = min(0, curr) + nums[i];
-            min_sum = min(min_sum, curr);
+        int minSum = numeric_limits<int>::max();
+        for (int i = 0, v = 0; i < nums.size(); ++i) {
+            v = min(v, 0) + nums[i];
+            minSum = min(minSum, v);
         }
 
-        if (min_sum == all_sum) return max_sum;
-        return max(max_sum, all_sum - min_sum);
+        if (minSum == total) return maxSum;
+        return max(maxSum, total - minSum);
     }
 };
