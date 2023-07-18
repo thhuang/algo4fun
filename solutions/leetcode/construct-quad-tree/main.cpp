@@ -92,3 +92,36 @@ class Solution {
         return nodes[0][0];
     }
 };
+
+class Solution {
+   public:
+    Node* construct(vector<vector<int>>& grid) {
+        function<Node*(int, int, int)> dfs = [&](int r, int c, int n) -> Node* {
+            if (n == 1) return new Node(grid[r][c], true);
+
+            int m = n / 2;
+            array<Node*, 4> children = {
+                dfs(r, c, m),
+                dfs(r, c + m, m),
+                dfs(r + m, c, m),
+                dfs(r + m, c + m, m)
+            };
+
+            int sum = 0;
+            bool fourLeaves = true;
+            for (auto u : children) {
+                sum += u->val;
+                fourLeaves &= u->isLeaf;
+            }
+
+            if (fourLeaves && (sum == 0 || sum == 4)) {
+                for (auto &u : children) delete u;
+                return new Node(sum == 4, true);
+            }
+
+            return new Node(true, false, children[0], children[1], children[2], children[3]);
+        };
+        
+        return dfs(0, 0, grid.size());
+    }
+};
