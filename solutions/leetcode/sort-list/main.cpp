@@ -14,36 +14,32 @@ class Solution {
         if (!head || !head->next) return head;
 
         ListNode dummy(0, head);
-        ListNode* fast = &dummy;
-        ListNode* slow = &dummy;
-        while (fast && fast->next) {
-            slow = slow->next;
-            fast = fast->next->next;
+        ListNode *a, *b, *c;
+        a = b = c = &dummy;
+
+        while (c->next && c->next->next) {
+            b = b->next;
+            c = c->next->next;
         }
 
-        ListNode* h0 = head;
-        ListNode* h1 = slow->next;
-        slow->next = nullptr;
+        auto l = a->next, r = b->next;
+        b->next = nullptr;
 
-        ListNode* p = &dummy;
-        p->next = nullptr;
+        l = sortList(l);
+        r = sortList(r);
 
-        ListNode* p0 = sortList(h0);
-        ListNode* p1 = sortList(h1);
-
-        while (p0 && p1) {
-            if (p0->val < p1->val) {
-                p->next = p0;
-                p0 = p0->next;
-            } else {  // p0->val >= p1->val
-                p->next = p1;
-                p1 = p1->next;
+        auto p = a;
+        while (l && r) {
+            if (l->val < r->val) {
+                p = p->next = l;
+                l = l->next;
+            } else {
+                p = p->next = r;
+                r = r->next;
             }
-
-            p = p->next;
         }
 
-        p->next = p0 ? p0 : p1;
+        p->next = l ? l : r;
 
         return dummy.next;
     }
