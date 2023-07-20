@@ -18,3 +18,21 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+   public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int m = matrix.size();
+        int n = matrix.front().size();
+
+        int l = 0, r = m * n - 1;
+        while (l <= r) {
+            int i = l + (r - l) / 2;
+            int v = matrix[i / n][i % n];
+            if (v == target) return true;
+            v < target ? l = i + 1 : r = i - 1;
+        }
+
+        return false;
+    }
+};
