@@ -32,3 +32,36 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int findNumberOfLIS(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<int> len(n, 1), cnt(n, 1);
+        len[0] = 1, cnt[0] = 1;
+
+        for (int r = 1; r < n; ++r) {
+            int mxLen = 1, mxCnt = 1;
+            for (int l = 0; l < r; ++l) {
+                if (nums[l] >= nums[r]) continue;
+
+                if (len[l] + 1 > mxLen) {
+                    mxLen = len[l] + 1;
+                    mxCnt = cnt[l];
+                } else if (len[l] + 1 == mxLen) {
+                    mxCnt += cnt[l];
+                }
+            }
+            len[r] = mxLen, cnt[r] = mxCnt;
+        }
+
+        int result = 0;
+        int mxLen = *max_element(len.begin(), len.end());
+        for (int i = 0; i < n; ++i) {
+            if (len[i] == mxLen) result += cnt[i];
+        }
+
+        return result;
+    }
+};
