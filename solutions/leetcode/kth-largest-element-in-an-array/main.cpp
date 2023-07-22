@@ -56,3 +56,38 @@ class Solution {
         return nums[l];
     }
 };
+
+class Solution {
+   public:
+    int findKthLargest(vector<int>& nums, int k) {
+        auto partition = [&](int l, int r, int t) -> int {
+            swap(nums[t], nums[r]);
+
+            int p = l, a = l, b = r - 1;
+            while (p <= b) {
+                if (nums[p] > nums[r]) {
+                    swap(nums[p++], nums[a++]);
+                } else {
+                    swap(nums[p], nums[b--]);
+                }
+            }
+
+            swap(nums[p], nums[r]);
+
+            return p;
+        };
+
+        int l = 0, r = nums.size() - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            int i = partition(l, r, m);
+            if (i < k - 1) {
+                l = i + 1;
+            } else {
+                r = i - 1;
+            }
+        }
+
+        return nums[l];
+    }
+};
