@@ -23,3 +23,31 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2,
+                                       int k) {
+        priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>> pq;
+        pq.push({nums1[0] + nums2[0], 0, 0});
+
+        unordered_map<int, unordered_map<int, bool>> vis;
+
+        vector<vector<int>> result;
+        while (!pq.empty() && result.size() < k) {
+            auto [v, i, j] = pq.top();
+            pq.pop();
+
+            if (vis[i][j]) continue;
+            vis[i][j] = true;
+
+            result.push_back({nums1[i], nums2[j]});
+            if (i + 1 < nums1.size())
+                pq.push({nums1[i + 1] + nums2[j], i + 1, j});
+            if (j + 1 < nums2.size())
+                pq.push({nums1[i] + nums2[j + 1], i, j + 1});
+        }
+
+        return result;
+    }
+};
