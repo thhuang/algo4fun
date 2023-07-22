@@ -72,3 +72,40 @@ class Solution {
         return 0;
     }
 };
+
+class Solution {
+   public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        if (nums1.size() > nums2.size()) swap(nums1, nums2);
+
+        int m = nums1.size();
+        int n = nums2.size();
+
+        int l = -1, r = m - 1;
+        while (true) {
+            int p1 = l + (r - l) / 2;
+            int p2 = (m + n + 1) / 2 - p1 - 2;
+
+            int a1 = 0 <= p1 ? nums1[p1] : numeric_limits<int>::min();
+            int a2 = 0 <= p2 ? nums2[p2] : numeric_limits<int>::min();
+            int b1 = p1 + 1 < m ? nums1[p1 + 1] : numeric_limits<int>::max();
+            int b2 = p2 + 1 < n ? nums2[p2 + 1] : numeric_limits<int>::max();
+
+            if (a1 > b2) {
+                r = p1 - 1;
+                continue;
+            } else if (a2 > b1) {
+                l = p1 + 1;
+                continue;
+            }
+
+            if ((m + n) & 1) {
+                return max(a1, a2);
+            } else {
+                return 0.5 * (max(a1, a2) + min(b1, b2));
+            }
+        }
+
+        return 0;
+    }
+};
