@@ -21,3 +21,17 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    uint32_t reverseBits(uint32_t n) {
+        auto swapBits = [&](int i, int j) -> void {
+            if ((n >> i & 1) == (n >> j & 1)) return;
+            n ^= 1U << i | 1U << j;
+        };
+
+        for (int i = 0; i < 16; ++i) swapBits(i, 31 - i);
+
+        return n;
+    }
+};
