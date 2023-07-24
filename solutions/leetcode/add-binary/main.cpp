@@ -28,3 +28,22 @@ class Solution {
         return {result.rbegin(), result.rend()};
     }
 };
+
+class Solution {
+   public:
+    string addBinary(string a, string b) {
+        int i = a.size() - 1;
+        int j = b.size() - 1;
+
+        string result;
+        int carry = 0;
+        while (i >= 0 || j >= 0 || carry) {
+            if (i >= 0) carry += a[i--] == '1';
+            if (j >= 0) carry += b[j--] == '1';
+            result += to_string(carry & 1);
+            carry >>= 1;
+        }
+
+        return {result.rbegin(), result.rend()};
+    }
+};
