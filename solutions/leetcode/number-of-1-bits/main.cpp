@@ -1,29 +1,29 @@
 class Solution {
    public:
     int hammingWeight(uint32_t n) {
-        int count = 0;
+        int result = 0;
         while (n) {
-            count += n & 1;
+            result += n & 1;
             n >>= 1;
         }
-        return count;
+        return result;
     }
 };
 
 class Solution {
    public:
     int hammingWeight(uint32_t n) {
-        int count = 0;
-        while (n) ++count, n &= (n - 1);
-        return count;
+        int result = 0;
+        while (n) ++result, n &= (n - 1);
+        return result;
     }
 };
 
 class Solution {
    public:
     int hammingWeight(uint32_t n) {
-        int count = 0;
-        while (n) ++count, n -= n & -n;
-        return count;
+        int result = 0;
+        while (n) ++result, n -= n & -n;
+        return result;
     }
 };
