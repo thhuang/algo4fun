@@ -1,8 +1,8 @@
 class Solution {
    public:
     int trailingZeroes(int n) {
-        int five = 0;
-        while (n) five += n /= 5;
-        return five;
+        int result = 0;
+        while (n) result += n /= 5;
+        return result;
     }
 };
