@@ -18,3 +18,15 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+   public:
+    bool isPalindrome(int x) {
+        if (x < 0) return false;
+        long long y = 0;
+        for (int v = x; v; v /= 10) {
+            y = y * 10 + v % 10;
+        }
+        return x == y;
+    }
+};
