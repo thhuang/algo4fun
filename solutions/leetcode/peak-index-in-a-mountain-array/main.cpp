@@ -41,3 +41,21 @@ class Solution {
         return search(0, arr.size() - 1);
     }
 };
+
+class Solution {
+   public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        int l = 0, r = arr.size() - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            int a = 0 < m ? arr[m - 1] : numeric_limits<int>::min();
+            int b = arr[m];
+            if (a < b) {
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
+        }
+        return r;
+    }
+};
