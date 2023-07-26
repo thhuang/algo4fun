@@ -22,14 +22,14 @@ class Solution {
 class Solution {
    public:
     double myPow(double x, int n) {
-        bool isPositive = n >= 0;
+        bool isPos = n >= 0;
 
         double result = 1;
-        long long m = abs((long long)n);
+        uint m = abs(n);
         for (double v = x; m; v *= v, m >>= 1) {
             if (m & 1) result *= v;
         }
 
-        return isPositive ? result : 1 / result;
+        return isPos ? result : 1 / result;
     }
 };
