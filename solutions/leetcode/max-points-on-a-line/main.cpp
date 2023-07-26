@@ -89,3 +89,37 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maxPoints(vector<vector<int>>& points) {
+        int n = points.size();
+
+        int result = 0;
+
+        for (int i = 0; i < n; ++i) {
+            int x0 = points[i][0], y0 = points[i][1];
+            unordered_map<int, unordered_map<int, int>> dxdyCount;
+            for (int j = i + 1; j < n; ++j) {
+                int x1 = points[j][0], y1 = points[j][1];
+
+                int dx = x1 - x0, dy = y1 - y0;
+                if (dx == 0 && dy == 0) {
+                    result = max(result, ++dxdyCount[0][0]);
+                } else if (dx == 0) {
+                    result = max(result, ++dxdyCount[0][1]);
+                } else if (dy == 0) {
+                    result = max(result, ++dxdyCount[1][0]);
+                } else {
+                    bool isNeg = dx * dy < 0;
+                    dx = abs(dx), dy = abs(dy);
+                    int v = gcd(dx, dy);
+                    if (isNeg) dx = -dx;
+                    result = max(result, ++dxdyCount[dx / v][dy / v]);
+                }
+            }
+        }
+
+        return result + 1;
+    }
+};
