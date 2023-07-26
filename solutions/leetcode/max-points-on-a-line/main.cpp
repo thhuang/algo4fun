@@ -133,8 +133,8 @@ class Solution {
 
         for (int i = 0; i < n; ++i) {
             unordered_map<int, unordered_map<int, int>> dxdyCount;
-            for (int j = i + 1; j < n; ++j) {
 
+            for (int j = i + 1; j < n; ++j) {
                 int dx = points[i][0] - points[j][0];
                 int dy = points[i][1] - points[j][1];
 
