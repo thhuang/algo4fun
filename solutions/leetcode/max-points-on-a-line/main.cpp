@@ -123,3 +123,35 @@ class Solution {
         return result + 1;
     }
 };
+
+class Solution {
+   public:
+    int maxPoints(vector<vector<int>>& points) {
+        int n = points.size();
+
+        int result = 0;
+
+        for (int i = 0; i < n; ++i) {
+            unordered_map<int, unordered_map<int, int>> dxdyCount;
+            for (int j = i + 1; j < n; ++j) {
+
+                int dx = points[i][0] - points[j][0];
+                int dy = points[i][1] - points[j][1];
+
+                if (dx == 0 && dy == 0) {
+                    result = max(result, ++dxdyCount[0][0]);
+                } else if (dx == 0) {
+                    result = max(result, ++dxdyCount[0][1]);
+                } else if (dy == 0) {
+                    result = max(result, ++dxdyCount[1][0]);
+                } else {
+                    int sign = dx * dy >= 0 ? 1 : -1;
+                    int v = gcd(dx, dy);
+                    result = max(result, ++dxdyCount[sign * abs(dx) / v][abs(dy) / v]);
+                }
+            }
+        }
+
+        return result + 1;
+    }
+};
