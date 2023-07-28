@@ -92,3 +92,19 @@ class Solution {
         return dp.back() >= 0;
     }
 };
+
+class Solution {
+   public:
+    bool PredictTheWinner(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> dp = nums;
+
+        for (int d = 2; d <= n; ++d) {
+            for (int l = 0, r = d - 1; r < n; ++l, ++r) {
+                dp[l] = max(nums[l] - dp[l + 1], nums[r] - dp[l]);
+            }
+        }
+
+        return dp[0] >= 0;
+    }
+};
