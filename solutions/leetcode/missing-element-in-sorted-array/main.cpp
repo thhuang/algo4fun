@@ -13,19 +13,18 @@ class Solution {
 class Solution {
    public:
     int missingElement(vector<int>& nums, int k) {
+        auto missing = [&](int i) -> int { return nums[i] - nums[0] - i; };
+
         int l = 0, r = nums.size() - 1;
         while (l <= r) {
             int m = l + (r - l) / 2;
-            int missing = nums[m] - nums.front() - m;
-            if (missing < k) {
+            if (missing(m) < k) {
                 l = m + 1;
-            } else {  // missing >= k
+            } else {
                 r = m - 1;
             }
         }
 
-        --l;
-        int missing = nums[l] - nums.front() - l;
-        return nums[l] + k - missing;
+        return nums[r] + k - missing(r);
     }
 };
