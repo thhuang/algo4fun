@@ -45,3 +45,23 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid.front().size();
+
+        vector<int> dp(n, numeric_limits<int>::max());
+        dp[0] = 0;
+
+        for (int i = 0; i < m; ++i) {
+            dp[0] += grid[i][0];
+            for (int j = 1; j < n; ++j) {
+                dp[j] = min(dp[j - 1], dp[j]) + grid[i][j];
+            }
+        }
+
+        return dp.back();
+    }
+};
