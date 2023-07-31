@@ -95,3 +95,22 @@ class Solution {
         return s.substr(l, r - l + 1);
     }
 };
+
+class Solution {
+   public:
+    string longestPalindrome(string s) {
+        struct {
+            int i, len;
+        } result{0, 0};
+
+        auto search = [&](int l, int r) {
+            while (0 <= l && r < s.size() && s[l] == s[r]) --l, ++r;
+            if (int len = r - l - 1; len > result.len) result = {l + 1, len};
+        };
+
+        for (int i = 0; i < s.size(); ++i) search(i, i);
+        for (int i = 1; i < s.size(); ++i) search(i - 1, i);
+
+        return s.substr(result.i, result.len);
+    }
+};
