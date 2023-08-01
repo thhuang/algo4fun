@@ -90,3 +90,25 @@ class Solution {
         return dp[0];
     }
 };
+
+class Solution {
+   public:
+    bool isInterleave(string s1, string s2, string s3) {
+        if (s1.size() + s2.size() != s3.size()) return false;
+
+        int n1 = s1.size();
+        int n2 = s2.size();
+
+        vector<bool> dp(n2 + 1, false);
+
+        for (int i = n1; i >= 0; --i) {
+            for (int j = n2; j >= 0; --j) {
+                bool b1 = i < n1 && dp[j] && s1[i] == s3[i + j];
+                bool b2 = j < n2 && dp[j + 1] && s2[j] == s3[i + j];
+                dp[j] = b1 || b2 || (i == n1 && j == n2);
+            }
+        }
+
+        return dp[0];
+    }
+};
