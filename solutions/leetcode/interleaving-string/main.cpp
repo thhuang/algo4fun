@@ -33,14 +33,13 @@ class Solution {
 
         for (int i = n1; i >= 0; --i) {
             for (int j = n2; j >= 0; --j) {
-                if (i < n1)
-                    dp[i][j] = dp[i][j] || dp[i + 1][j] && s1[i] == s3[i + j];
-                if (j < n2)
-                    dp[i][j] = dp[i][j] || dp[i][j + 1] && s2[j] == s3[i + j];
+                bool b1 = i < n1 && dp[i + 1][j] && s1[i] == s3[i + j];
+                bool b2 = j < n2 && dp[i][j + 1] && s2[j] == s3[i + j];
+                dp[i][j] = dp[i][j] || b1 || b2;
             }
         }
 
-        return dp.front().front();
+        return dp[0][0];
     }
 };
 
