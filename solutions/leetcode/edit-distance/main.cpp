@@ -69,3 +69,34 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    int minDistance(string word1, string word2) {
+        int n1 = word1.size();
+        int n2 = word2.size();
+
+        vector<int> dp(n2 + 1);
+
+        for (int i = n1; i >= 0; --i) {
+            vector<int> dpNew(n2 + 1);
+
+            for (int j = n2; j >= 0; --j) {
+                if (i == n1 || j == n2) {
+                    dpNew[j] = n1 + n2 - i - j;
+                    continue;
+                }
+
+                if (word1[i] == word2[j]) {
+                    dpNew[j] = dp[j + 1];
+                } else {
+                    dpNew[j] = 1 + min(dpNew[j + 1], min(dp[j + 1], dp[j]));
+                }
+            }
+
+            dp = move(dpNew);
+        }
+
+        return dp[0];
+    }
+};
