@@ -15,3 +15,23 @@ class Solution {
         return dp.sold2;
     }
 };
+
+class Solution {
+   public:
+    int maxProfit(vector<int>& prices) {
+        struct {
+            int hold1, sold1, hold2, sold2;
+        } dp = {-prices[0], 0, -prices[0], 0};
+
+        for (int v : prices) {
+            dp = {
+                max(dp.hold1, -v),
+                max(dp.sold1, dp.hold1 + v),
+                max(dp.hold2, dp.sold1 - v),
+                max(dp.sold2, dp.hold2 + v),
+            };
+        }
+
+        return dp.sold2;
+    }
+};
