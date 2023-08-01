@@ -23,3 +23,31 @@ class Solution {
         return mx_len * mx_len;
     }
 };
+
+class Solution {
+   public:
+    int maximalSquare(vector<vector<char>>& matrix) {
+        int m = matrix.size();
+        int n = matrix.front().size();
+
+        vector<int> dp(n, 0);
+
+        int result = 0;
+        for (int i = 0; i < m; ++i) {
+            vector<int> dpNew(n);
+            for (int j = 0; j < n; ++j) {
+                if (matrix[i][j] == '0') {
+                    dpNew[j] = 0;
+                } else {
+                    dpNew[j] =
+                        1 +
+                        min(dp[j], j == 0 ? 0 : min(dp[j - 1], dpNew[j - 1]));
+                }
+                result = max(result, dpNew[j]);
+            }
+            dp = move(dpNew);
+        }
+
+        return result * result;
+    }
+};
