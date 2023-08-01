@@ -62,13 +62,10 @@ class Solution {
 
         int result = 0;
         for (int i = 0; i < m; ++i) {
-            vector<int> dpNew(n + 1);
+            vector<int> dpNew(n + 1, 0);
             for (int j = n - 1; j >= 0; --j) {
-                if (matrix[i][j] == '0') {
-                    dpNew[j] = 0;
-                } else {
-                    dpNew[j] = 1 + min(dp[j], min(dp[j + 1], dpNew[j + 1]));
-                }
+                if (matrix[i][j] == '0') continue;
+                dpNew[j] = 1 + min(dp[j], min(dp[j + 1], dpNew[j + 1]));
                 result = max(result, dpNew[j]);
             }
             dp = move(dpNew);
