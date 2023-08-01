@@ -42,3 +42,23 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+    struct Transaction {
+        int hold, sold;
+    };
+
+   public:
+    int maxProfit(int k, vector<int>& prices) {
+        vector<Transaction> dp(k, {-prices[0], 0});
+        for (int v : prices) {
+            for (int i = k - 1; i >= 0; --i) {
+                dp[i] = {
+                    max(dp[i].hold, (i > 0 ? dp[i - 1].sold : 0) - v),
+                    max(dp[i].sold, dp[i].hold + v),
+                };
+            }
+        }
+        return dp.back().sold;
+    }
+};
