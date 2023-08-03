@@ -7,6 +7,29 @@
  * };
  */
 class Solution {
+   public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        for (auto a = headA; a; a = a->next) {
+            a->val = -a->val;
+        }
+
+        ListNode *result;
+        for (auto b = headB; b; b = b->next) {
+            if (b->val < 0) {
+                result = b;
+                break;
+            }
+        }
+
+        for (auto a = headA; a; a = a->next) {
+            a->val = -a->val;
+        }
+
+        return result;
+    }
+};
+
+class Solution {
     int length(ListNode *p) {
         if (!p) return 0;
         int count = 0;
