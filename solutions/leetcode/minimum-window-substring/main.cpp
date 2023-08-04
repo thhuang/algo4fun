@@ -73,3 +73,28 @@ class Solution {
         return sz > s.size() ? "" : s.substr(result[0], sz);
     }
 };
+
+class Solution {
+   public:
+    string minWindow(string s, string t) {
+        int n = t.size();
+        unordered_map<char, int> want;
+        for (char c : t) ++want[c];
+
+        array<int, 2> result = {-1, -1};
+        for (int l = 0, r = 0; r < s.size(); ++r) {
+            if (want.count(s[r]) == 0) continue;
+
+            if (--want[s[r]] >= 0) --n;
+            while (n == 0) {
+                if (result[0] == -1 || r - l < result[1] - result[0])
+                    result = {l, r};
+                if (want.count(s[l]) != 0 && ++want[s[l]] > 0) ++n;
+                ++l;
+            }
+        }
+
+        return result[0] == -1 ? ""
+                               : s.substr(result[0], result[1] - result[0] + 1);
+    }
+};
