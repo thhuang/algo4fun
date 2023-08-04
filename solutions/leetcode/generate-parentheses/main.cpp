@@ -60,3 +60,37 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> result;
+
+        string s;
+        int open = 0;
+        function<void(int)> dfs = [&](int i) -> void {
+            if (i == n * 2 - 1) {
+                if (open == 1) result.push_back(s + ')');
+                return;
+            }
+
+            ++open;
+            s.push_back('(');
+            dfs(i + 1);
+            s.pop_back();
+            --open;
+
+            if (open == 0) return;
+
+            --open;
+            s.push_back(')');
+            dfs(i + 1);
+            s.pop_back();
+            ++open;
+        };
+
+        dfs(0);
+
+        return result;
+    }
+};
