@@ -13,22 +13,21 @@
 class Solution {
    public:
     vector<TreeNode*> generateTrees(int n) {
-        function<vector<TreeNode*>(int, int)> dfs =
+        function<vector<TreeNode*>(int, int)> generate =
             [&](int l, int r) -> vector<TreeNode*> {
-            if (r < l) return {nullptr};
-
+            if (l > r) return {nullptr};
             vector<TreeNode*> result;
             for (int i = l; i <= r; ++i) {
-                for (auto left : dfs(l, i - 1)) {
-                    for (auto right : dfs(i + 1, r)) {
-                        result.push_back(new TreeNode(i, left, right));
+                auto left = generate(l, i - 1);
+                auto right = generate(i + 1, r);
+                for (auto ll : left) {
+                    for (auto rr : right) {
+                        result.push_back(new TreeNode(i, ll, rr));
                     }
                 }
             }
-
             return result;
         };
-
-        return dfs(1, n);
+        return generate(1, n);
     }
 };
