@@ -42,3 +42,25 @@ class Solution {
         return op.empty();
     }
 };
+
+class Solution {
+   public:
+    bool isValid(string s) {
+        vector<char> opens;
+        for (char c : s) {
+            if (c == '(' || c == '[' || c == '{') {
+                opens.push_back(c);
+            } else {
+                if (opens.empty()) return false;
+                if ((opens.back() == '(' && c == ')') ||
+                    (opens.back() == '[' && c == ']') ||
+                    (opens.back() == '{' && c == '}')) {
+                    opens.pop_back();
+                    continue;
+                }
+                return false;
+            }
+        }
+        return opens.empty();
+    }
+};
