@@ -17,3 +17,25 @@ class Solution {
         return dp[goal][n];
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+    typedef long long ll;
+
+   public:
+    int numMusicPlaylists(int n, int goal, int k) {
+        vector<ll> dp(n + 1, 0);
+        dp[0] = 1;
+        for (int i = 1; i <= goal; ++i) {
+            vector<ll> dpNew(n + 1, 0);
+            for (int j = min(i, n); j >= 1; --j) {
+                dpNew[j] = dp[j - 1] * (n - j + 1) % mod;
+                if (j > k) {
+                    (dpNew[j] += dp[j] * (j - k)) %= mod;
+                }
+            }
+            dp = move(dpNew);
+        }
+        return dp[n];
+    }
+};
