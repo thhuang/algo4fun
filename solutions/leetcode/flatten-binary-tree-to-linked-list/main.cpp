@@ -13,6 +13,22 @@
 class Solution {
    public:
     void flatten(TreeNode* root) {
+        while (root) {
+            auto p = root->left;
+            while (p && p->right) p = p->right;
+            if (p) {
+                p->right = root->right;
+                root->right = root->left;
+            }
+            root->left = nullptr;
+            root = root->right;
+        }
+    }
+};
+
+class Solution {
+   public:
+    void flatten(TreeNode* root) {
         if (!root) return;
 
         TreeNode dummy;
