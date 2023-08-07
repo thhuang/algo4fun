@@ -64,3 +64,26 @@ class Solution {
         }
     }
 };
+
+class Solution {
+   public:
+    void flatten(TreeNode* root) {
+        function<TreeNode*(TreeNode*)> f = [&](TreeNode* u) -> TreeNode* {
+            if (!u) return nullptr;
+            if (!u->left && !u->right) return u;
+
+            auto leftEnd = f(u->left);
+            auto rightEnd = f(u->right);
+
+            if (leftEnd) {
+                leftEnd->right = u->right;
+                u->right = u->left;
+                u->left = nullptr;
+            }
+
+            return rightEnd ? rightEnd : leftEnd;
+        };
+
+        f(root);
+    }
+};
