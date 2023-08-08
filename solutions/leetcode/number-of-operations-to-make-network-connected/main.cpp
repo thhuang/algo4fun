@@ -30,34 +30,6 @@ class Solution {
     int makeConnected(int n, vector<vector<int>>& connections) {
         if (connections.size() < n - 1) return -1;
 
-        vector<int> group(n);
-        iota(group.begin(), group.end(), 0);
-
-        function<int(int)> find = [&](int u) -> int {
-            if (u == group[u]) return u;
-            return group[u] = find(group[u]);
-        };
-
-        function<void(int, int)> unite = [&](int u, int v) -> void {
-            int pu = find(u);
-            int pv = find(v);
-            group[pu] = pv;
-        };
-
-        for (const auto& c : connections) unite(c[0], c[1]);
-
-        unordered_set<int> networks;
-        for (int g : group) networks.insert(find(g));
-
-        return networks.size() - 1;
-    }
-};
-
-class Solution {
-   public:
-    int makeConnected(int n, vector<vector<int>>& connections) {
-        if (connections.size() < n - 1) return -1;
-
         vector<vector<int>> adj(n);
         for (auto& c : connections) {
             adj[c[0]].push_back(c[1]);
@@ -85,5 +57,42 @@ class Solution {
         }
 
         return result;
+    }
+};
+
+class Solution {
+   public:
+    int makeConnected(int n, vector<vector<int>>& connections) {
+        if (connections.size() < n - 1) return -1;
+
+        vector<int> rank(n, 0);
+        vector<int> group(n);
+        iota(group.begin(), group.end(), 0);
+
+        function<int(int)> find = [&](int k) -> int {
+            if (group[k] == k) return k;
+            return group[k] = find(group[k]);
+        };
+
+        function<void(int, int)> unite = [&](int a, int b) -> void {
+            int aa = find(a);
+            int bb = find(b);
+            if (aa == bb) return;
+            if (rank[aa] < rank[bb]) {
+                group[aa] = bb;
+            } else if (rank[bb] < rank[aa]) {
+                group[bb] = aa;
+            } else {
+                group[bb] = aa;
+                ++rank[aa];
+            }
+        };
+
+        for (auto& c : connections) unite(c[0], c[1]);
+
+        unordered_set<int> s;
+        for (int v : group) s.insert(find(v));
+
+        return s.size() - 1;
     }
 };
