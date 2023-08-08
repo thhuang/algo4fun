@@ -52,3 +52,38 @@ class Solution {
         return networks.size() - 1;
     }
 };
+
+class Solution {
+   public:
+    int makeConnected(int n, vector<vector<int>>& connections) {
+        if (connections.size() < n - 1) return -1;
+
+        vector<vector<int>> adj(n);
+        for (auto& c : connections) {
+            adj[c[0]].push_back(c[1]);
+            adj[c[1]].push_back(c[0]);
+        }
+
+        int result = -1;
+        vector<bool> vis(n, false);
+
+        for (int i = 0; i < n; ++i) {
+            if (vis[i]) continue;
+
+            ++result;
+            vector<int> nodes = {i};
+
+            while (!nodes.empty()) {
+                int u = nodes.back();
+                nodes.pop_back();
+
+                if (vis[u]) continue;
+                vis[u] = true;
+
+                for (int v : adj[u]) nodes.push_back(v);
+            }
+        }
+
+        return result;
+    }
+};
