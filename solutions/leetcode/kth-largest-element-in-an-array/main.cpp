@@ -100,18 +100,18 @@ class Solution {
             for (int i = l; i < r; ++i) {
                 if (nums[i] > nums[r]) swap(nums[l++], nums[i]);
             }
-            swap(nums[r], nums[l]);
+            swap(nums[l], nums[r]);
             return l;
         };
 
         int l = 0, r = nums.size() - 1;
         while (l <= r) {
-            int m = l + (r - l) / 2;
-            int i = partition(l, r, m);
-            if (i < k) {
-                l = i + 1;
+            int p = l + (r - l) / 2;
+            p = partition(l, r, p);
+            if (p < k) {
+                l = p + 1;
             } else {
-                r = i - 1;
+                r = p - 1;
             }
         }
 
