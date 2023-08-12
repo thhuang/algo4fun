@@ -44,3 +44,21 @@ class Solution {
         return accumulate(candies.begin(), candies.end(), 0);
     }
 };
+
+class Solution {
+   public:
+    int candy(vector<int>& ratings) {
+        int n = ratings.size();
+
+        vector<int> left(n, 1), right(n, 1);
+        for (int l = 1, r = n - 2; l < n; ++l, --r) {
+            if (ratings[l - 1] < ratings[l]) left[l] = left[l - 1] + 1;
+            if (ratings[r] > ratings[r + 1]) right[r] = right[r + 1] + 1;
+        }
+
+        int result = 0;
+        for (int i = 0; i < n; ++i) result += max(left[i], right[i]);
+
+        return result;
+    }
+};
