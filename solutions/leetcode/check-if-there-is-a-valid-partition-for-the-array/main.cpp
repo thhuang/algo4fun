@@ -21,3 +21,20 @@ class Solution {
         return check(0) == 1;
     }
 };
+
+class Solution {
+   public:
+    bool validPartition(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> dp(n + 1, false);
+        dp[n] = true;
+        dp[n - 2] = nums[n - 2] == nums[n - 1];
+        for (int i = n - 3; i >= 0; --i) {
+            bool same2 = nums[i] == nums[i + 1] && dp[i + 2];
+            bool same3 = nums[i] == nums[i + 1] && nums[i] == nums[i + 2] && dp[i + 3];
+            bool diff1 = nums[i] + 1 == nums[i + 1] && nums[i + 1] + 1 == nums[i + 2] && dp[i + 3];
+            dp[i] = same2 || same3 || diff1;
+        }
+        return dp[0];
+    }
+};
