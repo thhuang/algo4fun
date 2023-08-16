@@ -66,16 +66,17 @@ class Solution {
    public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         vector<int> result;
+
         deque<int> desc;
+        for (int l = -k + 1, r = 0; r < nums.size(); ++l, ++r) {
+            while (!desc.empty() && desc.back() < nums[r]) desc.pop_back();
+            desc.push_back(nums[r]);
 
-        for (int i = 0; i < nums.size(); ++i) {
-            while (!desc.empty() && desc.back() < nums[i]) desc.pop_back();
-            desc.push_back(nums[i]);
-
-            if (i < k - 1) continue;
+            if (l < 0) continue;
 
             result.push_back(desc.front());
-            if (nums[i - k + 1] == desc.front()) desc.pop_front();
+
+            if (nums[l] == desc.front()) desc.pop_front();
         }
 
         return result;
