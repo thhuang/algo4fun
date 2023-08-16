@@ -18,6 +18,26 @@ class Solution {
 class Solution {
    public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> result;
+
+        multiset<int> inc;
+        for (int r = 0, l = -k + 1; r < nums.size(); ++l, ++r) {
+            inc.insert(nums[r]);
+
+            if (l < 0) continue;
+
+            result.push_back(*inc.rbegin());
+
+            inc.erase(inc.find(nums[l]));
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         deque<int> q;
 
         auto push = [&](int v) -> int {
