@@ -59,3 +59,40 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        int m = mat.size();
+        int n = mat.front().size();
+
+        int mx = m + n;
+
+        vector<vector<int>> result(m, vector<int>(n, mx));
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (mat[i][j] == 0) {
+                    result[i][j] = 0;
+                } else {
+                    int a = i - 1 < 0 ? mx : result[i - 1][j];
+                    int b = j - 1 < 0 ? mx : result[i][j - 1];
+                    result[i][j] = min(result[i][j], min(a, b) + 1);
+                }
+            }
+        }
+
+        for (int i = m - 1; i >= 0; --i) {
+            for (int j = n - 1; j >= 0; --j) {
+                if (mat[i][j] == 0) {
+                    result[i][j] = 0;
+                } else {
+                    int a = i + 1 >= m ? mx : result[i + 1][j];
+                    int b = j + 1 >= n ? mx : result[i][j + 1];
+                    result[i][j] = min(result[i][j], min(a, b) + 1);
+                }
+            }
+        }
+
+        return result;
+    }
+};
