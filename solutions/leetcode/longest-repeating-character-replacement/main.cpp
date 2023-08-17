@@ -61,13 +61,12 @@ class Solution {
 class Solution {
    public:
     int characterReplacement(string s, int k) {
-        array<int, 26> count;
-        count.fill(0);
-        int max_count = 0;
         int result = 0;
-        for (int l = 0, r = 0; r < s.size(); ++r) {
-            max_count = max(max_count, ++count[s[r] - 'A']);
-            while (r - l + 1 - max_count > k) --count[s[l++] - 'A'];
+        array<int, 26> charCount;
+        charCount.fill(0);
+        for (int l = 0, r = 0, mx = 0; r < s.size(); ++r) {
+            mx = max(mx, ++charCount[s[r] - 'A']);
+            while (r - l + 1 - mx > k) --charCount[s[l++] - 'A'];
             result = max(result, r - l + 1);
         }
         return result;
