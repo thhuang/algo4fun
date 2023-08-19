@@ -35,7 +35,7 @@ class MRUQueue {
         data.push_back(*it);
         if (k % m == 0) ++iters[i];
         for (++i; i < iters.size(); ++i) ++iters[i];
-        it = data.erase(it);
+        data.erase(it);
 
         return data.back();
     }
