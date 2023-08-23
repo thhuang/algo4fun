@@ -68,3 +68,40 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    string reorganizeString(string s) {
+        array<int, 26> cnt;
+        cnt.fill(0);
+        for (char c : s) ++cnt[c - 'a'];
+
+        priority_queue<pair<int, char>> pq;
+        for (int i = 0; i < 26; ++i) {
+            if (cnt[i] == 0) continue;
+            pq.push({cnt[i], 'a' + i});
+        }
+
+        string result;
+        while (!pq.empty()) {
+            auto [v, c] = pq.top();
+            pq.pop();
+
+            if (!result.empty() && result.back() == c) {
+                if (pq.empty()) return "";
+                auto [vv, cc] = pq.top();
+                pq.pop();
+                pq.push({v, c});
+                v = vv;
+                c = cc;
+            }
+
+            result += c;
+
+            if (v == 1) continue;
+            pq.push({v - 1, c});
+        }
+
+        return result;
+    }
+};
