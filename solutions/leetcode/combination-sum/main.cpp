@@ -84,3 +84,32 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> result;
+
+        int sum = 0;
+        vector<int> combination;
+        function<void(int)> search = [&](int i) -> void {
+            if (sum >= target) {
+                if (sum == target) result.push_back(combination);
+                return;
+            }
+            if (i == candidates.size()) return;
+
+            search(i + 1);
+
+            sum += candidates[i];
+            combination.push_back(candidates[i]);
+            search(i);
+            combination.pop_back();
+            sum -= candidates[i];
+        };
+
+        search(0);
+
+        return result;
+    }
+};
