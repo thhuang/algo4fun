@@ -13,12 +13,10 @@ class Solution {
         int l = 0, r = n1;
         while (l <= r) {
             int m1 = l + (r - l) / 2;
-
             int l1 = m1 - 1 < 0 ? mn : nums1[m1 - 1];
             int r1 = m1 >= n1 ? mx : nums1[m1];
 
             int m2 = n / 2 - m1;
-
             int l2 = m2 - 1 < 0 ? mn : nums2[m2 - 1];
             int r2 = m2 >= n2 ? mx : nums2[m2];
 
