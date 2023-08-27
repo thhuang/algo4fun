@@ -15,23 +15,24 @@ class Solution {
     vector<vector<int>> levelOrder(TreeNode* root) {
         if (!root) return {};
 
-        vector<vector<int>> ans;
+        vector<vector<int>> result;
 
-        deque<TreeNode*> q;
-        q.push_back(root);
-        while (!empty(q)) {
-            deque<TreeNode*> new_q;
-            ans.push_back({});
-            for (auto n : q) {
-                if (!n) continue;
-                ans.back().push_back(n->val);
-                if (n->left) new_q.push_back(n->left);
-                if (n->right) new_q.push_back(n->right);
+        vector<TreeNode*> q = {root};
+
+        while (!q.empty()) {
+            vector<TreeNode*> qNew;
+            result.push_back({});
+
+            for (TreeNode* u : q) {
+                result.back().push_back(u->val);
+                if (u->left) qNew.push_back({u->left});
+                if (u->right) qNew.push_back({u->right});
             }
-            q = new_q;
+
+            q = move(qNew);
         }
 
-        return ans;
+        return result;
     }
 };
 
