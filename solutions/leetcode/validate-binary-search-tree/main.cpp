@@ -29,19 +29,19 @@ class Solution {
 };
 
 class Solution {
+    typedef long long ll;
+
    public:
+    bool isValid(TreeNode* u, ll l, ll r) {
+        if (u == nullptr) return true;
+        if (u->val < l || r < u->val) return false;
+        return isValid(u->left, l, (ll)u->val - 1) &&
+               isValid(u->right, (ll)u->val + 1, r);
+    }
+
     bool isValidBST(TreeNode* root) {
         return isValid(root, numeric_limits<int>::min(),
                        numeric_limits<int>::max());
-    }
-
-    bool isValid(TreeNode* u, long l, long r) {
-        if (u == nullptr) return true;
-        long v = u->val;
-        if (v < l || r < v) return false;
-        if (!isValid(u->left, l, v - 1)) return false;
-        if (!isValid(u->right, v + 1, r)) return false;
-        return true;
     }
 };
 
