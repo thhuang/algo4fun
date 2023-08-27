@@ -13,27 +13,6 @@
 class Solution {
    public:
     bool isSymmetric(TreeNode* root) {
-        if (!root) return true;
-        deque<TreeNode*> q0 = {root}, q1 = {root};
-        while (!empty(q0) && !empty(q1)) {
-            auto n0 = q0.front();
-            auto n1 = q1.front();
-            q0.pop_front(), q1.pop_front();
-
-            if (n0 == nullptr && n1 == nullptr) continue;
-            if (n0 == nullptr || n1 == nullptr) return false;
-            if (n0->val != n1->val) return false;
-
-            q0.push_back(n0->left), q0.push_back(n0->right);
-            q1.push_back(n1->right), q1.push_back(n1->left);
-        }
-        return empty(q0) == empty(q1);
-    }
-};
-
-class Solution {
-   public:
-    bool isSymmetric(TreeNode* root) {
         function<bool(TreeNode*, TreeNode*)> check = [&](TreeNode* a,
                                                          TreeNode* b) -> bool {
             if (!a && !b) return true;
@@ -41,5 +20,26 @@ class Solution {
             return check(a->left, b->right) && check(a->right, b->left);
         };
         return check(root->left, root->right);
+    }
+};
+
+class Solution {
+   public:
+    bool isSymmetric(TreeNode* root) {
+        queue<array<TreeNode*, 2>> q;
+        q.push({root->left, root->right});
+
+        while (!q.empty()) {
+            auto [l, r] = q.front();
+            q.pop();
+
+            if (!l && !r) continue;
+            if (!l || !r || l->val != r->val) return false;
+
+            q.push({l->left, r->right});
+            q.push({l->right, r->left});
+        }
+
+        return true;
     }
 };
