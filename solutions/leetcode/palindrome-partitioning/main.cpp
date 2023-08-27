@@ -40,3 +40,41 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    bool isPalindrome(string &s) {
+        auto it = s.begin();
+        auto rit = s.rbegin();
+        for (int i = 0; i < s.size() / 2; ++i, ++it, ++rit) {
+            if (*it != *rit) return false;
+        }
+        return true;
+    }
+
+    vector<vector<string>> partition(string s) {
+        vector<vector<string>> result;
+
+        vector<string> curr;
+        function<void(int)> search = [&](int l) -> void {
+            if (l == s.size()) {
+                result.push_back(curr);
+                return;
+            }
+
+            string ss;
+            for (int r = l; r < s.size(); ++r) {
+                ss += s[r];
+                if (!isPalindrome(ss)) continue;
+
+                curr.push_back(ss);
+                search(r + 1);
+                curr.pop_back();
+            }
+        };
+
+        search(0);
+
+        return result;
+    }
+};
