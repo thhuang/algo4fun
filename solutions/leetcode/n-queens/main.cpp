@@ -35,3 +35,36 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> result;
+
+        vector<string> curr;
+        vector<bool> col(n, false), diag0(n * 2 - 1), diag1(n * 2 - 1);
+        function<void(int)> search = [&](int i) -> void {
+            if (i == n) {
+                result.push_back(curr);
+                return;
+            }
+
+            for (int j = 0; j < n; ++j) {
+                if (col[j] || diag0[i + j] || diag1[i - j + n - 1]) continue;
+
+                col[j] = diag0[i + j] = diag1[i - j + n - 1] = true;
+                curr.push_back(string(n, '.'));
+                curr.back()[j] = 'Q';
+
+                search(i + 1);
+
+                curr.pop_back();
+                col[j] = diag0[i + j] = diag1[i - j + n - 1] = false;
+            }
+        };
+
+        search(0);
+
+        return result;
+    }
+};
