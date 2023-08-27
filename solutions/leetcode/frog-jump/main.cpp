@@ -20,3 +20,27 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+   public:
+    bool canCross(vector<int>& stones) {
+        int n = stones.size();
+
+        vector<vector<int>> dp(n, vector<int>(n, false));
+        dp[0][0] = true;
+
+        for (int r = 1; r < n; ++r) {
+            for (int l = 0; l < r; ++l) {
+                int k = stones[r] - stones[l];
+                if (k >= n) continue;
+                if (dp[l][k - 1] || dp[l][k]) dp[r][k] = true;
+                if (k + 1 < n && dp[l][k + 1]) dp[r][k] = true;
+            }
+        }
+
+        for (auto b : dp.back()) {
+            if (b) return true;
+        }
+        return false;
+    }
+};
