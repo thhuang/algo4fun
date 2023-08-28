@@ -6,30 +6,34 @@
  *     TreeNode *right;
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
  * };
  */
 class Solution {
+    typedef long long ll;
+
    public:
     int pathSum(TreeNode* root, int targetSum) {
         int result = 0;
-        
-        unordered_map<long long, int> prefix;
-        prefix[0] = 1;
 
-        function<void(TreeNode*, long long)> dfs = [&](TreeNode* u, long long v) -> void {
-            if (u == nullptr) return;    
+        unordered_map<ll, int> targetCount = {{targetSum, 1}};
 
-            v += u->val;
-            result += prefix[v - targetSum];
+        ll sum = 0;
+        function<void(TreeNode*)> search = [&](TreeNode* u) -> void {
+            if (!u) return;
+            sum += u->val;
+            result += targetCount[sum];
 
-            ++prefix[v];
-            dfs(u->left, v);
-            dfs(u->right, v);
-            --prefix[v];
+            ++targetCount[sum + targetSum];
+            search(u->left);
+            search(u->right);
+            --targetCount[sum + targetSum];
+
+            sum -= u->val;
         };
 
-        dfs(root, 0);
+        search(root);
 
         return result;
     }
