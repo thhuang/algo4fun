@@ -13,20 +13,20 @@
 class Solution {
    public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        unordered_map<int, int> inorderToIndex;
-        for (int i = 0; i < inorder.size(); ++i) {
-            inorderToIndex[inorder[i]] = i;
+        int n = inorder.size();
+        unordered_map<int, int> valueToInorderIndex;
+        for (int i = 0; i < n; ++i) {
+            valueToInorderIndex[inorder[i]] = i;
         }
 
-        function<TreeNode*(int&, int, int)> build = [&](int& p, int il,
-                                                        int ir) -> TreeNode* {
-            if (il > ir) return nullptr;
+        function<TreeNode*(int&, int, int)> build = [&](int& p, int l, int r) -> TreeNode* {
+            if (l > r) return nullptr;
             int v = preorder[p++];
-            int i = inorderToIndex[v];
-            return new TreeNode(v, build(p, il, i - 1), build(p, i + 1, ir));
+            int i = valueToInorderIndex[v];
+            return new TreeNode(v, build(p, l, i - 1), build(p, i + 1, r));
         };
 
-        int i = 0;
-        return build(i, 0, inorder.size() - 1);
+        int p = 0;
+        return build(p, 0, n - 1);
     }
 };
