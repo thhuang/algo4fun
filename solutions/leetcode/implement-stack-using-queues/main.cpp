@@ -26,6 +26,31 @@ class MyStack {
 };
 
 class MyStack {
+    queue<int> q;
+    int last;
+
+   public:
+    void push(int x) {
+        q.push(x);
+        last = x;
+    }
+
+    int pop() {
+        for (int i = 0; i < q.size() - 1; ++i) {
+            q.push(last = q.front());
+            q.pop();
+        }
+        int result = q.front();
+        q.pop();
+        return result;
+    }
+
+    int top() { return last; }
+
+    bool empty() { return q.empty(); }
+};
+
+class MyStack {
     queue<void *> *head_ = nullptr;
 
    public:
