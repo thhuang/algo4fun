@@ -46,3 +46,30 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> result;
+
+        queue<pair<TreeNode*, int>> q;
+        q.push({root, 0});
+
+        while (!q.empty()) {
+            auto [u, d] = q.front();
+            q.pop();
+
+            if (!u) continue;
+
+            if (d < result.size())
+                result[d] = u->val;
+            else
+                result.push_back(u->val);
+
+            q.push({u->left, d + 1});
+            q.push({u->right, d + 1});
+        }
+
+        return result;
+    }
+};
