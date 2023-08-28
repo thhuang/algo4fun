@@ -19,12 +19,12 @@ class Solution {
             if (!u) return 0;
             int l = search(u->left);
             int r = search(u->right);
-            result = max(result, l + r + 1);
+            result = max(result, l + r);
             return max(l, r) + 1;
         };
 
         search(root);
 
-        return result - 1;
+        return result;
     }
 };
