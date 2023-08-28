@@ -14,14 +14,17 @@ class Solution {
    public:
     int diameterOfBinaryTree(TreeNode* root) {
         int result = 0;
-        function<int(TreeNode*)> dfs = [&](TreeNode* u) -> int {
-            if (u == nullptr) return 0;
-            int l = dfs(u->left);
-            int r = dfs(u->right);
-            result = max(result, l + r);
+
+        function<int(TreeNode*)> search = [&](TreeNode* u) -> int {
+            if (!u) return 0;
+            int l = search(u->left);
+            int r = search(u->right);
+            result = max(result, l + r + 1);
             return max(l, r) + 1;
         };
-        dfs(root);
-        return result;
+
+        search(root);
+
+        return result - 1;
     }
 };
