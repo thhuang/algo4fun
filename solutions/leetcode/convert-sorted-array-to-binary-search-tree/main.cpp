@@ -13,13 +13,11 @@
 class Solution {
    public:
     TreeNode* sortedArrayToBST(vector<int>& nums) {
-        function<TreeNode*(int, int)> construct = [&](int l,
-                                                      int r) -> TreeNode* {
+        function<TreeNode*(int, int)> build = [&](int l, int r) -> TreeNode* {
             if (l > r) return nullptr;
             int m = l + (r - l) / 2;
-            return new TreeNode(nums[m], construct(l, m - 1),
-                                construct(m + 1, r));
+            return new TreeNode(nums[m], build(l, m - 1), build(m + 1, r));
         };
-        return construct(0, nums.size() - 1);
+        return build(0, nums.size() - 1);
     }
 };
