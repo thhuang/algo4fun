@@ -20,3 +20,14 @@ class Solution {
         return root;
     }
 };
+
+class Solution {
+   public:
+    TreeNode* invertTree(TreeNode* root) {
+        if (root) {
+            tie(root->left, root->right) = pair<TreeNode*, TreeNode*>{
+                invertTree(root->right), invertTree(root->left)};
+        }
+        return root;
+    }
+};
