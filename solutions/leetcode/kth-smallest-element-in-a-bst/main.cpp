@@ -84,3 +84,17 @@ class Solution {
         return left_path.back()->val;
     }
 };
+
+class Solution {
+   public:
+    int kthSmallest(TreeNode* root, int k) {
+        int i = 0;
+        function<int(TreeNode*)> search = [&](TreeNode* u) -> int {
+            if (!u) return -1;
+            if (int v = search(u->left); v != -1) return v;
+            if (++i == k) return u->val;
+            return search(u->right);
+        };
+        return search(root);
+    }
+};
