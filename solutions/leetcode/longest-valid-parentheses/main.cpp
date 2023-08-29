@@ -57,3 +57,30 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int longestValidParentheses(string s) {
+        if (s.empty()) return 0;
+
+        int n = s.size();
+
+        int result = 0;
+
+        vector<int> dp(n, 0);
+        for (int r = 1; r < n; ++r) {
+            if (s[r] == '(') continue;
+
+            int l = r - 1;
+            while (l >= 0 && dp[l] > 0) {
+                l -= dp[l];
+            }
+            if (l >= 0 && s[l] == '(') {
+                dp[r] = r - l + 1;
+                if (l > 0) dp[r] += dp[l - 1];
+            }
+        }
+
+        return *max_element(dp.begin(), dp.end());
+    }
+};
