@@ -25,3 +25,15 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int bestClosingTime(string customers) {
+        int result = 0;
+        for (int i = 0, mn = 0, v = 0; i < customers.size(); ++i) {
+            customers[i] == 'Y' ? --v : ++v;
+            if (v < mn) mn = v, result = i + 1;
+        }
+        return result;
+    }
+};
