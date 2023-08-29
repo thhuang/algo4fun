@@ -1,6 +1,33 @@
 class Solution {
    public:
     int longestValidParentheses(string s) {
+        if (s.empty()) return 0;
+
+        int n = s.size();
+
+        int result = 0;
+
+        vector<int> dp(n, 0);
+        for (int r = 1; r < n; ++r) {
+            if (s[r] == '(') continue;
+
+            int l = r - 1;
+            while (l >= 0 && dp[l] > 0) {
+                l -= dp[l];
+            }
+            if (l >= 0 && s[l] == '(') {
+                dp[r] = r - l + 1;
+                if (l > 0) dp[r] += dp[l - 1];
+            }
+        }
+
+        return *max_element(dp.begin(), dp.end());
+    }
+};
+
+class Solution {
+   public:
+    int longestValidParentheses(string s) {
         int result = 0;
 
         int opens = 0;
@@ -60,27 +87,21 @@ class Solution {
 
 class Solution {
    public:
-    int longestValidParentheses(string s) {
-        if (s.empty()) return 0;
-
-        int n = s.size();
-
+    int search(string s, char target) {
         int result = 0;
-
-        vector<int> dp(n, 0);
-        for (int r = 1; r < n; ++r) {
-            if (s[r] == '(') continue;
-
-            int l = r - 1;
-            while (l >= 0 && dp[l] > 0) {
-                l -= dp[l];
-            }
-            if (l >= 0 && s[l] == '(') {
-                dp[r] = r - l + 1;
-                if (l > 0) dp[r] += dp[l - 1];
+        for (int l = 0, r = 0, cnt = 0; r < s.size(); ++r) {
+            (s[r] == target) ? ++cnt : --cnt;
+            if (cnt < 0) {
+                cnt = 0;
+                l = r + 1;
+            } else if (cnt == 0) {
+                result = max(result, r - l + 1);
             }
         }
+        return result;
+    }
 
-        return *max_element(dp.begin(), dp.end());
+    int longestValidParentheses(string s) {
+        return max(search(s, '('), search({s.rbegin(), s.rend()}, ')'));
     }
 };
