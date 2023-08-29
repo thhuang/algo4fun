@@ -52,6 +52,26 @@ class Solution {
         int m = grid.size();
         int n = grid.front().size();
 
+        for (int j = 1; j < n; ++j) {
+            grid[0][j] += grid[0][j - 1];
+        }
+        for (int i = 1; i < m; ++i) {
+            grid[i][0] += grid[i - 1][0];
+            for (int j = 1; j < n; ++j) {
+                grid[i][j] += min(grid[i - 1][j], grid[i][j - 1]);
+            }
+        }
+
+        return grid.back().back();
+    }
+};
+
+class Solution {
+   public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid.front().size();
+
         vector<int> dp(n, numeric_limits<int>::max());
         dp[0] = 0;
 
