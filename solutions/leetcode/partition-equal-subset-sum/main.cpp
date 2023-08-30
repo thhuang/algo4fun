@@ -22,3 +22,24 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+   public:
+    bool canPartition(vector<int>& nums) {
+        int total = accumulate(nums.begin(), nums.end(), 0);
+        if (total % 2 == 1) return false;
+
+        vector<bool> dp(total / 2 + 1, false);
+        dp[0] = true;
+
+        for (int v : nums) {
+            for (int i = dp.size(); i >= 0; --i) {
+                int j = i + v;
+                if (!dp[i] || j > dp.size()) continue;
+                dp[j] = true;
+            }
+        }
+
+        return dp.back();
+    }
+};
