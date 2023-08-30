@@ -38,3 +38,20 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maxProduct(vector<int>& nums) {
+        int result = nums[0];
+
+        for (int i = 1, mn = nums[0], mx = nums[0]; i < nums.size(); ++i) {
+            int v = nums[i];
+            array<int, 3> candidates = {v, mx * v, mn * v};
+            mx = *max_element(candidates.begin(), candidates.end());
+            mn = *min_element(candidates.begin(), candidates.end());
+            result = max(result, mx);
+        }
+
+        return result;
+    }
+};
