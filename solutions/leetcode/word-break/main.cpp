@@ -85,3 +85,20 @@ class Solution {
         return dp[0];
     }
 };
+
+class Solution {
+   public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        int n = s.size();
+        vector<bool> dp(n + 1, false);
+        dp[n] = true;
+        for (int i = n - 1; i >= 0; --i) {
+            for (string& w : wordDict) {
+                int sz = w.size();
+                if (i + sz > n || !dp[i + sz] || s.substr(i, sz) != w) continue;
+                dp[i] = true;
+            }
+        }
+        return dp[0];
+    }
+};
