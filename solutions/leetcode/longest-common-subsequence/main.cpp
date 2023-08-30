@@ -43,10 +43,7 @@ class Solution {
 class Solution {
    public:
     int longestCommonSubsequence(string text1, string text2) {
-        if (text1.size() < text2.size()) swap(text1, text2);
-
-        int n1 = text1.size();
-        int n2 = text2.size();
+        int n1 = text1.size(), n2 = text2.size();
 
         vector<vector<int>> dp(n1 + 1, vector<int>(n2 + 1, 0));
 
@@ -61,5 +58,28 @@ class Solution {
         }
 
         return dp[0][0];
+    }
+};
+
+class Solution {
+   public:
+    int longestCommonSubsequence(string text1, string text2) {
+        int n1 = text1.size(), n2 = text2.size();
+
+        vector<int> dp(n2 + 1, 0);
+
+        for (int i = n1 - 1; i >= 0; --i) {
+            vector<int> dpNew(n2 + 1);
+            for (int j = n2 - 1; j >= 0; --j) {
+                if (text1[i] == text2[j]) {
+                    dpNew[j] = dp[j + 1] + 1;
+                } else {
+                    dpNew[j] = max(dp[j], dpNew[j + 1]);
+                }
+            }
+            dp = move(dpNew);
+        }
+
+        return dp[0];
     }
 };
