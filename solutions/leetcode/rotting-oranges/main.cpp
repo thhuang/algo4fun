@@ -119,3 +119,48 @@ class Solution {
         return cnt == 0 ? result : -1;
     }
 };
+
+class Solution {
+    const vector<array<int, 2>> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+   public:
+    int orangesRotting(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid.front().size();
+
+        queue<array<int, 2>> q;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 2) {
+                    q.push({i, j});
+                }
+            }
+        }
+
+        int result = 0;
+        while (true) {
+            int k = q.size();
+            while (k--) {
+                auto [i, j] = q.front();
+                q.pop();
+                for (auto [di, dj] : directions) {
+                    int ii = i + di, jj = j + dj;
+                    if (ii < 0 || m <= ii || jj < 0 || n <= jj || grid[ii][jj] != 1) continue;
+                    grid[ii][jj] = 2;
+                    q.push({ii, jj});
+                }
+            }
+
+            if (q.empty()) break;
+            ++result;
+        }
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 1) return -1;
+            }
+        }
+
+        return result;
+    }
+};
