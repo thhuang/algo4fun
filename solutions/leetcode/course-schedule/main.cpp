@@ -1,21 +1,23 @@
 class Solution {
-    enum class State { Unprocessed, Processing, Processed };
+    enum class State { processed, processing, unprocessed };
 
    public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         vector<vector<int>> adj(numCourses);
-        for (const auto& p : prerequisites) adj[p[0]].push_back(p[1]);
 
-        vector<State> states(numCourses, State::Unprocessed);
+        for (auto& prerequisite : prerequisites) {
+            adj[prerequisite[0]].push_back(prerequisite[1]);
+        }
+
+        vector<State> states(numCourses, State::unprocessed);
         function<bool(int)> dfs = [&](int u) -> bool {
-            if (states[u] == State::Processing) return false;
-            if (states[u] == State::Processed) return true;
-            states[u] = State::Processing;
-
-            for (auto v : adj[u])
+            if (states[u] == State::processing) return false;
+            if (states[u] == State::processed) return true;
+            states[u] = State::processing;
+            for (int v : adj[u]) {
                 if (!dfs(v)) return false;
-
-            states[u] = State::Processed;
+            }
+            states[u] = State::processed;
             return true;
         };
 
