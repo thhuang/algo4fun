@@ -35,6 +35,42 @@ class Solution {
 class Solution {
    public:
     vector<int> partitionLabels(string s) {
+        int n = s.size();
+
+        array<array<int, 2>, 26> charRange;
+        charRange.fill({n - 1, 0});
+
+        for (int i = 0; i < n; ++i) {
+            char c = s[i];
+            auto& [l, r] = charRange[c - 'a'];
+            l = min(l, i);
+            r = max(r, i);
+        }
+
+        sort(charRange.begin(), charRange.end());
+
+        vector<array<int, 2>> parts;
+        for (auto [l, r] : charRange) {
+            if (l > r) continue;
+            if (parts.empty() || parts.back()[1] < l) {
+                parts.push_back({l, r});
+            } else {
+                parts.back()[1] = max(parts.back()[1], r);
+            }
+        }
+
+        vector<int> result;
+        for (auto [l, r] : parts) {
+            result.push_back(r - l + 1);
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    vector<int> partitionLabels(string s) {
         unordered_map<char, int> char_last;
         for (int i = 0; i < s.size(); ++i) char_last[s[i]] = i;
 
