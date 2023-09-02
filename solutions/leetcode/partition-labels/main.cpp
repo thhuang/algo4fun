@@ -71,14 +71,40 @@ class Solution {
 class Solution {
    public:
     vector<int> partitionLabels(string s) {
-        unordered_map<char, int> char_last;
-        for (int i = 0; i < s.size(); ++i) char_last[s[i]] = i;
+        array<int, 26> charRight;
+        charRight.fill(-1);
+        for (int i = 0; i < s.size(); ++i) {
+            charRight[s[i] - 'a'] = i;
+        }
 
         vector<int> result;
-        int l = 0, r = 0;
+        for (int i = 0, l = 0, r = -1; i < s.size(); ++i) {
+            if (i > r) {
+                l = i;
+                result.push_back(0);
+            }
+
+            r = max(r, charRight[s[i] - 'a']);
+            result.back() = r - l + 1;
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    vector<int> partitionLabels(string s) {
+        array<int, 26> charRight;
+        charRight.fill(-1);
         for (int i = 0; i < s.size(); ++i) {
-            r = max(r, char_last[s[i]]);
-            if (r > i) continue;
+            charRight[s[i] - 'a'] = i;
+        }
+
+        vector<int> result;
+        for (int i = 0, l = 0, r = 0; i < s.size(); ++i) {
+            r = max(r, charRight[s[i] - 'a']);
+            if (i < r) continue;
             result.push_back(r - l + 1);
             l = r + 1;
         }
