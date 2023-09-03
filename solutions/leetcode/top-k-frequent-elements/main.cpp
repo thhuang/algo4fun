@@ -120,3 +120,34 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> numFreq;
+        vector<unordered_set<int>> freqToNum = {{}};
+
+        for (int v : nums) {
+            int f = ++numFreq[v];
+
+            if (f > 1) {
+                freqToNum[f - 1].erase(v);
+            }
+
+            if (freqToNum.size() == f) {
+                freqToNum.push_back({});
+            }
+
+            freqToNum[f].insert(v);
+        }
+
+        vector<int> result;
+        for (auto it = freqToNum.rbegin(); it != freqToNum.rend(); ++it) {
+            for (auto v : *it) {
+                result.push_back(v);
+            }
+        }
+
+        return {result.begin(), result.begin() + k};
+    }
+};
