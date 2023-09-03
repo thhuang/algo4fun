@@ -29,14 +29,15 @@ class Solution {
 class Solution {
    public:
     int longestConsecutive(vector<int>& nums) {
-        unordered_set<int> numSet;
-        for (int v : nums) numSet.insert(v);
+        unordered_set<int> numbers;
+        for (int v : nums) numbers.insert(v);
 
         int result = 0;
-        for (int l : nums) {
-            if (numSet.count(l - 1) != 0) continue;
-            int r = l;
-            while (numSet.count(r) != 0) ++r;
+
+        for (int l : numbers) {
+            if (numbers.count(l - 1) != 0) continue;
+            int r = l + 1;
+            while (numbers.count(r) != 0) ++r;
             result = max(result, r - l);
         }
 
