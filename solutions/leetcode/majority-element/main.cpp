@@ -13,3 +13,21 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int majorityElement(vector<int>& nums) {
+        int result, freq = 0;
+        for (int v : nums) {
+            if (v == result) {
+                ++freq;
+            } else {
+                if (--freq < 0) {
+                    freq = 1;
+                    result = v;
+                }
+            }
+        }
+        return result;
+    }
+};
