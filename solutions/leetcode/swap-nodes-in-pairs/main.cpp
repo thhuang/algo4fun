@@ -15,11 +15,11 @@ class Solution {
         auto p = &dummy;
         while (p->next && p->next->next) {
             auto a = p->next;
-            auto b = p->next->next;
-            auto c = p->next->next->next;
+            auto b = a->next;
+            auto c = b->next;
             p->next = b;
-            p->next->next = a;
-            p->next->next->next = c;
+            b->next = a;
+            a->next = c;
             p = a;
         }
         return dummy.next;
