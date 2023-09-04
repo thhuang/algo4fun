@@ -25,3 +25,23 @@ class Solution {
         return p;
     }
 };
+
+class Solution {
+   public:
+    ListNode *detectCycle(ListNode *head) {
+        auto slow = head, fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) {
+                auto result = head;
+                while (result != slow) {
+                    result = result->next;
+                    slow = slow->next;
+                }
+                return result;
+            }
+        }
+        return nullptr;
+    }
+};
