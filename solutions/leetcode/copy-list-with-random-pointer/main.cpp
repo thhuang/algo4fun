@@ -47,11 +47,11 @@ class Solution {
 
    public:
     Node* copyRandomList(Node* head) {
-        if (!head) return nullptr;
-        if (mp.count(head)) return mp[head];
-        auto cp = mp[head] = new Node(head->val);
-        cp->next = copyRandomList(head->next);
-        cp->random = copyRandomList(head->random);
-        return cp;
+        if (head == nullptr) return nullptr;
+        if (auto it = mp.find(head); it != mp.end()) return it->second;
+        auto u = mp[head] = new Node(head->val);
+        u->next = copyRandomList(head->next);
+        u->random = copyRandomList(head->random);
+        return u;
     }
 };
