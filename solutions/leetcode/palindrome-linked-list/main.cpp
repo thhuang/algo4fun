@@ -38,3 +38,35 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+    ListNode* reverse(ListNode* head) {
+        ListNode* a = nullptr;
+        ListNode* b = head;
+        while (b) {
+            ListNode* c = b->next;
+            b->next = a;
+            a = b;
+            b = c;
+        }
+        return a;
+    }
+
+   public:
+    bool isPalindrome(ListNode* head) {
+        auto slow = head, fast = head;
+        while (fast->next && fast->next->next) {
+            slow = slow->next, fast = fast->next->next;
+        }
+
+        auto l = head, r = reverse(slow->next);
+        slow->next = nullptr;
+
+        while (l && r) {
+            if (l->val != r->val) return false;
+            l = l->next, r = r->next;
+        }
+
+        return true;
+    }
+};
