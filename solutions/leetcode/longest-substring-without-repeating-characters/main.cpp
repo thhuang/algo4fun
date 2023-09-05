@@ -31,6 +31,21 @@ class Solution {
 class Solution {
    public:
     int lengthOfLongestSubstring(string s) {
+        int n = s.size();
+        unordered_map<char, int> charCount;
+        int result = 0;
+        for (int l = 0, r = 0; r < n; ++r) {
+            ++charCount[s[r]];
+            while (charCount[s[r]] > 1) --charCount[s[l++]];
+            result = max(result, r - l + 1);
+        }
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    int lengthOfLongestSubstring(string s) {
         int result = 0;
         unordered_map<char, int> lastPosPlusOne;
         for (int l = 0, r = 0; r < s.size(); ++r) {
