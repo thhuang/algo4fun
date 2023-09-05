@@ -11,31 +11,28 @@
 class Solution {
    public:
     ListNode* sortList(ListNode* head) {
-        if (!head || !head->next) return head;
+        if (head == nullptr || head->next == nullptr) return head;
 
-        ListNode dummy(0, head);
-        ListNode *a, *b, *c;
-        a = b = c = &dummy;
-
-        while (c->next && c->next->next) {
-            b = b->next;
-            c = c->next->next;
+        auto slow = head, fast = head;
+        while (fast->next && fast->next->next) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
 
-        auto l = a->next, r = b->next;
-        b->next = nullptr;
+        auto l = head;
+        auto r = slow->next;
+        slow->next = nullptr;
 
         l = sortList(l);
         r = sortList(r);
 
-        auto p = a;
+        ListNode dummy;
+        auto p = &dummy;
         while (l && r) {
             if (l->val < r->val) {
-                p = p->next = l;
-                l = l->next;
+                p = p->next = l, l = l->next;
             } else {
-                p = p->next = r;
-                r = r->next;
+                p = p->next = r, r = r->next;
             }
         }
 
