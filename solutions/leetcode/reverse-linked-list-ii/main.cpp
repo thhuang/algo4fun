@@ -10,25 +10,35 @@
  */
 class Solution {
    public:
+    void reverse(ListNode* head) {
+        ListNode* a = nullptr;
+        ListNode* b = head;
+        while (b) {
+            ListNode* c = b->next;
+            b->next = a;
+            a = b;
+            b = c;
+        }
+    }
+
     ListNode* reverseBetween(ListNode* head, int left, int right) {
         ListNode dummy(0, head);
 
-        auto p0 = &dummy;
-        for (int i = 1; i < left; ++i) p0 = p0->next;
+        auto a = &dummy;
+        for (int i = 1; i < left; ++i) a = a->next;
 
-        auto p1 = p0->next;
-        auto l = p0;
-        auto r = p1;
+        auto b = a->next;
 
-        for (int i = 0; i < right - left + 1; ++i) {
-            auto p2 = p1->next;
-            p1->next = p0;
-            p0 = p1;
-            p1 = p2;
-        }
+        auto c = &dummy;
+        for (int i = 0; i < right; ++i) c = c->next;
 
-        l->next = p0;
-        r->next = p1;
+        auto d = c->next;
+
+        c->next = nullptr;
+        reverse(b);
+
+        a->next = c;
+        b->next = d;
 
         return dummy.next;
     }
