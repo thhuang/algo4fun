@@ -44,7 +44,7 @@ class Solution {
         queue<array<int, 3>> q;
 
         for (int i = 0; i < s.size(); ++i) {
-            while (!q.empty() && i - k >= q.front()[0]) {
+            if (!q.empty() && i - k >= q.front()[0]) {
                 auto [_, f, c] = q.front();
                 q.pop();
                 pq.push({f, c});
@@ -55,7 +55,7 @@ class Solution {
             auto [f, c] = pq.top();
             pq.pop();
 
-            result += ('a' + c);
+            result += 'a' + c;
 
             if (--f > 0) q.push({i, f, c});
         }
