@@ -82,3 +82,27 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int largestRectangleArea(vector<int>& heights) {
+        heights.push_back(0);
+
+        int n = heights.size();
+        vector<array<int, 2>> inc = {{-1, 0}};  // {index, height}
+
+        int result = 0;
+        for (int i = 0; i < n; ++i) {
+            int j = i;
+            while (inc.back()[1] > heights[i]) {
+                auto [l, h] = inc.back();
+                inc.pop_back();
+                result = max(result, (i - l) * h);
+                j = l;
+            }
+            inc.push_back({j, heights[i]});
+        }
+
+        return result;
+    }
+};
