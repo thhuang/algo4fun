@@ -41,6 +41,25 @@ class MinStack {
     int getMin() { return mins.back(); }
 };
 
+class MinStack {
+    stack<int> data, minVal;
+
+   public:
+    void push(int val) {
+        data.push(val);
+        if (minVal.empty() || minVal.top() >= val) minVal.push(val);
+    }
+
+    void pop() {
+        if (minVal.top() == data.top()) minVal.pop();
+        data.pop();
+    }
+
+    int top() { return data.top(); }
+
+    int getMin() { return minVal.top(); }
+};
+
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack* obj = new MinStack();
