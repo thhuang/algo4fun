@@ -152,3 +152,35 @@ class Solution {
         return parse();
     }
 };
+
+class Solution {
+   public:
+    string decodeString(string s) {
+        function<pair<string, int>(int)> decode =
+            [&](int i) -> pair<string, int> {
+            string result;
+            int v = 0;
+            while (i < s.size() && s[i] != ']') {
+                if (!isdigit(s[i])) {
+                    result += s[i++];
+                    continue;
+                }
+
+                while (s[i] != '[') {
+                    v = v * 10 - '0' + s[i++];
+                }
+
+                auto [t, j] = decode(i + 1);
+                i = j;
+
+                for (; v; --v) {
+                    result += t;
+                }
+            }
+            return {result, i + 1};
+        };
+
+        auto [result, _] = decode(0);
+        return result;
+    }
+};
