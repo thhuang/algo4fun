@@ -118,3 +118,39 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    int cost(vector<int>& a, vector<int>& b) {
+        return abs(a[0] - b[0]) + abs(a[1] - b[1]);
+    }
+
+   public:
+    int minCostConnectPoints(vector<vector<int>>& points) {
+        int n = points.size();
+
+        vector<int> minCost(n);
+        for (int i = 1; i < n; ++i) {
+            minCost[i] = cost(points[0], points[i]);
+        }
+
+        int result = 0;
+
+        for (int k = 1, u = 0; k < n; ++k) {
+            for (int i = 0; i < n; ++i) {
+                int c = cost(points[u], points[i]);
+                minCost[i] = min(minCost[i], c);
+            }
+            int c = numeric_limits<int>::max();
+            for (int i = 0; i < n; ++i) {
+                if (minCost[i] != 0 && minCost[i] < c) {
+                    u = i;
+                    c = minCost[i];
+                }
+            }
+
+            result += c;
+        }
+
+        return result;
+    }
+};
