@@ -59,3 +59,25 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n = temperatures.size();
+
+        vector<int> result(n, 0);
+        vector<int> decTempIdx;
+
+        for (int i = 0; i < n; ++i) {
+            while (!decTempIdx.empty() &&
+                   temperatures[decTempIdx.back()] < temperatures[i]) {
+                int j = decTempIdx.back();
+                decTempIdx.pop_back();
+                result[j] = i - j;
+            }
+            decTempIdx.push_back(i);
+        }
+
+        return result;
+    }
+};
