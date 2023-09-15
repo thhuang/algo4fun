@@ -2,21 +2,20 @@ class Solution {
    public:
     int trap(vector<int>& height) {
         int n = height.size();
+        vector<int> waterHeight(n);
 
-        vector<int> water_height(n);
-        for (int i = 0, h = 0; i < n; ++i) {
-            h = max(h, height[i]);
-            water_height[i] = h;
+        for (int i = 0, mx = 0; i < n; ++i) {
+            mx = max(mx, height[i]);
+            waterHeight[i] = mx;
         }
 
-        int sum = 0;
-        for (int i = n - 1, h = 0; ~i; --i) {
-            h = max(h, height[i]);
-            water_height[i] = min(water_height[i], h);
-            sum += water_height[i] - height[i];
+        int result = 0;
+        for (int i = n - 1, mx = 0; i >= 0; --i) {
+            mx = max(mx, height[i]);
+            result += min(waterHeight[i], mx) - height[i];
         }
 
-        return sum;
+        return result;
     }
 };
 
@@ -87,12 +86,14 @@ class Solution {
    public:
     int trap(vector<int>& height) {
         int result = 0;
-        for (auto l = height.begin(), r = height.begin(); r < height.end(); ++r) {
+        for (auto l = height.begin(), r = height.begin(); r < height.end();
+             ++r) {
             if (*l >= *r) continue;
             int h = *l;
             while (l < r) result += h - *l++;
         }
-        for (auto l = height.rbegin(), r = height.rbegin(); r < height.rend(); ++r) {
+        for (auto l = height.rbegin(), r = height.rbegin(); r < height.rend();
+             ++r) {
             if (*l > *r) continue;
             int h = *l;
             while (l < r) result += h - *l++;
