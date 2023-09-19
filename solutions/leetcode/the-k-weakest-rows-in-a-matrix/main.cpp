@@ -96,3 +96,28 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        int m = mat.size();
+        int n = mat.front().size();
+
+        vector<array<int, 2>> strength;
+
+        for (int i = 0; i < m; ++i) {
+            int j = lower_bound(mat[i].begin(), mat[i].end(), 0, greater<>()) -
+                    mat[i].begin();
+            strength.push_back({j, i});
+        }
+
+        sort(strength.begin(), strength.end());
+
+        vector<int> result(k);
+        for (int i = 0; i < k; ++i) {
+            result[i] = strength[i][1];
+        }
+
+        return result;
+    }
+};
