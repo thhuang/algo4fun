@@ -66,3 +66,61 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int longestStrChain(vector<string>& words) {
+        int n = words.size();
+        vector<vector<int>> adj(n);
+
+        map<int, vector<int>> mp;
+        for (int i = 0; i < n; ++i) {
+            mp[words[i].size()].push_back(i);
+        }
+
+        for (auto [len, v0] : mp) {
+            auto it = mp.find(len + 1);
+            if (it == mp.end()) continue;
+
+            auto& v1 = it->second;
+            for (auto i : v0) {
+                for (auto j : v1) {
+                    string s = words[i];
+                    string t = words[j];
+                    if (s.size() + 1 != t.size()) continue;
+                    int k = 0, p = 0;
+                    bool skipped = false;
+                    while (k < s.size() && p < t.size()) {
+                        if (s[k] == t[p]) {
+                            ++k, ++p;
+                        } else {
+                            if (skipped) break;
+                            skipped = true;
+                            ++p;
+                        }
+                    }
+                    if (p < t.size() && !skipped) adj[i].push_back(j);
+                    if (skipped && k == s.size() && p == t.size())
+                        adj[i].push_back(j);
+                }
+            }
+        }
+
+        vector<int> memo(n, -1);
+        function<int(int)> dfs = [&](int u) -> int {
+            if (memo[u] != -1) return memo[u];
+            int result = 0;
+            for (int v : adj[u]) {
+                result = max(result, dfs(v));
+            }
+            return memo[u] = result + 1;
+        };
+
+        int result = 0;
+        for (int i = 0; i < n; ++i) {
+            result = max(result, dfs(i));
+        }
+
+        return result;
+    }
+};
