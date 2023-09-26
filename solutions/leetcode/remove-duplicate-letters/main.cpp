@@ -10,18 +10,16 @@ class Solution {
 
         string result;
         for (int i = 0; i < s.size(); ++i) {
-            char c = s[i];
+            if (seen[s[i] - 'a']) continue;
 
-            if (seen[c - 'a']) continue;
-
-            while (!result.empty() && result.back() > c &&
+            while (!result.empty() && result.back() > s[i] &&
                    charLastIndex[result.back() - 'a'] > i) {
                 seen[result.back() - 'a'] = false;
                 result.pop_back();
             }
 
-            seen[c - 'a'] = true;
-            result.push_back(c);
+            seen[s[i] - 'a'] = true;
+            result.push_back(s[i]);
         }
 
         return result;
