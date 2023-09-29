@@ -20,3 +20,17 @@ class Solution {
         return increasing() || decreasing();
     }
 };
+
+class Solution {
+   public:
+    bool isMonotonic(vector<int>& nums) {
+        bool inc = true, dec = true;
+        int mn = numeric_limits<int>::max(), mx = numeric_limits<int>::min();
+        for (int v : nums) {
+            if (v < mx) inc = false;
+            if (v > mn) dec = false;
+            mn = mx = v;
+        }
+        return inc || dec;
+    }
+};
