@@ -56,9 +56,9 @@ class Solution {
 
         vector<int> dec;
         for (int i = n - 1; i >= 0; --i) {
-            if (dec.empty() || dec.back() > nums[i]) dec.push_back(nums[i]);
             while (!dec.empty() && dec.back() <= leftMin[i]) dec.pop_back();
-            if (!dec.empty() && nums[i] > dec.back()) return true;
+            if (dec.empty() || nums[i] < dec.back()) dec.push_back(nums[i]);
+            if (dec.back() < nums[i]) return true;
         }
 
         return false;
