@@ -9,9 +9,12 @@ class Solution {
 
         vector<int> smallest_seen;
         for (int i = nums.size() - 1; ~i; --i) {
-            while (!smallest_seen.empty() && smallest_seen.back() <= min_nums[i]) smallest_seen.pop_back();
+            while (!smallest_seen.empty() &&
+                   smallest_seen.back() <= min_nums[i])
+                smallest_seen.pop_back();
             if (nums[i] == min_nums[i]) continue;
-            if (!smallest_seen.empty() && nums[i] > smallest_seen.back()) return true;
+            if (!smallest_seen.empty() && nums[i] > smallest_seen.back())
+                return true;
             smallest_seen.push_back(nums[i]);
         }
 
@@ -36,6 +39,26 @@ class Solution {
             if (decr.empty() || decr.back() > v) decr.push_back(v);
             while (!decr.empty() && decr.back() <= min_num[i]) decr.pop_back();
             if (!decr.empty() && v > decr.back()) return true;
+        }
+
+        return false;
+    }
+};
+
+class Solution {
+   public:
+    bool find132pattern(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> leftMin(n);
+        for (int i = 0, mn = nums[0]; i < n; ++i) {
+            leftMin[i] = mn = min(mn, nums[i]);
+        }
+
+        vector<int> dec;
+        for (int i = n - 1; i >= 0; --i) {
+            if (dec.empty() || dec.back() > nums[i]) dec.push_back(nums[i]);
+            while (!dec.empty() && dec.back() <= leftMin[i]) dec.pop_back();
+            if (!dec.empty() && nums[i] > dec.back()) return true;
         }
 
         return false;
