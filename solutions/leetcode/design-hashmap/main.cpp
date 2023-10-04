@@ -1,28 +1,34 @@
 class MyHashMap {
-    static const int n_ = 6997;
-    vector<deque<pair<int, int>>> data_;
+    static const size_t sz = 7919;
+    array<list<pair<int, int>>, sz> data = {};
 
    public:
-    MyHashMap() : data_(vector<deque<pair<int, int>>>(n_)) {}
-
     void put(int key, int value) {
-        remove(key);
-        data_[key % n_].push_back({key, value});
+        int i = key % sz;
+        for (auto& [k, v] : data[i]) {
+            if (k == key) {
+                v = value;
+                return;
+            }
+        }
+        data[i].push_back({key, value});
     }
 
     int get(int key) {
-        auto& v = data_[key % n_];
-        for (auto it = v.begin(); it != v.end(); ++it) {
-            if (it->first == key) return it->second;
+        int i = key % sz;
+        for (auto& [k, v] : data[i]) {
+            if (k == key) {
+                return v;
+            }
         }
         return -1;
     }
 
     void remove(int key) {
-        auto& v = data_[key % n_];
-        for (auto it = v.begin(); it != v.end(); ++it) {
+        int i = key % sz;
+        for (auto it = data[i].begin(); it != data[i].end(); ++it) {
             if (it->first == key) {
-                v.erase(it);
+                data[i].erase(it);
                 return;
             }
         }
