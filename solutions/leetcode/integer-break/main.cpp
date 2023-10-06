@@ -42,3 +42,26 @@ class Solution {
         return result * remain;
     }
 };
+
+class Solution {
+   public:
+    int integerBreak(int n) {
+        if (n == 2) return 1;
+        if (n == 3) return 2;
+
+        int three = n / 3;
+        int rem = n % 3;
+
+        int result = 1;
+        if (rem == 1) {
+            --three;
+            result = 4;
+        } else if (rem == 2) {
+            result = 2;
+        }
+
+        result *= pow(3, three);
+
+        return result;
+    }
+};
