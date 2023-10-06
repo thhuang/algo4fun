@@ -1,15 +1,13 @@
 class Solution {
     typedef long long ll;
 
-    const string numericOps = "+-*";
-
    public:
     vector<string> addOperators(string num, int target) {
         int n = num.size();
         vector<string> result;
 
         function<void(int, ll, ll, string)> search =
-            [&](int i, ll value, ll lastValue, string s) -> void {
+            [&](int i, ll value, ll lastValue, const string& s) -> void {
             if (i == n) {
                 if (value + lastValue == target) {
                     result.push_back(s);
@@ -17,34 +15,22 @@ class Solution {
                 return;
             }
 
-            for (char op : numericOps) {
-                if (op != '+' && i == 0) continue;
+            ll v = 0;
+            string sv;
+            for (int j = i; j < n; ++j) {
+                if (num[i] == '0' && j > i) break;
 
-                string ss = s;
-                if (i > 0) ss += op;
+                v = v * 10 + num[j] - '0';
+                sv += num[j];
 
-                ll v = 0;
-                for (int j = i; j < n; ++j) {
-                    ss += num[j];
-                    v = v * 10 + num[j] - '0';
-
-                    if (to_string(v).size() != j - i + 1) break;
-
-                    switch (op) {
-                        case '+': {
-                            search(j + 1, value + lastValue, v, ss);
-                            break;
-                        }
-                        case '-': {
-                            search(j + 1, value + lastValue, -v, ss);
-                            break;
-                        }
-                        case '*': {
-                            search(j + 1, value, lastValue * v, ss);
-                            break;
-                        }
-                    }
+                if (i == 0) {
+                    search(j + 1, value + lastValue, v, sv);
+                    continue;
                 }
+
+                search(j + 1, value + lastValue, v, s + '+' + sv);
+                search(j + 1, value + lastValue, -v, s + '-' + sv);
+                search(j + 1, value, lastValue * v, s + '*' + sv);
             }
         };
 
