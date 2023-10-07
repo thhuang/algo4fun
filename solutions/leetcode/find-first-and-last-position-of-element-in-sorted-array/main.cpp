@@ -76,3 +76,40 @@ class Solution {
         return {l, r - 1};
     }
 };
+
+class Solution {
+    int findFirstPosition(const vector<int>& nums, int target) {
+        int l = -1, r = nums.size() - 1;
+        while (r - l > 1) {
+            int m = l + (r - l) / 2;
+            if (nums[m] < target) {
+                l = m;
+            } else {
+                r = m;
+            }
+        }
+        if (nums[r] != target) return -1;
+        return r;
+    }
+
+    int findLastPosition(const vector<int>& nums, int target) {
+        int l = 0, r = nums.size();
+        while (r - l > 1) {
+            int m = l + (r - l) / 2;
+            if (nums[m] <= target) {
+                l = m;
+            } else {
+                r = m;
+            }
+        }
+        if (nums[l] != target) return -1;
+        return l;
+    }
+
+   public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        if (nums.size() == 0) return {-1, -1};
+        return {findFirstPosition(nums, target),
+                findLastPosition(nums, target)};
+    }
+};
