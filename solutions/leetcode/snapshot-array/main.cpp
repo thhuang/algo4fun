@@ -56,6 +56,47 @@ class SnapshotArray {
     }
 };
 
+class SnapshotArray {
+    struct History {
+        int value;
+        int id;
+    };
+
+    int length;
+    vector<vector<History>> data;
+    int id = 0;
+
+   public:
+    SnapshotArray(int length) : length(length), data(length, {{0, 0}}) {}
+
+    void set(int index, int val) {
+        vector<History>& history = data[index];
+        if (history.back().id == id) {
+            history.back().value = val;
+        } else {
+            history.push_back({val, id});
+        }
+    }
+
+    int snap() { return id++; }
+
+    int get(int index, int snap_id) {
+        const vector<History>& history = data[index];
+
+        int l = 0, r = history.size();
+        while (r - l > 1) {
+            int m = l + (r - l) / 2;
+            if (history[m].id <= snap_id) {
+                l = m;
+            } else {
+                r = m;
+            }
+        }
+
+        return history[l].value;
+    }
+};
+
 /**
  * Your SnapshotArray object will be instantiated and called as such:
  * SnapshotArray* obj = new SnapshotArray(length);
