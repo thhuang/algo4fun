@@ -1,6 +1,32 @@
 class Solution {
    public:
     vector<int> findRightInterval(vector<vector<int>>& intervals) {
+        vector<pair<int, int>> startIdx;
+        for (int i = 0; i < intervals.size(); ++i) {
+            startIdx.push_back({intervals[i][0], i});
+        }
+
+        sort(startIdx.begin(), startIdx.end());
+
+        vector<int> result;
+        for (vector<int>& interval : intervals) {
+            auto it = lower_bound(
+                startIdx.begin(), startIdx.end(), interval[1],
+                [](pair<int, int>& e, int t) -> bool { return e.first < t; });
+            if (it == startIdx.end()) {
+                result.push_back(-1);
+            } else {
+                result.push_back(it->second);
+            }
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+   public:
+    vector<int> findRightInterval(vector<vector<int>>& intervals) {
         vector<array<int, 2>> startIdx;
         for (int i = 0; i < intervals.size(); ++i) {
             startIdx.push_back({intervals[i][0], i});
