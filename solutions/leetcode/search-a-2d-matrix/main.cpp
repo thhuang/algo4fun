@@ -19,3 +19,23 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+   public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int rows = matrix.size();
+        int cols = matrix.front().size();
+
+        int l = 0, r = rows * cols;
+        while (r - l > 1) {
+            int m = l + (r - l) / 2;
+            if (target < matrix[m / cols][m % cols]) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+
+        return matrix[l / cols][l % cols] == target;
+    }
+};
