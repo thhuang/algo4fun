@@ -5,7 +5,6 @@ class Solution {
     int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
         int m = nums1.size();
         int n = nums2.size();
-        int mn = min(m, n);
 
         vector<vector<ll>> dp(m + 1,
                               vector<ll>(n + 1, numeric_limits<int>::min()));
