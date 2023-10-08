@@ -20,3 +20,27 @@ class Solution {
         return dp[0][0];
     }
 };
+
+class Solution {
+    typedef long long ll;
+
+   public:
+    int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
+        int m = nums1.size();
+        int n = nums2.size();
+
+        vector<ll> dp(n + 1, numeric_limits<int>::min());
+        for (int i = m - 1; i >= 0; --i) {
+            vector<ll> dpNew(n + 1, numeric_limits<int>::min());
+            for (int j = n - 1; j >= 0; --j) {
+                array<ll, 5> candidates = {dpNew[j], dp[j], dpNew[j + 1],
+                                           nums1[i] * nums2[j],
+                                           dp[j + 1] + nums1[i] * nums2[j]};
+                dpNew[j] = *max_element(candidates.begin(), candidates.end());
+            }
+            dp = move(dpNew);
+        }
+
+        return dp[0];
+    }
+};
