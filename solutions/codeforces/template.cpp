@@ -1,3 +1,6 @@
+// Warning: this file uses some very, very bad code style. Don't do this in real
+// life.
+
 #include "bits/stdc++.h"
 #define forn(i, b, e) for (int i = (b); i < (e); i++)
 #define mp make_pair

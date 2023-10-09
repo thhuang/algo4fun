@@ -5,6 +5,7 @@ This is my personal repository, including notes and resources related to competi
 - [LeetCode](#leetcode)
 - [Elements of Programming Interviews](#elements-of-programming-interviews)
 - [CSES](#cses)
+- [Codeforces](#codeforces)
 
 ## [LeetCode](https://leetcode.com/)
 
@@ -1249,3 +1250,11 @@ This is my personal repository, including notes and resources related to competi
 | 2216 | [Collecting Numbers](https://cses.fi/problemset/task/2216/)    | [C++](./solutions/cses/2216/main.cpp) |
 | 2217 | [Collecting Numbers II](https://cses.fi/problemset/task/2217/) | [C++](./solutions/cses/2217/main.cpp) |
 | 2431 | [Digit Queries](https://cses.fi/problemset/task/2431/)         | [C++](./solutions/cses/2431/main.cpp) |
+
+## [Codeforces](https://codeforces.com/)
+
+<!-- | | [](https://codeforces.com/problemset/problem//) | [C++](./solutions/codeforces//main.cpp) | -->
+
+| No.   | Title                                                                      | Solution                                     |
+| :---- | :------------------------------------------------------------------------- | :------------------------------------------- |
+| 1876A | [Helmets in Night Light](https://codeforces.com/problemset/problem/1876/A) | [C++](./solutions/codeforces/1876A/main.cpp) |
