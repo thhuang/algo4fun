@@ -113,3 +113,39 @@ class Solution {
                 findLastPosition(nums, target)};
     }
 };
+
+class Solution {
+    int firstPosition(vector<int>& nums, int target) {
+        int l = -1, r = nums.size();
+        while (r - l > 1) {
+            int m = l + (r - l) / 2;
+            if (target <= nums[m]) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+        if (r == nums.size() || nums[r] != target) return -1;
+        return r;
+    }
+
+    int lastPosition(vector<int>& nums, int target) {
+        int l = -1, r = nums.size();
+        while (r - l > 1) {
+            int m = l + (r - l) / 2;
+            if (target < nums[m]) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+        if (l < 0 || nums[l] != target) return -1;
+        return l;
+    }
+
+   public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        if (nums.size() == 0) return {-1, -1};
+        return {firstPosition(nums, target), lastPosition(nums, target)};
+    }
+};
