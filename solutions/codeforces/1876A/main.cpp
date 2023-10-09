@@ -69,7 +69,7 @@ inline void solve() {
         residents[i][0] = readInt();
     }
 
-    sort(residents.begin(), residents.end());
+    sort(all(residents));
 
     vector<ll> costs(n, p);
     for (int l = 0, r = 1; l <= r && r < n; ++l) {
