@@ -23,3 +23,46 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> fullBloomFlowers(vector<vector<int>>& flowers,
+                                 vector<int>& people) {
+        vector<array<int, 2>> events;
+        for (auto& in : flowers) {
+            events.push_back({in[0], 0});
+            events.push_back({in[1] + 1, 1});
+        }
+        for (int i : people) {
+            events.push_back({i, 2});
+        }
+
+        sort(events.begin(), events.end());
+
+        unordered_map<int, int> dayToFlowers;
+        int cnt = 0;
+        for (auto [d, ty] : events) {
+            switch (ty) {
+                case 0: {
+                    ++cnt;
+                    break;
+                }
+                case 1: {
+                    --cnt;
+                    break;
+                }
+                case 2: {
+                    dayToFlowers[d] = cnt;
+                    break;
+                }
+            }
+        }
+
+        vector<int> result;
+        for (int d : people) {
+            result.push_back(dayToFlowers[d]);
+        }
+
+        return result;
+    }
+};
