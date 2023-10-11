@@ -65,6 +65,69 @@ class FileSystem {
     }
 };
 
+class FileSystem {
+    struct Node {
+        string data;
+        map<string, Node*> children;
+        bool isFile = false;
+    };
+
+    Node* root;
+
+   public:
+    FileSystem() : root(new Node()) {}
+
+    vector<string> ls(string path) {
+        Node* p = root;
+        string s;
+        for (int l = 1, r; l < path.size(); l = r + 1) {
+            r = min(path.size(), path.find('/', l));
+            s = path.substr(l, r - l);
+            p = p->children[s];
+        }
+
+        if (p->isFile) return {s};
+
+        vector<string> result;
+        for (auto [s, _] : p->children) {
+            result.push_back(s);
+        }
+        return result;
+    }
+
+    void mkdir(string path) {
+        Node* p = root;
+        for (int l = 1, r; l < path.size(); l = r + 1) {
+            r = min(path.size(), path.find('/', l));
+            string s = path.substr(l, r - l);
+            if (p->children[s] == nullptr) p->children[s] = new Node();
+            p = p->children[s];
+        }
+    }
+
+    void addContentToFile(string filePath, string content) {
+        Node* p = root;
+        for (int l = 1, r; l < filePath.size(); l = r + 1) {
+            r = min(filePath.size(), filePath.find('/', l));
+            string s = filePath.substr(l, r - l);
+            if (p->children[s] == nullptr) p->children[s] = new Node();
+            p = p->children[s];
+        }
+        p->data += content;
+        p->isFile = true;
+    }
+
+    string readContentFromFile(string filePath) {
+        Node* p = root;
+        for (int l = 1, r; l < filePath.size(); l = r + 1) {
+            r = min(filePath.size(), filePath.find('/', l));
+            string s = filePath.substr(l, r - l);
+            p = p->children[s];
+        }
+        return p->data;
+    }
+};
+
 /**
  * Your FileSystem object will be instantiated and called as such:
  * FileSystem* obj = new FileSystem();
