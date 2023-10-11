@@ -51,3 +51,36 @@ class Solution {
 
     int dist(int x, int y) { return x * x + y * y; }
 };
+
+class Solution {
+    int distance2(const vector<int>& p) { return p[0] * p[0] + p[1] * p[1]; }
+
+   public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        function<int(int, int, int)> partition = [&](int l, int r,
+                                                     int t) -> int {
+            swap(points[r], points[t]);
+            int p = l;
+            for (int i = l; i < r; ++i) {
+                if (distance2(points[i]) <= distance2(points[r])) {
+                    swap(points[i], points[p++]);
+                }
+            }
+            swap(points[p], points[r]);
+            return p;
+        };
+
+        int l = 0, r = points.size() - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            m = partition(l, r, m);
+            if (m < k) {
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
+        }
+
+        return {points.begin(), points.begin() + k};
+    }
+};
