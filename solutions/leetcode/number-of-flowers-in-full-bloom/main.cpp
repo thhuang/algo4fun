@@ -42,19 +42,12 @@ class Solution {
         unordered_map<int, int> dayToFlowers;
         int cnt = 0;
         for (auto [d, ty] : events) {
-            switch (ty) {
-                case 0: {
-                    ++cnt;
-                    break;
-                }
-                case 1: {
-                    --cnt;
-                    break;
-                }
-                case 2: {
-                    dayToFlowers[d] = cnt;
-                    break;
-                }
+            if (ty == 0) {
+                ++cnt;
+            } else if (ty == 1) {
+                --cnt;
+            } else {
+                dayToFlowers[d] = cnt;
             }
         }
 
