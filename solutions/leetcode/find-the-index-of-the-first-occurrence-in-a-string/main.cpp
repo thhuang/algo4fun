@@ -1,8 +1,6 @@
 class Solution {
     typedef unsigned long long ull;
-    typedef long long ll;
-
-    const ull mod = numeric_limits<int>::max();
+    const ull mod = 1LL << 32;
 
    public:
     int strStr(string haystack, string needle) {
@@ -14,13 +12,15 @@ class Solution {
 
         vector<ull> suffHash(n + 1, 0);
         for (int i = n - 1; i >= 0; --i) {
-            suffHash[i] = (haystack[i] - 'a') + x * suffHash[i + 1] % mod;
+            suffHash[i] =
+                ((haystack[i] - 'a') + x * suffHash[i + 1] % mod) % mod;
         }
 
-        ull t = 0, xm = 1;
+        ull t = 0;
+        ull xm = 1;
         for (int i = 0; i < m; ++i) {
-            (t += (needle[i] - 'a') * xm % mod) %= mod;
-            (xm *= x) %= mod;
+            t = (t + xm * (needle[i] - 'a') % mod) % mod;
+            xm = xm * x % mod;
         }
 
         for (int l = 0, r = l + m - 1; r < n; ++l, ++r) {
