@@ -94,3 +94,39 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> result;
+
+        string curr;
+        int open = n, close = n;
+        function<void(int)> search = [&](int i) -> void {
+            if (i == n * 2) {
+                result.push_back(curr);
+                return;
+            }
+
+            if (open > 0) {
+                --open;
+                curr.push_back('(');
+                search(i + 1);
+                curr.pop_back();
+                ++open;
+            }
+
+            if (close > open) {
+                --close;
+                curr.push_back(')');
+                search(i + 1);
+                curr.pop_back();
+                ++close;
+            }
+        };
+
+        search(0);
+
+        return result;
+    }
+};
