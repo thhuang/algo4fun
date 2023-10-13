@@ -79,3 +79,37 @@ class Solution {
         return p.empty();
     }
 };
+
+class Solution {
+   public:
+    bool isMatch(string s, string p) {
+        if (s.empty() && p.empty()) return true;
+        if (p.empty()) return false;
+        if (s.empty()) {
+            while (!p.empty() && p.back() == '*') {
+                p.pop_back();
+                p.pop_back();
+            }
+            return p.empty();
+        }
+
+        int m = s.size();
+        int n = p.size();
+
+        if (s.back() == p.back() || p.back() == '.') {
+            return isMatch(s.substr(0, m - 1), p.substr(0, n - 1));
+        }
+
+        if (p.back() != '*') return false;
+
+        string q = p.substr(0, p.size() - 2);
+        char c = p[p.size() - 2];
+        while (true) {
+            if (isMatch(s, q)) return true;
+            if (s.empty() || (c != '.' && c != s.back())) break;
+            s.pop_back();
+        }
+
+        return false;
+    }
+};
