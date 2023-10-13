@@ -89,12 +89,12 @@ class Solution {
    public:
     int search(string s, char target) {
         int result = 0;
-        for (int l = 0, r = 0, cnt = 0; r < s.size(); ++r) {
-            (s[r] == target) ? ++cnt : --cnt;
-            if (cnt < 0) {
-                cnt = 0;
+        for (int l = 0, r = 0, open = 0; r < s.size(); ++r) {
+            (s[r] == target) ? ++open : --open;
+            if (open < 0) {
+                open = 0;
                 l = r + 1;
-            } else if (cnt == 0) {
+            } else if (open == 0) {
                 result = max(result, r - l + 1);
             }
         }
@@ -103,26 +103,5 @@ class Solution {
 
     int longestValidParentheses(string s) {
         return max(search(s, '('), search({s.rbegin(), s.rend()}, ')'));
-    }
-};
-
-class Solution {
-   public:
-    int longestValidParentheses(string s) {
-        auto check = [](string s, char c) -> int {
-            int result = 0;
-            for (int l = 0, r = 0, open = 0; r < s.size(); ++r) {
-                (s[r] == c) ? ++open : --open;
-                if (open == 0) {
-                    result = max(result, r - l + 1);
-                } else if (open < 0) {
-                    l = r + 1;
-                    open = 0;
-                }
-            }
-            return result;
-        };
-
-        return max(check(s, '('), check({s.rbegin(), s.rend()}, ')'));
     }
 };
