@@ -105,3 +105,24 @@ class Solution {
         return max(search(s, '('), search({s.rbegin(), s.rend()}, ')'));
     }
 };
+
+class Solution {
+   public:
+    int longestValidParentheses(string s) {
+        auto check = [](string s, char c) -> int {
+            int result = 0;
+            for (int l = 0, r = 0, open = 0; r < s.size(); ++r) {
+                (s[r] == c) ? ++open : --open;
+                if (open == 0) {
+                    result = max(result, r - l + 1);
+                } else if (open < 0) {
+                    l = r + 1;
+                    open = 0;
+                }
+            }
+            return result;
+        };
+
+        return max(check(s, '('), check({s.rbegin(), s.rend()}, ')'));
+    }
+};
