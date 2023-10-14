@@ -33,7 +33,8 @@ class Solution {
                 l = m + 1;
             }
         }
-        if (r < 0 || nums[r] != target) return -1;
+
+        if (r == -1 || nums[r] != target) return -1;
         return r;
     }
 };
