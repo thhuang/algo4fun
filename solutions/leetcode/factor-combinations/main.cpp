@@ -48,3 +48,42 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<vector<int>> getFactors(int n) {
+        vector<int> factors;
+
+        for (int v = 2; v <= (int)sqrt(n); ++v) {
+            if (n % v != 0) continue;
+            factors.push_back(v);
+            if (n / v == v) continue;
+            factors.push_back(n / v);
+        }
+
+        if (factors.empty()) return {};
+
+        vector<vector<int>> result;
+        vector<int> curr;
+        long long v = 1;
+        function<void(int)> search = [&](int i) -> void {
+            if (v == n) {
+                result.push_back(curr);
+                return;
+            }
+            if (v > n || i == factors.size()) return;
+
+            search(i + 1);
+
+            curr.push_back(factors[i]);
+            v *= factors[i];
+            search(i);
+            v /= factors[i];
+            curr.pop_back();
+        };
+
+        search(0);
+
+        return result;
+    }
+};
