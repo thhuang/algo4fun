@@ -117,3 +117,36 @@ class Solution {
         return nums[r];
     }
 };
+
+class Solution {
+   public:
+    int findKthLargest(vector<int>& nums, int k) {
+        auto partition = [&](int l, int r, int t) -> int {
+            swap(nums[r], nums[t]);
+            int p = l;
+            for (int i = l; i < r; ++i) {
+                if (nums[i] >= nums[r]) swap(nums[i], nums[p++]);
+            }
+            swap(nums[r], nums[p]);
+            return p;
+        };
+
+        int n = nums.size();
+        int l = 0, r = n - 1;
+        for (int i = 0; l <= r && i <= sqrt(n); ++i) {
+            if (i == sqrt(n)) {
+                sort(nums.begin(), nums.end(), greater<>());
+            }
+
+            int m = l + (r - l) / 2;
+            m = partition(l, r, m);
+            if (m < k) {
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
+        }
+
+        return nums[k - 1];
+    }
+};
