@@ -44,3 +44,21 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int> mp(nums.begin(), nums.end());
+
+        int result = 0;
+
+        for (int v : mp) {
+            if (mp.count(v - 1) != 0) continue;
+            int cnt = 0;
+            while (mp.count(v++) != 0) ++cnt;
+            result = max(result, cnt);
+        }
+
+        return result;
+    }
+};
