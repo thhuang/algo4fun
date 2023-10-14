@@ -1,54 +1,3 @@
-class MyStack {
-    queue<int> q_;
-
-   public:
-    MyStack() {}
-
-    void push(int x) { q_.push(x); }
-
-    int pop() {
-        for (int i = 0; i < q_.size() - 1; ++i) {
-            q_.push(q_.front());
-            q_.pop();
-        }
-        int v = q_.front();
-        q_.pop();
-        return v;
-    }
-
-    int top() {
-        int v = pop();
-        q_.push(v);
-        return v;
-    }
-
-    bool empty() { return q_.empty(); }
-};
-
-class MyStack {
-    queue<int> q;
-    int last;
-
-   public:
-    void push(int x) {
-        q.push(x);
-        last = x;
-    }
-
-    int pop() {
-        for (int i = 0; i < q.size() - 1; ++i) {
-            q.push(last = q.front());
-            q.pop();
-        }
-        int result = q.front();
-        q.pop();
-        return result;
-    }
-
-    int top() { return last; }
-
-    bool empty() { return q.empty(); }
-};
 
 class MyStack {
     queue<void *> *head_ = nullptr;
@@ -79,6 +28,55 @@ class MyStack {
     int top() { return (char *)head_->front() - (char *)0; }
 
     bool empty() { return head_ == nullptr; }
+};
+
+class MyStack {
+    queue<int> q;
+    int last;
+
+   public:
+    void push(int x) {
+        q.push(x);
+        last = x;
+    }
+
+    int pop() {
+        for (int i = 0; i < q.size() - 1; ++i) {
+            q.push(last = q.front());
+            q.pop();
+        }
+        int result = q.front();
+        q.pop();
+        return result;
+    }
+
+    int top() { return last; }
+
+    bool empty() { return q.empty(); }
+};
+
+class MyStack {
+    queue<int> q;
+
+   public:
+    void push(int x) {
+        int n = q.size();
+        q.push(x);
+        for (int i = 0; i < n; ++i) {
+            q.push(q.front());
+            q.pop();
+        }
+    }
+
+    int pop() {
+        int v = q.front();
+        q.pop();
+        return v;
+    }
+
+    int top() { return q.front(); }
+
+    bool empty() { return q.empty(); }
 };
 
 /**
