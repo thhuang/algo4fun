@@ -18,6 +18,28 @@ class Solution {
 };
 
 class Solution {
+    int next(int n) {
+        int result = 0;
+        while (n) {
+            int v = n % 10;
+            result += v * v;
+            n /= 10;
+        }
+        return result;
+    }
+
+   public:
+    bool isHappy(int n) {
+        unordered_set<int> vis;
+        while (vis.count(n) == 0 && n != 1) {
+            vis.insert(n);
+            n = next(n);
+        }
+        return n == 1;
+    }
+};
+
+class Solution {
     int next(int v) {
         int result = 0;
         while (v) {
@@ -36,5 +58,27 @@ class Solution {
             fast = next(next(fast));
         }
         return fast == 1;
+    }
+};
+
+class Solution {
+    int next(int n) {
+        int result = 0;
+        while (n) {
+            int v = n % 10;
+            result += v * v;
+            n /= 10;
+        }
+        return result;
+    }
+
+   public:
+    bool isHappy(int n) {
+        int slow = n, fast = next(n);
+        while (slow != fast) {
+            slow = next(slow);
+            fast = next(next(fast));
+        }
+        return slow == 1;
     }
 };
