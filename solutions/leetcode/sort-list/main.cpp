@@ -41,3 +41,44 @@ class Solution {
         return dummy.next;
     }
 };
+
+class Solution {
+   public:
+    ListNode* sortList(ListNode* head) {
+        ListNode dummy(0, head);
+
+        auto slow = &dummy, fast = &dummy;
+        while (fast->next && fast->next->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        if (slow == fast) return head;
+
+        auto l = dummy.next;
+        auto r = slow->next;
+        slow->next = nullptr;
+
+        l = sortList(l);
+        r = sortList(r);
+
+        auto p = &dummy;
+        while (l != nullptr && r != nullptr) {
+            if (l->val < r->val) {
+                p = p->next = l;
+                l = l->next;
+            } else {
+                p = p->next = r;
+                r = r->next;
+            }
+        }
+
+        if (l == nullptr) {
+            p->next = r;
+        } else {
+            p->next = l;
+        }
+
+        return dummy.next;
+    }
+};
