@@ -62,3 +62,23 @@ class Solution {
         return dp[n];
     }
 };
+
+class Solution {
+   public:
+    int paintWalls(vector<int>& cost, vector<int>& time) {
+        int n = cost.size();
+
+        int mx = accumulate(cost.begin(), cost.end(), 0);
+
+        vector<int> dp(n + 1, mx);
+        dp[0] = 0;
+
+        for (int i = n - 1; i >= 0; --i) {
+            for (int j = n; j >= 0; --j) {
+                dp[j] = min(dp[j], dp[max(0, j - time[i] - 1)] + cost[i]);
+            }
+        }
+
+        return dp[n];
+    }
+};
