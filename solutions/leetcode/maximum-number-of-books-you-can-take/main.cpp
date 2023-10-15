@@ -68,11 +68,38 @@ class Solution {
                                         calc(indexTotal.top().i + 1, i)});
             }
 
-            cout << indexTotal.top().total << ' ';
-
             result = max(result, indexTotal.top().total);
         }
 
         return result;
+    }
+};
+
+class Solution {
+   public:
+    long long maximumBooks(vector<int>& books) {
+        auto calc = [&](int l, int r) -> long long {
+            long long d = min(r - l + 1, books[r]);
+            return (books[r] * 2 - d + 1) * d / 2;
+        };
+
+        stack<int> stk;
+        vector<long long> dp(books.size());
+
+        for (int i = 0; i < books.size(); ++i) {
+            while (!stk.empty() &&
+                   books[stk.top()] + (i - stk.top()) >= books[i]) {
+                stk.pop();
+            }
+
+            if (stk.empty()) {
+                dp[i] = calc(0, i);
+            } else {
+                dp[i] = dp[stk.top()] + calc(stk.top() + 1, i);
+            }
+            stk.push(i);
+        }
+
+        return *max_element(dp.begin(), dp.end());
     }
 };
