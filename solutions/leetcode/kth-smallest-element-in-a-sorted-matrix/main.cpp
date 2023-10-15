@@ -57,32 +57,19 @@ class Solution {
     int kthSmallest(vector<vector<int>>& matrix, int k) {
         int l = matrix.front().front();
         int r = matrix.back().back();
-
-        int m;
         while (l <= r) {
-            m = l + (r - l) / 2;
-
-            int lteq = 0;
-            for (const vector<int>& vec : matrix) {
-                int v = upper_bound(vec.begin(), vec.end(), m) - vec.begin();
-                if (v == 0) break;
-                lteq += v;
+            int m = l + (r - l) / 2;
+            int cnt = 0;
+            for (const auto vec : matrix) {
+                cnt += upper_bound(vec.begin(), vec.end(), m) - vec.begin();
             }
-
-            if (lteq < k) {
+            if (cnt < k) {
                 l = m + 1;
-            } else {  // lteq >= k
+            } else {
                 r = m - 1;
             }
         }
-
-        int result = matrix.back().back();
-        for (const vector<int>& vec : matrix) {
-            auto it = upper_bound(vec.begin(), vec.end(), r);
-            if (it != vec.end()) result = min(result, *it);
-        }
-
-        return result;
+        return l;
     }
 };
 
