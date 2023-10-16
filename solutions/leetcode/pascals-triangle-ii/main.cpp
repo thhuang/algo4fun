@@ -43,3 +43,14 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> getRow(int rowIndex) {
+        vector<int> result = {1};
+        for (int i = 1, j = rowIndex, v = 1; i <= rowIndex; ++i, --j) {
+            result.push_back(v = (long long)v * j / i);
+        }
+        return result;
+    }
+};
