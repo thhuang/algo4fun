@@ -33,12 +33,9 @@ class Solution {
 class Solution {
    public:
     vector<int> getRow(int rowIndex) {
-        vector<int> result(rowIndex + 1, 1);
-        int a = rowIndex;
-        int b = 1;
-        for (int i = 1; i < rowIndex / 2 + 1; ++i) {
-            result[i] = result[rowIndex - i] =
-                (long long)result[i - 1] * (rowIndex + 1 - i) / i;
+        vector<int> result = {1};
+        for (int i = 1, j = rowIndex, v = 1; i <= rowIndex; ++i, --j) {
+            result.push_back(v = (long long)v * j / i);
         }
         return result;
     }
@@ -48,8 +45,8 @@ class Solution {
    public:
     vector<int> getRow(int rowIndex) {
         vector<int> result = {1};
-        for (int i = 1, j = rowIndex, v = 1; i <= rowIndex; ++i, --j) {
-            result.push_back(v = (long long)v * j / i);
+        for (int i = 1, j = rowIndex; i <= rowIndex; ++i, --j) {
+            result.push_back((long long)result.back() * j / i);
         }
         return result;
     }
