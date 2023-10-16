@@ -24,16 +24,13 @@ class Solution {
    public:
     int rob(vector<int>& nums) {
         if (nums.size() == 1) return nums[0];
-
-        auto simple_rob = [&](int l, int r) -> int {
+        auto search = [&](int l, int r) -> int {
             array<int, 2> dp = {0, 0};
-            for (int i = l; i <= r; ++i) {
-                dp = {dp[1], max(dp[1], dp[0] + nums[i])};
+            for (int i = l; i < r; ++i) {
+                dp = {dp[1], max(dp[0] + nums[i], dp[1])};
             }
-            return dp.back();
+            return dp[1];
         };
-
-        return max(simple_rob(0, nums.size() - 2),
-                   simple_rob(1, nums.size() - 1));
+        return max(search(0, nums.size() - 1), search(1, nums.size()));
     }
 };
