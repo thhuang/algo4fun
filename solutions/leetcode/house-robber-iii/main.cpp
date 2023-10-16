@@ -55,3 +55,22 @@ class Solution {
         return max(result[0], result[1]);
     }
 };
+
+lass Solution {
+    struct Res {
+        int robbed, passed;
+        int maxProfit() { return max(robbed, passed); }
+    };
+
+   public:
+    int rob(TreeNode * root) {
+        function<Res(TreeNode*)> search = [&](TreeNode* u) -> Res {
+            if (u == nullptr) return {0, 0};
+            auto l = search(u->left);
+            auto r = search(u->right);
+            return {u->val + l.passed + r.passed,
+                    l.maxProfit() + r.maxProfit()};
+        };
+        return search(root).maxProfit();
+    }
+};
