@@ -70,32 +70,31 @@ class Solution {
 };
 
 class Solution {
-    const vector<pair<int, int>> directions = {
-        {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+    const vector<array<int, 2>> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
    public:
     int longestIncreasingPath(vector<vector<int>>& matrix) {
         int m = matrix.size();
         int n = matrix.front().size();
 
-        vector<vector<int>> dp(m, vector<int>(n, -1));
+        vector<vector<int>> memo(m, vector<int>(n, -1));
         function<int(int, int, int)> dfs = [&](int i, int j, int p) -> int {
-            if (i < 0 || i >= m || j < 0 || j >= n) return 0;
-            if (matrix[i][j] <= p) return 0;
-            if (dp[i][j] != -1) return dp[i][j];
+            if (i < 0 || m <= i || j < 0 || n <= j || p >= matrix[i][j])
+                return 0;
+            if (memo[i][j] != -1) return memo[i][j];
 
-            int result = 0;
+            int result = 1;
             for (auto [di, dj] : directions) {
-                result = max(result, dfs(i + di, j + dj, matrix[i][j]));
+                result = max(result, 1 + dfs(i + di, j + dj, matrix[i][j]));
             }
 
-            return dp[i][j] = result + 1;
+            return memo[i][j] = result;
         };
 
         int result = 0;
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
-                result = max(result, dfs(i, j, numeric_limits<int>::min()));
+                result = max(result, dfs(i, j, -1));
             }
         }
 
