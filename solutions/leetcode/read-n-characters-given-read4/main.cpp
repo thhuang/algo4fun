@@ -12,17 +12,17 @@ class Solution {
      */
     int read(char *buf, int n) {
         int actualRead = 0;
-        int lastRead = 0;
-        while (n - actualRead >= 4) {
+        int lastRead = -1;
+        while (n - actualRead >= 4 && lastRead != 0) {
             lastRead = read4(buf + actualRead);
             actualRead += lastRead;
         }
 
-        if (lastRead < 4) return actualRead;
+        if (0 <= lastRead && lastRead < 4) return actualRead;
 
         char buf4[4];
         lastRead = read4(buf4);
-        for (int i = 0; i < min(lastRead, n - actualRead); ++i) {
+        for (int i = 0, m = min(lastRead, n - actualRead); i < m; ++i) {
             buf[actualRead++] = buf4[i];
         }
 
