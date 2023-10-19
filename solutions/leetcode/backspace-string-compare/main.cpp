@@ -22,6 +22,25 @@ class Solution {
 };
 
 class Solution {
+    string getString(string s) {
+        string result;
+        for (char c : s) {
+            if (c != '#') {
+                result += c;
+            } else if (!result.empty()) {
+                result.pop_back();
+            }
+        }
+        return result;
+    }
+
+   public:
+    bool backspaceCompare(string s, string t) {
+        return getString(s) == getString(t);
+    }
+};
+
+class Solution {
    public:
     bool backspaceCompare(string s, string t) {
         auto next = [](const string& s, int r) -> int {
