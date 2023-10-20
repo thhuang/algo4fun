@@ -64,3 +64,30 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+   public:
+    bool find132pattern(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<int> prefixMin = {nums[0]};
+        for (int i = 1; i < n; ++i) {
+            prefixMin.push_back(min(prefixMin.back(), nums[i]));
+        }
+
+        stack<int> desc;
+        for (int i = n - 1; i >= 0; --i) {
+            while (!desc.empty() && desc.top() <= prefixMin[i]) {
+                desc.pop();
+            }
+
+            if (desc.empty() || nums[i] <= desc.top()) {
+                desc.push(nums[i]);
+            } else {
+                return true;
+            }
+        }
+
+        return false;
+    }
+};
