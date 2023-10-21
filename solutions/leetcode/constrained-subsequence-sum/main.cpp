@@ -22,3 +22,22 @@ class Solution {
         return *max_element(dp.begin(), dp.end());
     }
 };
+
+class Solution {
+   public:
+    int constrainedSubsetSum(vector<int>& nums, int k) {
+        int n = nums.size();
+
+        priority_queue<pair<int, int>> pq;  // {sum, i}
+        pq.push({0, -1});
+
+        vector<int> dp(n);
+        for (int r = 0, l = r - k; r < n; ++l, ++r) {
+            while (pq.top().second < l) pq.pop();
+            dp[r] = max(0, pq.top().first) + nums[r];
+            pq.push({dp[r], r});
+        }
+
+        return *max_element(dp.begin(), dp.end());
+    }
+};
