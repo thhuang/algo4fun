@@ -110,7 +110,7 @@ class NestedIterator {
     stack<NestedIteratorList> stk;
     int nextValue = null;
 
-    void forward() {
+    void setNextValue() {
         if (nextValue != null) return;
 
         while (!stk.empty()) {
@@ -137,14 +137,14 @@ class NestedIterator {
     }
 
     int next() {
-        forward();
+        setNextValue();
         int result = nextValue;
         nextValue = null;
         return result;
     }
 
     bool hasNext() {
-        forward();
+        setNextValue();
         return nextValue != null;
     }
 };
