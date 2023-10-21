@@ -11,8 +11,8 @@ class WordDistance {
     int shortest(string word1, string word2) {
         int result = numeric_limits<int>::max();
 
-        const auto idx1 = wordIdxs[word1];
-        const auto idx2 = wordIdxs[word2];
+        const auto& idx1 = wordIdxs[word1];
+        const auto& idx2 = wordIdxs[word2];
 
         for (int i = 0, j = 0; i < idx1.size() && j < idx2.size();
              idx1[i] < idx2[j] ? ++i : ++j) {
