@@ -93,6 +93,62 @@ class NestedIterator {
     }
 };
 
+class NestedIterator {
+    const int null = numeric_limits<int>::max();
+
+    struct NestedIteratorList {
+        const vector<NestedInteger>* data;
+        int i = 0;
+
+        const NestedInteger* current() const { return &data->at(i); }
+
+        bool empty() const { return i == data->size(); }
+
+        void forward() { ++i; }
+    };
+
+    stack<NestedIteratorList> stk;
+    int nextValue = null;
+
+    void forward() {
+        if (nextValue != null) return;
+
+        while (!stk.empty()) {
+            if (stk.top().empty()) {
+                stk.pop();
+                continue;
+            }
+
+            auto it = stk.top().current();
+            stk.top().forward();
+
+            if (it->isInteger()) {
+                nextValue = it->getInteger();
+                return;
+            }
+
+            stk.push({&it->getList()});
+        }
+    }
+
+   public:
+    NestedIterator(vector<NestedInteger>& nestedList) {
+        stk.push({&nestedList});
+    }
+
+    int next() {
+        forward();
+        int result = nextValue;
+        nextValue = null;
+        return result;
+    }
+
+    bool hasNext() {
+        forward();
+        return nextValue != null;
+    }
+};
+
 /**
  * Your NestedIterator object will be instantiated and called as such:
  * NestedIterator i(nestedList);
