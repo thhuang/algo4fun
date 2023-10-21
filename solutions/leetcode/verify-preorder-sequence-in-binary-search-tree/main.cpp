@@ -20,3 +20,20 @@ class Solution {
                       numeric_limits<int>::max());
     }
 };
+
+class Solution {
+   public:
+    bool verifyPreorder(vector<int>& preorder) {
+        int minLimit = numeric_limits<int>::min();
+        vector<int> desc;
+        for (int v : preorder) {
+            while (!desc.empty() && desc.back() < v) {
+                minLimit = max(minLimit, desc.back());
+                desc.pop_back();
+            }
+            if (v < minLimit) return false;
+            desc.push_back(v);
+        }
+        return true;
+    }
+};
