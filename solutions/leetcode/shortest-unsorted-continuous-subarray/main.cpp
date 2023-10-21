@@ -62,3 +62,29 @@ class Solution {
         return n - l - r;
     }
 };
+
+class Solution {
+    struct NumIndex {
+        int num, index;
+    };
+
+   public:
+    int findUnsortedSubarray(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<NumIndex> numIndex;
+
+        int l = n, r = 0;
+        for (int i = 0, unsortedMax = numeric_limits<int>::min(); i < n; ++i) {
+            while (!numIndex.empty() && numIndex.back().num > nums[i]) {
+                unsortedMax = max(unsortedMax, numIndex.back().num);
+                l = min(l, numIndex.back().index);
+                numIndex.pop_back();
+            }
+            if (nums[i] < unsortedMax) r = i;
+            numIndex.push_back({nums[i], i});
+        }
+
+        return max(0, r - l + 1);
+    }
+};
