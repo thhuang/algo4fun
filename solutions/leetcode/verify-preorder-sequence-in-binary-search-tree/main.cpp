@@ -37,3 +37,20 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+   public:
+    bool verifyPreorder(vector<int>& preorder) {
+        int minLimit = numeric_limits<int>::min();
+        int i = 0;
+        for (int v : preorder) {
+            while (i > 0 && preorder[i - 1] < v) {
+                minLimit = max(minLimit, preorder[i - 1]);
+                --i;
+            }
+            if (v < minLimit) return false;
+            preorder[i++] = v;
+        }
+        return true;
+    }
+};
