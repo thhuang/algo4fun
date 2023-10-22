@@ -41,3 +41,36 @@ class Solution {
         return nullptr;
     }
 };
+
+class Solution {
+    struct Node {
+        TreeNode *u, *p;
+    };
+
+   public:
+    TreeNode* correctBinaryTree(TreeNode* root) {
+        queue<Node> q;
+        q.push({root, nullptr});
+
+        while (!q.empty()) {
+            unordered_map<TreeNode*, bool> seen;
+
+            int n = q.size();
+            while (n-- > 0) {
+                auto [u, p] = q.front();
+                q.pop();
+
+                if (auto r = u->right; r != nullptr && seen[r]) {
+                    (p->left == u ? p->left : p->right) = nullptr;
+                    return root;
+                }
+
+                seen[u] = true;
+                if (u->right != nullptr) q.push({u->right, u});
+                if (u->left != nullptr) q.push({u->left, u});
+            }
+        }
+
+        return nullptr;
+    }
+};
