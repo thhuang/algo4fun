@@ -36,3 +36,27 @@ class Solution {
         return value;
     }
 };
+
+class Solution {
+    const double epsilon = 1e-6;
+
+   public:
+    int closestValue(TreeNode* root, double target) {
+        int value = root->val;
+        double dist = abs(target - root->val);
+
+        TreeNode* p = root;
+        while (p != nullptr) {
+            double d = abs(target - p->val);
+            bool lt = d < dist - epsilon;
+            bool eq = dist - epsilon < d && d < dist + epsilon;
+            if (lt || (eq && p->val < value)) {
+                value = p->val;
+                dist = d;
+            }
+            p = (target < p->val) ? p->left : p->right;
+        }
+
+        return value;
+    }
+};
