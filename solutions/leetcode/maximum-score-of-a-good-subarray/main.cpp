@@ -43,3 +43,28 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maximumScore(vector<int>& nums, int k) {
+        int n = nums.size();
+
+        int result = nums[k];
+
+        int l = k, r = k, mn = nums[k];
+        while (0 < l || r < n - 1) {
+            if (l == 0) {
+                mn = min(mn, nums[++r]);
+            } else if (r == n - 1) {
+                mn = min(mn, nums[--l]);
+            } else if (nums[l - 1] > nums[r + 1]) {
+                mn = min(mn, nums[--l]);
+            } else {  // nums[l - 1] <= nums[r + 1]
+                mn = min(mn, nums[++r]);
+            }
+            result = max(result, mn * (r - l + 1));
+        }
+
+        return result;
+    }
+};
