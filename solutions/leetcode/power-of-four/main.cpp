@@ -37,3 +37,16 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+    unordered_set<int> powerOfFour;
+
+   public:
+    Solution() {
+        for (long long x = 1; x <= numeric_limits<int>::max(); x <<= 2) {
+            powerOfFour.insert(x);
+        }
+    }
+
+    bool isPowerOfFour(int n) { return powerOfFour.count(n) > 0; }
+};
