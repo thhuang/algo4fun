@@ -1,22 +1,19 @@
 class Solution {
     const int mod = 1e9 + 7;
-
-    struct Entry {
-        long long a, e, i, o, u;
-    };
+    typedef long long ll;
 
    public:
     int countVowelPermutation(int n) {
-        Entry dp = {1, 1, 1, 1, 1};
-        for (int i = 2; i <= n; ++i) {
-            dp = {
-                (dp.e + dp.i + dp.u) % mod,  // a
-                (dp.a + dp.i) % mod,         // e
-                (dp.e + dp.o) % mod,         // i
-                dp.i,                        // o
-                (dp.i + dp.o) % mod,         // u
+        ll a = 1, e = 1, i = 1, o = 1, u = 1;
+        for (int k = 1; k < n; ++k) {
+            tie(a, e, i, o, u) = tuple<ll, ll, ll, ll, ll>{
+                (e + i + u) % mod,  // a
+                (a + i) % mod,      // e
+                (e + o) % mod,      // i
+                i,                  // o
+                (i + o) % mod,      // u
             };
         }
-        return (dp.a + dp.e + dp.i + dp.o + dp.u) % mod;
+        return (a + e + i + o + u) % mod;
     }
 };
