@@ -28,21 +28,18 @@ class Solution {
         return -1;
     }
 };
+
 class Solution {
    public:
     int minKnightMoves(int x, int y) {
-        unordered_map<int, unordered_map<int, int>> cache;
-
-        function<int(int, int)> dfs = [&cache, &dfs](int x, int y) -> int {
-            if (cache[x].count(y)) return cache[x][y];
-
-            if (x + y == 0) return cache[x][y] = 0;
-            if (x + y == 2) return cache[x][y] = 2;
-
-            return cache[x][y] = 1 + min(dfs(abs(x - 2), abs(y - 1)),
-                                         dfs(abs(x - 1), abs(y - 2)));
+        unordered_map<int, unordered_map<int, int>> memo;
+        function<int(int, int)> dfs = [&](int i, int j) -> int {
+            if (memo[i].count(j)) return memo[i][j];
+            if (i + j == 0) return memo[i][j] = 0;
+            if (i + j == 2) return memo[i][j] = 2;
+            return memo[i][j] = 1 + min(dfs(abs(i - 1), abs(j - 2)),
+                                        dfs(abs(i - 2), abs(j - 1)));
         };
-
         return dfs(abs(x), abs(y));
     }
 };
