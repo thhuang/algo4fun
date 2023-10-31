@@ -25,3 +25,14 @@ class Solution {
         return {rresult.rbegin(), rresult.rend()};
     }
 };
+
+class Solution {
+   public:
+    vector<int> findArray(vector<int>& pref) {
+        vector<int> result = {pref[0]};
+        for (int i = 0; i < pref.size() - 1; ++i) {
+            result.push_back(pref[i] ^ pref[i + 1]);
+        }
+        return result;
+    }
+};
