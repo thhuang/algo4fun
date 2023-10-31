@@ -9,3 +9,19 @@ class Solution {
         return {result.begin() + 1, result.end()};
     }
 };
+
+class Solution {
+   public:
+    vector<int> findArray(vector<int>& pref) {
+        int n = pref.size();
+
+        vector<int> rresult;
+
+        for (int i = n - 1; i > 0; --i) {
+            rresult.push_back(pref[i] ^ pref[i - 1]);
+        }
+        rresult.push_back(pref[0]);
+
+        return {rresult.rbegin(), rresult.rend()};
+    }
+};
