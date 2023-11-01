@@ -35,3 +35,36 @@ class Solution {
         return l ? l : r;
     }
 };
+
+class Solution {
+   public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        vector<TreeNode*> pPath, qPath;
+
+        vector<TreeNode*> path;
+        function<void(TreeNode*)> search = [&](TreeNode* u) -> void {
+            if (!u) return;
+
+            path.push_back(u);
+
+            if (u == p) pPath = path;
+            if (u == q) qPath = path;
+
+            search(u->left);
+            search(u->right);
+
+            path.pop_back();
+        };
+
+        search(root);
+
+        if (pPath.empty() || qPath.empty()) return nullptr;
+
+        TreeNode* result;
+        for (int i = 0; i < min(pPath.size(), qPath.size()); ++i) {
+            if (pPath[i] == qPath[i]) result = pPath[i];
+        }
+
+        return result;
+    }
+};
