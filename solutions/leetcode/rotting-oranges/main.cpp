@@ -145,7 +145,9 @@ class Solution {
                 q.pop();
                 for (auto [di, dj] : directions) {
                     int ii = i + di, jj = j + dj;
-                    if (ii < 0 || m <= ii || jj < 0 || n <= jj || grid[ii][jj] != 1) continue;
+                    if (ii < 0 || m <= ii || jj < 0 || n <= jj ||
+                        grid[ii][jj] != 1)
+                        continue;
                     grid[ii][jj] = 2;
                     q.push({ii, jj});
                 }
@@ -153,6 +155,55 @@ class Solution {
 
             if (q.empty()) break;
             ++result;
+        }
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 1) return -1;
+            }
+        }
+
+        return result;
+    }
+};
+
+class Solution {
+    const vector<array<int, 2>> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    struct RottingStep {
+        int i, j, step;
+    };
+
+   public:
+    int orangesRotting(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid.front().size();
+
+        queue<RottingStep> q;
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 2) {
+                    grid[i][j] = 1;
+                    q.push({i, j, 0});
+                }
+            }
+        }
+
+        int result = 0;
+
+        while (!q.empty()) {
+            auto [i, j, step] = q.front();
+            q.pop();
+
+            if (i < 0 || m <= i || j < 0 || n <= j || grid[i][j] != 1) continue;
+
+            result = step;
+            grid[i][j] = 2;
+
+            for (auto [di, dj] : directions) {
+                q.push({i + di, j + dj, step + 1});
+            }
         }
 
         for (int i = 0; i < m; ++i) {
