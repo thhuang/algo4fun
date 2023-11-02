@@ -32,3 +32,34 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    struct Res {
+        int sum, n;
+    };
+
+   public:
+    int averageOfSubtree(TreeNode* root) {
+        int result = 0;
+
+        function<Res(TreeNode*)> dfs = [&](TreeNode* u) -> Res {
+            if (u == nullptr) return {0, 0};
+
+            int sum = u->val;
+            int n = 1;
+
+            auto [lsum, ln] = dfs(u->left);
+            auto [rsum, rn] = dfs(u->right);
+
+            sum += lsum + rsum;
+            n += ln + rn;
+
+            if (sum / n == u->val) ++result;
+
+            return {sum, n};
+        };
+        dfs(root);
+
+        return result;
+    }
+};
