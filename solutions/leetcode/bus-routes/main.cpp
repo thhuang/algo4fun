@@ -2,33 +2,88 @@ class Solution {
    public:
     int numBusesToDestination(vector<vector<int>>& routes, int source,
                               int target) {
-        unordered_map<int, vector<int>> stop2route;
-        for (int i = 0; i < routes.size(); ++i) {
+        if (source == target) return 0;
+
+        int n = routes.size();
+
+        unordered_map<int, unordered_set<int>> stopToRoutes;
+        for (int i = 0; i < n; ++i) {
             for (int stop : routes[i]) {
-                stop2route[stop].push_back(i);
+                stopToRoutes[stop].insert(i);
             }
         }
 
-        queue<pair<int, int>> q;  // {stop, bus}
-        q.push({source, 0});
+        vector<unordered_set<int>> adj(n);
+        for (int i = 0; i < n; ++i) {
+            for (int stop : routes[i]) {
+                for (int j : stopToRoutes[stop]) {
+                    adj[i].insert(j);
+                }
+            }
+        }
 
-        unordered_set<int> visited_stop = {source};
-        vector<int> visited_route(routes.size(), false);
+        unordered_set<int> targetRoutes;
+        for (int r : stopToRoutes[target]) {
+            targetRoutes.insert(r);
+        }
+
+        queue<pair<int, int>> q;
+        for (int r : stopToRoutes[source]) {
+            q.push({r, 1});
+        }
+
+        vector<bool> vis(n, false);
 
         while (!q.empty()) {
-            auto [u, d] = q.front();
+            auto [u, step] = q.front();
             q.pop();
 
-            if (u == target) return d;
+            if (vis[u]) continue;
+            vis[u] = true;
 
-            for (int i : stop2route[u]) {
-                if (visited_route[i]) continue;
-                visited_route[i] = true;
+            if (targetRoutes.count(u) > 0) return step;
+
+            for (int v : adj[u]) q.push({v, step + 1});
+        }
+
+        return -1;
+    }
+};
+
+class Solution {
+   public:
+    int numBusesToDestination(vector<vector<int>>& routes, int source,
+                              int target) {
+        int n = routes.size();
+
+        unordered_map<int, vector<int>> stopToRoutes;
+        for (int i = 0; i < n; ++i) {
+            for (int stop : routes[i]) {
+                stopToRoutes[stop].push_back(i);
+            }
+        }
+
+        vector<bool> visRoute(n, false);
+        unordered_set<int> visStop;
+
+        queue<pair<int, int>> q;
+        q.push({source, 0});
+
+        while (!q.empty()) {
+            auto [u, step] = q.front();
+            q.pop();
+
+            if (visStop.count(u) > 0) continue;
+            visStop.insert(u);
+
+            if (u == target) return step;
+
+            for (int i : stopToRoutes[u]) {
+                if (visRoute[i]) continue;
+                visRoute[i] = true;
 
                 for (int v : routes[i]) {
-                    if (visited_stop.count(v) == 1) continue;
-                    visited_stop.insert(v);
-                    q.push({v, d + 1});
+                    q.push({v, step + 1});
                 }
             }
         }
