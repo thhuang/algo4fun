@@ -99,18 +99,22 @@ class Solution {
 class Solution {
    public:
     string longestPalindrome(string s) {
-        struct {
-            int i, len;
-        } result{0, 0};
+        int n = s.size();
 
-        auto search = [&](int l, int r) {
-            while (0 <= l && r < s.size() && s[l] == s[r]) --l, ++r;
-            if (int len = r - l - 1; len > result.len) result = {l + 1, len};
+        struct {
+            int start, length;
+        } result = {0, 1};
+
+        function<void(int, int)> check = [&](int l, int r) -> void {
+            while (0 <= l && r < n && s[l] == s[r]) --l, ++r;
+            if (r - l - 1 > result.length) {
+                result = {l + 1, r - l - 1};
+            }
         };
 
-        for (int i = 0; i < s.size(); ++i) search(i, i);
-        for (int i = 1; i < s.size(); ++i) search(i - 1, i);
+        for (int i = 0; i < n; ++i) check(i, i);
+        for (int i = 1; i < n; ++i) check(i - 1, i);
 
-        return s.substr(result.i, result.len);
+        return s.substr(result.start, result.length);
     }
 };
