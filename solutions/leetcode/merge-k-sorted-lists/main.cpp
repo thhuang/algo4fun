@@ -14,23 +14,24 @@ class Solution {
         auto cmp = [&](ListNode* b, ListNode* a) -> bool {
             return a->val < b->val;
         };
-
         priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> pq(cmp);
-        for (auto l : lists) {
-            if (l) pq.push(l);
+        for (ListNode* u : lists) {
+            if (u == nullptr) continue;
+            pq.push(u);
         }
 
         ListNode dummy;
-        auto p = &dummy;
+        ListNode* p = &dummy;
 
         while (!pq.empty()) {
-            auto l = pq.top();
+            ListNode* u = pq.top();
             pq.pop();
 
-            p = p->next = l;
-            l = l->next;
+            p = p->next = u;
 
-            if (l) pq.push(l);
+            if (u->next == nullptr) continue;
+
+            pq.push(u->next);
         }
 
         return dummy.next;
