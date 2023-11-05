@@ -61,13 +61,6 @@ class Solution {
             }
         }
 
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                cout << suffixSum[i][j] << ' ';
-            }
-            cout << '\n';
-        }
-
         vector<vector<vector<int>>> memo(
             m, vector<vector<int>>(n, vector<int>(k + 1, -1)));
 
