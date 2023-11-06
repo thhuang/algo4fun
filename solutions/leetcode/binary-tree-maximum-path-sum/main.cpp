@@ -13,22 +13,15 @@
 class Solution {
    public:
     int maxPathSum(TreeNode* root) {
-        int result = root->val;
-
+        int result = numeric_limits<int>::min();
         function<int(TreeNode*)> dfs = [&](TreeNode* u) -> int {
             if (!u) return 0;
-
-            int v = u->val;
             int l = max(0, dfs(u->left));
             int r = max(0, dfs(u->right));
-
-            result = max(result, v + l + r);
-
-            return v + max(l, r);
+            result = max(result, u->val + l + r);
+            return u->val + max(l, r);
         };
-
         dfs(root);
-
         return result;
     }
 };
