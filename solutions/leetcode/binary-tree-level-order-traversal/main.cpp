@@ -41,7 +41,7 @@ class Solution {
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> result;
         function<void(TreeNode*, int)> dfs = [&](TreeNode* u, int lv) -> void {
-            if (u == nullptr) return;
+            if (!u) return;
             if (result.size() == lv) result.push_back({});
             result[lv].push_back(u->val);
             dfs(u->left, lv + 1);
