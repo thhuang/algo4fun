@@ -89,3 +89,52 @@ class Solution {
         return dp(0, 0, k);
     }
 };
+
+class Solution {
+    const int mod = 1e9 + 7;
+
+   public:
+    int ways(vector<string>& pizza, int k) {
+        int m = pizza.size();
+        int n = pizza.front().size();
+
+        vector<vector<int>> suffixSum(m + 1, vector<int>(n + 1, 0));
+        for (int i = m - 1; i >= 0; --i) {
+            int sum = 0;
+            for (int j = n - 1; j >= 0; --j) {
+                if (pizza[i][j] == 'A') ++sum;
+                suffixSum[i][j] = sum + suffixSum[i + 1][j];
+            }
+        }
+
+        vector<vector<vector<int>>> dp(
+            m, vector<vector<int>>(n, vector<int>(k + 1, 0)));
+        for (int kk = 1; kk <= k; ++kk) {
+            for (int i = m - 1; i >= 0; --i) {
+                for (int j = n - 1; j >= 0; --j) {
+                    if (suffixSum[i][j] < kk) {
+                        continue;
+                    }
+                    if (kk == 1) {
+                        dp[i][j][kk] = 1;
+                        continue;
+                    }
+                    long long result = 0;
+                    for (int ii = i + 1; ii < m; ++ii) {
+                        if (suffixSum[i][j] == suffixSum[ii][j]) continue;
+                        if (suffixSum[ii][j] == 0) break;
+                        (result += dp[ii][j][kk - 1]) %= mod;
+                    }
+                    for (int jj = j + 1; jj < n; ++jj) {
+                        if (suffixSum[i][j] == suffixSum[i][jj]) continue;
+                        if (suffixSum[i][jj] == 0) break;
+                        (result += dp[i][jj][kk - 1]) %= mod;
+                    }
+                    dp[i][j][kk] = result;
+                }
+            }
+        }
+
+        return dp[0][0][k];
+    }
+};
