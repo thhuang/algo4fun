@@ -112,3 +112,23 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> partitionLabels(string s) {
+        unordered_map<char, int> rightMost;
+        for (int i = 0; i < s.size(); ++i) {
+            rightMost[s[i]] = i;
+        }
+
+        vector<int> result;
+        for (int i = 0, l = 0, r = 0; i < s.size(); ++i) {
+            r = max(r, rightMost[s[i]]);
+            if (i < r) continue;
+            result.push_back(r - l + 1);
+            l = r + 1;
+        }
+
+        return result;
+    }
+};
