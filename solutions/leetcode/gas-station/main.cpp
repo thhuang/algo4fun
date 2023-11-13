@@ -43,3 +43,23 @@ class Solution {
         return (g < 0) ? -1 : result;
     }
 };
+
+class Solution {
+   public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        if (accumulate(gas.begin(), gas.end(), 0) <
+            accumulate(cost.begin(), cost.end(), 0)) {
+            return -1;
+        }
+        int result = 0;
+        for (int i = 0, curr = -cost.back(), mn = -cost.back(); i < gas.size();
+             ++i) {
+            if (curr < mn) {
+                mn = curr;
+                result = i;
+            }
+            curr += gas[i] - cost[i];
+        }
+        return result;
+    }
+};
