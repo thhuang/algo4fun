@@ -37,3 +37,17 @@ class Solution {
         return dp.front().back();
     }
 };
+
+class Solution {
+   public:
+    bool checkValidString(string s) {
+        int mn = 0, mx = 0;
+        for (char c : s) {
+            c == '(' ? ++mn : --mn;
+            c == ')' ? --mx : ++mx;
+            if (mx < 0) return false;
+            mn = max(0, mn);
+        }
+        return mn == 0;
+    }
+};
