@@ -3,8 +3,8 @@ class Solution {
     int maximumElementAfterDecrementingAndRearranging(vector<int>& arr) {
         sort(arr.begin(), arr.end());
         int result = 1;
-        for (int v : arr) {
-            if (result < v) {
+        for (int i = 1; i < arr.size(); ++i) {
+            if (result < arr[i]) {
                 ++result;
             }
         }
