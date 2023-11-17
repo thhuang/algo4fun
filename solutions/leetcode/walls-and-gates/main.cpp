@@ -65,3 +65,41 @@ class Solution {
         }
     }
 };
+
+class Solution {
+    const vector<array<int, 2>> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+   public:
+    void wallsAndGates(vector<vector<int>>& rooms) {
+        int m = rooms.size();
+        int n = rooms.front().size();
+
+        struct State {
+            int i, j, d;
+        };
+        queue<State> q;
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (rooms[i][j] == 0) {
+                    for (auto [di, dj] : directions) {
+                        q.push({i + di, j + dj, 1});
+                    }
+                }
+            }
+        }
+
+        while (!q.empty()) {
+            auto [i, j, d] = q.front();
+            q.pop();
+
+            if (i < 0 || m <= i || j < 0 || n <= j) continue;
+            if (rooms[i][j] == -1 || rooms[i][j] <= d) continue;
+            rooms[i][j] = d;
+
+            for (auto [di, dj] : directions) {
+                q.push({i + di, j + dj, d + 1});
+            }
+        }
+    }
+};
