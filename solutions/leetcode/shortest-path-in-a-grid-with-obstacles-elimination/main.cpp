@@ -41,3 +41,44 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    const vector<array<int, 2>> directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+
+   public:
+    int shortestPath(vector<vector<int>>& grid, int k) {
+        int m = grid.size();
+        int n = grid.front().size();
+
+        struct State {
+            int i, j, removed, step;
+        };
+        queue<State> q;
+        q.push({0, 0, 0, 0});
+
+        vector<vector<vector<bool>>> vis(
+            m, vector<vector<bool>>(n, vector<bool>(k + 1, false)));
+
+        while (!q.empty()) {
+            auto [i, j, removed, step] = q.front();
+            q.pop();
+
+            if (i < 0 || m <= i || j < 0 || n <= j) continue;
+            if (grid[i][j] == 1) {
+                ++removed;
+                if (removed > k) continue;
+            }
+
+            if (i == m - 1 && j == n - 1) return step;
+
+            if (vis[i][j][removed]) continue;
+            vis[i][j][removed] = true;
+
+            for (auto [di, dj] : directions) {
+                q.push({i + di, j + dj, removed, step + 1});
+            }
+        }
+
+        return -1;
+    }
+};
