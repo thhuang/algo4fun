@@ -73,3 +73,18 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maxProduct(vector<int>& nums) {
+        int result = nums[0];
+        for (int i = 1, mn = nums[0], mx = nums[0]; i < nums.size(); ++i) {
+            int v = nums[i];
+            array<int, 3> candidates = {v, mx * v, mn * v};
+            sort(candidates.begin(), candidates.end());
+            tie(mn, mx) = make_pair(candidates[0], candidates[2]);
+            result = max(result, mx);
+        }
+        return result;
+    }
+};
