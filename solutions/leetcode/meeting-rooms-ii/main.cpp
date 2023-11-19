@@ -22,3 +22,24 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int minMeetingRooms(vector<vector<int>>& intervals) {
+        int result = 0;
+        vector<array<int, 2>> events;
+        for (const vector<int>& in : intervals) {
+            events.push_back({in[0], 1});
+            events.push_back({in[1], -1});
+        }
+
+        sort(events.begin(), events.end());
+
+        int rooms = 0;
+        for (auto [_, d] : events) {
+            result = max(result, rooms += d);
+        }
+
+        return result;
+    }
+};
