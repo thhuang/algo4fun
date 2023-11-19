@@ -128,6 +128,63 @@ class FileSystem {
     }
 };
 
+class FileSystem {
+    struct Node {
+        map<string, Node*> children;
+        string* content = nullptr;
+    };
+
+    Node* root = new Node();
+
+    pair<Node*, string> navigate(const string& path) {
+        stringstream ss(path.substr(1));
+        string s;
+
+        Node* p = root;
+        while (getline(ss, s, '/')) {
+            if (p->children[s] == nullptr) {
+                p->children[s] = new Node();
+            }
+            p = p->children[s];
+        }
+
+        return {p, s};
+    }
+
+   public:
+    FileSystem() {}
+
+    vector<string> ls(string path) {
+        auto [p, s] = navigate(path);
+
+        if (p->content != nullptr) {
+            return {s};
+        }
+
+        vector<string> result;
+        for (auto [f, _] : p->children) {
+            result.push_back(f);
+        }
+
+        return result;
+    }
+
+    void mkdir(string path) { navigate(path); }
+
+    void addContentToFile(string filePath, string content) {
+        auto [p, s] = navigate(filePath);
+        if (p->content == nullptr) {
+            p->content = new string();
+        }
+        *p->content += content;
+    }
+
+    string readContentFromFile(string filePath) {
+        auto [p, s] = navigate(filePath);
+        return *p->content;
+    }
+};
+
 /**
  * Your FileSystem object will be instantiated and called as such:
  * FileSystem* obj = new FileSystem();
