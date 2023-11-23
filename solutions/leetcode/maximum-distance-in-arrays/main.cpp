@@ -54,3 +54,24 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int maxDistance(vector<vector<int>>& arrays) {
+        int n = arrays.size();
+
+        int result = 0;
+
+        int mn = arrays.front().front();
+        int mx = arrays.front().back();
+
+        for (int i = 1; i < n; ++i) {
+            result = max(result, mx - arrays[i].front());
+            result = max(result, arrays[i].back() - mn);
+            mn = min(mn, arrays[i].front());
+            mx = max(mx, arrays[i].back());
+        }
+
+        return result;
+    }
+};
