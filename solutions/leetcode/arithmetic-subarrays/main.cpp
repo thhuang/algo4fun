@@ -31,3 +31,44 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<bool> checkArithmeticSubarrays(vector<int>& nums, vector<int>& l,
+                                          vector<int>& r) {
+        int n = nums.size();
+        int m = l.size();
+
+        auto check = [&](int k) -> bool {
+            int mn = numeric_limits<int>::max();
+            int mx = numeric_limits<int>::min();
+            unordered_set<int> vals;
+            int cnt = 0;
+
+            for (int i = l[k]; i <= r[k]; ++i) {
+                int v = nums[i];
+                mn = min(mn, v);
+                mx = max(mx, v);
+                vals.insert(v);
+                ++cnt;
+            }
+
+            int d = (mx - mn) / (cnt - 1);
+            if (mn + (cnt - 1) * d != mx) return false;
+
+            for (int i = 1, v = mn; i < cnt; ++i) {
+                v += d;
+                if (vals.count(v) == 0) return false;
+            }
+
+            return true;
+        };
+
+        vector<bool> result;
+        for (int k = 0; k < m; ++k) {
+            result.push_back(check(k));
+        }
+
+        return result;
+    }
+};
