@@ -21,7 +21,8 @@ class Solution {
         while (l <= r) {
             int m = l + (r - l) / 2;
             int a = nums[m];
-            int b = m + 1 < nums.size() ? nums[m + 1] : numeric_limits<int>::min();
+            int b =
+                m + 1 < nums.size() ? nums[m + 1] : numeric_limits<int>::min();
             if (a < b) {
                 l = m + 1;
             } else {
@@ -42,6 +43,23 @@ class Solution {
                 l = m + 1;
             } else {
                 r = m - 1;
+            }
+        }
+        return l;
+    }
+};
+
+class Solution {
+   public:
+    int findPeakElement(vector<int>& nums) {
+        int n = nums.size();
+        int l = 0, r = n;
+        while (r - l > 1) {
+            int m = l + (r - l) / 2;
+            if (nums[m - 1] < nums[m]) {
+                l = m;
+            } else {
+                r = m;
             }
         }
         return l;
