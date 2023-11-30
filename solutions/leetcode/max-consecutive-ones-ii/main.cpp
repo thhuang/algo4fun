@@ -42,3 +42,19 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int n = nums.size();
+        int result = 0;
+        for (int l = 0, r = 0, flipped = 0; r < n; ++r) {
+            if (nums[r] == 0) ++flipped;
+            while (flipped > 1) {
+                if (nums[l++] == 0) --flipped;
+            }
+            result = max(result, r - l + 1);
+        }
+        return result;
+    }
+};
