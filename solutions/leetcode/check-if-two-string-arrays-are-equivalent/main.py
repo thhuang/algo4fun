@@ -1,6 +1,12 @@
 class Solution:
 
     def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        return "".join(word1) == "".join(word2)
+
+
+class Solution:
+
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
         i1, i2 = 0, 0
         j1, j2 = 0, 0
         while True:
