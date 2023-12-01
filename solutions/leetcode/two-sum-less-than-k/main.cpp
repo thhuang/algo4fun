@@ -11,3 +11,21 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    int twoSumLessThanK(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());
+        int result = -1;
+        for (int l = 0, r = nums.size() - 1; l < r;) {
+            int v = nums[l] + nums[r];
+            if (v >= k) {
+                --r;
+            } else {
+                result = max(result, v);
+                ++l;
+            }
+        }
+        return result;
+    }
+};
