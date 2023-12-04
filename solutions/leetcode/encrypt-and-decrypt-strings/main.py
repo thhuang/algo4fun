@@ -10,14 +10,8 @@ class Encrypter:
 
         self.encrypt_freq = defaultdict(int)
         for w in dictionary:
-            found = True
-            enc = ""
-            for c in w:
-                if c not in self.key_to_index:
-                    found = False
-                    break
-                enc += values[self.key_to_index[c]]
-            if found:
+            enc = self.encrypt(w)
+            if len(enc) != 0:
                 self.encrypt_freq[enc] += 1
 
     def encrypt(self, word1: str) -> str:
