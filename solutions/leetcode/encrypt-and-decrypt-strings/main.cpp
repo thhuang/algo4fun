@@ -23,6 +23,41 @@ class Encrypter {
     unordered_map<string, int> value_count_;
 };
 
+class Encrypter {
+    unordered_map<string, int> encryptFreq;
+    unordered_map<char, int> keyToIndex;
+    const vector<string> values;
+
+   public:
+    Encrypter(vector<char>& keys, vector<string>& values,
+              vector<string>& dictionary)
+        : values(values) {
+        for (int i = 0; i < keys.size(); ++i) {
+            keyToIndex[keys[i]] = i;
+        }
+
+        for (const string& w : dictionary) {
+            string enc = encrypt(w);
+            if (!enc.empty()) {
+                ++encryptFreq[enc];
+            }
+        }
+    }
+
+    string encrypt(string word1) {
+        string enc = "";
+        for (char c : word1) {
+            if (keyToIndex.count(c) == 0) {
+                return "";
+            }
+            enc += values[keyToIndex[c]];
+        }
+        return enc;
+    }
+
+    int decrypt(string word2) { return encryptFreq[word2]; }
+};
+
 /**
  * Your Encrypter object will be instantiated and called as such:
  * Encrypter* obj = new Encrypter(keys, values, dictionary);
