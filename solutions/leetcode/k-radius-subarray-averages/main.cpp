@@ -16,3 +16,22 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+   public:
+    vector<int> getAverages(vector<int>& nums, int k) {
+        int n = nums.size();
+        int window = k * 2 + 1;
+
+        vector<int> result(n, -1);
+        for (long long r = 0, i = r - k, l = i - k, sum = 0; r < n;
+             ++l, ++i, ++r) {
+            sum += nums[r];
+            if (l < 0) continue;
+            result[i] = sum / window;
+            sum -= nums[l];
+        }
+
+        return result;
+    }
+};
