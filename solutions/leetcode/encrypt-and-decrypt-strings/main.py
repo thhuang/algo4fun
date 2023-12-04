@@ -2,7 +2,6 @@ class Encrypter:
 
     def __init__(self, keys: List[str], values: List[str],
                  dictionary: List[str]):
-        self.keys = keys
         self.values = values
 
         self.key_to_index = {}
