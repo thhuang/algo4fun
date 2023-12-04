@@ -13,3 +13,17 @@ class Solution {
         return s;
     }
 };
+
+class Solution {
+   public:
+    string largestGoodInteger(string num) {
+        string result = "";
+        for (int l = 0; l < num.size() - 2; ++l) {
+            if (num[l] == num[l + 1] && num[l] == num[l + 2] &&
+                (result == "" || num[l] > result[0])) {
+                result = num.substr(l, 3);
+            }
+        }
+        return result;
+    }
+};
