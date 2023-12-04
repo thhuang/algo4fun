@@ -35,3 +35,26 @@ class Solution {
         return dp.back();
     }
 };
+
+class Solution {
+   public:
+    int numDecodings(string s) {
+        if (s[0] == '0') return 0;
+
+        unordered_map<string, bool> valid;
+        for (int i = 1; i <= 26; ++i) {
+            valid[to_string(i)] = true;
+        }
+
+        array<int, 2> dp = {1, 1};
+        for (int i = 1; i < s.size(); ++i) {
+            dp = {
+                dp[1],
+                (s[i] != '0' ? dp[1] : 0) +
+                    (valid[s.substr(i - 1, 2)] ? dp[0] : 0),
+            };
+        }
+
+        return dp.back();
+    }
+};
