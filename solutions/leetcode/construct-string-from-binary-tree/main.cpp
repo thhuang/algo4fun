@@ -14,23 +14,20 @@ class Solution {
    public:
     string tree2str(TreeNode* root) {
         string result;
-        function<void(TreeNode*)> dfs = [&](TreeNode* u) -> void {
-            result += to_string(u->val);
-            if (!u->left && !u->right) return;
+        function<void(TreeNode*)> preorder = [&](TreeNode* u) -> void {
+            for (char c : to_string(u->val)) result.push_back(c);
+            if (u->left == nullptr && u->right == nullptr) return;
 
-            if (u->left || u->right) {
-                result += "(";
-                if (u->left) dfs(u->left);
-                result += ")";
-            }
+            result.push_back('(');
+            if (u->left != nullptr) preorder(u->left);
+            result.push_back(')');
 
-            if (u->right) {
-                result += "(";
-                dfs(u->right);
-                result += ")";
-            }
+            if (u->right == nullptr) return;
+            result.push_back('(');
+            preorder(u->right);
+            result.push_back(')');
         };
-        dfs(root);
+        preorder(root);
         return result;
     }
 };
