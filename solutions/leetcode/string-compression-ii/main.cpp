@@ -1,36 +1,36 @@
 class Solution {
-    const int inf = 1e3;
+    const int INF = 1e3;
 
-    int count2length(int v) {
-        if (v > 99) return 4;
-        if (v > 9) return 3;
-        if (v > 1) return 2;
+    int compressedLength(int n) {
+        if (n >= 100) return 4;
+        if (n >= 10) return 3;
+        if (n >= 2) return 2;
         return 1;
     }
 
    public:
     int getLengthOfOptimalCompression(string s, int k) {
         int n = s.size();
-        vector<vector<int>> dp(n, vector<int>(k + 1, -1));
+        vector<vector<int>> memo(n, vector<int>(k + 1, -1));
 
-        function<int(int, int)> dfs = [&](int l, int t) -> int {
-            if (t < 0) return inf;
-            if (n - l <= t) return 0;
-            if (dp[l][t] != -1) return dp[l][t];
+        function<int(int, int)> dp = [&](int l, int remain) -> int {
+            if (remain < 0) return INF;
+            if (n - l <= remain) return 0;
+            if (memo[l][remain] != -1) return memo[l][remain];
 
-            array<int, 26> cnt;
-            cnt.fill(0);
+            array<int, 26> cnt = {};
+            int result = INF;
 
-            int result = inf;
             for (int r = l, mx = 0; r < n; ++r) {
                 mx = max(mx, ++cnt[s[r] - 'a']);
                 int use = r - l + 1 - mx;
-                result = min(result, count2length(mx) + dfs(r + 1, t - use));
+                result =
+                    min(result, compressedLength(mx) + dp(r + 1, remain - use));
             }
 
-            return dp[l][t] = result;
+            return memo[l][remain] = result;
         };
 
-        return dfs(0, k);
+        return dp(0, k);
     }
 };
