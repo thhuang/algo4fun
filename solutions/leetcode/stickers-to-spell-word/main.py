@@ -14,9 +14,9 @@ class Solution:
                 if t[0] not in sticker_freq:
                     continue
                 new_t = "".join(
-                    [c * v for c, v in (freq - sticker_freq).items()])
+                    sorted([c * v for c, v in (freq - sticker_freq).items()]))
                 result = min(result, 1 + dfs(new_t))
             return result
 
-        result = dfs(target)
+        result = dfs("".join(sorted([c for c in target])))
         return result if result < inf else -1
