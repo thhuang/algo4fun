@@ -91,3 +91,34 @@ class Solution {
         return dp.back()[1];
     }
 };
+
+class Solution {
+   public:
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime,
+                      vector<int>& profit) {
+        int n = startTime.size();
+
+        vector<int> jobs(n);
+        iota(jobs.begin(), jobs.end(), 0);
+        sort(jobs.begin(), jobs.end(),
+             [&](int i, int j) -> bool { return endTime[i] < endTime[j]; });
+
+        vector<int> dp(n);
+        dp[0] = profit[jobs[0]];
+        for (int i = 1; i < n; ++i) {
+            int k = upper_bound(
+                        jobs.begin(), jobs.end(), startTime[jobs[i]],
+                        [&](int t, int j) -> bool { return t < endTime[j]; }) -
+                    jobs.begin() - 1;
+
+            dp[i] = dp[i - 1];
+            if (k < 0) {
+                dp[i] = max(dp[i], profit[jobs[i]]);
+            } else {
+                dp[i] = max(dp[i], dp[k] + profit[jobs[i]]);
+            }
+        }
+
+        return dp.back();
+    }
+};
