@@ -43,3 +43,46 @@ class Solution:
             result.append(dfs(a, b))
 
         return result
+
+
+class Solution:
+
+    def calcEquation(self, equations: List[List[str]], values: List[float],
+                     queries: List[List[str]]) -> List[float]:
+        adj = dict()
+        for i in range(len(equations)):
+            a, b = equations[i]
+            v = values[i]
+
+            if a not in adj:
+                adj[a] = dict()
+            adj[a][b] = v
+
+            if b not in adj:
+                adj[b] = dict()
+            adj[b][a] = 1 / v
+
+        vis = set()
+
+        def dfs(u: int) -> None:
+            if u not in adj:
+                return
+            if u in vis:
+                return
+            vis.add(u)
+
+            for v, v_val in tuple(adj[u].items()):
+                dfs(v)
+                for w, w_val in adj[v].items():
+                    adj[u][w] = v_val * w_val
+                    adj[w][u] = 1 / adj[u][w]
+
+        result = []
+        for a, b in queries:
+            dfs(a)
+            if a not in adj or b not in adj[a]:
+                result.append(-1)
+            else:
+                result.append(adj[a][b])
+
+        return result
