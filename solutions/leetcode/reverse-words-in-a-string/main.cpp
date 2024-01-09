@@ -67,3 +67,30 @@ class Solution {
         return s.substr(0, p - 1);
     }
 };
+
+class Solution {
+   public:
+    string reverseWords(string s) {
+        string t;
+        for (char c : string{s.rbegin(), s.rend()}) {
+            if (c == ' ' && (t.empty() || t.back() == ' ')) {
+                continue;
+            }
+            t.push_back(c);
+        }
+        if (t.back() == ' ') {
+            t.pop_back();
+        }
+
+        for (int l = 0; l < t.size(); ++l) {
+            int r = l;
+            while (r < t.size() && t[r] != ' ') {
+                ++r;
+            }
+            reverse(t.begin() + l, t.begin() + r);
+            l = r;
+        }
+
+        return t;
+    }
+};
