@@ -52,8 +52,7 @@ class Solution {
 class Solution {
    public:
     int findPeakElement(vector<int>& nums) {
-        int n = nums.size();
-        int l = 0, r = n;
+        int l = 0, r = nums.size();  // [l, r)
         while (r - l > 1) {
             int m = l + (r - l) / 2;
             if (nums[m - 1] < nums[m]) {
