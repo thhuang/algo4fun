@@ -29,3 +29,25 @@ class Solution:
         dfs(root)
 
         return result
+
+
+class Solution:
+
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+        result = 0
+
+        def dfs(u: Optional[TreeNode], mn: int, mx: int) -> None:
+            nonlocal result
+
+            if u is None:
+                result = max(result, mx - mn)
+                return
+
+            mn = min(mn, u.val)
+            mx = max(mx, u.val)
+            dfs(u.left, mn, mx)
+            dfs(u.right, mn, mx)
+
+        dfs(root, root.val, root.val)
+
+        return result
