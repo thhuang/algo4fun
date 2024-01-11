@@ -32,3 +32,31 @@ class Solution {
         return result;
     }
 };
+
+class Solution {
+    const int inf = 1e8;
+
+   public:
+    int maxAncestorDiff(TreeNode* root) {
+        int result = 0;
+
+        function<pair<int, int>(TreeNode*)> dfs =
+            [&](TreeNode* u) -> pair<int, int> {
+            if (u == nullptr) return {inf, -inf};
+
+            auto [lmn, lmx] = dfs(u->left);
+            auto [rmn, rmx] = dfs(u->right);
+
+            int mn = min(lmn, rmn);
+            int mx = max(lmx, rmx);
+
+            result = max(result, max(mx - u->val, u->val - mn));
+
+            return {min(mn, u->val), max(mx, u->val)};
+        };
+
+        dfs(root);
+
+        return result;
+    }
+};
