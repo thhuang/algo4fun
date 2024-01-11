@@ -39,30 +39,28 @@ class Solution {
 class Solution {
    public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        vector<TreeNode*> pPath, qPath;
-
-        vector<TreeNode*> path;
-        function<void(TreeNode*)> search = [&](TreeNode* u) -> void {
-            if (!u) return;
-
+        function<bool(TreeNode*, TreeNode*, vector<TreeNode*>&)> search =
+            [&search](TreeNode* u, TreeNode* t,
+                      vector<TreeNode*>& path) -> bool {
+            if (u == nullptr) return false;
             path.push_back(u);
-
-            if (u == p) pPath = path;
-            if (u == q) qPath = path;
-
-            search(u->left);
-            search(u->right);
-
+            if (u == t) return true;
+            if (search(u->left, t, path)) return true;
+            if (search(u->right, t, path)) return true;
             path.pop_back();
+            return false;
         };
 
-        search(root);
+        vector<TreeNode*> pPath;
+        search(root, p, pPath);
 
-        if (pPath.empty() || qPath.empty()) return nullptr;
+        vector<TreeNode*> qPath;
+        search(root, q, qPath);
 
-        TreeNode* result;
+        TreeNode* result = nullptr;
         for (int i = 0; i < min(pPath.size(), qPath.size()); ++i) {
-            if (pPath[i] == qPath[i]) result = pPath[i];
+            if (pPath[i] != qPath[i]) break;
+            result = pPath[i];
         }
 
         return result;
