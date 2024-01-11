@@ -1,18 +1,18 @@
 class StockSpanner {
-    struct priceSpan {
+    struct PriceSpan {
         int price, span;
     };
 
-    vector<priceSpan> priceSpans;
+    vector<PriceSpan> desc;
 
    public:
     int next(int price) {
         int span = 1;
-        while (!priceSpans.empty() && priceSpans.back().price <= price) {
-            span += priceSpans.back().span;
-            priceSpans.pop_back();
+        while (!desc.empty() && desc.back().price <= price) {
+            span += desc.back().span;
+            desc.pop_back();
         }
-        priceSpans.push_back({price, span});
+        desc.push_back({price, span});
         return span;
     }
 };
