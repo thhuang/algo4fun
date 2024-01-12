@@ -9,3 +9,14 @@ class Solution:
             result /= i
             s -= 1
         return int(result)
+
+
+class Solution:
+
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [0 for _ in range(n)]
+        dp[0] = 1
+        for i in range(m):
+            for j in range(1, n):
+                dp[j] += dp[j - 1]
+        return dp[-1]
