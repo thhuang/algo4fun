@@ -16,3 +16,18 @@ func halvesAreAlike(s string) bool {
 	}
 	return vowelCount == 0
 }
+
+func halvesAreAlike(s string) bool {
+	vowelCount := 0
+	for i, r := range s {
+		switch r {
+		case 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U':
+			if i < len(s)/2 {
+				vowelCount++
+			} else {
+				vowelCount--
+			}
+		}
+	}
+	return vowelCount == 0
+}
