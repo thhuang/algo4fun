@@ -1,16 +1,12 @@
 func minSteps(s string, t string) int {
 	freq := [26]int{}
-	for _, c := range s {
-		freq[c-'a']++
-	}
-	for _, c := range t {
-		freq[c-'a']--
+	for i := range s {
+		freq[s[i]-'a']++
+		freq[t[i]-'a']--
 	}
 	result := 0
 	for _, v := range freq {
-		if v > 0 {
-			result += v
-		}
+		result += max(0, v)
 	}
 	return result
 }
