@@ -2,12 +2,10 @@ class Solution:
 
     def minSteps(self, s: str, t: str) -> int:
         freq = defaultdict(int)
-        for c in s:
-            freq[c] += 1
-        for c in t:
-            freq[c] -= 1
+        for i in range(len(s)):
+            freq[s[i]] += 1
+            freq[t[i]] -= 1
         result = 0
         for _, v in freq.items():
-            if v > 0:
-                result += v
+            result += max(0, v)
         return result
