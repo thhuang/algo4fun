@@ -44,3 +44,30 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+   public:
+    bool closeStrings(string word1, string word2) {
+        if (word1.size() != word2.size()) return false;
+
+        unordered_map<char, int> charFreq1, charFreq2;
+        for (int i = 0; i < word1.size(); ++i) {
+            ++charFreq1[word1[i]];
+            ++charFreq2[word2[i]];
+        }
+
+        if (charFreq1.size() != charFreq2.size()) return false;
+
+        for (auto [c, _] : charFreq1) {
+            if (charFreq2.count(c) == 0) return false;
+        }
+
+        unordered_map<int, int> freqCount1, freqCount2;
+        for (auto [c, _] : charFreq1) {
+            ++freqCount1[charFreq1[c]];
+            ++freqCount2[charFreq2[c]];
+        }
+
+        return freqCount1 == freqCount2;
+    }
+};
