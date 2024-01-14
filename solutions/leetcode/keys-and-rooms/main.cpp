@@ -55,3 +55,21 @@ class Solution {
                       [](bool b, bool r) -> bool { return b && r; });
     }
 };
+
+class Solution {
+   public:
+    bool canVisitAllRooms(vector<vector<int>>& rooms) {
+        int n = rooms.size();
+        vector<bool> vis(n, false);
+
+        function<void(int)> dfs = [&](int u) -> void {
+            if (vis[u]) return;
+            vis[u] = true;
+            for (int v : rooms[u]) dfs(v);
+        };
+
+        dfs(0);
+
+        return find(vis.begin(), vis.end(), false) == vis.end();
+    }
+};
