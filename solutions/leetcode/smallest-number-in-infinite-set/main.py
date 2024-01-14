@@ -26,6 +26,26 @@ class SmallestInfiniteSet:
         self.exists.add(num)
 
 
+from sortedcontainers import SortedSet
+
+
+class SmallestInfiniteSet:
+
+    def __init__(self):
+        self.mn = 1
+        self.st = SortedSet()
+
+    def popSmallest(self) -> int:
+        if len(self.st) == 0:
+            self.mn += 1
+            return self.mn - 1
+        return self.st.pop(0)
+
+    def addBack(self, num: int) -> None:
+        if num < self.mn:
+            self.st.add(num)
+
+
 # Your SmallestInfiniteSet object will be instantiated and called as such:
 # obj = SmallestInfiniteSet()
 # param_1 = obj.popSmallest()
