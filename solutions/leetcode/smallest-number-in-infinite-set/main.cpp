@@ -1,17 +1,17 @@
 class SmallestInfiniteSet {
-    set<int> mp;
+    set<int> st;
     int mn = 1;
 
    public:
     int popSmallest() {
-        if (mp.empty()) return mn++;
-        int v = *mp.begin();
-        mp.erase(mp.begin());
+        if (st.empty()) return mn++;
+        int v = *st.begin();
+        st.erase(st.begin());
         return v;
     }
 
     void addBack(int num) {
-        if (num < mn) mp.insert(num);
+        if (num < mn) st.insert(num);
     }
 };
 
