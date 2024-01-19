@@ -19,7 +19,7 @@ class Solution:
                     cnt = cnt * 10 + (ord(chars[i]) - ord('0'))
                     i += 1
                 i, cs = decode(i + 1)
-                for k in range(cnt):
+                for _ in range(cnt):
                     result += cs
 
             return i + 1, result
