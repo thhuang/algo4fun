@@ -39,3 +39,28 @@ func sumSubarrayMins(arr []int) int {
 
 	return result
 }
+
+const mod = 1e9 + 7
+
+func sumSubarrayMins(arr []int) int {
+	arr = append([]int{0}, arr...)
+	asc := []int{0}
+	dp := make([]int, len(arr))
+
+	for r, v := range arr {
+		for len(asc) > 0 && arr[asc[len(asc)-1]] > v {
+			asc = asc[:len(asc)-1]
+		}
+
+		l := asc[len(asc)-1]
+		dp[r] = dp[l] + v*(r-l)%mod
+
+		asc = append(asc, r)
+	}
+
+	result := 0
+	for _, v := range dp {
+		result = (result + v) % mod
+	}
+	return result
+}
