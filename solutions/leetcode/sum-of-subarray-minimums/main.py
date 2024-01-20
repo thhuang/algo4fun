@@ -31,3 +31,20 @@ class Solution:
             result = (result + v * (i - l[i] + 1) * (r[i] - i + 1)) % mod
 
         return result
+
+
+class Solution:
+
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        arr = [0] + arr
+        asc = [0]
+        dp = [0] * len(arr)
+
+        for r, v in enumerate(arr):
+            while len(asc) > 0 and arr[asc[-1]] > v:
+                asc.pop()
+            l = asc[-1]
+            dp[r] = dp[l] + v * (r - l)
+            asc.append(r)
+
+        return sum(dp) % int(1e9 + 7)
