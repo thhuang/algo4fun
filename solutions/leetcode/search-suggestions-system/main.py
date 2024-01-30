@@ -35,3 +35,27 @@ class Solution:
                 result[k].append(products[j])
 
         return result
+
+
+import bisect
+
+
+class Solution:
+
+    def suggestedProducts(self, products: List[str],
+                          searchWord: str) -> List[List[str]]:
+        products.sort()
+
+        result = []
+
+        for i in range(len(searchWord)):
+            l = bisect.bisect_left(products,
+                                   searchWord[0:i + 1],
+                                   key=lambda s: s[0:i + 1])
+            r = bisect.bisect_right(products,
+                                    searchWord[0:i + 1],
+                                    key=lambda s: s[0:i + 1])
+            r = min(r, l + 3)
+            result.append(products[l:r])
+
+        return result
