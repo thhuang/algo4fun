@@ -44,3 +44,25 @@ class Solution:
                     v -= dp[i - 1][l]
                 dp[i][r] = (dp[i][r] + v) % mod
         return dp[n][k]
+
+
+class Solution:
+
+    def kInversePairs(self, n: int, k: int) -> int:
+        mod = 10**9 + 7
+
+        dp = [0] * (k + 1)
+        dp[0] = 1
+
+        for i in range(1, n + 1):
+            dp_new = [0] * (k + 1)
+            v = 0
+            for r in range(k + 1):
+                l = r - i
+                v += dp[r]
+                if l >= 0:
+                    v -= dp[l]
+                dp_new[r] = (dp_new[r] + v) % mod
+            dp = dp_new
+
+        return dp[-1]
