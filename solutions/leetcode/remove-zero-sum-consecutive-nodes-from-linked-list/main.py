@@ -16,7 +16,7 @@ class Solution:
             prefix[s].append(p)
             p = p.next
 
-        for k, v in prefix.items():
+        for v in prefix.values():
             if len(v) <= 1:
                 continue
             v[0].next = v[-1].next
