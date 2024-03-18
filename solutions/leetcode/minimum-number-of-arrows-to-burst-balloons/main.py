@@ -4,13 +4,13 @@ class Solution:
         points.sort(key=lambda p: p[1])
 
         result = 0
-
         x = -inf
+
         for l, r in points:
             if l <= x:
                 continue
-            else:
-                x = r
-                result += 1
+
+            result += 1
+            x = r
 
         return result
