@@ -21,3 +21,21 @@ class Solution:
                 result.append(c)
 
         return "".join(result)
+
+
+class Solution:
+
+    def minRemoveToMakeValid(self, s: str) -> str:
+        result = [c for c in s]
+        stack = []
+        for i, c in enumerate(s):
+            if c == "(":
+                stack.append(i)
+            elif c == ")":
+                if len(stack) == 0:
+                    result[i] = ""
+                else:
+                    stack.pop()
+        for i in stack:
+            result[i] = ""
+        return "".join(result)
