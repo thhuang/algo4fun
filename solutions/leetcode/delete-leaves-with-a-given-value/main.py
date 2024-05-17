@@ -26,3 +26,13 @@ class Solution:
             return None
 
         return root
+
+
+class Solution:
+
+    def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
+        if root is None:
+            return None
+        root.left = self.removeLeafNodes(root.left, target)
+        root.right = self.removeLeafNodes(root.right, target)
+        return None if root.left is None and root.right is None and root.val == target else root
