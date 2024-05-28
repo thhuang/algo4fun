@@ -18,20 +18,20 @@ class Solution:
 
             dfs(i + 1)
 
-            s = 0
             word_cnt = Counter(words[i])
             for k, v in word_cnt.items():
                 if k not in cnt or cnt[k] < v:
                     return
-                cnt[k] -= v
-                s += v * score[ord(k) - ord("a")]
 
-            curr += s
+            for k, v in word_cnt.items():
+                cnt[k] -= v
+                curr += v * score[ord(k) - ord("a")]
+
             dfs(i + 1)
-            curr -= s
 
             for k, v in word_cnt.items():
                 cnt[k] += v
+                curr -= v * score[ord(k) - ord("a")]
 
         dfs(0)
 
