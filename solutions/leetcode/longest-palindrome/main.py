@@ -13,3 +13,18 @@ class Solution:
             result += 1
 
         return result
+
+
+class Solution:
+
+    def longestPalindrome(self, s: str) -> int:
+        result = len(s)
+        seen_odd = False
+        for v in Counter(s).values():
+            if v % 2 == 0:
+                continue
+            if seen_odd:
+                result -= 1
+            else:
+                seen_odd = True
+        return result
