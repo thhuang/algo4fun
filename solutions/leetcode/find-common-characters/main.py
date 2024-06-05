@@ -13,3 +13,12 @@ class Solution:
             result += [chr(ord("a") + i)] * cnt
 
         return result
+
+
+class Solution:
+
+    def commonChars(self, words: List[str]) -> List[str]:
+        result = []
+        for c in [chr(i + ord("a")) for i in range(26)]:
+            result += [c] * min([w.count(c) for w in words])
+        return result
