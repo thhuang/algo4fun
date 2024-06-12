@@ -15,3 +15,12 @@ class Solution:
                 r.append(v)
 
         return sorted(l, key=lambda v: order[v]) + sorted(r)
+
+
+class Solution:
+
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        order = dict()
+        for i, v in enumerate(arr2):
+            order[v] = i
+        return sorted(arr1, key=lambda v: order[v] if v in order else len(arr2) + v)
