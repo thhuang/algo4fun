@@ -14,7 +14,7 @@ class Solution:
                     return True
             return False
 
-        l, r = 0, position[-1] + 1  # [l, r)
+        l, r = 0, position[-1] + position[0] + 1  # [l, r)
         while r - l > 1:
             mid = (l + r) // 2
             if check(mid):
