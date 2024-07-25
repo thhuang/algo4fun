@@ -31,3 +31,18 @@ class Solution:
         sort(0, len(nums) - 1)
 
         return nums
+
+
+class Solution:
+
+    def sortArray(self, nums: List[int]) -> List[int]:
+        l = min(nums)
+        r = max(nums)
+        buckets = [0] * (r - l + 1)
+        for v in nums:
+            buckets[v - l] += 1
+        result = []
+        for i, v in enumerate(buckets):
+            for _ in range(v):
+                result.append(l + i)
+        return result
