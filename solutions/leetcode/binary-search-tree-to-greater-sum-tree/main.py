@@ -23,3 +23,20 @@ class Solution:
         process(root, 0)
 
         return root
+
+
+class Solution:
+
+    def bstToGst(self, root: TreeNode) -> TreeNode:
+
+        def process(u: TreeNode, v: int) -> int:
+            if u is None:
+                return v
+            v = process(u.right, v)
+            u.val += v
+            v = u.val
+            v = process(u.left, v)
+            return v
+
+        process(root, 0)
+        return root
