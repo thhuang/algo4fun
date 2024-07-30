@@ -17,12 +17,12 @@ class Solution:
             slow = i
             fast = next(i)
             while valid(nums[slow], nums[fast]) and valid(nums[slow], nums[next(fast)]):
-                vis.add(slow)
-                slow = next(slow)
-                fast = next(next(fast))
                 if slow == fast:
                     if slow == next(slow):
                         break
                     return True
+                vis.add(slow)
+                slow = next(slow)
+                fast = next(next(fast))
 
         return False
