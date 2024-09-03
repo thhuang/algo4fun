@@ -48,3 +48,23 @@ class Solution:
                 return p_path[i - 1]
 
         return p_path[n - 1]
+
+
+class Solution:
+
+    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+
+        def getPath(u: 'Node') -> List['Node']:
+            result = [u]
+            while result[-1].parent is not None:
+                result.append(result[-1].parent)
+            return result
+
+        p_path, q_path = getPath(p), getPath(q)
+        result = None
+        while len(p_path) > 0 and len(q_path) > 0 and p_path[-1] == q_path[-1]:
+            result = p_path[-1]
+            p_path.pop()
+            q_path.pop()
+
+        return result
