@@ -56,3 +56,24 @@ class Solution:
             i += 1
 
         return nums[r]
+
+
+class Solution:
+
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+
+        mn, mx = min(nums), max(nums)
+        m = mx - mn + 1
+
+        buckets = [0] * m
+        for v in nums:
+            buckets[v - mn] += 1
+
+        cnt = 0
+        for i, v in enumerate(buckets):
+            cnt += v
+            if n - cnt < k:
+                return i + mn
+
+        return mx
