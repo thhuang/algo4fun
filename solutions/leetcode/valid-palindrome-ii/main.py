@@ -23,3 +23,21 @@ class Solution:
             return True
 
         return findDiff(s, i)[0] is None or findDiff(s, j)[0] is None
+
+
+class Solution:
+
+    def validPalindrome(self, s: str) -> bool:
+
+        def isValid(l: int, r: int) -> bool:
+            for i in range((r - l + 1) // 2):
+                if s[l + i] != s[r - i]:
+                    return False
+            return True
+
+        for i in range(len(s) // 2):
+            l, r = i, len(s) - 1 - i
+            if s[l] != s[r]:
+                return isValid(l + 1, r) or isValid(l, r - 1)
+
+        return True
