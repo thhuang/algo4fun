@@ -9,7 +9,7 @@ class Solution:
 
         suffix_hash = [0] * (m + 1)
         for i in reversed(range(m)):
-            suffix_hash[i] = (ord(haystack[i]) - ord("a")) + suffix_hash[i + 1] * x
+            suffix_hash[i] = ord(haystack[i]) - ord("a") + suffix_hash[i + 1] * x
 
         t = 0
         xn = 1
