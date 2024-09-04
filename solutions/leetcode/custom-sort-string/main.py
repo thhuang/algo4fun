@@ -29,7 +29,7 @@ class Solution:
         freq = Counter(s)
         result = []
         for c in order:
-            for _ in freq[c]:
+            for _ in range(freq[c]):
                 result.append(c)
             freq[c] = 0
         for c, n in freq.items():
