@@ -2,9 +2,9 @@ class Solution:
 
     def isNumber(self, s: str) -> bool:
         integer = "([+-]?\d+)"
-        decimal = "([+-]?(\d*\.\d+|\d+\.\d*))"
-        integer_or_decimal = f"({integer}|{decimal})"
+        digits = "((\d+\.\d*)|(\d*\.\d+))"
+        decimal = f"([+-]?{digits})"
         exponent = f"([eE]{integer})"
-        number = f"({integer_or_decimal}{exponent}?)"
+        number = f"(({integer}|{decimal}){exponent}?)"
         pattern = f"^{number}$"
         return re.search(pattern, s) is not None
