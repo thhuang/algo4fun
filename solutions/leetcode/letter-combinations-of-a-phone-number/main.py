@@ -30,3 +30,31 @@ class Solution:
         dfs(0)
 
         return result
+
+
+class Solution:
+
+    def letterCombinations(self, digits: str) -> List[str]:
+        if digits == "":
+            return []
+
+        mp = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+
+        result = []
+        curr = []
+
+        def dfs(i: int):
+            nonlocal result
+            nonlocal curr
+
+            if i == len(digits):
+                result.append("".join(curr.copy()))
+                return
+            for c in mp[int(digits[i])]:
+                curr.append(c)
+                dfs(i + 1)
+                curr.pop()
+
+        dfs(0)
+
+        return result
