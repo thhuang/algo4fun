@@ -5,11 +5,12 @@ class Solution:
 
         l, r = 0, len(height) - 1
         while l < r:
-            h = min(height[l], height[r])
+            hl, hr = height[l], height[r]
+            h = min(hl, hr)
             result = max(result, h * (r - l))
-            if h == height[l]:
+            if h == hl:
                 l += 1
-            else:
+            else:  # h == hr
                 r -= 1
 
         return result
