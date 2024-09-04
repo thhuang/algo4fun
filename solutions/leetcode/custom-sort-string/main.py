@@ -10,18 +10,14 @@ class Solution:
 class Solution:
 
     def customSortString(self, order: str, s: str) -> str:
-        freq = defaultdict(int)
-        for c in s:
-            freq[c] += 1
-
+        freq = Counter(s)
         result = []
         for c in order:
-            for i in range(freq[c]):
+            n = freq[c]
+            for _ in range(n):
                 result.append(c)
-            freq[c] = 0
-
-        for c, f in freq.items():
-            for i in range(f):
+                freq[c] -= 1
+        for c, n in freq.items():
+            for _ in range(n):
                 result.append(c)
-
         return "".join(result)
