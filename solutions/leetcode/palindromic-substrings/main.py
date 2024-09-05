@@ -20,3 +20,24 @@ class Solution:
                 result += (r - l) // 2
 
         return result
+
+
+class Solution:
+
+    def countSubstrings(self, s: str) -> int:
+        n = len(s)
+        result = 0
+
+        def search(l, r):
+            nonlocal result
+            while 0 <= l and r < n and s[l] == s[r]:
+                l -= 1
+                r += 1
+            result += (r - l) // 2
+
+        for i in range(n):
+            search(i, i)
+            if i > 0:
+                search(i - 1, i)
+
+        return result
