@@ -28,7 +28,7 @@ class Solution:
     def validIPv4Number(self, num: str) -> bool:
         if len(num) > 3:
             return False
-        if re.search("^\d{1,3}$", num) is None:
+        if re.search("^\d+$", num) is None:
             return False
         v = int(num)
         return 0 <= v <= 255 and str(v) == num
