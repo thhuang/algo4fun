@@ -18,3 +18,27 @@ class Solution:
             d = (d + 1) % 4
 
         return result
+
+
+class Solution:
+
+    def spiralMatrixIII(self, rows: int, cols: int, r_start: int, c_start: int) -> List[List[int]]:
+        directions = ((0, 1), (1, 0), (0, -1), (-1, 0))
+
+        n = rows * cols
+        result = []
+
+        i, j = r_start, c_start
+        d = 0
+        k = 1
+        while True:
+            for _ in range(2):
+                for _ in range(k):
+                    if 0 <= i < rows and 0 <= j < cols:
+                        result.append([i, j])
+                    i, j = i + directions[d][0], j + directions[d][1]
+                    if len(result) == n:
+                        return result
+
+                d = (d + 1) % 4
+            k += 1
