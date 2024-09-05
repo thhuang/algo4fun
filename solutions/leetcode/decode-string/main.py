@@ -26,3 +26,41 @@ class Solution:
 
         _, cs = decode(0)
         return "".join(cs)
+
+
+class Solution:
+
+    def decodeString(self, s: str) -> str:
+        n = len(s)
+        p = 0
+
+        def getNumber():
+            nonlocal p
+            v = 0
+            while p < n and s[p] != "[":
+                v = v * 10 + int(s[p])
+                p += 1
+            return v
+
+        def decode():
+            nonlocal p
+
+            result = []
+
+            while p < n and s[p] != "]":
+                if s[p].isdigit():
+                    v = getNumber()
+                    p += 1
+                    t = decode()
+                    for _ in range(v):
+                        for c in t:
+                            result.append(c)
+
+                else:
+                    result.append(s[p])
+
+                p += 1
+
+            return result
+
+        return "".join(decode())
