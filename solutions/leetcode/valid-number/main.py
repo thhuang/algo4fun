@@ -1,9 +1,8 @@
 class Solution:
 
     def isNumber(self, s: str) -> bool:
-        integer = "([+-]?\d+)"
-        digits = "((\d+\.\d*)|(\d*\.\d+))"
-        decimal = f"([+-]?{digits})"
+        integer = f"([+-]?\d+)"
+        decimal = f"([+-]?((\d+\.\d*)|(\d*\.\d+)))"
         exponent = f"([eE]{integer})"
         number = f"(({integer}|{decimal}){exponent}?)"
         pattern = f"^{number}$"
