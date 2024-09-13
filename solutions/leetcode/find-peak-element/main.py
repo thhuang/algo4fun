@@ -28,3 +28,21 @@ class Solution:
                 r = m
 
         return l
+
+
+class Solution:
+
+    def findPeakElement(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        l, r = 0, n  # [l, r)
+        while r - l > 1:
+            m = (l + r) // 2
+            a = nums[m - 1]
+            b = nums[m]
+            if a <= b:
+                l = m
+            else:  # a > b
+                r = m
+
+        return l
