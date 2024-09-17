@@ -11,3 +11,14 @@ class Solution:
             if cnt == 1 and w not in freq1:
                 result.append(w)
         return result
+
+
+class Solution:
+
+    def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
+        freq = Counter(f"{s1} {s2}".split())
+        result = []
+        for w, v in freq.items():
+            if v == 1:
+                result.append(w)
+        return result
