@@ -1,4 +1,4 @@
-# Definition for a binary tree node.
+# Definition for a binary tree node.# Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
@@ -10,22 +10,21 @@ class Solution:
         if root is None:
             return []
 
-        ordered_nodes = defaultdict(lambda: [])
-        mn, mx = 1, -1
+        col_to_vals = defaultdict(lambda: [])
+        mn, mx = 0, 0
         q = deque([(root, 0)])
 
         while len(q) > 0:
-            u, i = q.popleft()
-            ordered_nodes[i].append(u.val)
-            mn = min(mn, i)
-            mx = max(mx, i)
+            u, c = q.popleft()
+
+            col_to_vals[c].append(u.val)
+
+            mn = min(mn, c)
+            mx = max(mx, c)
+
             if u.left is not None:
-                q.append((u.left, i - 1))
+                q.append((u.left, c - 1))
             if u.right is not None:
-                q.append((u.right, i + 1))
+                q.append((u.right, c + 1))
 
-        result = []
-        for i in range(mn, mx + 1):
-            result.append(ordered_nodes[i])
-
-        return result
+        return [col_to_vals[i] for i in range(mn, mx + 1)]
