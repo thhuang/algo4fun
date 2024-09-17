@@ -1,6 +1,7 @@
 class Node:
 
-    def __init__(self, val=0, prv=None, nxt=None):
+    def __init__(self, key=-1, val=-1, prv=None, nxt=None):
+        self.key = key
         self.val = val
         self.prv = prv
         self.nxt = nxt
@@ -10,50 +11,45 @@ class LRUCache:
 
     def __init__(self, capacity: int):
         self.cap = capacity
-        self.mp = dict()  # {key: Node}
+        self.head = Node()
+        self.tail = Node()
+        self.head.nxt = self.tail
+        self.tail.prv = self.head
+        self.mp = dict()
 
-        self.front = Node()  # (key, val)
-        self.last = Node()
-        self.front.nxt = self.last
-        self.last.prv = self.front
+    def removeNode(self, key):
+        u = self.mp[key]
+        a, b = u.prv, u.nxt
+        a.nxt = b
+        b.prv = a
+        del self.mp[key]
 
-        self.size = 0
+    def appendNode(self, key: int, value: int):
+        a = self.tail.prv
+        b = self.tail
+        u = Node(key, value, a, b)
+        a.nxt = u
+        b.prv = u
+        self.mp[key] = u
+
+    def moveToEnd(self, key: int):
+        val = self.mp[key].val
+        self.removeNode(key)
+        self.appendNode(key, val)
 
     def get(self, key: int) -> int:
         if key not in self.mp:
             return -1
-
-        u = self.mp[key]
-
-        self.remove(u)
-        self.pushfront(u)
-
-        return u.val[1]
+        self.moveToEnd(key)
+        return self.mp[key].val
 
     def put(self, key: int, value: int) -> None:
         if key in self.mp:
-            u = self.mp[key]
-            del self.mp[key]
-            self.remove(u)
+            self.removeNode(key)
+        self.appendNode(key, value)
 
-        u = Node((key, value))
-        self.mp[key] = u
-        self.pushfront(u)
-
-        if self.size > self.cap:
-            del self.mp[self.last.prv.val[0]]
-            self.remove(self.last.prv)
-
-    def remove(self, u):
-        prv, nxt = u.prv, u.nxt
-        prv.nxt = nxt
-        nxt.prv = prv
-        self.size -= 1
-
-    def pushfront(self, u):
-        u.prv, u.nxt = self.front, self.front.nxt
-        u.prv.nxt, u.nxt.prv = u, u
-        self.size += 1
+        if len(self.mp) > self.cap:
+            self.removeNode(self.head.nxt.key)
 
 
 class LRUCache:
