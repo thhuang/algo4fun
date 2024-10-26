@@ -33,16 +33,11 @@ class Solution:
 class Solution:
 
     def findPeakElement(self, nums: List[int]) -> int:
-        n = len(nums)
-
-        l, r = 0, n  # [l, r)
+        l, r = 0, len(nums)  # [l, r)
         while r - l > 1:
             m = (l + r) // 2
-            a = nums[m - 1]
-            b = nums[m]
-            if a <= b:
+            if nums[m - 1] < nums[m]:
                 l = m
             else:  # a > b
                 r = m
-
         return l
