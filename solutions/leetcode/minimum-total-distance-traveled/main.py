@@ -13,7 +13,10 @@ class Solution:
                 return 0
             if i > j:
                 return float('inf')
-            return min(dp(i, j - 1),
-                       dp(i - 1, j - 1) + abs(robot[i] - quota[j]))
+
+            skip = dp(i, j - 1)
+            match = dp(i - 1, j - 1) + abs(robot[i] - quota[j])
+
+            return min(skip, match)
 
         return dp(len(robot) - 1, len(quota) - 1)
