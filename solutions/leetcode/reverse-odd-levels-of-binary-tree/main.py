@@ -31,3 +31,21 @@ class Solution:
             q = b2
 
         return root
+
+
+class Solution:
+    def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root is None:
+            return
+
+        def dfs(l: Optional[TreeNode], r: Optional[TreeNode], lv: int):
+            if l is None or r is None:
+                return
+            if lv % 2 == 1:
+                l.val, r.val = r.val, l.val
+            dfs(l.left, r.right, lv + 1)
+            dfs(l.right, r.left, lv + 1)
+
+        dfs(root.left, root.right, 1)
+
+        return root
