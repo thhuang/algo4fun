@@ -74,3 +74,26 @@ class Solution {
         return dp.front();
     }
 };
+
+class Solution {
+public:
+    int mincostTickets(vector<int>& days, vector<int>& costs) {
+        const array<int, 3> passes = {1, 7, 30};
+
+        int n = days.size();
+
+        vector<int> dp(n + 1, numeric_limits<int>::max());
+        dp.back() = 0;
+
+        for (int l = n - 1; l >= 0; --l) {
+            for (int i = 0; i < 3; ++i) {
+                int d = passes[i];
+                int c = costs[i];
+                int r = lower_bound(days.begin(), days.end(), days[l] + d) - days.begin();
+                dp[l] = min(dp[l], dp[r] + c);
+            }
+        }
+
+        return dp.front();
+    }
+};
