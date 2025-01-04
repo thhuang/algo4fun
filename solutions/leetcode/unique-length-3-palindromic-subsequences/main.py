@@ -10,7 +10,6 @@ class Solution:
         for indices in char_indices.values():
             if len(indices) == 1:
                 continue
-            t = s[indices[0] + 1:indices[-1]]
-            result += len(set([c for c in t]))
+            result += len(set(s[indices[0] + 1:indices[-1]]))
 
         return result
