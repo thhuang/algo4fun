@@ -21,3 +21,20 @@ impl Solution {
         result
     }
 }
+
+impl Solution {
+    pub fn find_the_prefix_common_array(a: Vec<i32>, b: Vec<i32>) -> Vec<i32> {
+        let mut a_mask: u64 = 0;
+        let mut b_mask: u64 = 0;
+
+        let mut result: Vec<i32> = Vec::new();
+
+        for i in 0..a.len() {
+            a_mask |= 1u64 << a[i];
+            b_mask |= 1u64 << b[i];
+            result.push((a_mask & b_mask).count_ones() as i32);
+        }
+
+        result
+    }
+}
