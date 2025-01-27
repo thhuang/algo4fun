@@ -27,3 +27,25 @@ class Solution:
                     stack.append(v)
 
         return [a in course_prerequisites[b] for a, b in queries]
+
+
+class Solution:
+
+    def checkIfPrerequisite(self, num_courses: int,
+                            prerequisites: List[List[int]],
+                            queries: List[List[int]]) -> List[bool]:
+        is_prerequisite = [[False for _ in range(num_courses)]
+                           for _ in range(num_courses)]
+
+        for a, b in prerequisites:
+            is_prerequisite[a][b] = True
+
+        for u in range(num_courses):
+            for s in range(num_courses):
+                for t in range(num_courses):
+                    if is_prerequisite[s][t]:
+                        continue
+                    is_prerequisite[s][
+                        t] = is_prerequisite[s][u] and is_prerequisite[u][t]
+
+        return [is_prerequisite[s][t] for s, t in queries]
