@@ -21,11 +21,9 @@ impl Solution {
             }
         }
 
-        let mut result = Vec::with_capacity(queries.len());
-        for q in queries.iter() {
-            result.push(is_prerequisite[q[0] as usize][q[1] as usize])
-        }
-
-        result
+        queries
+            .iter()
+            .map(|q| is_prerequisite[q[0] as usize][q[1] as usize])
+            .collect()
     }
 }
