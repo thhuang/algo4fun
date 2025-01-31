@@ -25,7 +25,9 @@ impl Solution {
         let distances: Vec<usize> = (0..n).map(|u| Solution::getDistance(&adj, n, u)).collect();
 
         let mut seen = vec![false; n];
-        (0..n).fold(0, |acc, x| acc + Solution::getConnectComponentMaxDistance(&adj, x, &distances, &mut seen)) as i32
+        (0..n).fold(0, |acc, x| {
+            acc + Solution::getConnectComponentMaxDistance(&adj, x, &distances, &mut seen)
+        }) as i32
     }
 
     fn isBipartite(adj: &Vec<Vec<usize>>, colors: &mut Vec<usize>, u: usize) -> bool {
@@ -71,14 +73,21 @@ impl Solution {
         result
     }
 
-    fn getConnectComponentMaxDistance(adj: &Vec<Vec<usize>>, u: usize, distances: &Vec<usize>, seen: &mut Vec<bool>) -> usize {
+    fn getConnectComponentMaxDistance(
+        adj: &Vec<Vec<usize>>,
+        u: usize,
+        distances: &Vec<usize>,
+        seen: &mut Vec<bool>,
+    ) -> usize {
         if seen[u] {
             return 0;
         }
         seen[u] = true;
 
-        adj[u]
-            .iter()
-            .fold(distances[u], |max_distance, &v| max_distance.max(Solution::getConnectComponentMaxDistance(&adj, v, &distances, seen)))
+        adj[u].iter().fold(distances[u], |max_distance, &v| {
+            max_distance.max(Solution::getConnectComponentMaxDistance(
+                &adj, v, &distances, seen,
+            ))
+        })
     }
 }
