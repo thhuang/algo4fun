@@ -20,8 +20,13 @@ impl Solution {
         let mut q = VecDeque::from([(r as i32, c as i32)]);
 
         while let Some((i, j)) = q.pop_front() {
-            if i < 0 || grid.len() as i32 <= i || j < 0 || grid[0].len() as i32 <= j ||
-                seen[i as usize][j as usize] || grid[i as usize][j as usize] == 0 {
+            if i < 0
+                || grid.len() as i32 <= i
+                || j < 0
+                || grid[0].len() as i32 <= j
+                || seen[i as usize][j as usize]
+                || grid[i as usize][j as usize] == 0
+            {
                 continue;
             }
             seen[i as usize][j as usize] = true;
