@@ -19,3 +19,18 @@ impl Solution {
         }
     }
 }
+
+impl Solution {
+    pub fn are_almost_equal(s1: String, s2: String) -> bool {
+        let diff: Vec<_> = s1
+            .chars()
+            .zip(s2.chars())
+            .filter(|(c1, c2)| c1 != c2)
+            .collect();
+        match diff.len() {
+            0 => true,
+            2 => (diff[0].0, diff[0].1) == (diff[1].1, diff[1].0),
+            _ => false,
+        }
+    }
+}
