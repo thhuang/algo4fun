@@ -11,3 +11,21 @@ class Solution:
             else:
                 l = m + 1
         return r if nums[r] == target else -1
+
+
+class Solution:
+
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums) - 1
+
+        while l <= r:
+            m = (l + r) // 2
+            if nums[l] <= nums[m] and nums[l] <= target <= nums[m]:
+                r = m - 1
+            elif nums[l] > nums[m] and (nums[l] <= target
+                                        or target <= nums[m]):
+                r = m - 1
+            else:
+                l = m + 1
+
+        return l if l < len(nums) and target == nums[l] else -1
