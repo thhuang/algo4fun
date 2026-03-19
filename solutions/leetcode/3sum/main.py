@@ -37,3 +37,45 @@ class Solution:
                 p = p + 1
 
         return result
+
+
+class Solution:
+
+    def twoSumSorted(self, nums: list[int], start: int,
+                     target: int) -> list[list[int]]:
+        l = start
+        r = len(nums) - 1
+
+        result = []
+
+        while l < r:
+            if nums[l] + nums[r] < target:
+                l += 1
+
+            elif nums[l] + nums[r] > target:
+                r -= 1
+
+            else:
+                result.append([l, r])
+                l += 1
+                r -= 1
+                while l < r and nums[l] == nums[l - 1]:
+                    l += 1
+                while l < r and nums[r] == nums[r + 1]:
+                    r -= 1
+
+        return result
+
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
+        nums = sorted(nums)
+
+        result = []
+
+        for i in range(len(nums) - 2):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+
+            for l, r in self.twoSumSorted(nums, i + 1, -nums[i]):
+                result.append([nums[i], nums[l], nums[r]])
+
+        return result
