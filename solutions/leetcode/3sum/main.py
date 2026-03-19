@@ -16,7 +16,7 @@ class Solution:
                 result.append([nums[l], nums[r]])
 
             l = l + 1
-            while nums[l] == nums[l - 1] and l < r:
+            while l < r and nums[l] == nums[l - 1]:
                 l = l + 1
 
         return result
@@ -33,7 +33,7 @@ class Solution:
                 result.append([nums[p], l, r])
 
             p = p + 1
-            while nums[p] == nums[p - 1] and p + 2 < len(nums):
+            while p + 2 < len(nums) and nums[p] == nums[p - 1]:
                 p = p + 1
 
         return result
