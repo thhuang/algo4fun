@@ -92,3 +92,22 @@ class Solution:
             i -= 1
 
         return result
+
+
+class Solution:
+
+    def trap(self, height: List[int]) -> int:
+        peak = height.index(max(height))
+        result = 0
+
+        def sweep(rng):
+            nonlocal result
+            mx = 0
+            for i in rng:
+                mx = max(mx, height[i])
+                result += mx - height[i]
+
+        sweep(range(0, peak))
+        sweep(range(len(height) - 1, peak, -1))
+
+        return result
