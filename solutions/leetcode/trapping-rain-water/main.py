@@ -60,3 +60,35 @@ class Solution:
             result += min(water[i], mx) - height[i]
 
         return result
+
+
+class Solution:
+
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        result = 0
+
+        p_mx = 0
+        mx = 0
+        for i, h in enumerate(height):
+            if h > mx:
+                mx = h
+                p_mx = i
+
+        result = 0
+
+        i = 0
+        h = 0
+        while i < p_mx:
+            h = max(h, height[i])
+            result += h - height[i]
+            i += 1
+
+        i = n - 1
+        h = 0
+        while i > p_mx:
+            h = max(h, height[i])
+            result += h - height[i]
+            i -= 1
+
+        return result
