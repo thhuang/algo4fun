@@ -39,3 +39,24 @@ class Solution:
             result += min(trapping_height[i], r) - height[i]
 
         return result
+
+
+class Solution:
+
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        result = 0
+
+        water = [0] * n
+
+        mx = 0
+        for i in range(n):
+            mx = max(mx, height[i])
+            water[i] = mx
+
+        mx = 0
+        for i in range(n)[::-1]:
+            mx = max(mx, height[i])
+            result += min(water[i], mx) - height[i]
+
+        return result
