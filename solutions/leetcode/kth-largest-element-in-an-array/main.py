@@ -82,6 +82,17 @@ class Solution:
 class Solution:
 
     def findKthLargest(self, nums: List[int], k: int) -> int:
+        h = nums[:k]
+        heapq.heapify(h)
+        for v in nums[k:]:
+            if v > h[0]:
+                heapq.heapreplace(h, v)
+        return h[0]
+
+
+class Solution:
+
+    def findKthLargest(self, nums: List[int], k: int) -> int:
 
         def partition(l: int, r: int, p: int) -> List[int]:
             ll, rr = l, r
