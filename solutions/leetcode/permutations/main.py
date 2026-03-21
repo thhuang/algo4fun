@@ -18,7 +18,7 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         result = []
 
-        def search(i):
+        def search(i: int) -> None:
             if i == len(nums):
                 result.append(nums.copy())
                 return
