@@ -77,3 +77,41 @@ class Solution:
                 return i + mn
 
         return mx
+
+
+class Solution:
+
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+
+        def partition(l: int, r: int, p: int) -> List[int]:
+            ll, rr = l, r
+            i = l
+
+            while i <= rr:
+                if nums[i] > p:
+                    nums[i], nums[ll] = nums[ll], nums[i]
+                    ll += 1
+                    i += 1
+
+                elif nums[i] < p:
+                    nums[i], nums[rr] = nums[rr], nums[i]
+                    rr -= 1
+
+                else:
+                    i += 1
+
+            return [ll, rr]
+
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            p = nums[random.randint(l, r)]
+            ll, rr = partition(l, r, p)
+
+            if rr < k - 1:
+                l = rr + 1
+            elif k - 1 < ll:
+                r = ll - 1
+            else:
+                return nums[ll]
+
+        return -1
