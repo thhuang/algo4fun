@@ -33,3 +33,34 @@ class Solution:
         search(0)
 
         return result
+
+
+class Solution:
+
+    def combinationSum(self, candidates: List[int],
+                       target: int) -> List[List[int]]:
+        result = []
+
+        combination = []
+        s = 0
+
+        def search(i: int) -> None:
+            nonlocal s
+
+            if s == target:
+                result.append(combination.copy())
+                return
+            if s > target or i == len(candidates):
+                return
+
+            search(i + 1)
+
+            combination.append(candidates[i])
+            s += candidates[i]
+            search(i)
+            combination.pop()
+            s -= candidates[i]
+
+        search(0)
+
+        return result
