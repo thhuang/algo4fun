@@ -91,3 +91,24 @@ class Solution:
 
     def decodeString(self, s: str) -> str:
         return "".join(self.decode(s, 0)[1])
+
+
+class Solution:
+
+    def decodeString(self, s: str) -> str:
+        stack = []
+        curr = []
+        num = 0
+        for c in s:
+            if c.isdigit():
+                num = num * 10 + int(c)
+            elif c == "[":
+                stack.append((curr, num))
+                curr, num = [], 0
+            elif c == "]":
+                prev, v = stack.pop()
+                curr = prev + curr * v
+            else:
+                curr.append(c)
+
+        return "".join(curr)
