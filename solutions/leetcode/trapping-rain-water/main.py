@@ -111,3 +111,23 @@ class Solution:
         sweep(range(len(height) - 1, peak, -1))
 
         return result
+
+
+class Solution:
+
+    def trap(self, height: List[int]) -> int:
+        peak, _ = max(enumerate(height), key=lambda x: x[1])
+
+        result = 0
+
+        mx = 0
+        for i in range(peak):
+            mx = max(mx, height[i])
+            result += mx - height[i]
+
+        mx = 0
+        for i in range(len(height) - 1, peak, -1):
+            mx = max(mx, height[i])
+            result += mx - height[i]
+
+        return result
