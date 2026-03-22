@@ -64,3 +64,30 @@ class Solution:
             return result
 
         return "".join(decode())
+
+
+class Solution:
+
+    def decode(self, s: str, start: int) -> tuple[int, list[str]]:
+        result = []
+
+        p = start
+        while p < len(s) and s[p] != "]":
+            if s[p].isalpha():
+                result.append(s[p])
+
+            else:
+                v = 0
+                while s[p] != "[":
+                    v = v * 10 + int(s[p])
+                    p += 1
+
+                p, nested = self.decode(s, p + 1)
+                result = result + nested * v
+
+            p += 1
+
+        return p, result
+
+    def decodeString(self, s: str) -> str:
+        return "".join(self.decode(s, 0)[1])
