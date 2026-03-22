@@ -49,12 +49,11 @@ class Solution:
         result = []
 
         while l < r:
-            if nums[l] + nums[r] < target:
+            s = nums[l] + nums[r]
+            if s < target:
                 l += 1
-
-            elif nums[l] + nums[r] > target:
+            elif s > target:
                 r -= 1
-
             else:
                 result.append([l, r])
                 l += 1
@@ -71,11 +70,11 @@ class Solution:
 
         result = []
 
-        for i in range(len(nums) - 2):
+        for i in range(0, len(nums) - 2):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
 
-            for l, r in self.twoSumSorted(nums, i + 1, -nums[i]):
-                result.append([nums[i], nums[l], nums[r]])
+            for j, k in self.twoSumSorted(nums, i + 1, -nums[i]):
+                result.append([nums[i], nums[j], nums[k]])
 
         return result
