@@ -63,3 +63,35 @@ class Solution:
             q = nq
 
         return True
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        if root is None:
+            return True
+
+        q = deque([(root, -inf, inf)])
+
+        while q:
+            node, left, right = q.popleft()
+
+            if node.left:
+                if left < node.left.val < node.val:
+                    q.append([node.left, left, node.val])
+                else:
+                    return False
+
+            if node.right:
+                if node.val < node.right.val < right:
+                    q.append([node.right, node.val, right])
+                else:
+                    return False
+
+        return True
