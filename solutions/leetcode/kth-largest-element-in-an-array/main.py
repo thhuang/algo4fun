@@ -126,3 +126,42 @@ class Solution:
                 return nums[ll]
 
         return -1
+
+
+class Solution:
+
+    def partition(self, nums: List[int], l: int, r: int, p: int) -> List[int]:
+        pivot = nums[p]
+
+        ll = l
+        rr = r
+        i = l
+
+        while i <= rr:
+            if nums[i] > pivot:
+                nums[i], nums[ll] = nums[ll], nums[i]
+                i += 1
+                ll += 1
+            elif nums[i] < pivot:
+                nums[i], nums[rr] = nums[rr], nums[i]
+                rr -= 1
+            else:  # equal
+                i += 1
+
+        return [ll, rr]
+
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        l = 0
+        r = len(nums) - 1
+
+        while l <= r:
+            p = random.randint(l, r)
+            ll, rr = self.partition(nums, l, r, p)
+            if k - 1 < ll:
+                r = ll - 1
+            elif k - 1 > rr:
+                l = rr + 1
+            else:
+                return nums[ll]
+
+        return None
