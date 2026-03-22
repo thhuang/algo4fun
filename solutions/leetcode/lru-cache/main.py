@@ -137,8 +137,6 @@ class LRUCache:
         # check if the key exists
         #   false: return -1
         #   true:  move the node to the front then return the value
-        #
-        # return the value
 
         if key not in self.key_to_node:
             return -1
@@ -181,6 +179,89 @@ class LRUCache:
         value = self.key_to_node[key].value
         self._remove_node(key)
         self._add_front(key, value)
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+
+
+class Node:
+
+    def __init__(self, key=None, value=None):
+        self.key = key
+        self.value = value
+        self.prv = None
+        self.nxt = None
+
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+
+        # head <-> [nodes] <-> tail
+        self.head = Node()
+        self.tail = Node()
+        self.head.nxt, self.tail.prv = self.tail, self.head
+
+        self.key_to_node = {}
+
+    def get(self, key: int) -> int:
+        # check if the key exists
+        #   false: return -1
+        #   true: move the node to front and return the value
+        if key not in self.key_to_node:
+            return -1
+
+        self._move_front(key)
+
+        return self.key_to_node[key].value
+
+    def put(self, key: int, value: int) -> None:
+        # check if the key exists
+        #   true: remove the node
+        #
+        # add the node to front
+        #
+        # check if size > capacity
+        #   true: remove the last node
+
+        if key in self.key_to_node:
+            self._remove(key)
+
+        self._add_front(key, value)
+
+    def _move_front(self, key: int) -> None:
+        value = self.key_to_node[key].value
+        self._remove(key)
+        self._add_front(key, value)
+
+    def _remove(self, key: int) -> None:
+        node = self.key_to_node[key]
+
+        # from: a <-> node <-> b
+        # to:   a <-> b
+        a, b = node.prv, node.nxt
+        a.nxt, b.prv = b, a
+        node.prv, node.nxt = None, None
+
+        del self.key_to_node[key]
+
+    def _add_front(self, key: int, value: int) -> None:
+        node = Node(key=key, value=value)
+
+        # from: a(head) <-> b
+        # to:   a(head) <-> node <-> b
+        a, b = self.head, self.head.nxt
+        a.nxt, b.prv = node, node
+        node.prv, node.nxt = a, b
+
+        self.key_to_node[key] = node
+
+        if len(self.key_to_node) > self.capacity:
+            self._remove(self.tail.prv.key)
 
 
 # Your LRUCache object will be instantiated and called as such:
