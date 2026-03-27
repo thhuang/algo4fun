@@ -35,3 +35,39 @@ class Solution:
                 return []
 
         return rresult[::-1]
+
+
+class Solution:
+
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        directions = ((0, 1), (0, -1), (1, 0), (-1, 0))
+        m = len(grid)
+        n = len(grid[0])
+
+        q = []
+        fresh = 0
+
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 2:
+                    q.append((i, j))
+                elif grid[i][j] == 1:
+                    fresh += 1
+
+        t = 0
+        while q and fresh > 0:
+            t += 1
+            nq = []
+
+            for i, j in q:
+                for di, dj in directions:
+                    ii = i + di
+                    jj = j + dj
+                    if 0 <= ii < m and 0 <= jj < n and grid[ii][jj] == 1:
+                        grid[ii][jj] = 2
+                        nq.append((ii, jj))
+                        fresh -= 1
+
+            q = nq
+
+        return -1 if fresh > 0 else t
